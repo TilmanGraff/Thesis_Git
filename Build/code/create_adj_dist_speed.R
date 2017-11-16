@@ -1,15 +1,5 @@
-# df <- data.frame(id =NA, lon=NA, lat=NA)
-#
-# df[1,] <- c(1, -1.256301, 51.746715)
-# df[2,] <- c(2, -1.263206, 51.762509)
-#
-# route <- osrmRoute(src=df[1,], dst=df[2,], sp=TRUE)
-#
 
-# fromJSON("http://router.project-osrm.org/route/v1/driving/51.746715,-1.256301;51.762509,-1.263206?overview=false&annotations=speed")
-
-1+1
-
+# This file transforms given centroid geometries into adj, dist, and infrastr matrices
 
 
 
