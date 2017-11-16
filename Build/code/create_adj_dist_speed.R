@@ -1,62 +1,33 @@
-# df <- data.frame(id =NA, lon=NA, lat=NA)
-#
-# df[1,] <- c(1, -1.256301, 51.746715)
-# df[2,] <- c(2, -1.263206, 51.762509)
-#
-# route <- osrmRoute(src=df[1,], dst=df[2,], sp=TRUE)
-#
 
-# fromJSON("http://router.project-osrm.org/route/v1/driving/51.746715,-1.256301;51.762509,-1.263206?overview=false&annotations=speed")
+# This file transforms given centroid geometries into adj, dist, and infrastr matrices
 
-1+1
+library("osrm", lib.loc="/Library/Frameworks/R.framework/Versions/3.2/Resources/library")
 
 
-
-
-
-plain_centroids <- read_csv("~/Desktop/plain_centroids.csv")
-
-centroids <- as.data.frame(plain_centroids[plain_centroids$X<7 & plain_centroids$Y<8,])
+centroids <- read.csv("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/country_centroids/Nigeria.csv")
 n <- nrow(centroids)
-centroids$rownumber <- c(1:n)
+
+centroids$rownumber <- c(1:n) # this is to create a later rosetta stone
 
 adj <- matrix(0, nrow = n, ncol = n)
 dist <- matrix(0, nrow = n, ncol = n)
 speed <- matrix(0, nrow = n, ncol = n)
 
+#for(i in 1:nrow(centroids)){
+  for(i in 1:30){
 
-plot(centroids$X, centroids$Y, cex=.2)
-
-# df$avg_speed_to1 <- NA
-# df$dist_to1 <- NA
-# df$time_to_1 <- NA
-
-for(i in 1:nrow(centroids)){
-
-  ids <- centroids[(centroids$top-centroids$top[i])^2+(centroids$left-centroids$left[i])^2<=0.25^2,"ID"]
-
-  df <- centroids[centroids$ID %in% ids, c("ID", "X", "Y") ]
+  neighbour_ids <- centroids[(centroids$top-centroids$top[i])^2+(centroids$left-centroids$left[i])^2<=0.25^2+0.25^2,"ID"]
+  df <- centroids[centroids$ID %in% neighbour_ids, c("ID", "X", "Y") ]
   colnames(df) <- c("id", "lon", "lat")
 
-  for(a in ids){
-    route <- osrmRoute(src=df[df$id==centroids$ID[i],], dst=df[df$id==a,], sp=TRUE, overview = "simplified")
+    for(a in neighbour_ids){
+      route <- osrmRoute(src=df[df$id==centroids$ID[i],], dst=df[df$id==a,], sp=TRUE, overview = F)
+      j <- centroids[centroids$ID == a,"rownumber"]
 
-    coords <- route@lines[[1]]@Lines[[1]]@coords
-    #points(coords[,1], coords[,2], type="l")
+      dist[i, j] <- route[2]
+      speed[i, j] <- route[2] / (route[1]/60)
+      adj[i, j] <- 1
+
+      }
+
   }
-    # df[(df$lon-df$lon[i])^2+(df$lat-df$lat[i])^2<=0.25^2 & df$id != df$id[i],"id"]
-    # df$dist_to1[i] <- route[2]
-    # df$avg_speed_to1[i] <- route[2] / (route[1]/60)
-    # df$time_to_1[i] <- route[1]
-  }
-
-
-  # route <- osrmRoute(src=df[1,], dst=df[i,], sp=TRUE, overview = FALSE)
-  #
-  # df[(df$lon-df$lon[i])^2+(df$lat-df$lat[i])^2<=0.25^2 & df$id != df$id[i],"id"]
-  # df$dist_to1[i] <- route[2]
-  # df$avg_speed_to1[i] <- route[2] / (route[1]/60)
-  # df$time_to_1[i] <- route[1]
-  # coords <- route@lines[[1]]@Lines[[1]]@coords
-  # points(coords[,1], coords[,2], type="l")
-}
