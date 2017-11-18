@@ -1,10 +1,7 @@
-<<<<<<< HEAD
 
 # This file transforms given centroid geometries into adj, dist, and infrastr matrices
 
 library("osrm", lib.loc="/Library/Frameworks/R.framework/Versions/3.2/Resources/library")
-=======
->>>>>>> 0dc64e1f22ca6d36bf6bcac7076328a87184d36c
 
 # This file transforms given centroid geometries into adj, dist, and infrastr matrices
 
