@@ -3,9 +3,7 @@
 
 library("osrm", lib.loc="/Library/Frameworks/R.framework/Versions/3.2/Resources/library")
 
-# This file transforms given centroid geometries into adj, dist, and infrastr matrices
-
-centroids <- read.csv("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/country_centroids/Nigeria.csv")
+centroids <- read.csv("/Build/temp/country_centroids/Nigeria.csv")
 n <- nrow(centroids)
 
 centroids$rownumber <- c(1:n) # this is to create a later rosetta stone
@@ -21,7 +19,7 @@ speed <- matrix(0, nrow = n, ncol = n)
   df <- centroids[centroids$ID %in% neighbour_ids, c("ID", "X", "Y") ]
   colnames(df) <- c("id", "lon", "lat")
 
-    for(a in neighbour_ids){
+    for(a in neighbour_ids[! neighbour_ids %in% centroids[i, "ID"]]){           # scrapes OSRM for routes to all neighbours excluding itself
       route <- osrmRoute(src=df[df$id==centroids$ID[i],], dst=df[df$id==a,], sp=TRUE, overview = F)
       j <- centroids[centroids$ID == a,"rownumber"]
 
@@ -32,3 +30,7 @@ speed <- matrix(0, nrow = n, ncol = n)
       }
 
   }
+
+write.csv(dist, file="Build/temp/dist/Nigeria.csv")
+write.csv(speed, file="/Build/temp/speed/Nigeria.csv")
+write.csv(adj, file="/Build/temp/adj/Nigeria.csv")
