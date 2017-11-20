@@ -1,59 +1,14 @@
-%%
-% Initialises the adjacency matrix
 
-N = 10;              
-n = N^2;
+% This file takes adj, dist, and speed matrices and calculates current tradeflows, optiomal networks, and welfare gains
 
-% 4-connected neighbours
-%___________________
+% Imports matrices
 
-mat = ones(N);
-[r,c] = size(mat);                        %# Get the matrix size
-diagVec1 = repmat([ones(c-1,1); 0],r,1);  %# Make the first diagonal vector
-                                          %#   (for horizontal connections)
-diagVec1 = diagVec1(1:end-1);             %# Remove the last value
-diagVec2 = ones(c*(r-1),1);               %# Make the second diagonal vector
-                                          %#   (for vertical connections)
-adj = diag(diagVec1,1)+...                %# Add the diagonals to a zero matrix
-      diag(diagVec2,c);
-adj = adj+adj.';  
+adj = csvread("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/adj/Nigeria.csv", 1, 1);
+speed = csvread("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/speed/Nigeria.csv", 1, 1);
+dist = csvread("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/dist/Nigeria.csv", 1, 1);
 
+% Imports underlying characteristics
 
-% 8 connected neighbors
-%_________________________
-% 
-% mat = ones(N);
-% [r,c] = size(mat);                        %# Get the matrix size
-% diagVec1 = repmat([ones(c-1,1); 0],r,1);  %# Make the first diagonal vector
-%                                           %#   (for horizontal connections)
-% diagVec1 = diagVec1(1:end-1);             %# Remove the last value
-% diagVec2 = [0; diagVec1(1:(c*(r-1)))];    %# Make the second diagonal vector
-%                                           %#   (for anti-diagonal connections)
-% diagVec3 = ones(c*(r-1),1);               %# Make the third diagonal vector
-%                                           %#   (for vertical connections)
-% diagVec4 = diagVec2(2:end-1);             %# Make the fourth diagonal vector
-%                                           %#   (for diagonal connections)
-% adj = diag(diagVec1,1)+...                %# Add the diagonals to a zero matrix
-%       diag(diagVec2,c-1)+...
-%       diag(diagVec3,c)+...
-%       diag(diagVec4,c+1);
-% adj = adj+adj.';                         %'# Add the matrix to a transposed
-% 
-
-x_coords = repmat(1:1:N, 1, N);
-y_coords = repelem(1:N,N);
-initial_infrastructure = adj;
-
-g = graph(initial_infrastructure);
-
-half_point = ceil(n/2);
-
-% Defines initial productivity
-
-productivity = 10*rand(n,1)+1;
-%productivity = zeros(n, 1);
-
-%productivity(half_point) = 10;
 
 
 % Defines initial population
@@ -78,7 +33,7 @@ production = (productivity) .* (population);
 
 %%
 % Second try, go directly via reduced lagrangian
-    
+
 % Analytical FOCs:
 
 % Define U(c_j,h_j)
@@ -112,7 +67,7 @@ outflows = @(P) nansum(Q(P) + delta_tau .* (Q(P).^(1+beta) .* opt_links(P) .^(-1
 inflows = @(P) transpose(sum(Q(P),1));
 
 % Objective Function
- 
+
 Lagrangian = @(P) sum(weights .* population .* U(c(P),housing)) - sum(P .* ...
     (c(P) + outflows(P) - production  - inflows(P)));
 
@@ -131,23 +86,23 @@ opt_tradeflows = Q(P);
 
 % STATIC INFRASTRUCTURE
 
-opt_links = @(P) initial_infrastructure; 
+opt_links = @(P) initial_infrastructure;
 Q = @(P) (1/(1+beta).*(opt_links(P).^gamma)./(delta_tau) .* max(zeros(n), -1 + (transpose((P)* ...
     transpose(P.^-1))) )).^(1/beta);
-c = @(P) U_c_inv(P ./ weights, housing); 
+c = @(P) U_c_inv(P ./ weights, housing);
 outflows = @(P) nansum(Q(P) + ...
-    delta_tau .* (Q(P).^(1+beta) .* opt_links(P) .^(-1*gamma)),2); 
+    delta_tau .* (Q(P).^(1+beta) .* opt_links(P) .^(-1*gamma)),2);
 inflows = @(P) transpose(sum(Q(P),1));
 
 % Objective Function
- 
+
 Lagrangian = @(P) sum(weights .* population .* U(c(P),housing)) - sum(P.* ...
     (c(P) + outflows(P) - production  - inflows(P)));
 
-P0 = transpose(0.1:(0.8/(n-1)):0.9); 
+P0 = transpose(0.1:(0.8/(n-1)):0.9);
 options_con = optimoptions('fmincon');
 options_con.MaxFunctionEvaluations = 30000; options_con.MaxIterations = 10000;...
-    A = -1 .* eye(n); b = zeros(n, 1); 
+    A = -1 .* eye(n); b = zeros(n, 1);
 P_stat = fmincon(Lagrangian, P0, A, b, [], [], [],[], [], options_con);
 
 static_tradeflows = Q(P_stat);
@@ -157,7 +112,7 @@ welfare_gain = sum(weights .* population .* U(c(P),housing)) / ...
 
 %%
 % Plot results
-% 
+%
 % tradeflows = digraph(round(Q(P), 10));
 % LWidths = 20*tradeflows.Edges.Weight/max(tradeflows.Edges.Weight);
 % MSize = 20*production / max(production) + 10;
