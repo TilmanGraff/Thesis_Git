@@ -1,42 +1,12 @@
 
 % This file takes adj, dist, and speed matrices and calculates current tradeflows, optiomal networks, and welfare gains
 
-% Imports matrices
-
-adj = csvread("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/adj/Nigeria.csv", 1, 1);
-speed = csvread("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/speed/Nigeria.csv", 1, 1);
-dist = csvread("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/dist/Nigeria.csv", 1, 1);
-
-% Imports underlying characteristics
+clear;
+cd '/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build'
 
 
+% Defines parameters
 
-% Defines initial population
-
-population = ones(n,1);
-
-% Defines initial housing
-
-housing = ones(n,1);
-
-% Defines initial production
-
-production = (productivity) .* (population);
-
-% p = plot(g, 'XData', x_coords, 'YData', y_coords, 'NodeLabel', {});
-
-
-% Defines links
-%links = initial_infrastructure;
-%links(half_point, half_point+1) = 10;
-
-
-%%
-% Second try, go directly via reduced lagrangian
-
-% Analytical FOCs:
-
-% Define U(c_j,h_j)
 rho = 2;
 alpha = 0.9;
 beta = 0.8;
@@ -46,6 +16,28 @@ delta_I = 0.5*ones(n);
 weights = ones(n, 1);
 kappa = gamma*(1+beta)^(-(1+beta)/beta);
 K = sum(sum(initial_infrastructure));
+
+
+% Imports matrices
+
+adj = csvread("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/adj/Nigeria.csv", 1, 1);
+speed = csvread("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/speed/Nigeria.csv", 1, 1);
+dist = csvread("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/dist/Nigeria.csv", 1, 1);
+
+
+% Imports underlying characteristics
+
+productivity = csvread("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/productivity/Nigeria.csv", 1, 1);
+population = ones(n,1); % still needs to be imported
+housing = ones(n,1); % still needs to be imported
+production = (productivity) .* (population); % still needs to be imported
+
+
+
+%%
+% Second try, go directly via reduced lagrangian
+
+% Analytical FOCs:
 
 syms U(c,h)
 

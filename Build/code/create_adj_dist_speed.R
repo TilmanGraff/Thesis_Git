@@ -3,7 +3,7 @@
 
 library("osrm", lib.loc="/Library/Frameworks/R.framework/Versions/3.2/Resources/library")
 
-centroids <- read.csv("/Build/temp/country_centroids/Nigeria.csv")
+centroids <- read.csv("Build/temp/country_centroids/Nigeria.csv")
 n <- nrow(centroids)
 
 centroids$rownumber <- c(1:n) # this is to create a later rosetta stone
@@ -11,6 +11,9 @@ centroids$rownumber <- c(1:n) # this is to create a later rosetta stone
 adj <- matrix(0, nrow = n, ncol = n)
 dist <- matrix(0, nrow = n, ncol = n)
 speed <- matrix(0, nrow = n, ncol = n)
+
+# productivity <- centroids$lights / centroids$population
+productivity <- centroids$ID / centroids$ID # this just creates a file of ones just for show
 
 #for(i in 1:nrow(centroids)){
   for(i in 1:30){
@@ -32,5 +35,6 @@ speed <- matrix(0, nrow = n, ncol = n)
   }
 
 write.csv(dist, file="Build/temp/dist/Nigeria.csv")
-write.csv(speed, file="/Build/temp/speed/Nigeria.csv")
-write.csv(adj, file="/Build/temp/adj/Nigeria.csv")
+write.csv(speed, file="Build/temp/speed/Nigeria.csv")
+write.csv(adj, file="Build/temp/adj/Nigeria.csv")
+write.csv(productivity, file="Build/temp/productivity/Nigeria.csv")
