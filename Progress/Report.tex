@@ -1,0 +1,128 @@
+\documentclass[11pt, oneside]{article}   	%standardeinstellung
+\usepackage{amsmath}				%damit du formeln eingeben kannst
+\usepackage[parfill]{parskip}    			% neuer absatz durch leere zeile
+\usepackage{graphicx}				% bilder einfügen
+\usepackage[onehalfspacing]{setspace}	%1,5 facher zeilenabstand
+\usepackage{hyperref}				%damit man links erstellen kann
+\usepackage{float}					%intelligentes anpassen von bildern, damit es keine lücken im text gibt
+\graphicspath{ {figures/} }				%automatisches erstellen von "List of Figures"
+\usepackage[font=small,labelfont=bf]{caption} %formatierung der bildunterschrift
+ \usepackage{geometry}				%Seitenlayout
+ \usepackage{tikz}
+ \usetikzlibrary{shapes,arrows}
+
+ \geometry{						%musst du nicht unbedingt selbst einstellen
+ a4paper,
+ total={210mm,297mm},
+ left=15mm,
+ right=15mm,
+ top=25mm,
+ bottom=20mm,
+ }
+
+\usepackage{amssymb}
+\usepackage{caption}
+\usepackage{natbib}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{wrapfig}
+\usepackage{subcaption}
+\usepackage{pdflscape}
+
+\def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;}
+
+\title{Progress Report for MPhil Thesis}
+\author{Tilman Graff -- University of Oxford}
+\date{\today}
+
+\begin{document}
+
+\tikzstyle{data} = [draw, ellipse, fill=blue!20,
+    text width=4.5em, text centered, node distance=3cm, minimum height=4em]
+\tikzstyle{input} = [draw, ellipse, fill=red!20,
+    text width=4.5em, text centered, node distance=3cm, minimum height=4em]
+\tikzstyle{output} = [draw, ellipse, fill=green!20,
+    text width=4.5em, text centered, node distance=3cm, minimum height=4em]
+\tikzstyle{program} = [rectangle, draw, fill=white!20,
+    text width=5em, text centered, rounded corners, minimum height=4em]
+\tikzstyle{line} = [draw, -latex']
+
+\maketitle
+
+\section*{Research Question}
+\textbf{Which factors influence the global distribution of trade network optimality?}
+
+In this thesis, I aim to create a (potentially) global dataset of trade network efficiency. Taking the spatial distribution of current economic activity and population as given, I use a model from a recent working paper to determine the optimal trade network for each country. I then compare each country's current road network to its optimal one and derive a measure of how far a country is currently away from its ideal self.
+
+In a second step, I will then investigate the origins of this global distribution. Which factors led to the heterogeneities among countries today? Specifically, I will look at:
+
+\begin{itemize}
+  \item Do networks with large colonial infrastructure investments do better or worse today?
+  \item Does tribal favoritism explain why some areas are lacking lucrative investment?
+\end{itemize}
+
+\section*{Process}
+
+In order to conduct this research, I will need to follow a series of steps and transfer data between multiple programming softwares. Here is a step-by-step guide:
+
+\begin{itemize}
+  \item[\checkmark] Find global raster data on population, night-lights, ruggedness, and colonial infrastructure investments.
+  \item Grid the world on 50x50km squares and aggregate finer-resolution data into those grids.
+  \item Locate the maximum population point within each grid and call this the (population) centroid of the grid.
+  \item[\checkmark] Use OpenStreetMap to find distance and average speed between neighboring gridcells.
+  \item Use distance and ruggedness to calculate Infrastructure Building Cost Matrix $\delta^{I}_{i,k}$ for every country.
+  \item Use average speed to calculate current Infrastructure Matrix $I_{i,k}$ for every country.
+  \item Use distance to calculate (iceberg) Trade Cost Matrix $\delta^{\tau}_{i,k}$ for every country.
+  \item Use $\delta^{I}_{i,k}$, $\delta^{\tau}_{i,k}$, and $I_{i,k}$ to find the optimal trade network $I^{*}_{i,k}$ and optimal tradeflows $Q^{*}_{i,k}$ for every country. This directly follows the Schaal Working Paper. I know how to do this, I am however afraid that this might take too long.
+  \item Compare $I_{i,k}$ and $I^{*}_{i,k}$ for every country to obtain a measure of network optimality $\zeta_{c}$ for every country $c$.
+  \item Investigate heterogeneity in $\zeta_{c}$
+
+\end{itemize}
+
+This flowchart visualises the process. It shows the path input data (red circles) take through various programming languages (white rectangles) and intermediate datasets (blue circles) into eventual findings (green circle).
+
+\resizebox{1\textwidth}{!}{
+\begin{centering}
+\begin{tikzpicture}[node distance = 3cm, auto]
+  \node [input] (Lights) {Night Lights};
+  \node [input, below of=Lights] (Rugg) {Ruggedness};
+  \node [input, above of=Lights] (Population) {Population};
+  \node [program, right of=Lights] (QGIS) {QGIS};
+  \node [data, right of=QGIS] (Centroids) {Grid Centroids};
+  \node [program, right of=Centroids] (R) {R};
+  \node [input, above of=Centroids] (Roads) {Road Network};
+  \node [data, right of=R] (Infrastructure) {Infrastr. Matrix};
+  \node [data, above of=Infrastructure] (Trade) {Trade Cost};
+  \node [data, below of=Infrastructure] (Building) {Building Cost};
+  \node [program, right of=Infrastructure] (Matlab) {Matlab};
+  \node [data, right of=Matlab] (Opt) {Optimal Network};
+  \node [program, below of=Building, node distance=5cm] (Stata) {Stata};
+  \node [input, right of=Stata, node distance=4.5cm] (misc) {Expl. variables};
+  \node [output, left of=Stata, node distance=4.5cm] (Findings) {Findings};
+
+  \path [line] (Lights) -- (QGIS);
+  \path [line] (Population) -- (QGIS);
+  \path [line] (Rugg) -- (QGIS);
+  \path [line] (QGIS) -- (Centroids);
+  \path [line] (Centroids) -- (R);
+  \path [line] (Roads) -- (R);
+  \path [line] (R) -- (Infrastructure);
+  \path [line] (R) -- (Trade);
+  \path [line] (R) -- (Building);
+  \path [line] (Building) -- (Matlab);
+  \path [line] (Infrastructure) -- (Matlab);
+  \path [line] (Trade) -- (Matlab);
+  \path [line] (Matlab) -- (Opt);
+  \path [line] (Opt) -- (Stata);
+  \path [line] (Centroids) -- (Stata);
+  \path [line] (misc) -- (Stata);
+  \path [line] (Stata) -- (Findings);
+
+\end{tikzpicture}
+\end{centering}
+}
+
+
+\end{document}
