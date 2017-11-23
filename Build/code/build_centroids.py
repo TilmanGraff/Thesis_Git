@@ -18,6 +18,8 @@ QgsApplication.initQgis()
 
 import processing
 from processing.core.Processing import Processing
+from processing.tools import *
+
 
 Processing.initialize()
 Processing.updateAlgsList()
@@ -47,25 +49,33 @@ if not countries.isValid():
 # LOAD LIGHTS DATA
 #####################
 
-fileName = "/Users/Tilmanski/Desktop/light_raster.tif"
+fileName = "/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/input/light_raster.tif"
 fileInfo = QFileInfo(fileName)
 baseName = fileInfo.baseName()
 rlayer = QgsRasterLayer(fileName, baseName)
 if not rlayer.isValid():
   print "Layer failed to load!"
 
-print rlayer.extent().toString()
+#print rlayer.extent().toString()
 
 
-# CREATE GRID
+# CREATE GRID -- Did not work
 
-cellsize = 0.5000 #Cell Size in WGS 84 will be 50 x 50 Kilometers
-crs = "EPSG:4326" #WGS 84 System
-xmin = -180 #extract the minimum x coord from our layer
-xmax =  180 #extract our maximum x coord from our layer
-ymin = -60 #extract our minimum y coord from our layer
-ymax =  60 #extract our maximum y coord from our layer
-#prepare the extent in a format the VectorGrid tool can interpret (xmin,xmax,ymin,ymax)
-extent = str(xmin)+ ',' + str(xmax)+ ',' +str(ymin)+ ',' +str(ymax)
-grid="/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/GIS_Project/"
-processing.runalg('qgis:vectorgrid',  extent, cellsize, cellsize,  0, grid)
+# cellsize = 0.5000 #Cell Size in WGS 84 will be 50 x 50 Kilometers
+# crs = "EPSG:4326" #WGS 84 System
+# xmin = -180 #extract the minimum x coord from our layer
+# xmax =  180 #extract our maximum x coord from our layer
+# ymin = -60 #extract our minimum y coord from our layer
+# ymax =  60 #extract our maximum y coord from our layer
+# #prepare the extent in a format the VectorGrid tool can interpret (xmin,xmax,ymin,ymax)
+# extent = str(xmin)+ ',' + str(xmax)+ ',' +str(ymin)+ ',' +str(ymax)
+# grid="/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/GIS_Project"
+# processing.runalg('qgis:vectorgrid',  extent, cellsize, cellsize,  0, grid)
+# QgsVectorFileWriter.writeAsVectorFormat(grids, folder_name+'/pos', "System", None,"ESRI Shapefile")
+
+
+# Instead: IMPORT GRID
+
+grid = QgsVectorLayer("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/GIS_Project/Grid.shp", "Grid", "ogr")
+if not grid.isValid():
+ print "Layer failed to load!"
