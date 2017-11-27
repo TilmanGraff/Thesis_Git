@@ -17,5 +17,10 @@ centroids <- rename(centroids, c("Pop_Sum" = "pop", "Pop_sdv" = "pop_sd", "Light
 
 centroids <- centroids[,c("x", "y", "country", "region", "subregion", "pop", "lights", "pop_sd", "lights_sd", "rugg", "altitude", "landsuit", "temp", "precip", "growingdays", "malaria", "harbor", "alternative_lights", "un_code")]
 
+# This identifies a desert
+centroids$desert = centroids$landsuit < 0.005
+
+centroids$country <- gsub("Libyan Arab Jamahiriya", "Libya", centroids$country)
+centroids$country <- gsub(" ", "-", centroids$country)
 
 write.csv(centroids, "/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/centroids.csv")
