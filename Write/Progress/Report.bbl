@@ -1,0 +1,25 @@
+\begin{thebibliography}{3}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\urlprefix}{URL }
+
+\bibitem[{Fajgelbaum and Schaal(2017)}]{fajgelbaum_optimal_2017}
+\textbf{Fajgelbaum, Pablo~D. and Edouard Schaal} (\textbf{2017}).
+\newblock Optimal Transport Networks in Spatial Equilibrium.
+\newblock Working paper, National Bureau of Economic Research
+
+\bibitem[{Henderson et~al.(2018)Henderson, Squires, Storeygard, and
+  Weil}]{henderson_global_2018}
+\textbf{Henderson, Vernon, Tim Squires, Adam Storeygard, and David~N Weil}
+  (\textbf{2018}).
+\newblock The {{Global Spatial Distribution}} of {{Economic Activity}}:
+  {{Nature}}, {{History}}, and the {{Role}} of {{Trade}}.
+\newblock \emph{The Quarterly Journal of Economics} forthcoming
+
+\bibitem[{{Socioeconomic Data and Applications
+  Center}(2016)}]{socioeconomic_data_and_applications_center_gridded_2016}
+\textbf{{Socioeconomic Data and Applications Center}} (\textbf{2016}).
+\newblock Gridded {{Population}} of the {{World}} ({{GPW}}), v4 | {{SEDAC}}.
+\newblock \url{http://sedac.ciesin.columbia.edu/data/collection/gpw-v4}
+
+\end{thebibliography}

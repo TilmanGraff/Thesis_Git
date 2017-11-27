@@ -1,0 +1,205 @@
+\documentclass[11pt, oneside]{article}   	%standardeinstellung
+\usepackage{amsmath}				%damit du formeln eingeben kannst
+\usepackage[parfill]{parskip}    			% neuer absatz durch leere zeile
+\usepackage{graphicx}				% bilder einfügen
+\usepackage[onehalfspacing]{setspace}	%1,5 facher zeilenabstand
+\usepackage{hyperref}				%damit man links erstellen kann
+\usepackage{float}					%intelligentes anpassen von bildern, damit es keine lücken im text gibt
+\graphicspath{ {figures/} }				%automatisches erstellen von "List of Figures"
+\usepackage[font=small,labelfont=bf]{caption} %formatierung der bildunterschrift
+ \usepackage{geometry}				%Seitenlayout
+ \usepackage{tikz}
+ \usetikzlibrary{shapes,arrows}
+
+ \geometry{						%musst du nicht unbedingt selbst einstellen
+ a4paper,
+ total={210mm,297mm},
+ left=15mm,
+ right=15mm,
+ top=25mm,
+ bottom=20mm,
+ }
+
+\usepackage{amssymb}
+\usepackage{caption}
+\usepackage{natbib}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{wrapfig}
+\usepackage{subcaption}
+\usepackage{pdflscape}
+\usepackage{soul}
+\usepackage[space]{grffile}
+
+\def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;}
+
+\title{Progress Report for MPhil Thesis}
+\author{Tilman Graff -- University of Oxford}
+\date{\today}
+
+\begin{document}
+
+\tikzstyle{data} = [draw, ellipse, fill=blue!20,
+    text width=4.5em, text centered, node distance=3cm, minimum height=4em]
+\tikzstyle{input} = [draw, ellipse, fill=red!20,
+    text width=4.5em, text centered, node distance=3cm, minimum height=4em]
+\tikzstyle{output} = [draw, ellipse, fill=green!20,
+    text width=4.5em, text centered, node distance=3cm, minimum height=4em]
+\tikzstyle{program} = [rectangle, draw, fill=white!20,
+    text width=5em, text centered, rounded corners, minimum height=4em]
+\tikzstyle{line} = [draw, -latex']
+
+\bibliographystyle{cantoni_copy}
+\maketitle
+
+\section*{Open Questions -- What I need to discuss}
+Topics to be raised in my next supervisor meeting. All of these questions are explained in more detail in the main body of this report.
+
+\begin{itemize}
+\item Is it ok to use geometric centroids as opposed to population-weighted centroids?
+\item Night Lights: do I have to translate them into GDP first? \cite{fajgelbaum_optimal_2017} use G-Econ, but that's only available for the year 1990 and in much coarser resolution.
+\item Can I proceed to use Open Street Maps even though it has disadvantages as described below?
+\item Computational challenges looming. As soon as I'll start the Matlab bit, I will need either patience or better computing power. Does the department / chair grant access to remote desktops etc.?
+\item Average speed a good proxy for Infrastructure Matrix $I_{i,k}$?
+
+\end{itemize}
+
+Below starts my latest progress report.
+
+\noindent\rule{\textwidth}{0.4pt}
+
+\section{Research Question}
+\textbf{Which factors influence the global distribution of trade network optimality?}
+
+In this thesis, I aim to create a (potentially) global dataset of trade network efficiency. Taking the spatial distribution of current economic activity and population as given, I use a model from a recent working paper to determine the optimal trade network for each country. I then compare each country's current road network to its optimal one and derive a measure of how far a country is currently away from its ideal self.
+
+In a second step, I will then investigate the origins of this global distribution. Which factors led to the heterogeneities among countries today? Specifically, I will look at:
+
+\begin{itemize}
+  \item Do networks with large colonial infrastructure investments do better or worse today?
+  \item Does tribal favoritism explain why some areas are lacking lucrative investment?
+\end{itemize}
+
+\section{Research steps}
+
+In order to conduct this research, I will need to follow a series of steps and transfer data between multiple programming softwares. Here is a step-by-step guide, with progress as of \today:
+
+\begin{itemize}
+  \item[\checkmark] Find global raster data on population, night-lights, ruggedness, and colonial infrastructure investments.
+  \item[\checkmark] Grid the world on 50x50km squares and aggregate finer-resolution data into those grids.
+  \item \st{Locate the maximum population point within each grid and call this the (population) centroid of the grid.} I decided against this additional step. Mostly because I cannot figure out how to do it in QGIS. (And it's probably not that important?). Instead, I investigate travel times and distances between unweighted geometric centroids.
+  \item[\checkmark] Use OpenStreetMap to find distance and average speed between neighboring gridcells.
+  \item Use distance and ruggedness to calculate Infrastructure Building Cost Matrix $\delta^{I}_{i,k}$ for every country.
+  \item Use average speed to calculate current Infrastructure Matrix $I_{i,k}$ for every country.
+  \item Use distance to calculate (iceberg) Trade Cost Matrix $\delta^{\tau}_{i,k}$ for every country.
+  \item Use $\delta^{I}_{i,k}$, $\delta^{\tau}_{i,k}$, and $I_{i,k}$ to find the optimal trade network $I^{*}_{i,k}$ and optimal tradeflows $Q^{*}_{i,k}$ for every country. This directly follows the \cite{fajgelbaum_optimal_2017} Working Paper. I know how to do this, I am however afraid that this might take too long.
+  \item Compare $I_{i,k}$ and $I^{*}_{i,k}$ for every country to obtain a measure of network optimality $\zeta_{c}$ for every country $c$.
+  \item Investigate heterogeneity in $\zeta_{c}$
+
+\end{itemize}
+
+This flowchart visualises the process. It shows the path input data (red circles) take through various programming languages (white rectangles) and intermediate datasets (blue circles) into eventual findings (green circle).
+
+\resizebox{1\textwidth}{!}{
+\begin{centering}
+\begin{tikzpicture}[node distance = 3cm, auto]
+  \node [input] (Lights) {Night Lights};
+  \node [input, below of=Lights] (Rugg) {Ruggedness};
+  \node [input, above of=Lights] (Population) {Population};
+  \node [program, right of=Lights] (QGIS) {QGIS};
+  \node [data, right of=QGIS] (Centroids) {Grid Centroids};
+  \node [program, right of=Centroids] (R) {R};
+  \node [input, below of=Centroids] (Roads) {Road Network};
+  \node [data, right of=R] (Infrastructure) {Infrastr. Matrix};
+  \node [data, above of=Infrastructure] (Trade) {Trade Cost};
+  \node [data, below of=Infrastructure] (Building) {Building Cost};
+  \node [program, right of=Infrastructure] (Matlab) {Matlab};
+  \node [data, right of=Matlab] (Opt) {Optimal Network};
+  \node [program, below of=Building] (Stata) {Stata};
+  \node [input, right of=Stata, node distance=4.5cm] (misc) {Expl. variables};
+  \node [output, left of=Stata, node distance=4.5cm] (Findings) {Findings};
+
+  \path [line] (Lights) -- (QGIS);
+  \path [line] (Population) -- (QGIS);
+  \path [line] (Rugg) -- (QGIS);
+  \path [line] (QGIS) -- (Centroids);
+  \path [line] (Centroids) -- (R);
+  \path [line] (Roads) -- (R);
+  \path [line] (R) -- (Infrastructure);
+  \path [line] (R) -- (Trade);
+  \path [line] (R) -- (Building);
+  \path [line] (Building) -- (Matlab);
+  \path [line] (Infrastructure) -- (Matlab);
+  \path [line] (Trade) -- (Matlab);
+  \path [line] (Matlab) -- (Opt);
+  \path [line] (Opt) -- (Stata);
+  \path [line] (Roads) -- (Stata);
+  \path [line] (misc) -- (Stata);
+  \path [line] (Stata) -- (Findings);
+
+\end{tikzpicture}
+\end{centering}
+}
+
+
+\section{Notes on individual steps}
+
+In this section, I provide a more detailed account of what I did in each of the above-mentioned steps.
+
+\subsection{Find global raster data}
+I use two datasources to create a global raster dataset of relevant variables:
+\begin{itemize}
+\item Data on night lights, ruggedness, land suitability, altitude, malaria index, and precipitation comes from \cite{henderson_global_2018}. These are available on 25km x 25km grids. Most of the data are for the year 2010.
+\item For census-level spatial population data, I use the Gridded Population of the World (GPW) database from the \cite{socioeconomic_data_and_applications_center_gridded_2016}. These are available on much finer resolution. This database is for the year 2015.
+\end{itemize}
+
+Using GIS, I aggregated these datasets to a 1-by-1 degree global grid (roughly 50km x 50km), following \cite{fajgelbaum_optimal_2017}. In doing so, I take spatial sums of lights and population, and spatial averages of ruggedness, malaria, and weather data.
+
+\subsection{Construct Centroids}
+For each of these gridcells, I calculate the geometric centroid. I do not weigh by population in constructing this centroid, as I have been unable to figure out how to do this. I will need to discuss whether this is ok.
+
+I then crop all global centroids that are not over land. This leaves me with 59,059 gridcells. Doing this, I am aware that I will lose information: I cut gridcells that might be partially over land, as soon as their centroid is not over land. This approach will, however, create equidistant centroid locations, so I'm really just playing one disadvantage against the other.
+
+I then attribute the centroids with the lights, population, and other data from the underlying gridcell. Thus, I act as if all people and all economic activity of a given cell were concentrated on the single centroid point. This is because \citeauthor{fajgelbaum_optimal_2017}'s model calculates trade between nodes, not areas. I find this to be a reasonable model simplification.
+
+\subsection{Construct Global Road database}
+I calculate the optimal route between any centroid and each of its eight surrounding neigbours. In doing so, I rely on the open source online project \textsc{Open Street Maps} (OSM), which is comparable to \textsc{Google Maps}, but allows for unlimited use of its API. I scrape OSM with an R-Package called \texttt{osrmRoute}. This package takes start and destination locations, sends them to OSM, and comes back with the optimal route, distance, and speed in virtually no time. I am amazed by how fast this is.
+
+Two problems present itself:
+\begin{enumerate}
+  \item OSM's data supply is user generated and hence biased towards more prosperous areas. However, since I mostly care about big highways, I doubt there are all too glaring ommisions. Also, I care about relative inefficiencies within a country, not cross-section differences between countries.
+  \item I tell OSM to find the optimal route for a car. However, in many remote areas, cars don't get you from A to B. \texttt{osrmRoute} then desparately tries to locate the user onto the nearest street (which could be far away!). I hence scrape the entire loc-by-loc route, and calculate the walking distance to the nearest street (and the walking distance from the end of the supplied route to the actual endpoint). I do so by taking direct paths and imply a walking speed of 4 km/h. I then calculate whether walking the entire distance from A to B is faster (not shorter, but faster!) than the route supplied by \texttt{osrmRoute}. If so, I replace the route with the walking route.
+\end{enumerate}
+
+\begin{figure}[h]
+\centering
+\caption{Road Networks for different countries}
+
+\begin{subfigure}[c]{0.48\textwidth}
+\includegraphics[width=\textwidth]{/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/Road_Networks/network_Nigeria.png}
+\caption{Nigeria}
+\label{fig:nigeria}
+\end{subfigure}
+\begin{subfigure}[c]{0.48\textwidth}
+\includegraphics[width=\textwidth]{/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/Road_Networks/network_Algeria.png}
+\caption{Algeria}
+\label{fig:algeria}
+\end{subfigure}
+
+\end{figure}
+
+Figure \ref{fig:nigeria} displays how this would look like for the country of Nigeria. In black are optimal routes from all 289 centroids to their up to eight closest neighbors. If walking were the preferred option, this direct route is plotted in red. In Nigeria, this is mostly the case in some areas of the (swampy) South and East and some observations in the desserty North.
+
+This procedure seems to well capture notions of remoteness: Consider the same graph but for Algeria (Figure \ref{fig:algeria}). For much of the Saharan parts of the country, walking straight lines through the sand is the best available option. I am actually not too worried about these areas. They will presumably have almost no population or night lights and hence I do not expect the later optimisation to yield unrealisitc trans-Saharan highways.
+
+
+\vspace{\fill}
+
+\begin{spacing}{1.0}
+\setlength{\bibsep}{2.5pt plus 1.5ex}
+\bibliography{MPhil_library}
+\end{spacing}
+
+\end{document}
