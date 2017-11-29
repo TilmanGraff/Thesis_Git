@@ -11,13 +11,12 @@ colnames(centroids)[1] <- "ID"
 
 # Restrict file sample to Africa
 centroids <- centroids[centroids$region == 2,]
-#centroids <- centroids[centroids$country == "Lesotho",]
+# centroids <- centroids[centroids$country == "Uganda",]
 
 # Gather country names
 country_table <- as.data.frame(table(centroids$country))
 country_names <- paste(country_table[country_table$Freq != 0,"Var1"])
 
-plot(centroids$x, centroids$y) # if you want to plot it
 
 ###############
 
@@ -25,7 +24,7 @@ plot(centroids$x, centroids$y) # if you want to plot it
 for(country in country_names){
 case_centroids <- centroids[centroids$country == country,]
 
-png(filename=paste("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/Road_Networks/network_", country, ".png", sep=""))
+#png(filename=paste("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/Road_Networks/network_", country, ".png", sep=""))
 plot(case_centroids$x, case_centroids$y, main=country) # if you want to plot it
 
 n <- nrow(case_centroids)
@@ -93,9 +92,7 @@ for(i in 1:n){
 write.csv(dist, file=paste("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/dist/dist_", country, ".csv", sep=""), row.names = FALSE)
 write.csv(speed, file=paste("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/speed/speed_", country, ".csv", sep=""), row.names = FALSE)
 write.csv(adj, file=paste("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/adj/adj_", country, ".csv", sep=""), row.names = FALSE)
-write.csv(case_centroids[,c("ID", "rownumber", "productivity", "rugg", "pop")], file=paste("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/characteristics/characteristics_", country, ".csv", sep=""), row.names = FALSE)
-dev.off()
-
-country
+write.csv(case_centroids[,c("ID", "rownumber", "x", "y", "productivity", "rugg", "pop")], file=paste("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/characteristics/characteristics_", country, ".csv", sep=""), row.names = FALSE)
+#dev.off()
 
 }

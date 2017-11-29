@@ -20,6 +20,7 @@ centroids <- centroids[,c("x", "y", "country", "region", "subregion", "pop", "li
 # This identifies a desert
 centroids$desert = centroids$landsuit < 0.005
 
+# This tidies up country names
 centroids$country <- gsub("Libyan Arab Jamahiriya", "Libya", centroids$country)
 centroids$country <- gsub(" ", "-", centroids$country)
 
