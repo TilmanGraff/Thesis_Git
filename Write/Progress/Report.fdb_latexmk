@@ -1,13 +1,14 @@
 # Fdb version 3
-["bibtex Report"] 1511730282 "Report.aux" "Report.bbl" "Report" 1511771569
+["bibtex Report"] 1511883352 "Report.aux" "Report.bbl" "Report" 1511883354
   "./cantoni_copy.bst" 1511710663 31652 6965e0fc7807af4f50293221a9b45d24 ""
-  "MPhil_library.bib" 1511713015 77876 277e7f68b1df41708c5e3138267464fa ""
-  "Report.aux" 1511771568 2335 45fc1fdfcb3b6d83469b1ea4bb666fa9 ""
+  "MPhil_library.bib" 1511882780 84731 e1a1f72ac6fb87e5b23dd4a68daf5c2b ""
+  "Report.aux" 1511883354 4140 37004031093dad7372f9ee13cb920dda ""
   "Report.bcf" 0 -1 0 ""
   (generated)
-  "Report.bbl"
   "Report.blg"
-["pdflatex"] 1511771567 "Report.tex" "Report.pdf" "Report" 1511771569
+  "Report.bbl"
+["pdflatex"] 1511883352 "Report.tex" "Report.pdf" "Report" 1511883354
+  "/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/Average Speeds/Speed_Namibia.png" 1511778912 34513 2e4b1e31c8aeaff19bfb90dd94b6a55f ""
   "/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/Road_Networks/network_Algeria.png" 1511742211 161525 214a169126ab7700ad5603ea9e57b88c ""
   "/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/Road_Networks/network_Nigeria.png" 1511745782 88833 0dbbfb77eb8029289b60c49faefdfca8 ""
   "/usr/local/texlive/2016/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
@@ -40,10 +41,14 @@
   "/usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb" 1248133631 32080 340ef9bf63678554ee606688e7b5339d ""
   "/usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb" 1248133631 32001 6aeea3afe875097b1eb0da29acd61e28 ""
   "/usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb" 1248133631 36299 5f9df58c2139e7edcf37c8fca4bd384d ""
+  "/usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb" 1248133631 36741 fa121aac0049305630cf160b86157ee4 ""
+  "/usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb" 1248133631 37166 8ab3487cbe3ab49ebce74c29ea2418db ""
   "/usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb" 1248133631 35469 70d41d2b9ea31d5d813066df7c99281c ""
   "/usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1248133631 35752 024fb6c41858982481f6968b5fc26508 ""
   "/usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb" 1248133631 32722 d7379af29a190c3f453aba36302ff5a9 ""
   "/usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb" 1248133631 32362 179c33bbf43f19adbb3825bb4e36e57a ""
+  "/usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb" 1248133631 32734 69e00a6b65cedb993666e42eedb3d48f ""
+  "/usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb" 1248133631 32726 0a1aea6fcd6468ee2cf64d891f5c43c8 ""
   "/usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1248133631 32569 5e5ddc8df908dea60932f3c484a54c0d ""
   "/usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb" 1248133631 32626 4f5c1b83753b1dd3a97d1b399a005b4b ""
   "/usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb" 1248133631 37944 359e864bd06cde3b1cf57bb20757fb06 ""
@@ -185,12 +190,12 @@
   "/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1466971120 1888048 f2c5faed5981a516f406b2ccc20bff71 ""
   "/usr/local/texlive/2016/texmf-var/web2c/pdftex/pdflatex.fmt" 1466971197 3873397 8a9803c9a2ff9bda306fedbddebc13fa ""
   "/usr/local/texlive/2016/texmf.cnf" 1463979140 577 2938757e76f31531e65cc647e3507693 ""
-  "Report.aux" 1511771568 2335 45fc1fdfcb3b6d83469b1ea4bb666fa9 ""
-  "Report.bbl" 1511730282 1143 bbe7c975eeab4e6e3224087c334ff084 "bibtex Report"
-  "Report.out" 1511771568 380 c1e6e2bc54f97f6916dadcfad0efa26c ""
-  "Report.tex" 1511771566 12581 291a1a57dffa53221769920c7876f920 ""
+  "Report.aux" 1511883354 4140 37004031093dad7372f9ee13cb920dda ""
+  "Report.bbl" 1511883352 2565 e3b4ae0d655a1f72f1879a27d3a4093d "bibtex Report"
+  "Report.out" 1511883354 747 cabb964c55e72e3974e9f216652f7401 ""
+  "Report.tex" 1511883346 17594 efea3ddf4cb3b67b1fd5baa69de946cc ""
   (generated)
-  "Report.log"
   "Report.aux"
-  "Report.out"
   "Report.pdf"
+  "Report.log"
+  "Report.out"

@@ -1,12 +1,31 @@
-\begin{thebibliography}{3}
+\begin{thebibliography}{8}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\urlprefix}{URL }
+
+\bibitem[{Allen and Arkolakis(2016)}]{allen_welfare_2016}
+\textbf{Allen, Treb and Costas Arkolakis} (\textbf{2016}).
+\newblock The Welfare Effects of Transportation Infrastructure Improvements.
+\newblock Working paper, Dartmouth and Yale
+
+\bibitem[{Collier et~al.(2015)Collier, Kirchberger, and
+  S{\"o}derbom}]{collier_cost_2015}
+\textbf{Collier, Paul, Martina Kirchberger, and Mans S{\"o}derbom}
+  (\textbf{2015}).
+\newblock The Cost of Road Infrastructure in Low-and Middle-Income Countries.
+\newblock \emph{The World bank economic review} 30(3), pp. 522--548
 
 \bibitem[{Fajgelbaum and Schaal(2017)}]{fajgelbaum_optimal_2017}
 \textbf{Fajgelbaum, Pablo~D. and Edouard Schaal} (\textbf{2017}).
 \newblock Optimal Transport Networks in Spatial Equilibrium.
 \newblock Working paper, National Bureau of Economic Research
+
+\bibitem[{Henderson et~al.(2012)Henderson, Storeygard, and
+  Weil}]{henderson_measuring_2012}
+\textbf{Henderson, J.~Vernon, Adam Storeygard, and David~N Weil}
+  (\textbf{2012}).
+\newblock Measuring {{Economic Growth}} from {{Outer Space}}.
+\newblock \emph{American Economic Review} 102(2), pp. 994--1028
 
 \bibitem[{Henderson et~al.(2018)Henderson, Squires, Storeygard, and
   Weil}]{henderson_global_2018}
@@ -15,6 +34,20 @@
 \newblock The {{Global Spatial Distribution}} of {{Economic Activity}}:
   {{Nature}}, {{History}}, and the {{Role}} of {{Trade}}.
 \newblock \emph{The Quarterly Journal of Economics} forthcoming
+
+\bibitem[{Kocornik-Mina et~al.(2015)Kocornik-Mina, McDermott, Michaels, and
+  Rauch}]{kocornik-mina_flooded_2015}
+\textbf{Kocornik-Mina, Adriana, Thomas~KJ McDermott, Guy Michaels, and
+  Ferdinand Rauch} (\textbf{2015}).
+\newblock Flooded Cities.
+\newblock Working paper
+
+\bibitem[{Maurer et~al.(2017)Maurer, Pischke, and Rauch}]{maurer_mice_2017}
+\textbf{Maurer, Stephan, J{\"o}rn-Steffen Pischke, and Ferdinand Rauch}
+  (\textbf{2017}).
+\newblock Of {{Mice}} and {{Merchants}}: {{Trade}} and {{Growth}} in the {{Iron
+  Age}}.
+\newblock Working paper
 
 \bibitem[{{Socioeconomic Data and Applications
   Center}(2016)}]{socioeconomic_data_and_applications_center_gridded_2016}
