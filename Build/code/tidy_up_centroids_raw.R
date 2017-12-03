@@ -32,4 +32,4 @@ centroids$country <- gsub("Libyan Arab Jamahiriya", "Libya", centroids$country)
 centroids$country <- gsub(" ", "-", centroids$country)
 centroids$country <- gsub("'", "", centroids$country)
 
-write.csv(centroids, "/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/centroids.csv", row.names = FALSE)
+write.csv(centroids, "/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/centroids_wrong_lights.csv", row.names = FALSE)
