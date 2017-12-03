@@ -8,7 +8,7 @@ henderson <- henderson[,c("x", "y", "lrad2010clip_pl_c")]
 henderson <- rename(henderson, c("lrad2010clip_pl_c" = "loglights"))
 henderson$lights <- exp(henderson$loglights)
 
-centroids <- read.csv("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/centroids.csv")
+centroids <- read.csv("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/centroids_wrong_lights.csv")
 
 ref_centroids <- centroids[,c("ID", "x", "y")]
 
@@ -26,7 +26,9 @@ for(id in ref_centroids$ID){
   ref_centroids[ref_centroids$ID == id, "mean_lights"] <- mean(henderson[henderson$ID == id & !is.na(henderson$ID),"lights"])
 }
 
+# Drop all cells with NaN henderson lights (80% of these are over greenland -- still, this drops about 1000 observations!)
 ref_centroids[ref_centroids$mean_lights=="NaN","mean_lights"] <- NA
+ref_centroids <- ref_centroids[!is.na(ref_centroids$mean_lights),]
 
 centroids <- read.csv("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/centroids_wrong_lights.csv")
 
@@ -35,4 +37,6 @@ centroids$loglights <- log(centroids$mean_lights)
 centroids <- rename(centroids, c("x.x" = "x", "y.x" = "y", "mean_lights" = "lights"))
 centroids <- centroids[,c("ID", "x", "y", "country", "region", "subregion", "pop", "lights", "loglights", "num_landpixels", "pop_sd", "lights_sd", "rugg", "altitude", "landsuit", "temp", "precip", "growingdays", "malaria", "harbor", "alternative_lights", "lights_raw", "un_code")]
 
-write.csv(centroids, "/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/centroids.csv", row.names = FALSE)
+centroids <- centroids[!is.na(centroids$lights),]
+
+write.csv(format(centroids, scientific=F), "/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/centroids.csv", row.names = FALSE)
