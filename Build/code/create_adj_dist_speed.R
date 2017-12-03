@@ -23,17 +23,13 @@ country_names <- paste(country_table[country_table$Freq != 0,"Var1"])
 for(country in country_names){
 case_centroids <- centroids[centroids$country == country,]
 
-#png(filename=paste("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/Road_Networks/network_", country, ".png", sep=""))
-#plot(case_centroids$x, case_centroids$y, main=country) # if you want to plot it
+png(filename=paste("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/Road_Networks/network_", country, ".png", sep=""))
+plot(case_centroids$x, case_centroids$y, main=country) # if you want to plot it
 
 n <- nrow(case_centroids)
 
 # this is to create a rosetta stone which translates the (globally unique) cell ID into the rownumber of the square matrices needed for Matlab
 case_centroids$rownumber <- c(1:n)
-
-
-case_centroids$productivity <- case_centroids$lights / case_centroids$pop
-
 
 adj <- matrix(0, nrow = n, ncol = n)
 dist <- matrix(0, nrow = n, ncol = n)
@@ -67,21 +63,21 @@ for(i in 1:n){
             speed[i, j] <- dist[i,j] / ((route$duration + walked[i,j]*minutes_per_kilometer) / 60)
             adj[i, j] <- 1
 
-            #points(c(df[df$id==case_centroids$ID[i],"lon"], coords[,1], df[df$id==a,"lon"]), c(df[df$id==case_centroids$ID[i],"lat"], coords[,2], df[df$id==a,"lat"]), type='l') # if you want to plot it
+            points(c(df[df$id==case_centroids$ID[i],"lon"], coords[,1], df[df$id==a,"lon"]), c(df[df$id==case_centroids$ID[i],"lat"], coords[,2], df[df$id==a,"lat"]), type='l') # if you want to plot it
 
           } else{ # if not, you just walk the entire direct line
               dist[i, j] <- gdist(df[df$id==case_centroids$ID[i],"lon"], df[df$id==case_centroids$ID[i],"lat"], df[df$id==a,"lon"], df[df$id==a,"lat"], units = "km")
               speed[i, j] <- 60/minutes_per_kilometer
               adj[i, j] <- 1
 
-              #points(c(df[df$id==case_centroids$ID[i],"lon"], df[df$id==a,"lon"]), c(df[df$id==case_centroids$ID[i],"lat"],  df[df$id==a,"lat"]), type='l', col="red") # if you want to plot it
+              points(c(df[df$id==case_centroids$ID[i],"lon"], df[df$id==a,"lon"]), c(df[df$id==case_centroids$ID[i],"lat"],  df[df$id==a,"lat"]), type='l', col="red") # if you want to plot it
 
               }
             } else{
             dist[i, j] <- 0
             speed[i, j] <- 0
             adj[i, j] <- 0
-            #points(c(df[df$id==case_centroids$ID[i],"lon"], df[df$id==a,"lon"]), c(df[df$id==case_centroids$ID[i],"lat"],  df[df$id==a,"lat"]), type='l', col="blue") # if you want to plot it
+            points(c(df[df$id==case_centroids$ID[i],"lon"], df[df$id==a,"lon"]), c(df[df$id==case_centroids$ID[i],"lat"],  df[df$id==a,"lat"]), type='l', col="blue") # if you want to plot it
           }
     }
 
@@ -91,7 +87,7 @@ for(i in 1:n){
 write.csv(dist, file=paste("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/dist/dist_", country, ".csv", sep=""), row.names = FALSE)
 write.csv(speed, file=paste("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/speed/speed_", country, ".csv", sep=""), row.names = FALSE)
 write.csv(adj, file=paste("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/adj/adj_", country, ".csv", sep=""), row.names = FALSE)
-write.csv(case_centroids[,c("ID", "rownumber", "x", "y", "productivity", "rugg", "pop", "lights")], file=paste("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/characteristics/characteristics_", country, ".csv", sep=""), row.names = FALSE)
-#dev.off()
+write.csv(case_centroids[,c("ID", "rownumber")], file=paste("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/rosettastones/rosetta_", country, ".csv", sep=""), row.names = FALSE)
+dev.off()
 
 }
