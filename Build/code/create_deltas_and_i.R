@@ -43,7 +43,6 @@ for (country in country_names){
 
 
   # Trade Cost Constant as a function of distance
-  
   delta_0_tau <- 1.2 # this comes from Table A.3 in FS2017, and has to vary according to the model parameters I end up using. (1.2 is for gamma = 0.5*beta and fixed labour, but will amend)
 
   delta_tau <- delta_0_tau * dist
