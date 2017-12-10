@@ -1,4 +1,4 @@
-\begin{thebibliography}{8}
+\begin{thebibliography}{10}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\urlprefix}{URL }
@@ -18,7 +18,7 @@
 \bibitem[{Fajgelbaum and Schaal(2017)}]{fajgelbaum_optimal_2017}
 \textbf{Fajgelbaum, Pablo~D. and Edouard Schaal} (\textbf{2017}).
 \newblock Optimal Transport Networks in Spatial Equilibrium.
-\newblock Working paper, National Bureau of Economic Research
+\newblock Working paper, {National Bureau of Economic Research}
 
 \bibitem[{Henderson et~al.(2012)Henderson, Storeygard, and
   Weil}]{henderson_measuring_2012}
@@ -49,10 +49,20 @@
   Age}}.
 \newblock Working paper
 
+\bibitem[{Michalopoulos and Papaioannou(2016)}]{michalopoulos_long-run_2016}
+\textbf{Michalopoulos, Stelios and Elias Papaioannou} (\textbf{2016}).
+\newblock The {{Long}}-{{Run Effects}} of the {{Scramble}} for {{Africa}}.
+\newblock \emph{American Economic Review} 106(7), pp. 1802--1848
+
+\bibitem[{Nunn and Puga(2012)}]{nunn_ruggedness:_2012}
+\textbf{Nunn, Nathan and Diego Puga} (\textbf{2012}).
+\newblock Ruggedness: {{The}} Blessing of Bad Geography in {{Africa}}.
+\newblock \emph{Review of Economics and Statistics} 94(1), pp. 20--36
+
 \bibitem[{{Socioeconomic Data and Applications
   Center}(2016)}]{socioeconomic_data_and_applications_center_gridded_2016}
 \textbf{{Socioeconomic Data and Applications Center}} (\textbf{2016}).
 \newblock Gridded {{Population}} of the {{World}} ({{GPW}}), v4 | {{SEDAC}}.
-\newblock \url{http://sedac.ciesin.columbia.edu/data/collection/gpw-v4}
+\newblock http://sedac.ciesin.columbia.edu/data/collection/gpw-v4
 
 \end{thebibliography}

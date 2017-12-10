@@ -71,6 +71,7 @@ In a second step, I will then investigate the origins of this global distributio
 \begin{itemize}
   \item Do networks with large colonial infrastructure investments do better or worse today?
   \item Does tribal favoritism explain why some areas are lacking lucrative investment?
+  \item And many more. See below.
 \end{itemize}
 
 Ferdinand notes that the better these questions are, the more I will be scrutinised for the methodology. But that's what I want!
@@ -86,9 +87,9 @@ In order to conduct this research, I will need to follow a series of steps and t
   \item[\checkmark] Grid the world on 50x50km squares and aggregate finer-resolution data into those grids.
   \item \st{Locate the maximum population point within each grid and call this the (population) centroid of the grid.} I decided against this additional step. Mostly because I cannot figure out how to do it in QGIS. (And it's probably not that important?). Instead, I investigate travel times and distances between unweighted geometric centroids.
   \item[\checkmark] Use OpenStreetMap to find distance and average speed between neighboring gridcells.
-  \item Use distance and ruggedness to calculate Infrastructure Building Cost Matrix $\delta^{I}_{i,k}$ for every country.
-  \item Use average speed to calculate current Infrastructure Matrix $I_{i,k}$ for every country.
-  \item Use distance to calculate (iceberg) Trade Constant Matrix $\delta^{\tau}_{i,k}$ for every country.
+  \item[\checkmark] Use distance and ruggedness to calculate Infrastructure Building Cost Matrix $\delta^{I}_{i,k}$ for every country.
+  \item[\checkmark]Use average speed to calculate current Infrastructure Matrix $I_{i,k}$ for every country.
+  \item[\checkmark] Use distance to calculate (iceberg) Trade Constant Matrix $\delta^{\tau}_{i,k}$ for every country.
   \item Use $\delta^{I}_{i,k}$, $\delta^{\tau}_{i,k}$, and $I_{i,k}$ to find the optimal trade network $I^{*}_{i,k}$ and optimal tradeflows $Q^{*}_{i,k}$ for every country. This directly follows the \cite{fajgelbaum_optimal_2017} Working Paper. I know how to do this, I am however afraid that this might take too long.
   \item Compare $I_{i,k}$ and $I^{*}_{i,k}$ for every country to obtain a measure of network optimality $\zeta_{c}$ for every country $c$.
   \item Investigate heterogeneity in $\zeta_{c}$
@@ -148,14 +149,15 @@ In this section, I provide a more detailed account of what I did in each of the 
 \subsection{Find global raster data}
 I use two datasources to create a global raster dataset of relevant variables:
 \begin{itemize}
-\item Data on night lights, ruggedness, land suitability, altitude, malaria index, and precipitation comes from \cite{henderson_global_2018}. These are available on 25km x 25km grids. Most of the data are for the year 2010.
+\item Data on night lights, ruggedness, land suitability, altitude, malaria index, and precipitation comes from \cite{henderson_global_2018}. These are available on 25km x 25km grids. Most of the data are for the year 2010. These data are different from most used in the recent literature, as they are not top-coded at 65 but rather able to gain much finer differentiations in highly-lit areas. I follow the authors in bottom-coding the data at 0.00034 instead of zero to counteract noise at the bottom. Importantly, there are a couple of regions with NaN values for the \citeauthor{henderson_global_2018} light data: most notably over a stretch of the Algerian Sahara and over  Lake Victoria. Once aware of these, I am not too worried about these areas. I drop them from my here on.
 \item For census-level spatial population data, I use the Gridded Population of the World (GPW) database from the \cite{socioeconomic_data_and_applications_center_gridded_2016}. These are available on much finer resolution. This database is for the year 2015.
+\item For later analysis, I will try to investigate heterogeneity on the ethnicity level. Which ethnic groups are significantly under/overinvested in and how does this correlate with political violence etc. Data for this comes from \cite{michalopoulos_long-run_2016}.
 \end{itemize}
 
-Using GIS, I aggregated these datasets to a 1-by-1 degree global grid (roughly 50km x 50km), following \cite{fajgelbaum_optimal_2017}. In doing so, I take spatial sums of lights and population, and spatial averages of ruggedness, malaria, and weather data.
+Using GIS, I aggregated these datasets to a 1-by-1 degree global grid (roughly 50km x 50km), following \cite{fajgelbaum_optimal_2017}. In doing so, I take spatial sums of population, and spatial averages of lights, ruggedness, malaria, and weather data.
 
 \subsection{Construct Centroids}
-For each of these gridcells, I calculate the geometric centroid. I do not weigh by population in constructing this centroid, as I have been unable to figure out how to do this. I will need to discuss whether this is ok.
+For each of these gridcells, I calculate the geometric centroid. I do not weigh by population in constructing this centroid, as I have been unable to figure out how to do this. Ferdinand notes that this is not important.
 
 I then crop all global centroids that are not over land. This leaves me with 59,059 gridcells. Doing this, I am aware that I will lose information: I cut gridcells that might be partially over land, as soon as their centroid is not over land. This approach will, however, create equidistant centroid locations, so I'm really just playing one disadvantage against the other.
 
@@ -180,16 +182,16 @@ Two problems present itself:
 \label{fig:nigeria}
 \end{subfigure}
 \begin{subfigure}[c]{0.48\textwidth}
-\includegraphics[width=\textwidth]{/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/Road_Networks/network_Algeria.png}
-\caption{Algeria}
-\label{fig:algeria}
+\includegraphics[width=\textwidth]{/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/Road_Networks/network_Mali.png}
+\caption{Mali}
+\label{fig:Mali}
 \end{subfigure}
 
 \end{figure}
 
 Figure \ref{fig:nigeria} displays how this would look like for the country of Nigeria. In black are optimal routes from all 289 centroids to their up to eight closest neighbours. If walking were the preferred option, this direct route is plotted in red. In Nigeria, this is mostly the case in some areas of the (swampy) South and East and some observations in the desert ridden North.
 
-This procedure seems to well capture notions of remoteness: Consider the same graph but for Algeria (Figure \ref{fig:algeria}). For much of the Saharan parts of the country, walking straight lines through the sand is the best available option. I am actually not too worried about these areas. They will presumably have almost no population or night lights and hence I do not expect the later optimisation to yield unrealistic trans-Saharan highways.
+This procedure seems to well capture notions of remoteness: Consider the same graph but for Mali (Figure \ref{fig:Mali}). For much of the Saharan parts of the country, walking straight lines through the sand is the best available option. I am actually not too worried about these areas. They will presumably have almost no population or night lights and hence I do not expect the later optimisation to yield unrealistic trans-Saharan highways.
 
 \section{Calibration of $I_{i,k}$, $\delta^{\tau}_{i,k}$, $\delta^{I}_{i,k}$}
 
@@ -208,7 +210,26 @@ The matrix $I_{i,k}$ discretises the road network obtained by \texttt{osrmRoute}
   \label{fig:speed_namibia}
 \end{figure}
 
-This is obviously a very simple calibration and I am open to discuss more flexible approaches. But the general logic is clear: if a certain edge allows a car to drive faster on it, chances are that more investments had been made into it. In a sense, this captures the same notion \citeauthor{fajgelbaum_optimal_2017} with their calibration based on lanes and national roads. Figure \ref{fig:speed_namibia} shows a distribution of the average speeds (on travelled routes, in km/h) for Namibia. As can be seen, the distribution follows a nicely behaved shape, with an additional hump at 4 km/h for purely walked routes (see above).
+This is obviously a very simple calibration. But the general logic is clear: if a certain edge allows a car to drive faster on it, chances are that more investments had been made into it. In a sense, this captures the same notion \citeauthor{fajgelbaum_optimal_2017} with their calibration based on lanes and national roads. Figure \ref{fig:speed_namibia} shows a distribution of the average speeds (on travelled routes, in km/h) for Namibia. As can be seen, the distribution follows a nicely behaved shape, with an additional hump at 4 km/h for purely walked routes (see above).
+
+\begin{figure}[h]
+\centering
+\caption{Discretised Networks for different countries}
+
+\begin{subfigure}[c]{0.48\textwidth}
+\includegraphics[width=\textwidth]{/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/Matlab_graphs/Nigeria_graph.png}
+\caption{Nigeria}
+\label{fig:nigeria_mat}
+\end{subfigure}
+\begin{subfigure}[c]{0.48\textwidth}
+\includegraphics[width=\textwidth]{/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/Matlab_graphs/Mali_graph.png}
+\caption{Mali}
+\label{fig:Mali_mat}
+\end{subfigure}
+
+\end{figure}
+
+With these calibrations, I can define country road networks as undirected graphs. Nodes correspond to centroid locations, edges correspond to their interconnections, with edgeweights defined by the average speed one reaches while driving (or walking) over the edge. Figure \ref{fig:nigeria_mat} and \ref{fig:Mali_mat} display this discretisation of the road network for Nigeria and Mali. Node sizes correspond to populations, node colours to implied productivity (see below), edge widths correspond to average speeds.
 
 \subsection{Infrastructure Building Cost Matrix $\delta^{I}_{i,k}$}
 
@@ -218,7 +239,7 @@ I am still working on this one. The entries to this matrix represent the cost to
   \textrm{ln}(\frac{\delta^{I}_{i,k}}{dist_{i,k}}) = \textrm{ln}(\delta_{0}^{I}) - 0.11*(dist_{i,k} > 50km) + 0.12*\textrm{ln}(\textrm{ruggedness}_{i,k})
 \end{equation}
 
-which comes from \cite{collier_cost_2015}. $\delta_{0}^{I}$ is individual for every country. I have all the data to replicate this, but was thinking of including measures on extra low soil quality (which is congruent to Saharan soil) and (maybe) the Malaria index in there (or is that too much a colonial, \textit{``white guys walk in, build a road, and get Malaria''}, kind of thinking?)
+which comes from \cite{collier_cost_2015}. $\delta_{0}^{I}$ is individual for every country. I have all the data to replicate this,\footnote{Note that \citeauthor{henderson_global_2018} slightly alter the ruggedness variable, compared to \cite{nunn_ruggedness:_2012}, which also causes it to be on average a bit higher (about 20 per cent). Should not really matter.} but was thinking of including measures on extra low soil quality (which is congruent to Saharan soil) and (maybe) the Malaria index in there (or is that too much a colonial, \textit{``white guys walk in, build a road, and get Malaria''}, kind of thinking?). Update December 5th: I have now decided to just go with the \citeauthor{fajgelbaum_optimal_2017} calibration. \cite{collier_cost_2015} only have one additional variable in their dataset (which is population density), but that's not an underlying cost parameter and rather an outcome corollary. I will thus not include it and stick to \citeauthor{fajgelbaum_optimal_2017}.
 
 \subsection{Iceberg Trade Constant Matrix $\delta^{\tau}_{i,k}$}
 
@@ -238,11 +259,50 @@ The actual iceberg trade costs are then computed as
 
 where $Q_{i,k}$ represents trade flows between nodes (to capture notion of congestion), $I_{i,k}$ is the existing Infrastructure Network (derived above), $\beta = 1$ and $\gamma = 1$ in the easiest calibration.
 
+\subsection{Derive productivity measures}
+
+I need a spatial distribution of innate productivity characteristics for each location. Since I have population and lights data, this should be relatively easy to back out. However, I initially confronted some problems with this. Firstly, I only have lights data and not GDP data. Is it fair to say that people produce lights and hence in a production function like
+
+\begin{equation}
+  Y_{i} = z_{i}L_{i}^{\alpha}
+\end{equation}
+
+lights can readily serve as $Y_{i}$? And if so, how can I circumvent the inevitable outlier-cell with hardly any population, but some remnant of lights, that will immediately render it hyperproductive? I used a couple of steps:
+
+\begin{enumerate}
+  \item All cells with no population are immediately coded as no productivity.
+  \item I decide on $\alpha = 0.7$ to circumvent a problem of overvaluing the contribution of small populations.
+  \item Then, $z_{i} = \frac{Y_{i}}{L_{i}^{\alpha}}$ and can be readily computed for the entire dataset.
+\end{enumerate}
+
+Results are promising. Capital cities tend to be more productive (even when they are bigger) than less popolous cells. I should be able to go from here.
+
+\section{Potential research alleyways}
+$\zeta_{c}$ is representing whether an area would gain or lose infrastructure under the optimal scenario. Broadly, there are two different pots of potential research questions. One has $\zeta_{c}$ on the LHS and one has it on the RHS:
+
+\subsection{$\zeta_{c}$ on the LHS}
+What determines why some areas are under-/overinvested in? Ideas could be
+\begin{itemize}
+  \item Colonial Legacies: do areas that had more colonial investment still enjoy more infrastructure than they should?
+  \item Do areas from the ethnicity of the tribal leader enjoy too much infrastructure?
+\end{itemize}
+
+\subsection{$\zeta_{c}$ on the RHS}
+This asks what the correlates / outcomes of being over/-underinvested in are. \cite{michalopoulos_long-run_2016} have a bunch of interesting outcomes like
+\begin{itemize}
+  \item Political Violence in frequency, intensity, and kind from ACLED
+  \item Ethnic power relations from EPR dataset
+  \item Wellbeing from DHS dataset
+\end{itemize}
+
+For these, the unit of observation would be ethnicities. So I would have to aggregate my $\zeta_{c}$ measure over the Murdock ethnicity map. Should be fine.
+
+The trouble with both these approaches is that $\zeta_{c}$ is obviously both an outcome and an effect in the intricate interplay of the political economy of African countries. I don't know tho what extend I can actually do inference, or will just have to rely on correlations. We'll see.
+
+
 \section{Next steps}
 
 \begin{enumerate}
-  \item Decide on a stance regarding the questions raised above (1-2 days, possibly longer depending on how much to change)
-  \item Calculate $I_{i,k}$, $\delta^{\tau}_{i,k}$, $\delta^{I}_{i,k}$ (2 hours)
   \item Optimise Matlab Code for better performance, or find better performance elsewhere (1 week)
   \item Perform Network optimisations (1-2 weeks)
 \end{enumerate}
