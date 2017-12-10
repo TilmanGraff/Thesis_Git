@@ -35,7 +35,7 @@ centroids <- read.csv("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_G
 centroids <- merge(centroids, ref_centroids, by="ID", all.x=T)
 centroids$loglights <- log(centroids$mean_lights)
 centroids <- rename(centroids, c("x.x" = "x", "y.x" = "y", "mean_lights" = "lights"))
-centroids <- centroids[,c("ID", "x", "y", "country", "region", "subregion", "pop", "lights", "loglights", "num_landpixels", "pop_sd", "lights_sd", "rugg", "altitude", "landsuit", "temp", "precip", "growingdays", "malaria", "harbor", "alternative_lights", "lights_raw", "un_code")]
+centroids <- centroids[,c("ID", "x", "y", "country", "region", "subregion", "pop", "lights", "num_landpixels", "gridarea", "pop_dens", "pop_sd", "lights_sd", "rugg", "altitude", "landsuit", "temp", "precip", "growingdays", "malaria", "harbor", "alternative_lights", "lights_raw", "un_code")]
 
 centroids <- centroids[!is.na(centroids$lights),]
 
