@@ -22,13 +22,13 @@ for countryID = 1:length(country_names)
       graphfile = graph(speed, 'upper');
 
       edgeweights = 5*(graphfile.Edges.Weight / (max(graphfile.Edges.Weight)));
-      msize = 25*((cellfun(@str2double, countryfile.pop)) / max((cellfun(@str2double, countryfile.pop))))+0.1;
+      msize = 25*((cellfun(@str2double, countryfile.pop_dens)) / max((cellfun(@str2double, countryfile.pop_dens))))+0.1;
 
       plot = plot(graphfile, 'XData', (cellfun(@str2double, countryfile.x)), 'YData', (cellfun(@str2double, countryfile.y)), 'Linewidth', edgeweights, 'MarkerSize', msize, 'NodeCData', (cellfun(@str2double, countryfile.productivity)));
       colorbar;
       title(countryname)
 
-      print(strcat("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/Matlab_graphs/", (countryname), "_graph"), '-dpng');
+      print(strcat("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/Matlab_graphs/initial_infrastructure", (countryname), "_graph"), '-dpng');
 
     end
 

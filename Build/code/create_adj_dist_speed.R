@@ -10,7 +10,7 @@ centroids <- read.csv("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_G
 
 # Restrict file sample to Africa
 centroids <- centroids[centroids$region == 2,]
-# centroids <- centroids[centroids$country == "Uganda",]
+centroids <- centroids[centroids$country == "Algeria",]
 
 # Gather country names
 country_table <- as.data.frame(table(centroids$country))

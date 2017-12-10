@@ -4,7 +4,7 @@ centroids <- read.csv("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_G
 
 # Restrict file sample if needed
 centroids <- centroids[centroids$region == 2,]
-
+centroids$rownumber <- as.numeric(paste(centroids$rownumber))
 
 # Gather country names
 country_table <- as.data.frame(table(centroids$country))
@@ -19,8 +19,6 @@ for (country in country_names){
 
   dist <- read.csv(paste("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/dist/dist_", country, ".csv", sep=""))
 
-  chars <- read.csv(paste("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/characteristics/characteristics_", country, ".csv", sep=""))
-
   # Existing infrastructure as a function of the speed matrix
   I <- speed
 
@@ -31,7 +29,7 @@ for (country in country_names){
   for(i in 1:n){
     for(j in i:n){
       if(dist[i,j] != 0 & !is.na(dist[i,j])){
-        delta_I_unscaled[i,j] <- exp(- 0.11 * as.numeric(dist[i,j] > 50) + 0.12 * log(0.5*(chars$rugg[i] + chars$rugg[j])) + log(dist[i,j])) # can I find more things in Collier's paper on this? Altitude differences?
+        delta_I_unscaled[i,j] <- exp(- 0.11 * as.numeric(dist[i,j] > 50) + 0.12 * log(0.5*(case_centroids[case_centroids$rownumber==i, "rugg"] + case_centroids[case_centroids$rownumber==j, "rugg"])) + log(dist[i,j])) # can I find more things in Collier's paper on this? UPDATE; Why should these matter? Collier have population density, but that's a selection issue, not a geographic determinant.
         delta_I_unscaled[j,i] <- delta_I_unscaled[i,j]
       }
     }
