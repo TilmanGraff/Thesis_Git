@@ -19,10 +19,16 @@ for (country in country_names){
 
   dist <- read.csv(paste("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/dist/dist_", country, ".csv", sep=""))
 
+########
   # Existing infrastructure as a function of the speed matrix
-  I <- speed
+########
 
+  I <- (speed + t(speed)) / 2
+
+########
   # Infrastructure building cost as a function of geography
+########
+
   delta_I_unscaled <- matrix(0, nrow = n, ncol = n)
   delta_I <- matrix(0, nrow = n, ncol = n)
 
@@ -39,12 +45,18 @@ for (country in country_names){
 
   delta_I <- delta_I_unscaled * scaling_parameter
 
-
+########
   # Trade Cost Constant as a function of distance
-  delta_0_tau <- 1.2 # this comes from Table A.3 in FS2017, and has to vary according to the model parameters I end up using. (1.2 is for gamma = 0.5*beta and fixed labour, but will amend)
+########
 
-  delta_tau <- delta_0_tau * dist
+  # OLD VERSION - built on FS2017
+  # delta_0_tau <- 1.2 # this comes from Table A.3 in FS2017, and has to vary according to the model parameters I end up using. (1.2 is for gamma = 0.5*beta and fixed labour, but will amend)
+  # delta_tau <- delta_0_tau * dist
 
+  # NEW VERSION -- built on Donaldson / Atkin 2015
+  delta_0_tau <- (0.0374 + 0.0558) / 2 # this is the mean of columns (3) and (6) on page 44 of their paper
+  delta_tau <- delta_0_tau * log(dist)
+  delta_tau[delta_tau < 0] <- 0
 
   write.csv(delta_tau, file=paste("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/delta_tau/delta_tau_", country, ".csv", sep=""), row.names = FALSE)
 
