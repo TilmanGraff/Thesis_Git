@@ -1,4 +1,4 @@
-\begin{thebibliography}{10}
+\begin{thebibliography}{13}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\urlprefix}{URL }
@@ -7,6 +7,12 @@
 \textbf{Allen, Treb and Costas Arkolakis} (\textbf{2016}).
 \newblock The Welfare Effects of Transportation Infrastructure Improvements.
 \newblock Working paper, Dartmouth and Yale
+
+\bibitem[{Atkin and Donaldson(2015)}]{atkin_whos_2015}
+\textbf{Atkin, David and Dave Donaldson} (\textbf{2015}).
+\newblock Who's {{Getting Globalized}}? {{The Size}} and {{Implications}} of
+  {{Intra}}-National {{Trade Costs}}.
+\newblock Working paper, {National Bureau of Economic Research}
 
 \bibitem[{Collier et~al.(2015)Collier, Kirchberger, and
   S{\"o}derbom}]{collier_cost_2015}
@@ -42,6 +48,12 @@
 \newblock Flooded Cities.
 \newblock Working paper
 
+\bibitem[{Lall et~al.(2017)Lall, Henderson, and Venables}]{lall_africas_2017}
+\textbf{Lall, Somik~Vinay, J.~Vernon Henderson, and Anthony~J. Venables}
+  (\textbf{2017}).
+\newblock \emph{Africa's {{Cities}}: {{Opening Doors}} to the {{World}}}.
+\newblock {World Bank Publications}
+
 \bibitem[{Maurer et~al.(2017)Maurer, Pischke, and Rauch}]{maurer_mice_2017}
 \textbf{Maurer, Stephan, J{\"o}rn-Steffen Pischke, and Ferdinand Rauch}
   (\textbf{2017}).
@@ -64,5 +76,10 @@
 \textbf{{Socioeconomic Data and Applications Center}} (\textbf{2016}).
 \newblock Gridded {{Population}} of the {{World}} ({{GPW}}), v4 | {{SEDAC}}.
 \newblock http://sedac.ciesin.columbia.edu/data/collection/gpw-v4
+
+\bibitem[{{The World Bank}(2017)}]{the_world_bank_world_2017}
+\textbf{{The World Bank}} (\textbf{2017}).
+\newblock World {{Development Indicators}}.
+\newblock https://data.worldbank.org/data-catalog/world-development-indicators
 
 \end{thebibliography}

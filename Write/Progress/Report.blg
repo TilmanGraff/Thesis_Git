@@ -7,45 +7,45 @@ Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Warning--missing institution in allen_welfare_2016
 Warning--missing institution in kocornik-mina_flooded_2015
 Warning--missing institution in maurer_mice_2017
-You've used 10 entries,
+You've used 13 entries,
             3032 wiz_defined-function locations,
-            657 strings with 6455 characters,
-and the built_in function-call counts, 6262 in all, are:
-= -- 531
-> -- 272
-< -- 9
-+ -- 96
-- -- 79
-* -- 463
-:= -- 945
-add.period$ -- 20
-call.type$ -- 10
-change.case$ -- 70
-chr.to.int$ -- 11
-cite$ -- 13
-duplicate$ -- 493
-empty$ -- 430
-format.name$ -- 114
-if$ -- 1257
+            668 strings with 6908 characters,
+and the built_in function-call counts, 7705 in all, are:
+= -- 650
+> -- 336
+< -- 11
++ -- 117
+- -- 97
+* -- 562
+:= -- 1184
+add.period$ -- 26
+call.type$ -- 13
+change.case$ -- 89
+chr.to.int$ -- 14
+cite$ -- 16
+duplicate$ -- 608
+empty$ -- 537
+format.name$ -- 141
+if$ -- 1542
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 87
-newline$ -- 56
-num.names$ -- 40
-pop$ -- 195
+missing$ -- 107
+newline$ -- 71
+num.names$ -- 52
+pop$ -- 247
 preamble$ -- 1
-purify$ -- 66
+purify$ -- 84
 quote$ -- 0
-skip$ -- 202
+skip$ -- 245
 stack$ -- 0
-substring$ -- 249
-swap$ -- 280
+substring$ -- 282
+swap$ -- 330
 text.length$ -- 4
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 90
+type$ -- 114
 warning$ -- 3
-while$ -- 42
+while$ -- 51
 width$ -- 0
-write$ -- 132
+write$ -- 169
 (There were 3 warnings)

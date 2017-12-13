@@ -217,12 +217,12 @@ This is obviously a very simple calibration. But the general logic is clear: if 
 \caption{Discretised Networks for different countries}
 
 \begin{subfigure}[c]{0.48\textwidth}
-\includegraphics[width=\textwidth]{/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/Matlab_graphs/Nigeria_graph.png}
+\includegraphics[width=\textwidth]{/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/Matlab_graphs/initial_infrastructure/Nigeria_graph.png}
 \caption{Nigeria}
 \label{fig:nigeria_mat}
 \end{subfigure}
 \begin{subfigure}[c]{0.48\textwidth}
-\includegraphics[width=\textwidth]{/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/Matlab_graphs/Mali_graph.png}
+\includegraphics[width=\textwidth]{/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/Matlab_graphs/initial_infrastructure/Mali_graph.png}
 \caption{Mali}
 \label{fig:Mali_mat}
 \end{subfigure}
@@ -243,13 +243,13 @@ which comes from \cite{collier_cost_2015}. $\delta_{0}^{I}$ is individual for ev
 
 \subsection{Iceberg Trade Constant Matrix $\delta^{\tau}_{i,k}$}
 
-I follow \citeauthor{fajgelbaum_optimal_2017} in assuming
+I cannot follow \citeauthor{fajgelbaum_optimal_2017} in this one, as their calibrations strike me as way to high. With their specification, I am basically stifling most trade as the cost is unbearable. To be fair, their parameters are calibrated on different measures for $I_{i,k}$ and $Y_{i}$, so it's not surprising that this does not work.
+
+In trying to come up with a different approach, I find the analysis by \cite{atkin_whos_2015}, who estimate the trade cost elasticity to (log) distance as $0.0374$ for Ethiopia and $0.0558$ for Nigeria, using barcode-level spatial price data. I take the average value between the two and hence define
 
 \begin{equation}
-  \delta^{\tau}_{i,k} = \delta^{\tau}_{0} * dist_{i, k}^{\delta^{\tau}_{1}}
+  \delta^{\tau}_{i,k} =  0.466*log(dist_{i, k})
 \end{equation}
-
-where $\delta^{\tau}_{0}$ comes from a calibration using Spanish data and is reported -- and $\delta^{\tau}_{1} = 1$. I assume I can go ahead and use this replication.
 
 The actual iceberg trade costs are then computed as
 
@@ -258,6 +258,8 @@ The actual iceberg trade costs are then computed as
 \end{equation}
 
 where $Q_{i,k}$ represents trade flows between nodes (to capture notion of congestion), $I_{i,k}$ is the existing Infrastructure Network (derived above), $\beta = 1$ and $\gamma = 1$ in the easiest calibration.
+
+With this, my estimates of $\tau_{i,k}(Q_{i,k}, I_{i,k})$ are much smaller than in \cite{fajgelbaum_optimal_2017}, but the resulting trade flows seem to be ok. I will have to do some fine tuning on this.
 
 \subsection{Derive productivity measures}
 
@@ -275,10 +277,108 @@ lights can readily serve as $Y_{i}$? And if so, how can I circumvent the inevita
   \item Then, $z_{i} = \frac{Y_{i}}{L_{i}^{\alpha}}$ and can be readily computed for the entire dataset.
 \end{enumerate}
 
-Results are promising. Capital cities tend to be more productive (even when they are bigger) than less popolous cells. I should be able to go from here.
+Results are promising. Capital cities tend to be more productive (even when they are bigger) than less populous cells. I should be able to go from here.
+
+\subsection{Heterogeneous goods}
+The original model allows for differentiated goods (which aggregated in canonical CES form). I think this is a very useful property. However, it also blows up computation time, as for every new good adds another price field over which to optimise. I tried various ways to have 5, 10, or even 20 different goods, but while they produce fancy graphs for small countries, they are just not computationally feasable in large countries.
+
+I hence propose the following compromise:
+\begin{enumerate}
+  \item I introduce two different goods, an \emph{urban good} and an \emph{agricultural good}. Cities only produce the former, rural areas only produce the later (i.e. the respective productivity on the other good is zero.)
+  \item To identify urban areas, I code the most densely populated gridcells as urban and the least densely populated as rural.
+  \item I iteratively define the cutoff point for this as to match a country's 2016 total urbanisation rate, as reported by \cite{the_world_bank_world_2017}.\footnote{I start by assuming every location is a city and then gradually proceed to kick out the least densely populated locations, until the ratio of people living in urban areas to total population equals that of the WDI.} With this procedure, 7.3 per cent of locations are urban, but are home to 40 per cent of the population in the sample. A ratio which neatly compares to recent figures from \cite{lall_africas_2017}.
+\end{enumerate}
+
+\section{Computation of Optimal Networks}
+After all this heavy data lifting and calibration, I can now finally start to actually get the Matlab Code up and running. Since it takes long for larger countries, I've started with the smaller ones. Over one night, the code can calculate the optimal reallocation of a given transport network for the 40 smallest African countries, or the three biggest. Below is how some of this looks for the country of Gabon.
+
+\begin{figure}[!h]
+\centering
+
+\includegraphics[width=0.9\textwidth]{/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/Matlab_graphs/optimised_network/Gabon_graph.pdf}
+\caption{Optimal reallocation for Gabon}
+\label{fig:reall_gabon}
+
+\end{figure}
+
+From this, one can easily derive a measure of how much welfare a country or even region would gain under this optimal reallocation procedure. For starters, I just calculated welfare gains as
+
+\begin{equation}
+  \zeta_{c} = \frac{\textrm{Welfare under the optimal Infrastructure}_{c}}{\textrm{Welfare under the current Infrastructure}_{c}}
+\end{equation}
+
+Note that for entire countries, $\zeta_{c} \geq 0$ by construction. For individual regions, however, $\zeta_{c}$ can take on any positive value, really.
+
+\begin{figure}[h]
+\centering
+\caption{Spatial Distribution of $\zeta_{c}$ for sample countries}
+
+\begin{subfigure}[c]{0.3\textwidth}
+\includegraphics[width=\textwidth]{/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/zeta_heatmaps/Benin_zeta.png}
+\caption{Benin}
+\label{fig:Benin_zeta}
+\end{subfigure}
+\begin{subfigure}[c]{0.3\textwidth}
+\includegraphics[width=\textwidth]{/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/zeta_heatmaps/Congo_zeta.png}
+\caption{Congo}
+\label{fig:Congo_zeta}
+\end{subfigure}
+\begin{subfigure}[c]{0.3\textwidth}
+\includegraphics[width=\textwidth]{/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/zeta_heatmaps/Tunisia_zeta.png}
+\caption{Tunesia}
+\label{fig:Tunisia_zeta}
+\end{subfigure}
+
+\end{figure}
+
+Figures \ref{fig:Benin_zeta} to \ref{fig:Tunisia_zeta} show the spatial distribution of these welfare gains and losses under the optimal reallocation scenario.
+
+
+\begin{table}[ht]
+\centering
+\caption{Sample Countries by $\zeta_{c}$}
+\begin{tabular}{lr}
+  \hline
+Country & $\zeta_{c}$ in \% \\
+  \hline
+  Guinea & 2.81 \\
+    Uganda & 2.73 \\
+    Ethiopia & 2.68 \\
+    Gabon & 2.41 \\
+    Sierra-Leone & 2.16 \\
+    Liberia & 2.06 \\
+    Zimbabwe & 2.03 \\
+    Eritrea & 2.02 \\
+    Burkina-Faso & 1.88 \\
+    Benin & 1.64 \\
+    Senegal & 1.64 \\
+    Lesotho & 1.61 \\
+    Cote-dIvoire & 1.44 \\
+    Equatorial-Guinea & 1.35 \\
+    Malawi & 1.35 \\
+    Togo & 1.35 \\
+    Guinea-Bissau & 1.26 \\
+    Ghana & 1.09 \\
+    Djibouti & 1.05 \\
+    Rwanda & 0.84 \\
+    Tunisia & 0.53 \\
+    Botswana & 0.23 \\
+    Western-Sahara & 0.22 \\
+    Burundi & 0.13 \\
+    Congo & 0.12 \\
+    Swaziland & 0.00 \\
+     \hline
+  \end{tabular}
+  \label{tab:national_zeta}
+  \end{table}
+
+
+
+
+I can also now rank all countries by the cumulative welfare gain they would achieve under the perfect reallocation scenario. Table \ref{tab:national_zeta} does so.
 
 \section{Potential research alleyways}
-$\zeta_{c}$ is representing whether an area would gain or lose infrastructure under the optimal scenario. Broadly, there are two different pots of potential research questions. One has $\zeta_{c}$ on the LHS and one has it on the RHS:
+$\zeta_{c}$ is representing whether an area would gain or lose with infrastructure under the optimal scenario. Broadly, there are two different pots of potential research questions. One has $\zeta_{c}$ on the LHS and one has it on the RHS:
 
 \subsection{$\zeta_{c}$ on the LHS}
 What determines why some areas are under-/overinvested in? Ideas could be
@@ -322,6 +422,7 @@ Immediate goal: Have optimal networks calculated by January 1, 2018.
 \item The paper by \cite{fajgelbaum_optimal_2017} has been criticised for its heavy dependence on the congestion assumption (in words, that iceberg trade costs rely on current tradeflows, or that $\tau_{i,k}(Q_{i,k}, I_{i,k})$ is a function of $Q_{i,k}$); namely by \cite{allen_welfare_2016}. I think this criticism is overblown. Still worth keeping in mind. \textit{Definitely cite and discuss this. But should be fine.}
 
 \end{itemize}
+
 
 \vspace{\fill}
 
