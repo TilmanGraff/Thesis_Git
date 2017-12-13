@@ -37,14 +37,14 @@ inflows = @(P, I, delta_tau, delta_I, adj) reshape(sum(Q(P, I, adj, delta_tau, b
 %% For each country
 
 for countryID = 1:length(country_names)
-% for countryID = 3
-    countryname = (country_names(countryID));
+% for countryID = 47
+    countryname = (country_names(countryID))
     if exist(strcat("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/productivities/productivities_", (countryname), ".csv"))
 
         % Split centroids by country
         case_centroids = centroids(centroids.country == countryname,:);
         num_locations = size(case_centroids, 1)
-     if num_locations > 2 && num_locations < 50   
+     if num_locations > 149  && num_locations < 350  
         
         % Read in characteristics
         population = cellfun(@str2double, case_centroids.pop);
