@@ -1,5 +1,5 @@
 *.tif
 *World_Countries
 *GIS_Projects
-*input
+*Build/input
 *.m~
