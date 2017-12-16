@@ -13,6 +13,12 @@ for (country in country_names){
 
     countryfile <- read.csv(paste("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/Network_outcomes/", country, "_outcomes.csv", sep = ""))
 
+    I_initial <- read.csv(paste("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/I/I_", country, ".csv", sep = ""))
+
+    I_opt <- read.csv(paste("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/Optimised_Networks/", country, ".csv", sep = ""),  header=FALSE)
+
+    countryfile$I_change <- rowSums(I_opt - I_initial) / 2
+
     countryfile$country <- country
 
     if(length(countryfiles)==1){
