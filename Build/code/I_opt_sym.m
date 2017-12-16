@@ -32,9 +32,17 @@ inner_bracket = (sum(inner_bracket_sliced_1, 3) + sum(inner_bracket_sliced_2, 3)
 I_raw = ((kappa .* (delta_I + transpose(delta_I)).^(-1)) .* inner_bracket).^(beta/(beta-gamma));
 I_raw(isnan(I_raw)) = 0;
 
-mu = 1/sum(sum(I_raw .* delta_I));
+% mu1 = 1/sum(sum(I_raw .* delta_I));
 
-I_opt_sym = I_raw * mu;
+I_opt_sym_nofour = I_raw * 1/sum(sum(I_raw .* delta_I));
+
+% Idea for preserving fours:
+
+interimmatrix = max(zeros(J), (I_opt_sym_nofour - 4)); % I only consider cells above walking speed
+
+mu2 = (1 - sum(sum(ones(J) .* 4 .* delta_I))) / sum(sum(interimmatrix .* delta_I)); % I rescale those cells by the available infrastructure (which is everything above walking speed)
+
+I_opt_sym = (interimmatrix * mu2) + (4 .* adj); % I add the walking speed to those that were computed to have below walking speed
 
 
 end
