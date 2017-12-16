@@ -15,7 +15,7 @@ centroids.country = categorical(centroids.country);
 % Defines parameters
 
 rho = 2;
-alpha = 0.9;
+alpha = 0.4;
 beta = 1.245;
 gamma = 0.5*beta;
 sigma = 4;
@@ -36,15 +36,15 @@ inflows = @(P, I, delta_tau, delta_I, adj) reshape(sum(Q(P, I, adj, delta_tau, b
 
 %% For each country
 
-for countryID = 1:length(country_names)
-% for countryID = 47
+ for countryID = 1:length(country_names)
+% for countryID = 38
     countryname = (country_names(countryID))
-    if exist(strcat("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/productivities/productivities_", (countryname), ".csv"))
-
+     if exist(strcat("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/productivities/productivities_", (countryname), ".csv"))  && ~exist(strcat("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/Network_outcomes/", (countryname), "_outcomes.csv"))
+    
         % Split centroids by country
         case_centroids = centroids(centroids.country == countryname,:);
         num_locations = size(case_centroids, 1)
-     if num_locations > 149  && num_locations < 350  
+     if num_locations > 2 && num_locations < 600
         
         % Read in characteristics
         population = cellfun(@str2double, case_centroids.pop);
@@ -87,6 +87,8 @@ for countryID = 1:length(country_names)
 
         % Set initial conditions and solver boundaries
         P0 = rand(J, N).*100;
+        % [~, ~, ranking] = unique(sum(productivity,2));
+        % P0 = [ranking ranking] + rand(J, N); % This makes the starting value proportional to the rank of productivity of a given location, hoping that this speeds up computation time.
         A = [];
         b = [];
         Aeq = [];
@@ -95,12 +97,19 @@ for countryID = 1:length(country_names)
         ub = [];
         nonlcon = [];
 
-        % Optimise static problem
-        [P_stat,Lagrangevalue_stat,Exitflag_stat] = fmincon(Lagrange_I_static, P0,A,b,Aeq,beq,lb,ub, nonlcon, options_trustregion);
-
+        % Either take P_stat from Online
+        if exist(strcat("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/MatlabOnline_results/P_stat", (countryname), ".csv"))
+            P_stat = csvread(strcat("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/MatlabOnline_results/P_stat", (countryname), ".csv"));
+            datetime('now') % just for display purposes
+        else
+            % Optimise static problem
+            [P_stat] = fmincon(Lagrange_I_static, P0,A,b,Aeq,beq,lb,ub, nonlcon, options_trustregion);
+            datetime('now') % just for display purposes
+        end
+        
         % Optimise full problem
-        [P_opt,Lagrangevalue_opt,Exitflag_opt] = fmincon(Lagrange_I_opt, P0,A,b,Aeq,beq,lb,ub, nonlcon, options_trustregion);
-
+        [P_opt] = fmincon(Lagrange_I_opt, P_stat,A,b,Aeq,beq,lb,ub, nonlcon, options_trustregion);
+        datetime('now') % just for display purposes
 
         %% Obtain descriptive statistics
 
@@ -136,13 +145,13 @@ for countryID = 1:length(country_names)
 
         win_loss = ((c(P_opt).^alpha).*population) ./ ((c(P_stat).^alpha).*population);
         
-        
         f = figure;
         p = uipanel('Parent',f,'BorderType','none', 'BackgroundColor','white');
         p.Title = countryname;
         p.TitlePosition = 'centertop';
         p.FontSize = 12;
         p.FontWeight = 'bold';
+       
 
         subplot(2,1,1, 'Parent', p)
         plot_1 = plot(graph_stat, 'XData', (cellfun(@str2double, case_centroids.x)), 'YData', (cellfun(@str2double, case_centroids.y)), 'Linewidth', edgeweights_stat, 'MarkerSize', msize_stat, 'NodeCData', price_index_stat);
@@ -174,8 +183,10 @@ for countryID = 1:length(country_names)
           sum(outflows(P_opt, optimal_infrastructure, delta_tau, delta_I, adj), 2)], ...
           'VariableNames', {'rownumber', 'P_stat', 'P_opt', 'util_stat', 'util_opt', 'inflows_stat', 'outflows_stat', 'inflows_opt', 'outflows_opt'}), strcat("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/Network_outcomes/", (countryname), "_outcomes.csv"));
         
+       end
     end
-    end
+    
+     
 
 
 
