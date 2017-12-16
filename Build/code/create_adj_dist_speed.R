@@ -3,14 +3,13 @@
 
 library("osrm", lib.loc="/Library/Frameworks/R.framework/Versions/3.2/Resources/library")
 library("Imap", lib.loc="/Library/Frameworks/R.framework/Versions/3.2/Resources/library")
-
+library("gepaf", lib.loc="/Library/Frameworks/R.framework/Versions/3.4/Resources/library")
 
 # Import clean global centroids file
 centroids <- read.csv("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/centroids.csv")
 
 # Restrict file sample to Africa
 centroids <- centroids[centroids$region == 2,]
-centroids <- centroids[centroids$country == "Algeria",]
 
 # Gather country names
 country_table <- as.data.frame(table(centroids$country))
@@ -21,6 +20,7 @@ country_names <- paste(country_table[country_table$Freq != 0,"Var1"])
 
 # For every country, calculate matrices
 for(country in country_names){
+
 case_centroids <- centroids[centroids$country == country,]
 
 png(filename=paste("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/Road_Networks/network_", country, ".png", sep=""))
