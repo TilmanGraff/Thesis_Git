@@ -1,20 +1,20 @@
 # Fdb version 3
-["bibtex Report"] 1513111620 "Report.aux" "Report.bbl" "Report" 1513117392
+["bibtex Report"] 1513287150 "Report.aux" "Report.bbl" "Report" 1513287155
   "./cantoni_copy.bst" 1511710663 31652 6965e0fc7807af4f50293221a9b45d24 ""
   "MPhil_library.bib" 1513109208 78278 17e8969e5759ae2959884c90c42f8bfa ""
-  "Report.aux" 1513117392 7020 bebd8428e3c1098ff6606522fbf991d6 ""
+  "Report.aux" 1513287154 7021 aeb011e4f39ec5b93e4a06a366f0cce4 ""
   "Report.bcf" 0 -1 0 ""
   (generated)
   "Report.blg"
   "Report.bbl"
-["pdflatex"] 1513117389 "Report.tex" "Report.pdf" "Report" 1513117392
-  "/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/zeta_heatmaps/Benin_zeta.png" 1513117316 40111 7a2dfcc805303b5dc7ad0c2e3eb3a3a4 ""
-  "/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/zeta_heatmaps/Congo_zeta.png" 1513117316 46891 6365b5c98b8c9f9c5bc08db227d6235b ""
-  "/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/zeta_heatmaps/Tunisia_zeta.png" 1513117317 47252 e80aa7eac8b15c344e9640fd771424fb ""
+["pdflatex"] 1513287151 "Report.tex" "Report.pdf" "Report" 1513287155
+  "/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/zeta_heatmaps/Benin_zeta.png" 1513286964 11816 9a47a07816262d6b6566314e0e594b17 ""
+  "/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/zeta_heatmaps/Congo_zeta.png" 1513286973 13316 221f726d2106b97ccc18c3fb36b7dcf0 ""
+  "/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/zeta_heatmaps/Tunisia_zeta.png" 1513286988 11542 ef3142a1a4006a1a3a5d0c6967255046 ""
   "/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/Average Speeds/Speed_Namibia.png" 1511778912 34513 2e4b1e31c8aeaff19bfb90dd94b6a55f ""
   "/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/Matlab_graphs/initial_infrastructure/Mali_graph.png" 1512316173 126399 00198d10becce6182584beb26d69e191 ""
   "/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/Matlab_graphs/initial_infrastructure/Nigeria_graph.png" 1512316207 151524 fac66854cd1b03e4042dccd1b6239bb3 ""
-  "/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/Matlab_graphs/optimised_network/Gabon_graph.pdf" 1513078915 80963 9543c7da14822354664ffc18251ebe11 ""
+  "/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/Matlab_graphs/optimised_network/Gabon_graph.pdf" 1513259310 81011 1adbbbb6c630ac47d45961a75ec4165e ""
   "/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/Road_Networks/network_Mali.png" 1512255856 108876 7e5e1a42286a0afda4b410a3688c4234 ""
   "/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/Road_Networks/network_Nigeria.png" 1512256820 86879 e1a6c32a00c3a4124e8cb3e2e316eace ""
   "/usr/local/texlive/2016/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
@@ -204,12 +204,12 @@
   "/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1466971120 1888048 f2c5faed5981a516f406b2ccc20bff71 ""
   "/usr/local/texlive/2016/texmf-var/web2c/pdftex/pdflatex.fmt" 1466971197 3873397 8a9803c9a2ff9bda306fedbddebc13fa ""
   "/usr/local/texlive/2016/texmf.cnf" 1463979140 577 2938757e76f31531e65cc647e3507693 ""
-  "Report.aux" 1513117392 7020 bebd8428e3c1098ff6606522fbf991d6 ""
-  "Report.bbl" 1513111620 3905 b8bd17650b910d6aa6077c5cb500f081 "bibtex Report"
-  "Report.out" 1513117392 1149 b09d074c1c8a73aeb95ba158fdbfb3f3 ""
-  "Report.tex" 1513117389 27988 c73cff07035404ddf496f31af0f537fd ""
+  "Report.aux" 1513287154 7021 aeb011e4f39ec5b93e4a06a366f0cce4 ""
+  "Report.bbl" 1513287151 3905 b8bd17650b910d6aa6077c5cb500f081 "bibtex Report"
+  "Report.out" 1513287154 1149 b09d074c1c8a73aeb95ba158fdbfb3f3 ""
+  "Report.tex" 1513287147 27989 6afdd31d5ab9b1631f47a0213d614e24 ""
   (generated)
-  "Report.log"
   "Report.aux"
-  "Report.out"
+  "Report.log"
   "Report.pdf"
+  "Report.out"
