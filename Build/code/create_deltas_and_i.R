@@ -15,6 +15,11 @@ for (country in country_names){
   case_centroids <- centroids[centroids$country == country,]
   n <- nrow(case_centroids)
 
+  if(0 %in% case_centroids$rugg){ # this eliminates zero ruggedness which causes problems with delta_I later on. In essence, I just spot these instances and replace them with the mean ruggedness of the entire country
+    case_centroids[case_centroids$rugg == 0, "rugg"] <- mean(case_centroids$rugg)
+    print(country)
+  }
+
   speed <- read.csv(paste("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/speed/speed_", country, ".csv", sep=""))
 
   dist <- read.csv(paste("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/dist/dist_", country, ".csv", sep=""))
@@ -23,7 +28,7 @@ for (country in country_names){
   # Existing infrastructure as a function of the speed matrix
 ########
 
-  I <- (speed + t(speed)) / 2
+  I <- speed
 
 ########
   # Infrastructure building cost as a function of geography
@@ -57,6 +62,8 @@ for (country in country_names){
   delta_0_tau <- (0.0374 + 0.0558) / 2 # this is the mean of columns (3) and (6) on page 44 of their paper
   delta_tau <- delta_0_tau * log(dist)
   delta_tau[delta_tau < 0] <- 0
+
+
 
   write.csv(delta_tau, file=paste("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/delta_tau/delta_tau_", country, ".csv", sep=""), row.names = FALSE)
 
