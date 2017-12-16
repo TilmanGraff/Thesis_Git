@@ -48,7 +48,7 @@ centroids_merged$pop_dens <- centroids_merged$pop / (centroids_merged$gridarea *
 
 # Delete existing matrices
 
-file.remove(list.files(path="/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/productivities", full.names = T))
+ file.remove(list.files(path="/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/productivities", full.names = T))
 
 # Gather country names
 country_table <- as.data.frame(table(centroids[centroids$region ==2, "country"]))
@@ -62,15 +62,15 @@ alpha = 0.7 # Production function parameter
 #########
 
 # Define parameters
-#
-# N = 3         # Number of goods
+
+# N = 5         # Number of goods
 # alpha = 0.7     # Production function parameter
 #
 #
 # centroids_merged$good_produced <- NA
 #
 # for (country in country_names){
-#
+# if(country == "Nigeria"){
 #   J = nrow(centroids_merged[centroids_merged$country==country, ])
 #
 #   if(J >= N){
@@ -90,7 +90,7 @@ alpha = 0.7 # Production function parameter
 #   }
 #
 # }
-
+# }
 #########
     # OR C2) Defining cities from WorldBank Data and split between urban / non urban
 #########
