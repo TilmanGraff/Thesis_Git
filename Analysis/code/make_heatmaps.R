@@ -4,7 +4,7 @@
 # This file creates spatial heatmaps of variables of interest
 
 
-file.remove(list.files(path="/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/zeta_heatmaps/", full.names = T))
+# file.remove(list.files(path="/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/zeta_heatmaps/", full.names = T))
 
 opt_loc <- read.csv("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/input/opt_loc.csv")
 
@@ -47,7 +47,7 @@ ssudan <- readOGR("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/B
 ssudan@data <- africa@data[1,]
 ssudan@data[1,] <- NA
 ssudan@data$NAME <- "South-Sudan"
-ssudan@data$AREA <- 50
+
 
 africa <- rbind(africa, ssudan)
 
@@ -71,9 +71,20 @@ for(i in 1:nrow(africa@data)){ # this is a rather murky way to merge in the zeta
 my.palette <- brewer.pal(n = 9, name = "OrRd") # for an orange palette
 # display.brewer.all() # shows you available palettes
 
+edges <- africa@bbox
+scale.parameter = 1
+xshift = 0
+yshift = 7
 
-png(filename=paste("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/zeta_heatmaps/African_countries_zeta.png", sep=""))
-print(spplot(africa, "zeta", col="transparent", col.regions=my.palette, cuts=8)) # cuts always has to be one less than n in the definition of my.palette
+edges[1, ] <- (edges[1, ] - mean(edges[1, ])) * scale.parameter + mean(edges[1,
+    ]) + xshift
+edges[2, ] <- (edges[2, ] - mean(edges[2, ])) * scale.parameter + mean(edges[2,
+    ]) + yshift
+
+
+
+png(filename=paste("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/zeta_heatmaps/African_countries_zeta.png", sep=""), width=6, height=6, units = 'in', res=300 )
+print(spplot(africa, "zeta", col="transparent", col.regions=my.palette, cuts=8, xlim=edges[1,], ylim=edges[2,], main="Africa")) # cuts always has to be one less than n in the definition of my.palette
 dev.off()
 
 ###
@@ -158,7 +169,8 @@ edges[2, ] <- (edges[2, ] - mean(edges[2, ])) * scale.parameter + mean(edges[2,
     ]) + yshift
 
 
- png(filename=paste("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/zeta_heatmaps/African_gridcells_zeta.png", sep=""), width=6, height=6, units = 'in', res = 700)
+ png(filename=paste("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/zeta_heatmaps/African_gridcells_zeta.png", sep=""), width=6, height=6, units = 'in', res = 300)
 
 print(spplot(polygon_dataframe, "zeta", col="transparent", col.regions=my.palette, cuts=8, xlim=edges[1,], ylim=edges[2,], main = "Africa"))
+
  dev.off()
