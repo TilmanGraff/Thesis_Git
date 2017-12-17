@@ -8,15 +8,15 @@ Warning--missing institution in allen_welfare_2016
 Warning--missing institution in kocornik-mina_flooded_2015
 Warning--missing institution in maurer_mice_2017
 You've used 13 entries,
-            3032 wiz_defined-function locations,
-            668 strings with 6908 characters,
-and the built_in function-call counts, 7705 in all, are:
+            3082 wiz_defined-function locations,
+            686 strings with 7055 characters,
+and the built_in function-call counts, 7713 in all, are:
 = -- 650
 > -- 336
 < -- 11
 + -- 117
 - -- 97
-* -- 562
+* -- 572
 := -- 1184
 add.period$ -- 26
 call.type$ -- 13
@@ -24,15 +24,15 @@ change.case$ -- 89
 chr.to.int$ -- 14
 cite$ -- 16
 duplicate$ -- 608
-empty$ -- 537
+empty$ -- 539
 format.name$ -- 141
 if$ -- 1542
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 107
+missing$ -- 105
 newline$ -- 71
 num.names$ -- 52
-pop$ -- 247
+pop$ -- 245
 preamble$ -- 1
 purify$ -- 84
 quote$ -- 0

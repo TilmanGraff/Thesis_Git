@@ -75,11 +75,15 @@
   Center}(2016)}]{socioeconomic_data_and_applications_center_gridded_2016}
 \textbf{{Socioeconomic Data and Applications Center}} (\textbf{2016}).
 \newblock Gridded {{Population}} of the {{World}} ({{GPW}}), v4 | {{SEDAC}}.
-\newblock http://sedac.ciesin.columbia.edu/data/collection/gpw-v4
+\newblock
+  \url{http://sedac.ciesin.columbia.edu/data/collection/gpw-v4}~(Accessed:
+  \printdate{2017-11-26})
 
 \bibitem[{{The World Bank}(2017)}]{the_world_bank_world_2017}
 \textbf{{The World Bank}} (\textbf{2017}).
 \newblock World {{Development Indicators}}.
-\newblock https://data.worldbank.org/data-catalog/world-development-indicators
+\newblock
+  \url{https://data.worldbank.org/data-catalog/world-development-indicators}~(Accessed:
+  \printdate{2017-12-12})
 
 \end{thebibliography}

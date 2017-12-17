@@ -7,7 +7,7 @@
 %% /Users/Tilmanski/Desktop/custom-bib/merlin.mbs  (with options: `ay,nat,nm-revv1,jnrlst,nmdash,nmft,nmft-bf,keyxyr,dt-beg,yr-par,dtbf,note-yr,atit-u,volp-com,jwdpg,num-xser,jnm-x,edpar,bkedcap,in-col,fin-bare,pp,xedn,url,url-blk,nfss,')
 %% ----------------------------------------
 %% *** This is for Davide Cantonis format requirements ***
-%% 
+%%
 %% Copyright 1994-2011 Patrick W Daly
  % ===============================================================
  % IMPORTANT NOTICE:
@@ -74,6 +74,7 @@ ENTRY
     title
     type
     url
+    urldate
     volume
     year
   }
@@ -366,13 +367,29 @@ FUNCTION {bibinfo.warn}
   if$
 }
 FUNCTION {format.url}
-{
-  url
-  duplicate$ empty$
+{ url duplicate$ empty$
     { pop$ "" }
-    { "\urlprefix\url{" swap$ * "}" * }
+    { "\url{" swap$ * "}" *
+        urldate duplicate$ empty$
+        { pop$ }
+        { "~(Accessed: "  swap$ * ")" * *}
+      if$
+    }
   if$
 }
+
+FUNCTION {format.howpublished}
+{ howpublished duplicate$ empty$
+    { pop$ "" }
+    { "\url{" swap$ * "}" *
+        urldate duplicate$ empty$
+        { pop$ }
+        { "~(Accessed: \printdate{"  swap$ * "})" * *}
+      if$
+    }
+  if$
+}
+
 
 INTEGERS { nameptr namesleft numnames }
 
@@ -1195,7 +1212,7 @@ FUNCTION {misc}
   date.block
   format.title output
   new.block
-  howpublished "howpublished" bibinfo.check output
+  format.howpublished output
   new.block
   format.url output
   new.block
