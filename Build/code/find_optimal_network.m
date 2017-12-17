@@ -30,9 +30,6 @@ L = @(P, productivity, population) (((P .* productivity) .^(1/(1-alpha))) ./ sum
 outflows = @(P, I, delta_tau, delta_I, adj) reshape(sum(Q(P, I, adj, delta_tau, beta, gamma) + delta_tau .* ((Q(P, I, adj, delta_tau, beta, gamma)).^(1+beta)) .* I.^(-gamma), 2, 'omitnan'), [size(P,1), size(P,2)]);
 inflows = @(P, I, delta_tau, delta_I, adj) reshape(sum(Q(P, I, adj, delta_tau, beta, gamma), 1), [size(P,1), size(P,2)]);
 
-% Lagrange  = @(P) sum(weights .* population .* (c(P).^(alpha)), 1) ...
-%     - sum(sum(P .* (C(P, population) + outflows(P, I, delta_tau, delta_I, adj) - inflows(P, I, delta_tau, delta_I, adj) ...
-%     - productivity .* (population.^(a)))));
 
 %% For each country
 
@@ -44,7 +41,7 @@ inflows = @(P, I, delta_tau, delta_I, adj) reshape(sum(Q(P, I, adj, delta_tau, b
         % Split centroids by country
         case_centroids = centroids(centroids.country == countryname,:);
         num_locations = size(case_centroids, 1)
-     if num_locations > 2 && num_locations < 600
+     if num_locations > 2 
         
         % Read in characteristics
         population = cellfun(@str2double, case_centroids.pop);
@@ -103,13 +100,16 @@ inflows = @(P, I, delta_tau, delta_I, adj) reshape(sum(Q(P, I, adj, delta_tau, b
             datetime('now') % just for display purposes
         else
             % Optimise static problem
+            strcat("Started P_stat on ", datestr(datetime('now')))
             [P_stat] = fmincon(Lagrange_I_static, P0,A,b,Aeq,beq,lb,ub, nonlcon, options_trustregion);
-            datetime('now') % just for display purposes
+            csvwrite(strcat("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/MatlabOnline_results/P_stat", (countryname), ".csv"), P_stat);
+            strcat("Finished P_stat on ", datestr(datetime('now'))) % just for display purposes
         end
         
         % Optimise full problem
+        strcat("Started P_opt on ", datestr(datetime('now'))) % just for display purposes
         [P_opt] = fmincon(Lagrange_I_opt, P_stat,A,b,Aeq,beq,lb,ub, nonlcon, options_trustregion);
-        datetime('now') % just for display purposes
+        strcat("Finished P_opt on ", datestr(datetime('now'))) % just for display purposes
 
         %% Obtain descriptive statistics
 
