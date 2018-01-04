@@ -1,0 +1,11 @@
+\begin{thebibliography}{1}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\urlprefix}{URL }
+
+\bibitem[{Fajgelbaum and Schaal(2017)}]{fajgelbaum_optimal_2017}
+\textbf{Fajgelbaum, Pablo~D. and Edouard Schaal} (\textbf{2017}).
+\newblock Optimal Transport Networks in Spatial Equilibrium.
+\newblock Working paper, {National Bureau of Economic Research}
+
+\end{thebibliography}

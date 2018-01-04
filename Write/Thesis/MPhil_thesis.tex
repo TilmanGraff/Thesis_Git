@@ -1,0 +1,75 @@
+\documentclass[11pt, oneside]{article}   	%standardeinstellung
+\usepackage{amsmath}				%damit du formeln eingeben kannst
+\usepackage[parfill]{parskip}    			% neuer absatz durch leere zeile
+\usepackage{graphicx}				% bilder einfügen
+\usepackage[onehalfspacing]{setspace}	%1,5 facher zeilenabstand
+\usepackage{hyperref}				%damit man links erstellen kann
+\usepackage{float}					%intelligentes anpassen von bildern, damit es keine lücken im text gibt
+\graphicspath{ {figures/} }				%automatisches erstellen von "List of Figures"
+\usepackage[font=small,labelfont=bf]{caption} %formatierung der bildunterschrift
+ \usepackage{geometry}				%Seitenlayout
+ \usepackage{tikz}
+ \usetikzlibrary{shapes,arrows}
+
+ \geometry{						%musst du nicht unbedingt selbst einstellen
+ a4paper,
+ total={210mm,297mm},
+ left=15mm,
+ right=15mm,
+ top=25mm,
+ bottom=20mm,
+ }
+
+\usepackage{amssymb}
+\usepackage{caption}
+\usepackage{natbib}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{wrapfig}
+\usepackage{subcaption}
+\usepackage{pdflscape}
+\usepackage{filecontents,url}
+\usepackage{soul}
+\usepackage[space]{grffile}
+\usepackage[UKenglish]{isodate}
+
+%\def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;}
+
+\title{ipsum}
+\author{Tilman Graff -- University of Oxford}
+\date{\today}
+
+\begin{document}
+
+\bibliographystyle{cantoni_copy}
+\maketitle
+
+%-------------------------------------------------
+
+\section{Introduction}
+
+\section{The \cite{fajgelbaum_optimal_2017} model of Optimal Transport Networks}
+
+\section{Towards a spatial measure of network inefficiency}
+
+Investigating the patterns behind the spatial distribution of network inefficiency involves a series of steps. First, I construct a representation of the topography of economic activity and infrastructure networks for every African country.\footnote{As noted below, I exclude the five smallest African countries (Cape Verde, Comoros, The Gambia, Mauritius, and Réunion) as the chosen resolution for the analysis is too coarse to enable sensible network analysis on these countries.} Using the model by \cite{fajgelbaum_optimal_2017} outlined above, I then conduct an optimisation exercise in which existing infrastructure is reallocated within each country to maximise overall welfare. This scenario will produce winners and losers, such that I can derive a measure of network inefficiency over regions by comparing current welfare with welfare under the optimised scenario.
+
+Below, I discuss these steps in more detail.
+
+\subsection{Network representation}
+
+To construct a network database of all African countries, I divide the entire continent into grid cells of 0.5 latitude by 0.5 degrees longitude (roughly 55 by 55 kilometres at the equator). For all of Africa, this amounts to 10,167 cells. 
+
+
+
+%-------------------------------------------------
+
+\vspace{\fill}
+\begin{spacing}{1.0}
+\setlength{\bibsep}{2.5pt plus 1.5ex}
+\bibliography{Thesis_library}
+\end{spacing}
+
+\end{document}
