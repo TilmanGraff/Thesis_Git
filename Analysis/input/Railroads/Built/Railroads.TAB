@@ -1,0 +1,14 @@
+!table
+!version 700
+!charset WindowsLatin1
+
+Definition Table
+  Type NATIVE Charset "WindowsLatin1"
+  Fields 7
+    country Char (30) ;
+    independence Float ;
+    year_built Float Index 1 ;
+    built_pre_indep Float Index 2 ;
+    mining Float ;
+    military Float ;
+    length_km Float ;
