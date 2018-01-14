@@ -1,11 +1,130 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{19}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\urlprefix}{URL }
+
+\bibitem[{Alesina et~al.(2011)Alesina, Easterly, and
+  Matuszeski}]{Alesina_ArtificialStates_2011}
+\textbf{Alesina, Alberto, William Easterly, and Janina Matuszeski}
+  (\textbf{2011}).
+\newblock Artificial {{States}}.
+\newblock \emph{Journal of the European Economic Association} 9(2), pp.
+  246--277
+
+\bibitem[{Anderson and Van~Wincoop(2004)}]{Anderson_Tradecosts_2004}
+\textbf{Anderson, James~E. and Eric Van~Wincoop} (\textbf{2004}).
+\newblock Trade Costs.
+\newblock \emph{Journal of Economic Literature} 42(3), pp. 691--751
+
+\bibitem[{Atkin and Donaldson(2015)}]{atkin_whos_2015}
+\textbf{Atkin, David and Dave Donaldson} (\textbf{2015}).
+\newblock Who's {{Getting Globalized}}? {{The Size}} and {{Implications}} of
+  {{Intra}}-National {{Trade Costs}}.
+\newblock Working paper, {National Bureau of Economic Research}
+
+\bibitem[{Collier et~al.(2015)Collier, Kirchberger, and
+  S{\"o}derbom}]{collier_cost_2015}
+\textbf{Collier, Paul, Martina Kirchberger, and Mans S{\"o}derbom}
+  (\textbf{2015}).
+\newblock The Cost of Road Infrastructure in Low-and Middle-Income Countries.
+\newblock \emph{The World bank economic review} 30(3), pp. 522--548
+
+\bibitem[{Donaldson and Storeygard(2016)}]{donaldson_view_2016}
+\textbf{Donaldson, Dave and Adam Storeygard} (\textbf{2016}).
+\newblock The {{View}} from {{Above}}: {{Applications}} of {{Satellite Data}}
+  in {{Economics}}.
+\newblock \emph{Journal of Economic Perspectives} 30(4), pp. 171--198
 
 \bibitem[{Fajgelbaum and Schaal(2017)}]{fajgelbaum_optimal_2017}
 \textbf{Fajgelbaum, Pablo~D. and Edouard Schaal} (\textbf{2017}).
 \newblock Optimal Transport Networks in Spatial Equilibrium.
 \newblock Working paper, {National Bureau of Economic Research}
+
+\bibitem[{Henderson et~al.(2018)Henderson, Squires, Storeygard, and
+  Weil}]{henderson_global_2018}
+\textbf{Henderson, J.~Vernon, Tim Squires, Adam Storeygard, and David~N Weil}
+  (\textbf{2018}).
+\newblock The {{Global Spatial Distribution}} of {{Economic Activity}}:
+  {{Nature}}, {{History}}, and the {{Role}} of {{Trade}}.
+\newblock \emph{The Quarterly Journal of Economics} forthcoming
+
+\bibitem[{Henderson et~al.(2012)Henderson, Storeygard, and
+  Weil}]{henderson_measuring_2012}
+\textbf{Henderson, J.~Vernon, Adam Storeygard, and David~N Weil}
+  (\textbf{2012}).
+\newblock Measuring {{Economic Growth}} from {{Outer Space}}.
+\newblock \emph{American Economic Review} 102(2), pp. 994--1028
+
+\bibitem[{Jedwab and Storeygard(2017)}]{jedwab_average_2017}
+\textbf{Jedwab, Remi and Adam Storeygard} (\textbf{2017}).
+\newblock The {{Average}} and {{Heterogeneous Effects}} of {{Transportation
+  Investments}}: {{Evidence}} from Sub-{{Saharan Africa}} 1960-2010.
+\newblock Working paper
+
+\bibitem[{Lall et~al.(2017)Lall, Henderson, and Venables}]{lall_africas_2017}
+\textbf{Lall, Somik~Vinay, J.~Vernon Henderson, and Anthony~J. Venables}
+  (\textbf{2017}).
+\newblock \emph{Africa's {{Cities}}: {{Opening Doors}} to the {{World}}}.
+\newblock {World Bank Publications}
+
+\bibitem[{Lee(2016)}]{Lee_InternationalIsolationRegional_2016}
+\textbf{Lee, Yong~Suk} (\textbf{2016}).
+\newblock International {{Isolation}} and {{Regional Inequality}}: {{Evidence}}
+  from {{Sanctions}} on {{North Korea}}.
+\newblock Working paper, {Stanford University}
+
+\bibitem[{Michalopoulos and
+  Papaioannou(2014)}]{MichalopoulosNationalInstitutionsSubnational2014}
+\textbf{Michalopoulos, Stelios and Elias Papaioannou} (\textbf{2014}).
+\newblock National {{Institutions}} and {{Subnational Development}} in
+  {{Africa}}.
+\newblock \emph{The Quarterly Journal of Economics} 129(1), pp. 151--213
+
+\bibitem[{Michalopoulos and Papaioannou(2018)}]{michalopoulos_spatial_2018}
+---{}---{}--- (\textbf{2018}).
+\newblock Spatial {{Patterns}} of {{Development}}: {{A Meso Approach}}.
+\newblock \emph{Annual Review of Economics} forthcoming
+
+\bibitem[{Nunn and Puga(2012)}]{nunn_ruggedness:_2012}
+\textbf{Nunn, Nathan and Diego Puga} (\textbf{2012}).
+\newblock Ruggedness: {{The}} Blessing of Bad Geography in {{Africa}}.
+\newblock \emph{Review of Economics and Statistics} 94(1), pp. 20--36
+
+\bibitem[{OCHA(2017)}]{OCHA_SouthSudanAdministrative_2017}
+\textbf{OCHA, United Nations Office for the Coordination of
+  Humanitarian~Affairs} (\textbf{2017}).
+\newblock South {{Sudan}} - {{Administrative Boundaries}} - {{Humanitarian Data
+  Exchange}}.
+\newblock
+  \url{https://data.humdata.org/dataset/south-sudan-administrative-boundaries}~(Accessed:
+  \printdate{2017-12-17})
+
+\bibitem[{Sandvik(2008)}]{Sandvik_WorldBordersDataset_2008}
+\textbf{Sandvik, Bjorn} (\textbf{2008}).
+\newblock World {{Borders Dataset}}.
+\newblock
+  \url{http://thematicmapping.org/downloads/world\_borders.php}~(Accessed:
+  \printdate{2018-01-04})
+
+\bibitem[{{Socioeconomic Data and Applications
+  Center}(2016)}]{socioeconomic_data_and_applications_center_gridded_2016}
+\textbf{{Socioeconomic Data and Applications Center}} (\textbf{2016}).
+\newblock Gridded {{Population}} of the {{World}} ({{GPW}}), v4 | {{SEDAC}}.
+\newblock
+  \url{http://sedac.ciesin.columbia.edu/data/collection/gpw-v4}~(Accessed:
+  \printdate{2017-11-26})
+
+\bibitem[{Storeygard(2016)}]{storeygard_farther_2016}
+\textbf{Storeygard, Adam} (\textbf{2016}).
+\newblock Farther on down the {{Road}}: {{Transport Costs}}, {{Trade}} and
+  {{Urban Growth}} in {{Sub}}-{{Saharan Africa}}.
+\newblock \emph{The Review of Economic Studies} 83(3), pp. 1263--1295
+
+\bibitem[{{The World Bank}(2017)}]{the_world_bank_world_2017}
+\textbf{{The World Bank}} (\textbf{2017}).
+\newblock World {{Development Indicators}}.
+\newblock
+  \url{https://data.worldbank.org/data-catalog/world-development-indicators}~(Accessed:
+  \printdate{2017-12-12})
 
 \end{thebibliography}

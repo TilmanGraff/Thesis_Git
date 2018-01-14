@@ -4,44 +4,46 @@ The top-level auxiliary file: MPhil_thesis.aux
 The style file: cantoni_copy.bst
 Database file #1: Thesis_library.bib
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
-You've used 1 entry,
+Warning--missing institution in jedwab_average_2017
+You've used 19 entries,
             3082 wiz_defined-function locations,
-            622 strings with 4996 characters,
-and the built_in function-call counts, 538 in all, are:
-= -- 42
-> -- 22
-< -- 1
-+ -- 7
-- -- 7
-* -- 37
-:= -- 91
-add.period$ -- 2
-call.type$ -- 1
-change.case$ -- 7
-chr.to.int$ -- 2
-cite$ -- 1
-duplicate$ -- 42
-empty$ -- 35
-format.name$ -- 11
-if$ -- 99
+            730 strings with 8449 characters,
+and the built_in function-call counts, 11103 in all, are:
+= -- 978
+> -- 406
+< -- 22
++ -- 141
+- -- 115
+* -- 787
+:= -- 1685
+add.period$ -- 38
+call.type$ -- 19
+change.case$ -- 118
+chr.to.int$ -- 20
+cite$ -- 20
+duplicate$ -- 887
+empty$ -- 820
+format.name$ -- 175
+if$ -- 2270
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 8
-newline$ -- 11
-num.names$ -- 4
-pop$ -- 21
+missing$ -- 143
+newline$ -- 101
+num.names$ -- 76
+pop$ -- 316
 preamble$ -- 1
-purify$ -- 6
+purify$ -- 114
 quote$ -- 0
-skip$ -- 16
+skip$ -- 382
 stack$ -- 0
-substring$ -- 11
-swap$ -- 21
-text.length$ -- 0
+substring$ -- 476
+swap$ -- 487
+text.length$ -- 8
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 9
-warning$ -- 0
-while$ -- 3
+type$ -- 168
+warning$ -- 1
+while$ -- 81
 width$ -- 0
-write$ -- 18
+write$ -- 246
+(There was 1 warning)
