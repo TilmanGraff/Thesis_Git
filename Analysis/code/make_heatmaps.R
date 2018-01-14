@@ -36,6 +36,8 @@ national_zeta <- national_zeta[order(-national_zeta$zeta),]
 
 library(RColorBrewer)
 library("rgdal", lib.loc="/Library/Frameworks/R.framework/Versions/3.4/Resources/library")
+library(classInt)
+library(sp)
 
 world <- readOGR("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/input/World_Countries/TM_WORLD_BORDERS-0.3.shp") # reads in the global country shapefile
 
@@ -83,9 +85,9 @@ edges[2, ] <- (edges[2, ] - mean(edges[2, ])) * scale.parameter + mean(edges[2,
 
 
 
-png(filename=paste("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/zeta_heatmaps/African_countries_zeta.png", sep=""), width=6, height=6, units = 'in', res=300 )
-print(spplot(africa, "zeta", col="transparent", col.regions=my.palette, cuts=8, xlim=edges[1,], ylim=edges[2,], main="Africa")) # cuts always has to be one less than n in the definition of my.palette
-dev.off()
+#png(filename=paste("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/zeta_heatmaps/African_countries_zeta.png", sep=""), width=6, height=6, units = 'in', res=300 )
+#print(spplot(africa, "zeta", col="transparent", col.regions=my.palette, cuts=8, xlim=edges[1,], ylim=edges[2,], main="Africa")) # cuts always has to be one less than n in the definition of my.palette
+#dev.off()
 
 ###
 # 2) Trying to make this happen within Countries
@@ -127,15 +129,18 @@ for(country in country_names){
         ]) + yshift
 
 
-     png(filename=paste("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/zeta_heatmaps/", country, "_zeta.png", sep=""))
+     #png(filename=paste("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/zeta_heatmaps/", country, "_zeta.png", sep=""))
 
-    print(spplot(polygon_dataframe, "zeta", col="transparent", col.regions=my.palette, cuts=8, xlim=edges[1,], ylim=edges[2,], main = country))
-     dev.off()
+    #print(spplot(polygon_dataframe, "zeta", col="transparent", col.regions=my.palette, cuts=8, xlim=edges[1,], ylim=edges[2,], main = country))
+     #dev.off()
   }
 }
 
 ###
 # 3) for all countries on this smaller scale
+
+my.palette <- rev(brewer.pal(n = 11, name = "RdYlGn")) # for an orange palette
+
 
 
 df <- opt_loc[!is.na(opt_loc$zeta),]
@@ -168,9 +173,15 @@ edges[1, ] <- (edges[1, ] - mean(edges[1, ])) * scale.parameter + mean(edges[1,
 edges[2, ] <- (edges[2, ] - mean(edges[2, ])) * scale.parameter + mean(edges[2,
     ]) + yshift
 
+breaks_qt <- classIntervals(polygon_dataframe$zeta, n = 11, style = "quantile")
+br <- breaks_qt$brks
+offs <- 0.0000001
+br[1] <- br[1] - offs
+br[length(br)] <- br[length(br)] + offs
+polygon_dataframe$zeta_bracket <- cut(polygon_dataframe$zeta, br)
 
- png(filename=paste("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/zeta_heatmaps/African_gridcells_zeta.png", sep=""), width=6, height=6, units = 'in', res = 300)
+ #png(filename=paste("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/zeta_heatmaps/African_gridcells_zeta.png", sep=""), width=6, height=6, units = 'in', res = 300)
 
-print(spplot(polygon_dataframe, "zeta", col="transparent", col.regions=my.palette, cuts=8, xlim=edges[1,], ylim=edges[2,], main = "Africa"))
+print(spplot(polygon_dataframe, "zeta_bracket", col="transparent", col.regions=my.palette, cuts=10, xlim=edges[1,], ylim=edges[2,], main = "Africa"))
 
- dev.off()
+ #dev.off()

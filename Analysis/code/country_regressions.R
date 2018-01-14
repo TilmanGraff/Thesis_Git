@@ -68,5 +68,11 @@ for(var in c("corruption", "property_rights", "legal_rights", "ease_business", "
 }
 
 # plot(log(gdp10)~zeta, data=opt_loc_nat)
+stargazer(lm(corruption~zeta, data=opt_loc_nat), type="text")
 stargazer(lm(log(gdp10)~zeta, data=opt_loc_nat), type="text")
+stargazer(lm(property_rights~zeta, data=opt_loc_nat), type="text")
+
+
 cor.test(opt_loc_nat$zeta, log(opt_loc_nat$gdp10))
+cor.test(opt_loc_nat$zeta, opt_loc_nat$property_rights)
+cor.test(opt_loc_nat$zeta, opt_loc_nat$corruption)
