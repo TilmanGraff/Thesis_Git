@@ -7,7 +7,7 @@ country_names <- paste(country_table[country_table$Freq != 0,"Var1"])
 
 countryfiles <- NA
 
-for (country in country_names){
+for (country in country_names[1]){
 
   if(file.exists(paste("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/Network_outcomes/", country, "_outcomes.csv", sep = ""))){
 
