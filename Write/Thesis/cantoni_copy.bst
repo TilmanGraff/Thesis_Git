@@ -1002,7 +1002,6 @@ FUNCTION {article}
     }
   if$
   new.block
-  format.url output
   new.block
   format.note output
   fin.entry
@@ -1039,7 +1038,6 @@ FUNCTION {book}
   if$
   format.edition output
   new.block
-  format.url output
   new.block
   format.note output
   fin.entry
@@ -1097,7 +1095,6 @@ FUNCTION {inbook}
   if$
   format.edition output
   new.block
-  format.url output
   new.block
   format.note output
   fin.entry
@@ -1277,7 +1274,6 @@ FUNCTION {techreport}
   institution "institution" bibinfo.warn output
   address "address" bibinfo.check output
   new.block
-  format.url output
   new.block
   format.note output
   fin.entry

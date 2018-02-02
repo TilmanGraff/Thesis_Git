@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.6.26)  17 DEC 2017 20:55
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.6.26)  24 JAN 2018 11:44
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -617,7 +617,26 @@ Package geometry Warning: Over-specification in `h'-direction.
 Package geometry Warning: Over-specification in `v'-direction.
     `height' (845.04684pt) is ignored.
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/amssymb.sty
+(/usr/local/texlive/2016/texmf-dist/tex/latex/ms/ragged2e.sty
+Package: ragged2e 2009/05/21 v2.1 ragged2e Package (MS)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/ms/everysel.sty
+Package: everysel 2011/10/28 v1.2 EverySelectfont Package (MS)
+)
+\CenteringLeftskip=\skip47
+\RaggedLeftLeftskip=\skip48
+\RaggedRightLeftskip=\skip49
+\CenteringRightskip=\skip50
+\RaggedLeftRightskip=\skip51
+\RaggedRightRightskip=\skip52
+\CenteringParfillskip=\skip53
+\RaggedLeftParfillskip=\skip54
+\RaggedRightParfillskip=\skip55
+\JustifyingParfillskip=\skip56
+\CenteringParindent=\skip57
+\RaggedLeftParindent=\skip58
+\RaggedRightParindent=\skip59
+\JustifyingParindent=\skip60
+) (/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
 (/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
@@ -627,8 +646,8 @@ LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 )) (/usr/local/texlive/2016/texmf-dist/tex/latex/natbib/natbib.sty
 Package: natbib 2010/09/13 8.31b (PWD, AO)
-\bibhang=\skip47
-\bibsep=\skip48
+\bibhang=\skip61
+\bibsep=\skip62
 LaTeX Info: Redefining \cite on input line 694.
 \c@NAT@ctr=\count134
 ) (/usr/local/texlive/2016/texmf-dist/tex/latex/base/inputenc.sty
@@ -969,7 +988,7 @@ Package: soul 2003/11/17 v2.4 letterspacing/underlining (mf)
 \SOUL@cmds=\toks40
 \SOUL@buffer=\toks41
 \SOUL@token=\toks42
-\SOUL@spaceskip=\skip49
+\SOUL@spaceskip=\skip63
 \SOUL@ttwidth=\dimen182
 \SOUL@uldp=\dimen183
 \SOUL@ulht=\dimen184
@@ -1095,7 +1114,8 @@ Package caption Info: End \AtBeginDocument code.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-ABD: EveryShipout initializing macros
+ABD: EveryShipout initializing macros ABD: EverySelectfont initializing macros
+LaTeX Info: Redefining \selectfont on input line 44.
 isodate: babel.sty, (n)german.sty have not been loaded
 LaTeX Font Info:    Try loading font information for U+msa on input line 58.
 (/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/umsa.fd
@@ -1134,7 +1154,7 @@ Overfull \hbox (30.01933pt too wide) in paragraph at lines 109--149
 
 [2] [3]
 </Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/Road_
-Networks/network_Nigeria.png, id=116, 481.8pt x 481.8pt>
+Networks/network_Nigeria.png, id=120, 481.8pt x 481.8pt>
 File: /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/
 Road_Networks/network_Nigeria.png Graphic file (type png)
 
@@ -1145,7 +1165,7 @@ s_Git/Build/output/Road_Networks/network_Nigeria.png used on input line 182.
 (pdftex.def)             Requested size: 245.82962pt x 245.82501pt.
 
 </Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/Road_
-Networks/network_Mali.png, id=118, 481.8pt x 481.8pt>
+Networks/network_Mali.png, id=122, 481.8pt x 481.8pt>
 File: /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/
 Road_Networks/network_Mali.png Graphic file (type png)
 
@@ -1227,7 +1247,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 </Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/Avera
-ge Speeds/Speed_Namibia.png, id=135, 651.43375pt x 459.7175pt>
+ge Speeds/Speed_Namibia.png, id=139, 651.43375pt x 459.7175pt>
 File: /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/
 Average Speeds/Speed_Namibia.png Graphic file (type png)
 
@@ -1238,7 +1258,7 @@ s_Git/Build/output/Average Speeds/Speed_Namibia.png used on input line 210.
 (pdftex.def)             Requested size: 358.50317pt x 252.99973pt.
 
 </Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/Matla
-b_graphs/initial_infrastructure/Nigeria_graph.png, id=138, 562.2606pt x 421.575
+b_graphs/initial_infrastructure/Nigeria_graph.png, id=142, 562.2606pt x 421.575
 pt>
 File: /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/
 Matlab_graphs/initial_infrastructure/Nigeria_graph.png Graphic file (type png)
@@ -1251,7 +1271,7 @@ on input line 222.
 (pdftex.def)             Requested size: 245.82962pt x 184.31638pt.
 
 </Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/Matla
-b_graphs/initial_infrastructure/Mali_graph.png, id=139, 562.2606pt x 421.575pt>
+b_graphs/initial_infrastructure/Mali_graph.png, id=143, 562.2606pt x 421.575pt>
 File: /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/
 Matlab_graphs/initial_infrastructure/Mali_graph.png Graphic file (type png)
 
@@ -1315,7 +1335,7 @@ tlab_graphs/initial_infrastructure/Nigeria_graph.png (PNG copy)> </Users/Tilman
 ski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/Matlab_graphs/initi
 al_infrastructure/Mali_graph.png (PNG copy)>] [7]
 </Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/Matla
-b_graphs/optimised_network/Gabon_graph.pdf, id=202, 597.23125pt x 845.1575pt>
+b_graphs/optimised_network/Gabon_graph.pdf, id=206, 597.23125pt x 845.1575pt>
 File: /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/
 Matlab_graphs/optimised_network/Gabon_graph.pdf Graphic file (type pdf)
 
@@ -1330,7 +1350,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 </Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/ze
-ta_heatmaps/Benin_zeta.png, id=203, 481.8pt x 481.8pt>
+ta_heatmaps/Benin_zeta.png, id=207, 481.8pt x 481.8pt>
 File: /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/outp
 ut/zeta_heatmaps/Benin_zeta.png Graphic file (type png)
 
@@ -1341,7 +1361,7 @@ s_Git/Analysis/output/zeta_heatmaps/Benin_zeta.png used on input line 319.
 (pdftex.def)             Requested size: 153.64644pt x 153.64247pt.
 
 </Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/ze
-ta_heatmaps/Congo_zeta.png, id=204, 481.8pt x 481.8pt>
+ta_heatmaps/Congo_zeta.png, id=208, 481.8pt x 481.8pt>
 File: /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/outp
 ut/zeta_heatmaps/Congo_zeta.png Graphic file (type png)
 
@@ -1352,7 +1372,7 @@ s_Git/Analysis/output/zeta_heatmaps/Congo_zeta.png used on input line 324.
 (pdftex.def)             Requested size: 153.64644pt x 153.64247pt.
 
 </Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/ze
-ta_heatmaps/Tunisia_zeta.png, id=205, 481.8pt x 481.8pt>
+ta_heatmaps/Tunisia_zeta.png, id=209, 481.8pt x 481.8pt>
 File: /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/outp
 ut/zeta_heatmaps/Tunisia_zeta.png Graphic file (type png)
 
@@ -1406,54 +1426,65 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 t/zeta_heatmaps/Benin_zeta.png> </Users/Tilmanski/Documents/UNI/MPhil/Second Ye
 ar/Thesis_Git/Analysis/output/zeta_heatmaps/Congo_zeta.png> </Users/Tilmanski/D
 ocuments/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/zeta_heatmaps/Tunisia
-_zeta.png>] (./Report.bbl [11]
-Underfull \hbox (badness 3108) in paragraph at lines 83--88
+_zeta.png>]
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 440.
+
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 476.
+
+(./Report.bbl [11]
+Underfull \hbox (badness 3108) in paragraph at lines 94--98
 []\OT1/cmr/bx/n/10.95 The World Bank \OT1/cmr/m/n/10.95 (\OT1/cmr/bx/n/10.95 20
 17\OT1/cmr/m/n/10.95 ).  World De-vel-op-ment In-di-ca-tors.  []$\OT1/cmtt/m/n/
 10.95 https : / / data . worldbank . org /
  []
 
 ) [12]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 459.
-[13]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 459.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 552.
+[13] [14] [15]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 552.
 (./Report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 459.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 459.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 552.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 552.
 Package rerunfilecheck Info: File `Report.out' has not changed.
-(rerunfilecheck)             Checksum: B09D074C1C8A73AEB95BA158FDBFB3F3;1149.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 459.
+(rerunfilecheck)             Checksum: F0DC8BA38D3FD393F9D427E2F54849D0;1225.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 552.
  ) 
 Here is how much of TeX's memory you used:
- 21332 strings out of 493014
- 418699 string characters out of 6133351
- 515974 words of memory out of 5000000
- 24407 multiletter control sequences out of 15000+600000
- 17279 words of font info for 67 fonts, out of 8000000 for 9000
+ 21425 strings out of 493014
+ 420716 string characters out of 6133351
+ 533141 words of memory out of 5000000
+ 24487 multiletter control sequences out of 15000+600000
+ 17624 words of font info for 68 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,10n,67p,1035b,632s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 55i,11n,67p,1080b,632s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb>
-</usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><
-/usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></
-usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></us
-r/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/
-local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/lo
-cal/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/loca
-l/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/
-texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/te
-xlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texli
-ve/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/
-2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/201
-6/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2016
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2016/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2016/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on Report.pdf (13 pages, 778343 bytes).
+</usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><
+/usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></
+usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></u
+sr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr
+/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/l
+ocal/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/loc
+al/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local
+/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/t
+exlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/tex
+live/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texliv
+e/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2
+016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2016
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2016/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2016/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2016/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2016/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on Report.pdf (15 pages, 812376 bytes).
 PDF statistics:
- 917 PDF objects out of 1000 (max. 8388607)
- 856 compressed objects within 9 object streams
- 72 named destinations out of 1000 (max. 500000)
- 194 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 952 PDF objects out of 1000 (max. 8388607)
+ 887 compressed objects within 9 object streams
+ 78 named destinations out of 1000 (max. 500000)
+ 202 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,0 +1,1 @@
+http://worldmap.harvard.edu/geoserver/wfs?outputFormat=SHAPE-ZIP&service=WFS&request=GetFeature&format_options=charset%3AUTF-8&typename=geonode%3AMurdock_EA_2011_vkZ&version=1.0.0

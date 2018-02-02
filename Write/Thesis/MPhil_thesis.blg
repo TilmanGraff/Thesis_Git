@@ -3,40 +3,41 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: MPhil_thesis.aux
 The style file: cantoni_copy.bst
 Database file #1: Thesis_library.bib
+Warning--I didn't find a database entry for "MichalopoulosNationalInstitutionsSubnational2014"
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Warning--missing institution in jedwab_average_2017
 You've used 19 entries,
-            3082 wiz_defined-function locations,
-            730 strings with 8449 characters,
-and the built_in function-call counts, 11103 in all, are:
+            3074 wiz_defined-function locations,
+            745 strings with 9609 characters,
+and the built_in function-call counts, 10988 in all, are:
 = -- 978
 > -- 406
 < -- 22
-+ -- 141
++ -- 143
 - -- 115
 * -- 787
-:= -- 1685
+:= -- 1686
 add.period$ -- 38
 call.type$ -- 19
 change.case$ -- 118
 chr.to.int$ -- 20
 cite$ -- 20
-duplicate$ -- 887
-empty$ -- 820
+duplicate$ -- 857
+empty$ -- 790
 format.name$ -- 175
-if$ -- 2270
+if$ -- 2240
 int.to.chr$ -- 1
 int.to.str$ -- 1
 missing$ -- 143
 newline$ -- 101
 num.names$ -- 76
-pop$ -- 316
+pop$ -- 286
 preamble$ -- 1
 purify$ -- 114
 quote$ -- 0
 skip$ -- 382
 stack$ -- 0
-substring$ -- 476
+substring$ -- 478
 swap$ -- 487
 text.length$ -- 8
 text.prefix$ -- 0
@@ -46,4 +47,4 @@ warning$ -- 1
 while$ -- 81
 width$ -- 0
 write$ -- 246
-(There was 1 warning)
+(There were 2 warnings)

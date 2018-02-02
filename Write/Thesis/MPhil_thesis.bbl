@@ -55,6 +55,12 @@
 \newblock Measuring {{Economic Growth}} from {{Outer Space}}.
 \newblock \emph{American Economic Review} 102(2), pp. 994--1028
 
+\bibitem[{Jedwab and Moradi(2016)}]{jedwab_permanent_2016}
+\textbf{Jedwab, Remi and Alexander Moradi} (\textbf{2016}).
+\newblock The {{Permanent Effects}} of {{Transportation Revolutions}} in {{Poor
+  Countries}}: {{Evidence}} from {{Africa}}.
+\newblock \emph{Review of Economics and Statistics} 98(2), pp. 268--284
+
 \bibitem[{Jedwab and Storeygard(2017)}]{jedwab_average_2017}
 \textbf{Jedwab, Remi and Adam Storeygard} (\textbf{2017}).
 \newblock The {{Average}} and {{Heterogeneous Effects}} of {{Transportation
@@ -73,15 +79,8 @@
   from {{Sanctions}} on {{North Korea}}.
 \newblock Working paper, {Stanford University}
 
-\bibitem[{Michalopoulos and
-  Papaioannou(2014)}]{MichalopoulosNationalInstitutionsSubnational2014}
-\textbf{Michalopoulos, Stelios and Elias Papaioannou} (\textbf{2014}).
-\newblock National {{Institutions}} and {{Subnational Development}} in
-  {{Africa}}.
-\newblock \emph{The Quarterly Journal of Economics} 129(1), pp. 151--213
-
 \bibitem[{Michalopoulos and Papaioannou(2018)}]{michalopoulos_spatial_2018}
----{}---{}--- (\textbf{2018}).
+\textbf{Michalopoulos, Stelios and Elias Papaioannou} (\textbf{2018}).
 \newblock Spatial {{Patterns}} of {{Development}}: {{A Meso Approach}}.
 \newblock \emph{Annual Review of Economics} forthcoming
 
@@ -97,14 +96,14 @@
   Exchange}}.
 \newblock
   \url{https://data.humdata.org/dataset/south-sudan-administrative-boundaries}~(Accessed:
-  \printdate{2017-12-17})
+  2017-12-17)
 
 \bibitem[{Sandvik(2008)}]{Sandvik_WorldBordersDataset_2008}
 \textbf{Sandvik, Bjorn} (\textbf{2008}).
 \newblock World {{Borders Dataset}}.
 \newblock
-  \url{http://thematicmapping.org/downloads/world\_borders.php}~(Accessed:
-  \printdate{2018-01-04})
+  \url{http://thematicmapping.org/downloads/world_borders.php}~(Accessed:
+  2018-01-04)
 
 \bibitem[{{Socioeconomic Data and Applications
   Center}(2016)}]{socioeconomic_data_and_applications_center_gridded_2016}
@@ -112,7 +111,7 @@
 \newblock Gridded {{Population}} of the {{World}} ({{GPW}}), v4 | {{SEDAC}}.
 \newblock
   \url{http://sedac.ciesin.columbia.edu/data/collection/gpw-v4}~(Accessed:
-  \printdate{2017-11-26})
+  2017-11-26)
 
 \bibitem[{Storeygard(2016)}]{storeygard_farther_2016}
 \textbf{Storeygard, Adam} (\textbf{2016}).
@@ -125,6 +124,6 @@
 \newblock World {{Development Indicators}}.
 \newblock
   \url{https://data.worldbank.org/data-catalog/world-development-indicators}~(Accessed:
-  \printdate{2017-12-12})
+  2017-12-12)
 
 \end{thebibliography}

@@ -1,3 +1,4 @@
+% Preamble
 \documentclass[11pt, oneside]{article}   	%standardeinstellung
 \usepackage{amsmath}				%damit du formeln eingeben kannst
 \usepackage[parfill]{parskip}    			% neuer absatz durch leere zeile
@@ -20,6 +21,7 @@
  bottom=20mm,
  }
 
+\usepackage{ragged2e}
 \usepackage[export]{adjustbox}
 \usepackage{dsfont}
 \usepackage{amssymb}
@@ -48,12 +50,15 @@
 \bibliographystyle{cantoni_copy}
 \maketitle
 
+% End Preamble
+
 %-------------------------------------------------
 
 \section{Introduction}
 
 \section{The \cite{fajgelbaum_optimal_2017} model of Optimal Transport Networks}
 
+% Chapter
 \section{Towards a spatial measure of network inefficiency}
 
 Investigating the patterns behind the spatial distribution of network inefficiency involves a series of steps. First, I construct a representation of the topography of economic activity and infrastructure networks for every African country. Using the model by \cite{fajgelbaum_optimal_2017} outlined above, I then conduct an optimisation exercise in which existing infrastructure is reallocated within each country to maximise overall welfare. This scenario will produce winners and losers, such that I can derive a measure of network inefficiency over regions by comparing current welfare with welfare under the optimised scenario.
@@ -76,8 +81,9 @@ So far, the dataset merely consists of a list of grid cells with their respectiv
 \subsubsection{Road Data}
 Obtaining objective data on transportation networks is difficult, especially in developing countries where many transport routes are not available in digitised form. In their own empirical exercise \citeauthor{fajgelbaum_optimal_2017} observe European countries and make use of a large coherent dataset on position and objective characteristics of important European roads. A comparable dataset for Africa does not yet publicly exist, even though a recent project by \cite{jedwab_average_2017} has undertaken the effort to manually compile and digitise Michelin Maps in order to create a comparable dataset (their data is not yet available for replication).
 
-Instead, I use a different approach and make use of the open source internet routing service \textsc{Open Street Maps} (OSM), which is comparable to Google Maps but allows for unlimited use of its API. For every centroid location, I scrape OSM for the optimal route to their respective eight surrounding neighbours. This is greatly facilitated by the R package \texttt{osrmRoute}. Since I am interested solely in within-country transport networks, I perform the exercise for each country separately and do not elicit connections between locations of different countries. Hence, centroids located near a coast or country border often have less than eight immediate neighbours. For all of the resulting almost 90,000 routes, I gather distance travelled, average speed, and step-by-step coordinates of the travel path.
+Instead, I use a different approach and make use of the open source internet routing service \textsc{Open Street Maps} (OSM), which is comparable to Google Maps but allows for unlimited use of its API. For every centroid location, I scrape OSM for the optimal route to their respective eight surrounding neighbours. This is greatly facilitated by the R package \texttt{osrmRoute}.\footnote{Calculations were performed in November 2017.} Since I am interested solely in within-country transport networks, I perform the exercise for each country separately and do not elicit connections between locations of different countries. Hence, centroids located near a coast or country border often have less than eight immediate neighbours. For all of the resulting almost 90,000 routes, I gather distance travelled, average speed, and step-by-step coordinates of the travel path.
 
+% Figure
 \begin{figure}[t]
 \centering
 \caption{Road Networks for different countries as scraped off OSM}
@@ -94,6 +100,7 @@ Instead, I use a different approach and make use of the open source internet rou
 \end{subfigure}
 \label{fig:roads}
 \end{figure}
+% End Figure
 
 The OSM routing algorithm is specified for cars and takes into account differential speeds attainable on different types of roads. However, if either start or destination location do not directly fall onto a street, the optimal route jumps to the nearest road and goes from there. To take this into account, I add a walking distance to the travel path. Agents are assumed to walk in straight lines to the nearest street at a fixed speed of 4 km/h. They then take the car and drive the route with average speed as specified by OSM, before they potentially have to walk the last stretch again to their exact centroid destination. For some particularly remote areas, the nearest street is very far such that the car routing provided by OSM is not sensible. To counter these cases, I also calculate for all 90,000 connections the outside option of walking the entire link in a straight line at 4 km/h. I then identify cases in which walking directly is actually faster than using OSM's proposed route (plus the travel to and from roads). In these cases, I replace OSM's route with the walking distance and (constant 4 km/h) speed. Figure \ref{fig:roads} presents the resulting road networks for two African countries. Figure \ref{fig:nigeria_roads} displays every optimal route for Nigeria, which appears overall fairly well connected. Commuters mostly seem to be able to drive relatively direct routes between locations, even though cases with substantial detours are also evident at second glance. Connections in which walking were the preferred alternative are displayed in red and fairly rare in Nigeria. Figure \ref{fig:Mali_roads} presents the case of Mali, which paints a different picture: for many connections through the Sahara desert in the North-East of the country, walking straight lines in the sand is actually the fastest way to get from A to B.
 
@@ -214,6 +221,7 @@ While each country only stands to gain overall welfare from this reallocation pr
   \zeta_{i} = \frac{\textrm{Welfare under the optimal Infrastructure}_{i}}{\textrm{Welfare under the current Infrastructure}_{i}}
 \end{equation}
 
+% Figure
 \begin{figure}
 \centering
 \caption{Spatial Distribution of $\zeta_{i}$ for sample countries}
@@ -235,9 +243,11 @@ While each country only stands to gain overall welfare from this reallocation pr
 \end{subfigure}
 \label{fig:zeta_countries}
 \end{figure}
+% End Figure
 
 as the \emph{Infrastructure Gap} for each grid cell $i$. Figure \ref{fig:zeta_countries} displays the spatial distribution of the infrastructure gap $\zeta_{i}$ for Madagascar, Kenya, and Chad. The darker a grid cell's shade, the more it is disadvantaged by the inefficiencies of the current network. The lighter a cell, the more overprovided a region is with infrastructure.
 
+% Figure
 \begin{figure}
 \centering
 \caption{Spatial Distribution of $\zeta_{i}$ for entire sample}
@@ -245,10 +255,153 @@ as the \emph{Infrastructure Gap} for each grid cell $i$. Figure \ref{fig:zeta_co
 
 \label{fig:all_gridcells_by_zeta}
 \end{figure}
+% End Figure
 
 Figure \ref{fig:all_gridcells_by_zeta}, lastly, displays the spatial variation of $\zeta_{i}$ over all 10,000+ grid cells of the entire African continent. When interpreting this map, note that grid cells are undergoing the reshuffling scenario solely within their respective country. National borders hence play a role and can at times even clearly be inferred from the printed map. Keeping this in mind, the map reveals substantial spatial variation in the infrastructure gap across the African continent. The luckiest region (in Namibia) stands to loose almost 30\% of total welfare if the fictitious social planner intervened and reshuffled roads away from. On the other hand of the spectrum, the residents of one grid cell in Gabon are missing out on a welfare hike of more than 50\%. Moreover, abandoned regions are clearly displaying spatial correlation with large neighbouring swaths of land collectively missing out on infrastructure improvements in certain countries. This begs the conclusion that countries do not just overlook single grid cells but rather live with vast stretches of disadvantaged regions.
 
 In the following section, I proceed to investigate the patterns behind this heterogeneity of network inefficiency over space.
+% End Chapter
+
+\section{Results}
+
+% Figure
+\begin{table}[] \centering
+  \caption{Colonial Railroads and Infrastructure Gap}
+  \label{RailKM_zeta}
+  \resizebox{\textwidth}{!}{
+
+
+  \begin{tabular}{@{\extracolsep{5pt}}lcccccccc}
+\\[-1.8ex]\hline
+\hline \\[-1.8ex]
+ & \multicolumn{8}{c}{\textit{Dependent variable:}} \\
+\cline{2-9}
+\\[-1.8ex] & \multicolumn{8}{c}{Infrastructure Gap $\zeta_{i}$} \\
+\\[-1.8ex] & (1) & (2) & (3) & (4) & (5) & (6) & (7) & (8)\\
+\hline \\[-1.8ex]
+ KM of Colonial Railroads & $-$0.0002$^{***}$ & $-$0.0001$^{***}$ & $-$0.0002$^{***}$ & $-$0.0002$^{***}$ &  &  &  &  \\
+  & (0.0001) & (0.0001) & (0.0001) & (0.0001) &  &  &  &  \\
+  & & & & & & & & \\
+ Km of Colonial Placebo Railroads &  &  &  &  & 0.00004 & $-$0.0002 & $-$0.0003 & $-$0.0003 \\
+  &  &  &  &  & (0.0003) & (0.0003) & (0.0003) & (0.0003) \\
+  & & & & & & & & \\
+\hline \\[-1.8ex]
+Country FE &  & Yes & Yes & Yes &  & Yes & Yes & Yes \\
+Geographic controls &  &  & Yes & Yes &  &  & Yes & Yes \\
+Simulation controls &  &  &  & Yes &  &  &  & Yes \\
+Observations & 10,158 & 10,158 & 10,158 & 10,158 & 10,158 & 10,158 & 10,158 & 10,158 \\
+R$^{2}$ & 0.001 & 0.099 & 0.111 & 0.113 & 0.00000 & 0.098 & 0.110 & 0.112 \\
+\hline
+\hline \\[-1.8ex]
+\textit{Note:}  & \multicolumn{8}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\
+\end{tabular}
+
+}
+
+\justify
+\textit{\\ \footnotesize This table displays results of estimation of equation \ref{eq:regression} on the sample of 0.5x0.5 degree grid cells for the entire African continent (excluding five small countries, see text). Dependent variable is the infrastructure gap for each grid cell. Columns (1)-(4) estimate the effect of colonial infrastructure investments on today's infrastructure gap. Starting with a simple univariate cross-section in (1), column (2) adds 49 country-fixed effects. Column (3) adds geographic controls, consisting of altitude, temperature, average land suitability, malaria prevalence, yearly growing days, average precipitation, and the fourth-order polynomial of latitude and longitude. Simulation controls are added in column (4) and are comprised of population, night lights, ruggedness, and a dummy for whether a cell is classified as urban. These are indicators that went into the original infrastructure re-allocation simulation and are hence not orthogonal to $\zeta$. Columns (5)-(8) repeat these calculations with railroads that were planned, but never built (``placebo railroads''). Results are robust to using only the subsample of 33 countries with any colonial infrastructure investment as reported by \cite{jedwab_permanent_2016}, plus South Africa. Heteroskedasticity-robust standard errors are clustered on the 3x3 degree level and are shown in parantheses.}
+\end{table}
+% End Figure
+
+
+% Figure
+\begin{table}[] \centering
+  \caption{General Equilibrium Effects of Colonial Railroads}
+  \label{RailBlocks_zeta}
+  \resizebox{\textwidth}{!}{
+
+
+  \begin{tabular}{@{\extracolsep{5pt}}lcccccccc}
+\\[-1.8ex]\hline
+\hline \\[-1.8ex]
+ & \multicolumn{8}{c}{\textit{Dependent variable: Infrastructure Gap $\zeta$}} \\
+\cline{2-9}
+\\[-1.8ex] & \multicolumn{6}{c}{Full Sample} &  \multicolumn{2}{c}{Restricted Sample} \\
+\\[-1.8ex] & (1) & (2) & (3) & (4) & (5) & (6) & (7) & (8)\\
+\hline \\[-1.8ex]
+ $<10$ KM to Colonial Railroad & $-$0.013$^{***}$ & $-$0.015$^{***}$ & $-$0.016$^{***}$ &  &  &  & $-$0.014$^{***}$ &  \\
+  & (0.003) & (0.004) & (0.004) &  &  &  & (0.004) &  \\
+  & & & & & & & & \\
+ $10-20$ KM to Colonial Railroad & $-$0.013$^{***}$ & $-$0.015$^{***}$ & $-$0.016$^{***}$ &  &  &  & $-$0.015$^{***}$ &  \\
+  & (0.005) & (0.005) & (0.005) &  &  &  & (0.005) &  \\
+  & & & & & & & & \\
+ $20-30$ KM to Colonial Railroad & $-$0.002 & $-$0.004 & $-$0.005 &  &  &  & $-$0.004 &  \\
+  & (0.004) & (0.004) & (0.004) &  &  &  & (0.004) &  \\
+  & & & & & & & & \\
+ $30-40$ KM to Colonial Railroad & 0.010$^{**}$ & 0.008$^{*}$ & 0.008 &  &  &  & 0.008$^{*}$ &  \\
+  & (0.005) & (0.005) & (0.005) &  &  &  & (0.005) &  \\
+  & & & & & & & & \\
+ $<10$ KM to Colonial Placebo Railroad &  &  &  & $-$0.005 & $-$0.005 & $-$0.006 &  & $-$0.007$^{*}$ \\
+  &  &  &  & (0.004) & (0.004) & (0.004) &  & (0.004) \\
+  & & & & & & & & \\
+ $10-20$ KM to Colonial Placebo Railroad &  &  &  & $-$0.003 & $-$0.004 & $-$0.004 &  & $-$0.004 \\
+  &  &  &  & (0.005) & (0.005) & (0.005) &  & (0.005) \\
+  & & & & & & & & \\
+ $20-30$ KM to Colonial Placebo Railroad &  &  &  & $-$0.001 & $-$0.001 & $-$0.001 &  & $-$0.003 \\
+  &  &  &  & (0.004) & (0.004) & (0.004) &  & (0.004) \\
+  & & & & & & & & \\
+ $30-40$ KM to Colonial Placebo Railroad &  &  &  & 0.007 & 0.006 & 0.005 &  & 0.003 \\
+  &  &  &  & (0.004) & (0.004) & (0.004) &  & (0.004) \\
+  & & & & & & & & \\
+\hline \\[-1.8ex]
+Country FE & Yes & Yes & Yes & Yes & Yes & Yes & Yes & Yes \\
+Geographic controls &  & Yes & Yes &  & Yes & Yes & Yes & Yes \\
+Simulation controls &  &  & Yes &  &  & Yes & Yes & Yes \\
+Observations & 10,158 & 10,158 & 10,158 & 10,158 & 10,158 & 10,158 & 6,362 & 6,362 \\
+R$^{2}$ & 0.101 & 0.114 & 0.116 & 0.099 & 0.110 & 0.112 & 0.115 & 0.110 \\
+\hline
+\hline \\[-1.8ex]
+\textit{Note:}  & \multicolumn{8}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\
+\end{tabular}
+
+}
+
+\justify
+\textit{\\ \footnotesize This table displays effects of various distance-intervals on the infrastructure gap $\zeta$. Explanatory covariates are dummy-variables indicating whether a cell's centroid is within X kilometres to its closest colonial railroad. Geographic controls consist of altitude, temperature, average land suitability, malaria prevalence, yearly growing days, average precipitation, and the fourth-order polynomial of latitude and longitude. Simulation controls are comprised of population, night lights, ruggedness, and a dummy for whether a cell is classified as urban. Columns (1)-(3) examine the effect of actually built colonial railroads. Columns (4)-(6) repeat these calculations with railroads that were planned, but never built (``placebo railroads''). Columns (7)-(8) restrict the sample to the 32 countries on which data for colonial railways is available. Heteroskedasticity-robust standard errors are clustered on the 3x3 degree level and are shown in parantheses.}
+\end{table}
+% End Figure
+
+
+% Figure
+\begin{table}[] \centering
+  \caption{Heterogeneous Effects of Colonial Railroads}
+  \label{RailBlocks_mining_military}
+  \resizebox{\textwidth}{!}{
+
+
+  \begin{tabular}{@{\extracolsep{5pt}}lcccccc}
+  \\[-1.8ex]\hline
+  \hline \\[-1.8ex]
+   & \multicolumn{6}{c}{\textit{Dependent variable:}} \\
+  \cline{2-7}
+  \\[-1.8ex] & \multicolumn{6}{c}{Infrastructure Gap $\zeta$} \\
+  \\[-1.8ex] & (1) & (2) & (3) & (4) & (5) & (6)\\
+  \hline \\[-1.8ex]
+   KM of Colonial Rails for Military Purposes & $-$0.0002$^{***}$ & $-$0.0002$^{***}$ &  &  & $-$0.0002$^{**}$ & $-$0.0002$^{**}$ \\
+    & (0.0001) & (0.0001) &  &  & (0.0001) & (0.0001) \\
+    & & & & & & \\
+   KM of Colonial Rails for Mining Purposes &  &  & $-$0.0001 & $-$0.0001 & $-$0.0001 & $-$0.0001 \\
+    &  &  & (0.0001) & (0.0001) & (0.0001) & (0.0001) \\
+    & & & & & & \\
+  \hline \\[-1.8ex]
+  Country FE & Yes & Yes & Yes & Yes & Yes & Yes \\
+  Geographic controls & Yes & Yes & Yes & Yes & Yes & Yes \\
+  Simulation controls &  & Yes &  & Yes &  & Yes \\
+  Observations & 10,158 & 10,158 & 10,158 & 10,158 & 10,158 & 10,158 \\
+  R$^{2}$ & 0.110 & 0.112 & 0.110 & 0.112 & 0.110 & 0.113 \\
+  \hline
+  \hline \\[-1.8ex]
+  \textit{Note:}  & \multicolumn{6}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\
+  \end{tabular}
+
+}
+
+\justify
+\textit{\\ \footnotesize This table replicated the estimations of Table \ref{RailKM_zeta} in estimating effects of colonial railroads on the infrastructure gap $\zeta$. Colonial rails are classified as built for military or mining purposes (or neither or both) by \cite{jedwab_permanent_2016}. Geographic controls consist of altitude, temperature, average land suitability, malaria prevalence, yearly growing days, average precipitation, and the fourth-order polynomial of latitude and longitude. Simulation controls are comprised of population, night lights, ruggedness, and a dummy for whether a cell is classified as urban. Results are mostly robust for using only the sub-sample of 32 countries for which this data is available, however the p-value of negative impact of military rails increases to $p=0.013$ (Country FE and Geographic Controls) and $p=0.096$ (Country FE, Geographic, and Simulation Controls). Heteroskedasticity-robust standard errors are clustered on the 3x3 degree level and are shown in parantheses.}
+\end{table}
+% End Figure
+
+
 
 %-------------------------------------------------
 

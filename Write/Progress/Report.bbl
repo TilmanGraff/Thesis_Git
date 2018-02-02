@@ -1,4 +1,4 @@
-\begin{thebibliography}{13}
+\begin{thebibliography}{15}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\urlprefix}{URL }
@@ -26,6 +26,14 @@
 \newblock Optimal Transport Networks in Spatial Equilibrium.
 \newblock Working paper, {National Bureau of Economic Research}
 
+\bibitem[{Henderson et~al.(2018)Henderson, Squires, Storeygard, and
+  Weil}]{henderson_global_2018}
+\textbf{Henderson, J.~Vernon, Tim Squires, Adam Storeygard, and David~N Weil}
+  (\textbf{2018}).
+\newblock The {{Global Spatial Distribution}} of {{Economic Activity}}:
+  {{Nature}}, {{History}}, and the {{Role}} of {{Trade}}.
+\newblock \emph{The Quarterly Journal of Economics} forthcoming
+
 \bibitem[{Henderson et~al.(2012)Henderson, Storeygard, and
   Weil}]{henderson_measuring_2012}
 \textbf{Henderson, J.~Vernon, Adam Storeygard, and David~N Weil}
@@ -33,13 +41,18 @@
 \newblock Measuring {{Economic Growth}} from {{Outer Space}}.
 \newblock \emph{American Economic Review} 102(2), pp. 994--1028
 
-\bibitem[{Henderson et~al.(2018)Henderson, Squires, Storeygard, and
-  Weil}]{henderson_global_2018}
-\textbf{Henderson, Vernon, Tim Squires, Adam Storeygard, and David~N Weil}
-  (\textbf{2018}).
-\newblock The {{Global Spatial Distribution}} of {{Economic Activity}}:
-  {{Nature}}, {{History}}, and the {{Role}} of {{Trade}}.
-\newblock \emph{The Quarterly Journal of Economics} forthcoming
+\bibitem[{Herranz-Lonc{\'a}n and
+  Fourie(2017)}]{Herranz-Loncan_publicbenefitRailways_2017}
+\textbf{Herranz-Lonc{\'a}n, Alfonso and Johan Fourie} (\textbf{2017}).
+\newblock ``{{For}} the Public Benefit''? {{Railways}} in the {{British Cape
+  Colony}}.
+\newblock \emph{European Review of Economic History} pp. 1--28
+
+\bibitem[{Jedwab and Moradi(2016)}]{jedwab_permanent_2016}
+\textbf{Jedwab, Remi and Alexander Moradi} (\textbf{2016}).
+\newblock The {{Permanent Effects}} of {{Transportation Revolutions}} in {{Poor
+  Countries}}: {{Evidence}} from {{Africa}}.
+\newblock \emph{Review of Economics and Statistics} 98(2), pp. 268--284
 
 \bibitem[{Kocornik-Mina et~al.(2015)Kocornik-Mina, McDermott, Michaels, and
   Rauch}]{kocornik-mina_flooded_2015}
@@ -75,15 +88,12 @@
   Center}(2016)}]{socioeconomic_data_and_applications_center_gridded_2016}
 \textbf{{Socioeconomic Data and Applications Center}} (\textbf{2016}).
 \newblock Gridded {{Population}} of the {{World}} ({{GPW}}), v4 | {{SEDAC}}.
-\newblock
-  \url{http://sedac.ciesin.columbia.edu/data/collection/gpw-v4}~(Accessed:
-  \printdate{2017-11-26})
+\newblock \url{http://sedac.ciesin.columbia.edu/data/collection/gpw-v4}
 
 \bibitem[{{The World Bank}(2017)}]{the_world_bank_world_2017}
 \textbf{{The World Bank}} (\textbf{2017}).
 \newblock World {{Development Indicators}}.
 \newblock
-  \url{https://data.worldbank.org/data-catalog/world-development-indicators}~(Accessed:
-  \printdate{2017-12-12})
+  \url{https://data.worldbank.org/data-catalog/world-development-indicators}
 
 \end{thebibliography}

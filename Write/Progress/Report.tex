@@ -19,7 +19,7 @@
  top=25mm,
  bottom=20mm,
  }
-
+\usepackage{ragged2e}
 \usepackage{amssymb}
 \usepackage{caption}
 \usepackage{natbib}
@@ -425,14 +425,108 @@ For these, the unit of observation would be ethnicities. So I would have to aggr
 The trouble with both these approaches is that $\zeta_{c}$ is obviously both an outcome and an effect in the intricate interplay of the political economy of African countries. I don't know to what extend I can actually do inference, or will just have to rely on correlations. We'll see.
 
 
-\section{Next steps}
+\section{Empirical results}
+The following section merely records those regression results I find noteworthy.
+\subsection{Grid-Level patterns}
+My first set of investigations are being performed at the grid level. In general, OLS is run on a framework of the following sense
+\begin{equation}
+  \zeta_{i,c} = \alpha + \beta x_{i,c} + \delta_{c} + \sum_{a}^{}\gamma_{a} z_{i,c}^{a}
+  \label{eq:regression}
+\end{equation}
+where $\zeta_{i,c}$ is the outcome of interest, the infrastructure gap of grid cell $i$ in country $c$. $x_{i,c}$ denotes the covariate of interest, $\delta_{c}$ is a country-fixed effect, and $z_{i,c}^{a}$ denote a set of potential controls. The coefficient of interest is $\beta$.
 
-\begin{enumerate}
-  \item Optimise Matlab Code for better performance, or find better performance elsewhere (1 week)
-  \item Perform Network optimisations (1-2 weeks)
-\end{enumerate}
+I have data on the exact positioning of all railroads built by colonial powers in every Sub-Saharan country. The data for every country but South Africa comes from \cite{jedwab_permanent_2016}. For South-Africa, I manually digitise an equivalent map printed in \cite{Herranz-Loncan_publicbenefitRailways_2017}. From these two sources, I also acquire information on railroads that were planned, but not built, giving a notion of ``Placebo Lines''. For each grid cell, I calculate the distance to the closest railroad (or placebo line) from the cell's centroid. I also calculate the total number of kilometres of colonial (actual and placebo) railroads in each gridcell.
 
-Immediate goal: Have optimal networks calculated by January 1, 2018.
+\begin{table}[] \centering
+  \caption{Colonial Railroads and Infrastructure Gap}
+  \label{RailKM_zeta}
+  \resizebox{0.9\textwidth}{!}{
+
+
+  \begin{tabular}{@{\extracolsep{5pt}}lcccccc}
+  \\[-1.8ex]\hline
+  \hline \\[-1.8ex]
+   & \multicolumn{6}{c}{\textit{Dependent variable: infrastructure gap $\zeta_{i}$}} \\
+  \cline{2-7}
+  \\[-1.8ex] & (1) & (2) & (3) & (4) & (5) & (6)\\
+  \hline \\[-1.8ex]
+   KM of colonial railroads & $-$0.0002$^{***}$ & $-$0.0001$^{***}$ & $-$0.0002$^{***}$ &  &  &  \\
+    & (0.00004) & (0.00004) & (0.00004) &  &  &  \\
+    & & & & & & \\
+   KM of colonial placebo railroads &  &  &  & 0.00004 & $-$0.0002 & $-$0.0003 \\
+    &  &  &  & (0.0003) & (0.0003) & (0.0003) \\
+    & & & & & & \\
+  \hline \\[-1.8ex]
+  Country FE &  & Yes & Yes &  & Yes & Yes \\
+  Geographic controls &  &  & Yes &  &  & Yes \\
+  Observations & 10,158 & 10,158 & 10,158 & 10,158 & 10,158 & 10,158 \\
+  R$^{2}$ & 0.001 & 0.099 & 0.111 & 0.00000 & 0.098 & 0.110 \\
+  \hline
+  \hline \\[-1.8ex]
+  \textit{Note:}  & \multicolumn{6}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\
+  \end{tabular}
+
+}
+
+\justify
+\textit{\\ \footnotesize This table displays results of estimation of equation \ref{eq:regression} on the sample of 0.5x0.5 degree grid cells for the entire African continent (excluding five small countries, see text). Dependent variable is the infrastructure gap for each grid cell. Columns (1)-(3) estimate the effect of colonial infrastructure investments on today's infrastructure gap. Starting with a simple univariate cross-section in (1), column (2) adds 49 country-fixed effects. Column (3) adds geographic controls, consisting of altitude, temperature, average land suitability, malaria prevalence, yearly growing days, average precipitation, and the fourth-order polynomial of latitude and longitude. Columns (4)-(6) repeat this exercise with railroads that were planned, but never built (``placebo railroads''). Results are robust to using only the subsample of 39 countries with any colonial infrastructure investment as reported by \cite{jedwab_permanent_2016}. Heteroskedasticity-robust standard errors are shown in parantheses.}
+\end{table}
+
+
+\begin{table}[] \centering
+  \caption{Distance to Colonial Railroads and General Equilibrium Effects}
+  \label{dist2rail_zeta}
+  \resizebox{0.9\textwidth}{!}{
+
+
+  \begin{tabular}{@{\extracolsep{5pt}}lcccccc}
+  \\[-1.8ex]\hline
+  \hline \\[-1.8ex]
+   & \multicolumn{6}{c}{\textit{Dependent variable:}} \\
+  \cline{2-7}
+  \\[-1.8ex] & \multicolumn{6}{c}{$\zeta$} \\
+  \\[-1.8ex] & (1) & (2) & (3) & (4) & (5) & (6)\\
+  \hline \\[-1.8ex]
+   smaller\_ten & $-$0.014$^{***}$ & $-$0.013$^{***}$ & $-$0.016$^{***}$ &  &  &  \\
+    & (0.003) & (0.003) & (0.003) &  &  &  \\
+    & & & & & & \\
+   ten\_twenty & $-$0.013$^{***}$ & $-$0.013$^{***}$ & $-$0.016$^{***}$ &  &  &  \\
+    & (0.004) & (0.004) & (0.004) &  &  &  \\
+    & & & & & & \\
+   twenty\_thirty & 0.0001 & $-$0.001 & $-$0.004 &  &  &  \\
+    & (0.003) & (0.003) & (0.003) &  &  &  \\
+    & & & & & & \\
+   thirty\_fourty & 0.009$^{**}$ & 0.011$^{***}$ & 0.009$^{**}$ &  &  &  \\
+    & (0.004) & (0.004) & (0.004) &  &  &  \\
+    & & & & & & \\
+   smaller\_ten\_p &  &  &  & 0.003 & $-$0.005 & $-$0.005 \\
+    &  &  &  & (0.004) & (0.004) & (0.004) \\
+    & & & & & & \\
+   ten\_twenty\_p &  &  &  & 0.002 & $-$0.003 & $-$0.004 \\
+    &  &  &  & (0.004) & (0.004) & (0.005) \\
+    & & & & & & \\
+   twenty\_thirty\_p &  &  &  & 0.006 & $-$0.001 & $-$0.001 \\
+    &  &  &  & (0.004) & (0.004) & (0.004) \\
+    & & & & & & \\
+   thirty\_fourty\_p &  &  &  & 0.012$^{***}$ & 0.007 & 0.006 \\
+    &  &  &  & (0.004) & (0.004) & (0.004) \\
+    & & & & & & \\
+  \hline \\[-1.8ex]
+  Country FE &  & Yes & Yes &  & Yes & Yes \\
+  Geographic controls &  &  & Yes &  &  & Yes \\
+  Observations & 10,095 & 10,095 & 10,095 & 10,095 & 10,095 & 10,095 \\
+  R$^{2}$ & 0.004 & 0.100 & 0.113 & 0.001 & 0.097 & 0.109 \\
+  \hline
+  \hline \\[-1.8ex]
+  \textit{Note:}  & \multicolumn{6}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\
+  \end{tabular}
+
+}
+
+\justify
+\textit{\\ \footnotesize This table investigates general equilibrium effects of colonial infrastructure investment. Explanatory variable is distance of grid centroid to the closest railway line. Following \cite{jedwab_permanent_2016}, these distances are binned in brackets (0-10KM), (10-20KM), (20-30KM), (30-40KM), (40+KM). Country-fixed effects are added in columns (2) and (5). Geographic controls, consisting of altitude, temperature, average land suitability, malaria prevalence, yearly growing days, average precipitation, and the fourth-order polynomial of latitude and longitude are added in columns (3) and (6). ``Placebo railroads'' are lines that were initially planned but never realised. Heteroskedasticity-robust standard errors are shown in parantheses.}
+\end{table}
+
 
 \section*{Past supervisor meetings; topics raised and answered}
 
