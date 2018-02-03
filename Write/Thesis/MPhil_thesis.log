@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.6.26)  30 JAN 2018 11:13
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.6.26)  3 FEB 2018 10:49
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1420,11 +1420,11 @@ LaTeX Warning: Reference `eq:regression' on page 11 undefined on input line 302
 
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 309.
+               Default added (so using `tbp') on input line 308.
 
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 367.
+               Default added (so using `tbp') on input line 366.
 
 [11 </Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/outpu
 t/zeta_heatmaps/African_gridcells_zeta.png>] [12] [13] (./MPhil_thesis.bbl [14]
@@ -1440,17 +1440,17 @@ Underfull \hbox (badness 3108) in paragraph at lines 123--128
 Package natbib Warning: There were undefined citations.
 
 [15]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 415.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 415.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 414.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 414.
 (./MPhil_thesis.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 415.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 415.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 414.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 414.
 Package rerunfilecheck Info: File `MPhil_thesis.out' has not changed.
 (rerunfilecheck)             Checksum: BCDDECC948EE38D2E320FBE5868D5FFB;856.
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 415.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 414.
  ) 
 Here is how much of TeX's memory you used:
  21987 strings out of 493014
@@ -1483,7 +1483,7 @@ xmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2016/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2016/texmf
 -dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2016/texmf-d
 ist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on MPhil_thesis.pdf (15 pages, 1264522 bytes).
+Output written on MPhil_thesis.pdf (15 pages, 1264476 bytes).
 PDF statistics:
  441 PDF objects out of 1000 (max. 8388607)
  361 compressed objects within 4 object streams

@@ -54,6 +54,7 @@ for(i in 1:nrow(opt_ethn)){
   opt_ethn[i, "y"] <- mean(subset$y, na.rm=T)
   opt_ethn[i, "first.x"] <- subset[1, "x"]
   opt_ethn[i, "first.y"] <- subset[1, "y"]
+  opt_ethn[i, "RailKM"] <- sum(subset$RailKM, na.rm=T)
 
   if(opt_ethn[i, "pop"] >0 ){
     opt_ethn[i, "zeta"] <- sum(subset$pop * subset$zeta, na.rm=T) / opt_ethn[i, "pop"]

@@ -1,13 +1,13 @@
 # Fdb version 3
-["bibtex MPhil_thesis"] 1517310779 "MPhil_thesis.aux" "MPhil_thesis.bbl" "MPhil_thesis" 1517310783
+["bibtex MPhil_thesis"] 1517310779 "MPhil_thesis.aux" "MPhil_thesis.bbl" "MPhil_thesis" 1517654999
   "./cantoni_copy.bst" 1516833213 31895 97ebb5b7d3397c710458089f7069ce69 ""
-  "MPhil_thesis.aux" 1517310782 9102 51c67fa1886553589440d7d42cb3d536 ""
+  "MPhil_thesis.aux" 1517654998 9102 51c67fa1886553589440d7d42cb3d536 ""
   "MPhil_thesis.bcf" 0 -1 0 ""
   "Thesis_library.bib" 1516968193 92725 31889efed9e4ffdc7e53514956772666 ""
   (generated)
-  "MPhil_thesis.bbl"
   "MPhil_thesis.blg"
-["pdflatex"] 1517310779 "MPhil_thesis.tex" "MPhil_thesis.pdf" "MPhil_thesis" 1517310783
+  "MPhil_thesis.bbl"
+["pdflatex"] 1517654995 "MPhil_thesis.tex" "MPhil_thesis.pdf" "MPhil_thesis" 1517654999
   "/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/zeta_heatmaps/African_countries_zeta.png" 1515410002 206486 50a3870ab45d9f7cfbcba58fa997d451 ""
   "/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/zeta_heatmaps/African_gridcells_zeta.png" 1515411098 294843 8ffd515b26dde929e0ffbe4cfea0e7db ""
   "/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/zeta_heatmaps/Chad_zeta.png" 1515410022 16967 7f7a0b42fbfd824dd3d483fe7af2f575 ""
@@ -229,12 +229,12 @@
   "/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1466971120 1888048 f2c5faed5981a516f406b2ccc20bff71 ""
   "/usr/local/texlive/2016/texmf-var/web2c/pdftex/pdflatex.fmt" 1466971197 3873397 8a9803c9a2ff9bda306fedbddebc13fa ""
   "/usr/local/texlive/2016/texmf.cnf" 1463979140 577 2938757e76f31531e65cc647e3507693 ""
-  "MPhil_thesis.aux" 1517310782 9102 51c67fa1886553589440d7d42cb3d536 ""
+  "MPhil_thesis.aux" 1517654998 9102 51c67fa1886553589440d7d42cb3d536 ""
   "MPhil_thesis.bbl" 1517310779 5771 66ebdce32dcdecdcd8a863a0757813ae "bibtex MPhil_thesis"
-  "MPhil_thesis.out" 1517310782 856 bcddecc948ee38d2e320fbe5868d5ffb ""
-  "MPhil_thesis.tex" 1517310775 46450 4a3a9a0cba1e761f7117b8a12a81bba6 ""
+  "MPhil_thesis.out" 1517654998 856 bcddecc948ee38d2e320fbe5868d5ffb ""
+  "MPhil_thesis.tex" 1517310812 46449 3d8c0afd1b5d5c569034d91ea901654f ""
   (generated)
+  "MPhil_thesis.aux"
   "MPhil_thesis.out"
   "MPhil_thesis.log"
-  "MPhil_thesis.aux"
   "MPhil_thesis.pdf"
