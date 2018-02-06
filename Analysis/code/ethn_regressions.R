@@ -18,6 +18,9 @@ opt_acled$y_3 <- opt_acled$y^3
 opt_acled$y_4 <- opt_acled$y^4
 
 
+rm(list=ls(pattern="mod")) # this removes all models from the RStudio environment
+
+
 ############
 # Zeta on split
 ############
@@ -41,32 +44,34 @@ opt_acled$fatal_d <- opt_acled$fatal > 0
 opt_acled$vio_d <- opt_acled$vio > 0
 opt_acled$riots_d <- opt_acled$riots > 0
 #
-# mod.1.1 <- glm.nb(all~zeta+factor(country)+log(km2split)+altitude+temp+landsuit+malaria+growingdays+precip+lakedum+riverdum+petroleum+diamondd+split5pc+x+x_2+x_3+x_4+y+y_2+y_3+y_4+pop+lights+rugg+urban, data=opt_acled)
-# #mod.1.2 <- lm(all_d~zeta+factor(country)+log(km2split)+altitude+temp+landsuit+malaria+growingdays+precip+lakedum+riverdum+petroleum+diamondd+split5pc+x+x_2+x_3+x_4+y+y_2+y_3+y_4+pop+lights+rugg+urban, data=opt_acled)
-#
-# mod.2.1 <- glm.nb(battles~zeta+factor(country)+log(km2split)+altitude+temp+landsuit+malaria+growingdays+precip+lakedum+riverdum+petroleum+diamondd+split5pc+x+x_2+x_3+x_4+y+y_2+y_3+y_4+pop+lights+rugg+urban, data=opt_acled)
-# #mod.2.2 <- lm(fatal_d~zeta+factor(country)+log(km2split)+altitude+temp+landsuit+malaria+growingdays+precip+lakedum+riverdum+petroleum+diamondd+split5pc+x+x_2+x_3+x_4+y+y_2+y_3+y_4+pop+lights+rugg+urban, data=opt_acled)
-#
-# mod.3.1 <- glm.nb(vio~zeta+factor(country)+log(km2split)+altitude+temp+landsuit+malaria+growingdays+precip+lakedum+riverdum+petroleum+diamondd+split5pc+x+x_2+x_3+x_4+y+y_2+y_3+y_4+pop+lights+rugg+urban, data=opt_acled)
-# #mod.3.2 <- lm(vio_d~zeta+factor(country)+log(km2split)+altitude+temp+landsuit+malaria+growingdays+precip+lakedum+riverdum+petroleum+diamondd+split5pc+x+x_2+x_3+x_4+y+y_2+y_3+y_4+pop+lights+rugg+urban, data=opt_acled)
-#
-# mod.4.1 <- glm.nb(riots~zeta+factor(country)+log(km2split)+altitude+temp+landsuit+malaria+growingdays+precip+lakedum+riverdum+petroleum+diamondd+split5pc+x+x_2+x_3+x_4+y+y_2+y_3+y_4+pop+lights+rugg+urban, data=opt_acled)
-# #mod.4.2 <- lm(riots_d~zeta+factor(country)+log(km2split)+altitude+temp+landsuit+malaria+growingdays+precip+lakedum+riverdum+petroleum+diamondd+split5pc+x+x_2+x_3+x_4+y+y_2+y_3+y_4+pop+lights+rugg+urban, data=opt_acled)
-#
-#
-# covariate_labels <- c("Zeta")
+mod.1.1 <- glm.nb(all~zeta+factor(country)+log(km2split)+altitude+temp+landsuit+malaria+growingdays+precip+lakedum+riverdum+petroleum+diamondd+split5pc+x+x_2+x_3+x_4+y+y_2+y_3+y_4+pop+lights+rugg+urban, data=opt_acled)
+#mod.1.2 <- lm(all_d~zeta+factor(country)+log(km2split)+altitude+temp+landsuit+malaria+growingdays+precip+lakedum+riverdum+petroleum+diamondd+split5pc+x+x_2+x_3+x_4+y+y_2+y_3+y_4+pop+lights+rugg+urban, data=opt_acled)
+
+mod.2.1 <- glm.nb(battles~zeta+factor(country)+log(km2split)+altitude+temp+landsuit+malaria+growingdays+precip+lakedum+riverdum+petroleum+diamondd+split5pc+x+x_2+x_3+x_4+y+y_2+y_3+y_4+pop+lights+rugg+urban, data=opt_acled)
+#mod.2.2 <- lm(fatal_d~zeta+factor(country)+log(km2split)+altitude+temp+landsuit+malaria+growingdays+precip+lakedum+riverdum+petroleum+diamondd+split5pc+x+x_2+x_3+x_4+y+y_2+y_3+y_4+pop+lights+rugg+urban, data=opt_acled)
+
+#mod.3.1 <- glm.nb(vio~zeta+factor(country)+log(km2split)+altitude+temp+landsuit+malaria+growingdays+precip+lakedum+riverdum+petroleum+diamondd+split5pc+x+x_2+x_3+x_4+y+y_2+y_3+y_4+pop+lights+rugg+urban, data=opt_acled)
+#mod.3.2 <- lm(vio_d~zeta+factor(country)+log(km2split)+altitude+temp+landsuit+malaria+growingdays+precip+lakedum+riverdum+petroleum+diamondd+split5pc+x+x_2+x_3+x_4+y+y_2+y_3+y_4+pop+lights+rugg+urban, data=opt_acled)
+
+mod.4.1 <- glm.nb(riots~zeta+factor(country)+log(km2split)+altitude+temp+landsuit+malaria+growingdays+precip+lakedum+riverdum+petroleum+diamondd+split5pc+x+x_2+x_3+x_4+y+y_2+y_3+y_4+pop+lights+rugg+urban, data=opt_acled)
+#mod.4.2 <- lm(riots_d~zeta+factor(country)+log(km2split)+altitude+temp+landsuit+malaria+growingdays+precip+lakedum+riverdum+petroleum+diamondd+split5pc+x+x_2+x_3+x_4+y+y_2+y_3+y_4+pop+lights+rugg+urban, data=opt_acled)
+
+mod.5.1 <- glm.nb(sum_state_no~zeta+factor(country)+log(km2split)+altitude+temp+landsuit+malaria+growingdays+precip+lakedum+riverdum+petroleum+diamondd+split5pc+x+x_2+x_3+x_4+y+y_2+y_3+y_4+pop+lights+rugg+urban, data=opt_acled)
+
+mod.6.1 <- glm.nb(sum_nonstate_no~zeta+factor(country)+log(km2split)+altitude+temp+landsuit+malaria+growingdays+precip+lakedum+riverdum+petroleum+diamondd+split5pc+x+x_2+x_3+x_4+y+y_2+y_3+y_4+pop+lights+rugg+urban, data=opt_acled)
+
+mod.7.1 <- glm.nb(sum_onesided_no~zeta+factor(country)+log(km2split)+altitude+temp+landsuit+malaria+growingdays+precip+lakedum+riverdum+petroleum+diamondd+split5pc+x+x_2+x_3+x_4+y+y_2+y_3+y_4+pop+lights+rugg+urban, data=opt_acled)
+
+
+covariate_labels <- c("Zeta")
 
 
 ###################
 # IV stuff
 
-#mod.OLS <- lm(zeta~RailKM_military+factor(country)+altitude+temp+landsuit+malaria+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+pop, data=opt_loc)
-mod.IV <- ivreg(riots_d~zeta+factor(country)+log(km2split)+altitude+temp+landsuit+malaria+growingdays+precip+lakedum+riverdum+petroleum+diamondd+split5pc+x+x_2+x_3+x_4+y+y_2+y_3+y_4+pop+lights+rugg+urban | . - zeta + RailKM, data=opt_acled)
-
-# # all of this does not work. My idea being maybe that being close to the emst somehow indicates that this is a smartly positioned railway. Those will obviously not be re-arranged?
-
-
-covariate_labels <- c("IV Zeta")
+# mod.IV <- ivreg(riots_d~zeta+factor(country)+log(km2split)+altitude+temp+landsuit+malaria+growingdays+precip+lakedum+riverdum+petroleum+diamondd+split5pc+x+x_2+x_3+x_4+y+y_2+y_3+y_4+pop+lights+rugg+urban | . - zeta + RailKM, data=opt_acled)
+#
+# covariate_labels <- c("IV Zeta")
 
 
 

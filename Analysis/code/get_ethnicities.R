@@ -57,7 +57,14 @@ for(i in 1:nrow(opt_ethn)){
   opt_ethn[i, "RailKM"] <- sum(subset$RailKM, na.rm=T)
 
   if(opt_ethn[i, "pop"] >0 ){
-    opt_ethn[i, "zeta"] <- sum(subset$pop * subset$zeta, na.rm=T) / opt_ethn[i, "pop"]
+    opt_ethn[i, "zeta_1"] <- sum(subset$pop * subset$zeta, na.rm=T) / opt_ethn[i, "pop"]
+  } else{
+    opt_ethn[i, "zeta_1"] <- NA
+  }
+
+
+  if(opt_ethn[i, "pop"] >0 ){
+    opt_ethn[i, "zeta"] <- (sum(subset$pop * subset$util_opt)  / sum(subset$pop * subset$util_stat))
   } else{
     opt_ethn[i, "zeta"] <- NA
   }
@@ -86,6 +93,33 @@ for(i in 1:length(iso)){
   epr[epr$wbcode == iso[i], "country"] <- countryname[i]
 }
 
+epr_sudan <- epr[epr$country %in% c("South-Sudan", "Sudan"),]
+
+for(i in epr_sudan$name){ # this classifies clearly South Sudan and cleary Sudan ethnicities. I am losing 34 ethnicities who are present on both sides of the border, as the acled did not code this back then.
+  if(i %in% opt_ethn[opt_ethn$country=="South-Sudan", "ethn_NAME"] & !(i %in% opt_ethn[opt_ethn$country=="Sudan", "ethn_NAME"])){
+    epr[epr$name == i, "country"] <- "South-Sudan"
+  } else{
+    if(i %in% opt_ethn[opt_ethn$country=="Sudan", "ethn_NAME"] & !(i %in% opt_ethn[opt_ethn$country=="South-Sudan", "ethn_NAME"])){
+      epr[epr$name == i, "country"] <- "Sudan"
+    } else{
+      epr[epr$name == i, "country"] <- NA
+    }
+  }
+}
+
+
+epr$country <- gsub(" ", "-", epr$country)
+epr$country <- gsub("'", "", epr$country)
+
+epr[grepl("dIvoire", epr$country), "country"] <- "Cote-dIvoire"
+epr[grepl("Congo,-Dem.", epr$country), "country"] <- "Democratic-Republic-of-the-Congo"
+epr[grepl("Congo,-Rep.", epr$country), "country"] <- "Congo"
+epr[grepl("Egypt,-Arab-Rep", epr$country), "country"] <- "Egypt"
+epr[grepl("Tanzania", epr$country), "country"] <- "United-Republic-of-Tanzania"
+
+epr_merged <- merge(opt_ethn, epr, by.x=c("country", "ethn_NAME"), by.y=c("country", "name"))
+
+write.csv(epr_merged, file="/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/temp/opt_epr.csv", row.names = FALSE)
 
 ######################
 # Importing ACLED data
@@ -93,7 +127,7 @@ for(i in 1:length(iso)){
 
 acled <- read.dta13("/Users/Tilmanski/Downloads/codes_aer_journal/aer_all2013.dta")
 
-acled_subset <- acled[,c("ccountry", "name", "km2split", "lakedum", "riverdum", "petroleum", "diamondd", "split10pc", "split5pc", "all", "fatal", "allf", "allm", "allmm", "battles", "vio", "riots", "govt", "civilians", "rebels", "mil", "external", "intervention", "outside", "dur", "durm", "durdead")]
+acled_subset <- acled[,c("ccountry", "name", "km2split", "lakedum", "riverdum", "petroleum", "diamondd", "split10pc", "split5pc", "all", "fatal", "allf", "allm", "allmm", "battles", "vio", "riots", "govt", "civilians", "rebels", "mil", "external", "intervention", "outside", "dur", "durm", "durdead", "sum_state_no", "sum_onesided_no", "sum_nonstate_no")]
 
 acled_sudan <- acled_subset[acled_subset$ccountry %in% c("South-Sudan", "Sudan"),]
 
@@ -119,12 +153,16 @@ acled_subset[grepl("Egypt,-Arab-Rep", acled_subset$ccountry), "ccountry"] <- "Eg
 acled_subset[grepl("Tanzania", acled_subset$ccountry), "ccountry"] <- "United-Republic-of-Tanzania"
 
 acled_merged <- merge(opt_ethn, acled_subset, by.x=c("country", "ethn_NAME"), by.y=c("ccountry", "name"))
+
 write.csv(acled_merged, file="/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/temp/opt_acled.csv", row.names = FALSE)
+
+
+
 
 ##############
 # Ethnicity heatmap
 ##############
-
+#
 # ethn_all <- readOGR("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/input/Murdock_EA_2011_vkZ/Murdock_EA_2011_vkZ.shp")
 #
 # world <- readOGR("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/input/World_Countries/TM_WORLD_BORDERS-0.3.shp") # reads in the global country shapefile
