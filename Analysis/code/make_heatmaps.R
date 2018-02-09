@@ -139,7 +139,7 @@ for(country in country_names){
 ###
 # 3) for all countries on this smaller scale
 
-my.palette <- rev(brewer.pal(n = 11, name = "RdYlGn")) # for an orange palette
+my.palette <- (brewer.pal(n = 9, name = "OrRd")) # for an orange palette
 
 
 
@@ -173,15 +173,15 @@ edges[1, ] <- (edges[1, ] - mean(edges[1, ])) * scale.parameter + mean(edges[1,
 edges[2, ] <- (edges[2, ] - mean(edges[2, ])) * scale.parameter + mean(edges[2,
     ]) + yshift
 
-breaks_qt <- classIntervals(polygon_dataframe$zeta, n = 11, style = "quantile")
+breaks_qt <- classIntervals(polygon_dataframe$zeta, n = 9, style = "quantile")
 br <- breaks_qt$brks
 offs <- 0.0000001
 br[1] <- br[1] - offs
 br[length(br)] <- br[length(br)] + offs
 polygon_dataframe$zeta_bracket <- cut(polygon_dataframe$zeta, br)
 
- #png(filename=paste("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/zeta_heatmaps/African_gridcells_zeta.png", sep=""), width=6, height=6, units = 'in', res = 300)
+ png(filename=paste("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/zeta_heatmaps/African_gridcells_zeta.png", sep=""), width=6, height=6, units = 'in', res = 300)
 
-print(spplot(polygon_dataframe, "zeta_bracket", col="transparent", col.regions=my.palette, cuts=10, xlim=edges[1,], ylim=edges[2,], main = "Africa"))
+print(spplot(polygon_dataframe, "zeta_bracket", col="transparent", col.regions=my.palette, cuts=8, xlim=edges[1,], ylim=edges[2,], main = "Africa"))
 
- #dev.off()
+ dev.off()

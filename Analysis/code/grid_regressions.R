@@ -9,14 +9,17 @@ library("ivpack", lib.loc="/Library/Frameworks/R.framework/Versions/3.4/Resource
 rm(list=ls(pattern="mod")) # this removes all models from the RStudio environment
 
 opt_loc <- read.csv("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/temp/opt_loc_with_raildist.csv")
+borders <- read.csv("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/temp/borders.csv")
+
+opt_loc <- merge(opt_loc, borders, by=c("country", "rownumber"))
 
 jedwab_countries <- c("Angola", "Benin", "Guinea-Bissau", "Botswana", "Burkina-Faso", "Burundi", "Cameroon", "Central-African-Republic", "Chad", "Congo", "Democratic-Republic-of-the-Congo", "Djibouti", "Equatorial-Guinea", "Eritrea", "Ethiopia", "Gabon", "Gambia", "Ghana", "Guinea", "Cote-dIvoire", "Kenya", "Liberia", "Malawi", "Mali", "Mauritania", "Mozambique", "Namibia", "Niger", "Nigeria", "Rwanda", "Senegal", "Sierra-Leone", "Somalia", "Sudan", "South-Sudan", "United-Republic-of-Tanzania", "Togo", "Uganda", "Zambia", "Zimbabwe", "South-Africa")
 
 jedwab_countries_via_all_rails <- c("Angola", "Benin", "Botswana", "Burkina-Faso", "Burundi", "Cameroon", "Congo", "Democratic-Republic-of-the-Congo", "Djibouti", "Equatorial-Guinea", "Eritrea", "Ethiopia", "Ghana", "Guinea", "Cote-dIvoire", "Kenya", "Liberia", "Malawi", "Mali", "Mozambique", "Namibia", "Nigeria", "Senegal", "Sierra-Leone", "Somalia", "Sudan", "South-Sudan", "United-Republic-of-Tanzania", "Togo", "Uganda", "Zambia", "Zimbabwe", "South-Africa")
 
 opt_loc <- opt_loc[!is.na(opt_loc$RailKM) & !is.na(opt_loc$PlaceboKM) & !is.na(opt_loc$cluster),]
-opt_loc <- opt_loc[opt_loc$country %in% jedwab_countries_via_all_rails,]
-opt_loc <- opt_loc[opt_loc$country != "South-Africa",]
+#opt_loc <- opt_loc[opt_loc$country %in% jedwab_countries_via_all_rails,]
+#opt_loc <- opt_loc[opt_loc$country != "South-Africa",]
 
 
 opt_loc$x_2 <- opt_loc$x^2
@@ -27,20 +30,22 @@ opt_loc$y_2 <- opt_loc$y^2
 opt_loc$y_3 <- opt_loc$y^3
 opt_loc$y_4 <- opt_loc$y^4
 
-# ###################
-# # RailKM
-# #
-# mod.1 <- lm(zeta~RailKM, data=opt_loc)
-# mod.2 <- lm(zeta~RailKM+factor(country), data=opt_loc)
-# mod.3 <- lm(zeta~RailKM+factor(country)+altitude+temp+landsuit+malaria+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4, data=opt_loc)
-# mod.4 <- lm(zeta~RailKM+factor(country)+altitude+temp+landsuit+malaria+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+pop+urban, data=opt_loc)
+opt_loc$border_cell <- opt_loc$border < 8
+
+###################
+# RailKM
 #
-# mod.5 <- lm(zeta~PlaceboKM, data=opt_loc)
-# mod.6 <- lm(zeta~PlaceboKM+factor(country), data=opt_loc)
-# mod.7 <- lm(zeta~PlaceboKM+factor(country)+altitude+temp+landsuit+malaria+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4, data=opt_loc)
-# mod.8 <- lm(zeta~PlaceboKM+factor(country)+altitude+temp+landsuit+malaria+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+pop+urban, data=opt_loc)
-#
-# covariate_labels <- c("KM of Colonial Railroads", "KM of Colonial Placebo Railroads")
+mod.1 <- lm(zeta~RailKM, data=opt_loc)
+mod.2 <- lm(zeta~RailKM+factor(country), data=opt_loc)
+mod.3 <- lm(zeta~RailKM+factor(country)+altitude+temp+landsuit+malaria+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+border, data=opt_loc)
+mod.4 <- lm(zeta~RailKM+factor(country)+altitude+temp+landsuit+malaria+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+pop+urban+border, data=opt_loc)
+
+mod.5 <- lm(zeta~PlaceboKM, data=opt_loc)
+mod.6 <- lm(zeta~PlaceboKM+factor(country), data=opt_loc)
+mod.7 <- lm(zeta~PlaceboKM+factor(country)+altitude+temp+landsuit+malaria+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+border, data=opt_loc)
+mod.8 <- lm(zeta~PlaceboKM+factor(country)+altitude+temp+landsuit+malaria+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+pop+urban+border, data=opt_loc)
+
+covariate_labels <- c("KM of Colonial Railroads", "KM of Colonial Placebo Railroads")
 
 
 ###################
@@ -59,16 +64,16 @@ opt_loc$y_4 <- opt_loc$y^4
 #
 # #mod.1 <- lm(zeta~smaller_ten+ten_twenty+twenty_thirty+thirty_fourty, data=opt_loc)
 # mod.2 <- lm(zeta~smaller_ten+ten_twenty+twenty_thirty+thirty_fourty+factor(country), data=opt_loc)
-# mod.3 <- lm(zeta~smaller_ten+ten_twenty+twenty_thirty+thirty_fourty+factor(country)+altitude+temp+landsuit+malaria+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4, data=opt_loc)
-# mod.4 <- lm(zeta~smaller_ten+ten_twenty+twenty_thirty+thirty_fourty+factor(country)+altitude+temp+landsuit+malaria+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+urban+pop, data=opt_loc)
+# mod.3 <- lm(zeta~smaller_ten+ten_twenty+twenty_thirty+thirty_fourty+factor(country)+altitude+temp+landsuit+malaria+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+border, data=opt_loc)
+# mod.4 <- lm(zeta~smaller_ten+ten_twenty+twenty_thirty+thirty_fourty+factor(country)+altitude+temp+landsuit+malaria+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+urban+pop+border, data=opt_loc)
 #
 # #mod.5 <- lm(zeta~smaller_ten_p+ten_twenty_p+twenty_thirty_p+thirty_fourty_p, data=opt_loc)
 # mod.6 <- lm(zeta~smaller_ten_p+ten_twenty_p+twenty_thirty_p+thirty_fourty_p+factor(country), data=opt_loc)
-# mod.7 <- lm(zeta~smaller_ten_p+ten_twenty_p+twenty_thirty_p+thirty_fourty_p+factor(country)+altitude+temp+landsuit+malaria+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4, data=opt_loc)
-# mod.8 <- lm(zeta~smaller_ten_p+ten_twenty_p+twenty_thirty_p+thirty_fourty_p+factor(country)+altitude+temp+landsuit+malaria+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+urban+pop, data=opt_loc)
+# mod.7 <- lm(zeta~smaller_ten_p+ten_twenty_p+twenty_thirty_p+thirty_fourty_p+factor(country)+altitude+temp+landsuit+malaria+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+border, data=opt_loc)
+# mod.8 <- lm(zeta~smaller_ten_p+ten_twenty_p+twenty_thirty_p+thirty_fourty_p+factor(country)+altitude+temp+landsuit+malaria+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+urban+pop+border, data=opt_loc)
 #
-# mod.9.1.small <- lm(zeta~smaller_ten+ten_twenty+twenty_thirty+thirty_fourty+factor(country)+altitude+temp+landsuit+malaria+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+urban+pop, data=data_small)
-# mod.9.2.small <- lm(zeta~smaller_ten_p+ten_twenty_p+twenty_thirty_p+thirty_fourty_p+factor(country)+altitude+temp+landsuit+malaria+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+urban+pop, data=data_small)
+# mod.9.1.small <- lm(zeta~smaller_ten+ten_twenty+twenty_thirty+thirty_fourty+factor(country)+altitude+temp+landsuit+malaria+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+urban+pop+border, data=data_small)
+# mod.9.2.small <- lm(zeta~smaller_ten_p+ten_twenty_p+twenty_thirty_p+thirty_fourty_p+factor(country)+altitude+temp+landsuit+malaria+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+urban+pop+border, data=data_small)
 #
 # covariate_labels <- c("$<10$ KM to Colonial Railroad", "$10-20$ KM to Colonial Railroad", "$20-30$ KM to Colonial Railroad", "$30-40$ KM to Colonial Railroad", "$<10$ KM to Colonial Placebo Railroad", "$10-20$ KM to Colonial Placebo Railroad", "$20-30$ KM to Colonial Placebo Railroad", "$30-40$ KM to Colonial Placebo Railroad")
 #
@@ -89,17 +94,17 @@ opt_loc$y_4 <- opt_loc$y^4
 # Heterogeneous Rails
 #
 #
-# mod.1 <- lm(zeta~RailKM_military+factor(country)+altitude+temp+landsuit+malaria+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4, data=opt_loc)
-# mod.2 <- lm(zeta~RailKM_military+factor(country)+altitude+temp+landsuit+malaria+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+pop, data=opt_loc)
+# mod.1 <- lm(zeta~RailKM_military+factor(country)+altitude+temp+landsuit+malaria+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+border, data=opt_loc)
+# mod.2 <- lm(zeta~RailKM_military+factor(country)+altitude+temp+landsuit+malaria+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+pop+border, data=opt_loc)
 #
-# mod.3 <- lm(zeta~RailKM_mining+factor(country)+altitude+temp+landsuit+malaria+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4, data=opt_loc)
-# mod.4 <- lm(zeta~RailKM_mining+factor(country)+altitude+temp+landsuit+malaria+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+pop, data=opt_loc)
+# mod.3 <- lm(zeta~RailKM_mining+factor(country)+altitude+temp+landsuit+malaria+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+border, data=opt_loc)
+# mod.4 <- lm(zeta~RailKM_mining+factor(country)+altitude+temp+landsuit+malaria+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+pop+border, data=opt_loc)
 #
-# mod.5 <- lm(zeta~RailKM_military+RailKM_mining+factor(country)+altitude+temp+landsuit+malaria+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4, data=opt_loc)
-# mod.6 <- lm(zeta~RailKM_military+RailKM_mining+factor(country)+altitude+temp+landsuit+malaria+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+pop, data=opt_loc)
+# mod.5 <- lm(zeta~RailKM_military+RailKM_mining+factor(country)+altitude+temp+landsuit+malaria+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+border, data=opt_loc)
+# mod.6 <- lm(zeta~RailKM_military+RailKM_mining+factor(country)+altitude+temp+landsuit+malaria+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+pop+border, data=opt_loc)
 #
 # covariate_labels <- c("KM of Colonial Rails for Military Purposes", "KM of Colonial Rails for Mining Purposes")
-#
+
 
 ###################
 # IV stuff
@@ -174,4 +179,4 @@ for(i in ls(pattern="mod.")){
 control_list = list(country, geog, sim_controls)
 
 
-stargazer(mo_list, se=se_list, type="text",  keep = c("ail", "placebo", "KM", "ten", "thirty", "smaller"), p.auto=TRUE, t.auto=TRUE, add.lines=control_list, keep.stat=c("rsq", "n"), covariate.labels = covariate_labels)
+stargazer(mo_list, se=se_list, type="latex",  keep = c("ail", "placebo", "KM", "ten", "thirty", "smaller"), p.auto=TRUE, t.auto=TRUE, add.lines=control_list, keep.stat=c("rsq", "n"), covariate.labels = covariate_labels)
