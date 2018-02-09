@@ -41,6 +41,11 @@
 
 %\def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;}
 
+
+\let\oldref\ref
+\renewcommand{\ref}[1]{(\oldref{#1})}
+
+
 \title{Inefficient African Trade Networks}
 \author{Tilman Graff -- University of Oxford}
 \date{\today}
@@ -56,11 +61,100 @@
 
 \section{Introduction}
 
-\section{The \cite{fajgelbaum_optimal_2017} model of Optimal Transport Networks}
+\section{A model of Optimal Transport Networks}
 
+Are African roads where they should be? To gain a notion of transport network efficiency, the first step is to identify the optimal allocation of roads for a given country. If a social planner were to observe a country's geography, where would she place highways and footpaths, and which regions would she leave unconnected? Intuitively, this optimal network should succeed in connecting regions with a heavy interest in beneficial trade, place roads only where they are cheap to build, and avoid overspending on roads that nobody ever uses.
+
+Optimising over the space of possible network has proven to be challenging to researchers and policymakers alike. The many contingencies and non-linearities of the network structure make it hard to obtain a unique closed-form solution to the problem. The large number of possible connections between locations have, furthermore, led to computational challenges. Researchers and practitioners have hence often been left only with slow, iterative algorithms to obtain a notion of local network optimality. A recent contribution by \cite{fajgelbaum_optimal_2017}, however, manages to circumvent these issues. Under a number of reasonable assumptions, it paves the way for obtaining closed-form solutions to the problem of optimal transport networks without straining computational capabilities all too much. It thereby allows for nesting many of the standard models of the trade literature and can thus flexibly be tailored to the question at hand. This thesis harnesses a version of the \citeauthor{fajgelbaum_optimal_2017} framework to compute the optimal transport network for every African country. The model is introduced in the following paragraphs, chapter \ref{chapter:calibration} then describes the procedure used to bring the model to the data.
+
+\subsection{Geography}
+
+Following the set-up and notation of \cite{fajgelbaum_optimal_2017}, I consider a set of locations $\mathcal{I} =\{ 1,...,I\}$. Each location $i \in \mathcal{I}$ inhabits a number of homogeneous consumers $L_{i}$. This number is treated as given and fixed for every location, such that consumers are not allowed to move between locations. Each consumer has an identical set of preferences characterised by
+\begin{equation*}
+  u = c^{\alpha}
+\end{equation*}
+where $c$ denotes per capita consumption. Due to the symmetry of consumers in every location, per capita consumption (and therefore utility) is identical for every consumer within each location, such that every consumer in location $i$ consumes $c_{i}$. It is sensible to further denote
+\begin{equation*}
+  C_{i} = L_{i}c_{i}
+\end{equation*}
+as total consumption in location $i$.
+
+There are $N$ goods denoted by $n =\{ 1,...,N\}$. Total consumption in each location is defined as the CES aggregation of these goods
+\begin{equation*}
+  C_{i} = \bigg( \sum_{n=1}^{N} (C_{i}^{n})^{\frac{\sigma-1}{\sigma}}\bigg)^{\frac{\sigma}{\sigma-1}}
+\end{equation*}
+where $\sigma$ denotes the standard elasticity of substitution and $C_{i}^{n}$ denotes the supply of good $n$ in location $i$. Locations specialise in the production of goods such that each location only supplies one variety $n \in N$. Let
+\begin{equation*}
+  Y_{i} = Y_{i}^{n}
+\end{equation*}
+denote the total production output of location $i$. In contrast to \citeauthor{fajgelbaum_optimal_2017}, my version of the model takes output levels as given and hence does not take a stand on how the output is produced. It is conceivable to think of a production function in which consumers produce goods themselves or an environment in which capital does the work for them. Importantly, however, by remaining agnostic about the production process, output levels are treated as fixed throughout the analysis. The only assumption about the supply side of the economy is perfect specialisation on one of the goods, which does not allow locations to choose between different production opportunities.
+
+\subsection{Network Topography}
+Locations $\mathcal{I}$ can be conceived as representing the nodes of an undirected network graph. Each location $i$ is directly connected to a set of neighbours $N(i) \in \mathcal{I}$. I consider locations to lie on a two-dimensional rectangular grid where each node is connected to its eight surrounding nodes to the North, North-East, East, and so on. Nodes at the border of the network graph might have fewer than eight neighbours. Let $\mathcal{E}$ denote the set of edges connecting neighbouring nodes and note that $(\mathcal{I}, \mathcal{E})$ fully describes the underlying network topography.
+
+All goods can be traded within the network. Let $Q_{i,k}^{n}$ denote the total flow of good $n$ travelling between nodes $i$ and $k$. The network shapes trade flows in the sense that goods can only be shipped between neighbouring nodes. However, nothing prevents goods to travel far distances through the network by passing multiple locations after each other. To send a good on to a far away destination, the optimal trade route will potentially make multiple stop-overs in intermediate locations. The entire flow-topography of the trade network can hence be modelled simply by considering flows between neighbouring nodes.\footnote{While I follow the notation of \cite{fajgelbaum_optimal_2017}, the set up so far is very similar to many of the recent contributions in the theory of trade in networks, like \cite{allen_welfare_2016} or \cite{Galichon_OptimalTransportMethods_2016}.}
+
+Shipping goods from location $i$ to location $k \in N(i)$ incurs trade costs, which are modelled in the canonical iceberg form. In order for 1 unit of good $n$ to arrive at location $k$, origin location $i$ has to send $(1+\tau_{i,k}^{n})$ units on its way. $\tau_{i,k}^{n}$ can be understood as a tax on transport, causing a fraction of goods to not arrive in the destination location. This iceberg formulation has analytical advantages, as it makes modelling an entire transport sector superfluous. Importantly, barriers to trade are the dimension through which geography is introduced to the model. It is now costly for goods to travel elaborate and long routes through the network and notions of distance and connectedness start to play a role. The main assumption in \citeauthor{fajgelbaum_optimal_2017}'s derivation of optimal networks is then about the functional form of $\tau_{i,k}^{n}$. In particular, the authors model iceberg trade costs for shipping good $n$ between neighbouring locations $i$ and $k$ as
+\begin{equation}
+  \tau_{i,k}^{n} = \delta^{\tau}_{j, k} \frac{(Q_{i,k}^{n})^{\beta}}{I_{i,k}^{\gamma}}
+  \label{eq:tau}
+\end{equation}
+where $I_{i,k}$ is defined as the level of \emph{infrastructure} on the edge between nodes $i$ and $k$. Since model parameters are restricted at $\delta^{\tau}_{j, k}, \beta, \gamma >0$, more infrastructure on a given link decreases the cost of trading between them. $I_{i,k}$ will later be calibrated more succinctly, but for now it suffices to picture anything that might make trade costs between two locations smaller, like broader and better roads, less detours, faster train tracks, an the like. In a first-best scenario, infrastructure between all nodes would be set infinitely high to wash away all trade costs and enable goods to travel seamlessly through the entire network. As $I_{i,k}$ is independent from $n$, higher infrastructure between two nodes will benefit the trade of all goods travelling on this edge. $\delta^{\tau}_{j, k}$ is a scaling parameter, which allows trade costs to be flexibly adjusted for any given origin-destination pair. Note that $\delta^{\tau}_{j, k}$ is also  independent of good $n$. In later calibrations, the main component of $\delta^{\tau}_{j, k}$ will be the geographical distance between locations $i$ and $k$. Distance is thought to increase trade costs independent of infrastructure provision on the travelled link.
+
+The strongest assumption of the \citeauthor{fajgelbaum_optimal_2017} framework is the dependence of trade costs on $Q_{i,k}^{n}$, the total flow of goods on the link. Higher existing trade volumes on any given edge make sending an additional good more costly, a dynamic the authors refer to as \emph{congestion}. A few things are worth noting about this assumption. First, congestion plays the role of an externality in the trade network. Sending one additional unit of goods from $i$ to $k$ makes all other existing shipments more expensive. The social planner realises this and takes congestion into account when determining optimal trade flows.\footnote{Perhaps not surprisingly, the existence of a negative externality will lead to over-provision of trade in the decentralised market solution to the problem. In their technical appendix, however, \citeauthor{fajgelbaum_optimal_2017} demonstrate how a moderately straightforward transport tax can internalise the externality and establish the applicability of the two welfare theorems. As this thesis stays in the social-planner conception of the problem, such decentralisation conditions are of minor concern going forward.} Second, congestion forces \emph{are} allowed to vary with different goods. While analytically appealing, this assumption might strike the reader as odd at first. Congestion for transporting some good $n$ is only caused by existing trade flows of the same good. No matter how many other goods are being pushed through an edge, each one only causes congestion nuisances for other shipments of the same variety. While \citeauthor{fajgelbaum_optimal_2017} demonstrate a way to circumvent this peculiarity of the model, as will be discussed soon the assumption has clear analytical advantages and is hence kept for the purpose of this thesis.
+
+In equilibrium, each location cannot consume and export more than it produced and imported. More formally
+\begin{equation}
+  C_{i}^{n} + \sum_{k\in N(i)}^{}Q_{i,k}^{n}(1+\tau_{i,k}^{n}(Q_{i,k}^{n}, I_{i,k})) \leq Y_{i}^{n} + \sum_{j\in N(i)}^{}Q_{j,i}^{n}
+  \label{eq:balanced_flows}
+\end{equation}
+must hold for every $n$ and $i$. \citeauthor{fajgelbaum_optimal_2017} call this the \emph{Balanced Flows Constraint}.
+
+\subsection{Optimal Infrastructure Provision}
+So far, we have merely cast a plain model of trade in a geographical network, albeit with a slightly unconventional trade cost functional. Solving this model is more or less straightforward and would result in trade flows caused by heterogeneity in production endowments and population, but constrained by iceberg trade costs. The latter depend partially on the level of infrastructure present on any given node, which until now was taken as exogeneous. It is the main contribution of the \cite{fajgelbaum_optimal_2017} framework to endogeneise infrastructure provision $I_{i,k}$ in order to facilitate optimal trade flows. This allows for identifying areas in need of further infrastructure investment and computing their optimal level of expansion. Intuitively, a social planner would want to increase infrastructure on a link between locations which would heavily benefit from more mutual trade.
+
+Analytically, this problem nests the static trade flow exercise mentioned above. The social planner chooses an infrastructure network, and given the network proceeds to compute the optimal trade flows subject to the \emph{Balanced Flows Constraint} \eqref{eq:balanced_flows}. In joint optimisation, it is the social planner's goal to construct a network in order to then induce optimal trade flows in the nested problem. A priori, the model leaves the possibility of differential infrastructure provision depending on the direction in which goods travel, that is $I_{i,k} \neq I_{k,i}$. However, in order to circumvent solutions in which some export-heavy nodes only have one-way streets leaving the location while consumption-heavy nodes cannot ever be left, I impose symmetry and restrict $I_{i,k} = I_{k,i} \textrm{ } \forall \textrm{ } i,k\in N(i)$
+
+Without a constraint on infrastructure provision, the problem is trivially non-sensible: the social planner would just provide each edge with an infinite amount of infrastructure in order to induce free shipment of goods and perfect consumption smoothing over locations. To make the problem more interesting, I follow \citeauthor{fajgelbaum_optimal_2017} in introducing a constraint on infrastructure. This is specified in fairly straightforward manner as the \emph{Network Building Constraint}
+\begin{equation}
+  \sum_{i}^{}\sum_{k\in N(i)}^{}\delta^{i}_{i,k}I_{i,k} \leq K
+  \label{eq:network_building}
+\end{equation}
+where $\delta^{i}_{i,k}$ denotes the cost of building infrastructure on the edge between nodes $i$ and $k$. This cost is allowed to vary by link, such that one can model heterogeneity in infrastructure building cost caused by ruggedness, elevation, or the like. Total spending on infrastructure is, furthermore, constrained by $K$. One can think of $K$ as the total budget allotted to infrastructure expenditure, or the total amount of concrete available in the economy. It is taken as exogeneous and does not compete with other endowments in the network.\footnote{One could think of an extension in which $K$ has to be produced before being put on the road. The authors briefly discuss this possibility. To keep the model operational, I abstain from this extension and treat $K$ as exogeneous and fixed.}
+
+In the application of this thesis, $K$ is interpreted as the total cost of originally spent for building the \emph{existing} road network of a country. I observe the current road network of the economy, infer how much it must have cost to build it, and set $K$ equal to this amount. The social planner's task of choosing an optimal network while treating the total amount of concrete in the economy as fixed, amounts to a reallocation exercise. The social planner gathers all the concrete available and gets to redistribute it in a more sensible way. In order to improve infrastructure between two nodes to foster local trade comes at the cost of having to take away infrastructure someplace else. I argue that how much she has to rearrange existing interconnections serves as a sensible measure of spatial efficiency in the existing network. Before we can fully derive interpret this measure, I first present the full planner's problem and ensuing equilibrium.
+
+\subsection{Planner's Problem and Equilibrium}
+In the nested problem, the social planner observes localities, endowments, population, and preferences and solves for trade flows between nodes that optimise overall welfare. She also solves for the optimal transport network which induces welfare-maximising trade flows in the nested problem while respecting the network building constraint \eqref{eq:network_building}. The full planner's problem can hence be stated as
+
+\begin{subequations}
+\begin{alignat*}{3}
+&\!\max_{\substack{\big\{C_{i}^{n}, \{Q_{i,k}^{n}\}_{k\in N(i)}\big\}_{n}, \\ c_{i}, \big\{I_{i,k}\big\}_{k\in N(i)}}}        &\qquad &  \sum_{i}^{} L_{i}u(c_{i}) \qquad &\\
+&\text{subject to} &\qquad & L_{i}c_{i} \leq \bigg( \sum_{n=1}^{N} (C_{i}^{n})^{\frac{\sigma-1}{\sigma}}\bigg)^{\frac{\sigma}{\sigma-1}} \qquad& \text{\textsc{\scriptsize \textbf{CES Consumption}}} \\
+&                  &\qquad & C_{i}^{n} + \sum_{k\in N(i)}^{}Q_{i,k}^{n}(1+\tau_{i,k}^{n}(Q_{i,k}^{n}, I_{i,k})) \leq Y_{i}^{n} + \sum_{j\in N(i)}^{}Q_{j,i}^{n} \qquad& \text{\textsc{\scriptsize \textbf{Balanced Flows Constraint}}} \\
+&                  &\qquad & \sum_{i}^{}\sum_{k\in N(i)}^{}\delta^{i}_{i,k}I_{i,k} \leq K \qquad& \text{\textsc{\scriptsize \textbf{Network Building Constraint}}} \\
+&                  &\qquad & I_{i,k} = I_{k,i} \text{ for all } i\in \mathcal{I}, k\in N(i) \qquad& \text{\textsc{\scriptsize \textbf{Infrastructure Symmetry}}} \\
+&                  &\qquad & C_{i}^{n}, c_{i}, I_{i,k}, Q_{i,k}^{n} \geq 0 \text{ for all } i \in \mathcal{I},n \in N,k\in N(i). \qquad& \text{\textsc{\scriptsize \textbf{Non-Negativity Conditions}}}
+\end{alignat*}
+\end{subequations}
+
+My version of the planner's problem loosely follows the baseline \cite{fajgelbaum_optimal_2017} model. However, four important differences need to be emphasised. First, in my model all goods are tradeable and no local amenities exist. Second, I do not allow workers to migrate between places and hence differences in marginal utility might still exist between nodes. Third, my model remains agnostic about the production function of each location and no analysis of the optimal use of input factors is undertaken. Fourth, I impose infrastructure symmetry. All these changes are undertaken with the later calibration and reshuffling exercise in mind.
+
+Solving the planner's problem appears potentially daunting for two reasons. First, it is ex-ante not clear whether a unique optimum exists. Second, since one of the control variables is infrastructure $I_{i,k}$, even if a unique optimum were to exist, it might appear as if one had to optimise over the very large space of possible networks, making the problem numerically intractable. Luckily, \cite{fajgelbaum_optimal_2017} provide conditions under which both these concerns can be allayed.
+
+To show that how unique optimum can exist, first note that the introduction of congestion to iceberg trade cost causes the balanced flows constraint to be convex if $\beta > \gamma$. Every part of the lengthy constraint is linear, but for the interaction term  $Q_{i,k}^{n}\tau_{i,k}^{n}(Q_{i,k}^{n}, I_{i,k})$ representing total trade costs. Since $\tau_{i,k}^{n}$ was parameterised as in \eqref{eq:tau}, this expands to
+\begin{equation}
+  Q_{i,k}^{n}\tau_{i,k}^{n}(Q_{i,k}^{n}, I_{i,k}) = \delta^{\tau}_{j, k} \frac{(Q_{i,k}^{n})^{1+\beta}}{I_{i,k}^{\gamma}}
+\end{equation}
+which is convex if $\beta > \gamma$.\footnote{This is \citeauthor{fajgelbaum_optimal_2017} Proposition 1.} This condition describes a notion of congestion dominance: increased infrastructure expenditure might alleviate the powers of congestion, but it can never overpower it. Intuitively, it precludes corner solutions in which all available concrete is spent on one link, all but washing away trade costs and leading to overwhelming transport flows on this one edge. If $\beta > \gamma$ geography always wins.
+
+Second, instead of optimising over the large space of networks, \citeauthor{fajgelbaum_optimal_2017} harness the convexity result to instead solve the dual of the problem specified above. Instead of solving for every single infrastructure link, trade flows for all goods, and consumption patterns in each location, we can recast the problem as a set of first-order conditions from the subproblems, which only depend on Lagrange multipliers of each constraint. There are considerably fewer multipliers than primal control variables, namely one for every good in every node (interpretable as prices). We are hence left to only find a price field from which under the convexity assumptions, all other properties follow. As \citeauthor{fajgelbaum_optimal_2017} note, solving the dual is common practice in optimal transport literature as it makes cumbersome large-scale optimisation problems much more tractable.\footnote{Note, however, that is is still a quite demanding  task to solve the ensuing dual problem, even numerically. Invoking duality reduces the scale of the problem, but we are still left with optimising over $I \times N$ variables.} I thus obtain the optimal network by constructing the Lagrange corresponding to the planner's problem, deriving its first-order conditions and recasting them as functions of the Lagrange parameters. These functions are largely equivalent to the ones derived in \citeauthor{fajgelbaum_optimal_2017}'s technical appendix, with the only differences attesting to the four changes discussed above. I can then reinsert these formulations into the original Lagrangian, which is now simply a function of the Lagrange parameters. Optimising numerically yields the solution to the dual problem. By inserting the parameters back into the derived first-order conditions, one can immediately derive the optimal infrastructure network $I_{i,k}$, optimal trade flows $Q_{i,k}^{n}$ over this network, and ensuing consumption patterns $C_{i}^{n}$ in each location.
+
+Having laid out the network topography and properties of the planner's problem and having ensured that a unique solution exists and is realistically obtainable, I now proceed to calibrate the model to African data in order to derive a novel dataset of network efficiency for the entire African continent.
+
+\section{Bringing the model to the data -- Towards a spatial measure of African network inefficiency}
+\label{chapter:calibration}
 % Chapter
-\section{Towards a spatial measure of network inefficiency}
-
 Investigating the patterns behind the spatial distribution of network inefficiency involves a series of steps. First, I construct a representation of the topography of economic activity and infrastructure networks for every African country. Using the model by \cite{fajgelbaum_optimal_2017} outlined above, I then conduct an optimisation exercise in which existing infrastructure is reallocated within each country to maximise overall welfare. This scenario will produce winners and losers, such that I can derive a measure of network inefficiency over regions by comparing current welfare with welfare under the optimised scenario.
 
 Below, I discuss these steps in more detail.
@@ -102,7 +196,7 @@ Instead, I use a different approach and make use of the open source internet rou
 \end{figure}
 % End Figure
 
-The OSM routing algorithm is specified for cars and takes into account differential speeds attainable on different types of roads. However, if either start or destination location do not directly fall onto a street, the optimal route jumps to the nearest road and goes from there. To take this into account, I add a walking distance to the travel path. Agents are assumed to walk in straight lines to the nearest street at a fixed speed of 4 km/h. They then take the car and drive the route with average speed as specified by OSM, before they potentially have to walk the last stretch again to their exact centroid destination. For some particularly remote areas, the nearest street is very far such that the car routing provided by OSM is not sensible. To counter these cases, I also calculate for all 90,000 connections the outside option of walking the entire link in a straight line at 4 km/h. I then identify cases in which walking directly is actually faster than using OSM's proposed route (plus the travel to and from roads). In these cases, I replace OSM's route with the walking distance and (constant 4 km/h) speed. Figure \ref{fig:roads} presents the resulting road networks for two African countries. Figure \ref{fig:nigeria_roads} displays every optimal route for Nigeria, which appears overall fairly well connected. Commuters mostly seem to be able to drive relatively direct routes between locations, even though cases with substantial detours are also evident at second glance. Connections in which walking were the preferred alternative are displayed in red and fairly rare in Nigeria. Figure \ref{fig:Mali_roads} presents the case of Mali, which paints a different picture: for many connections through the Sahara desert in the North-East of the country, walking straight lines in the sand is actually the fastest way to get from A to B.
+The OSM routing algorithm is specified for cars and takes into account differential speeds attainable on different types of roads. However, if either start or destination location do not directly fall onto a street, the optimal route jumps to the nearest road and goes from there. To take this into account, I add a walking distance to the travel path. Agents are assumed to walk in straight lines to the nearest street at a fixed speed of 4 km/h. They then take the car and drive the route with average speed as specified by OSM, before they potentially have to walk the last stretch again to their exact centroid destination. For some particularly remote areas, the nearest street is very far such that the car routing provided by OSM is not sensible. To counter these cases, I also calculate for all 90,000 connections the outside option of walking the entire link in a straight line at 4 km/h. I then identify cases in which walking directly is actually faster than using OSM's proposed route (plus the travel to and from roads). In these cases, I replace OSM's route with the walking distance and (constant 4 km/h) speed. Figure \eqref{fig:roads} presents the resulting road networks for two African countries. Figure \eqref{fig:nigeria_roads} displays every optimal route for Nigeria, which appears overall fairly well connected. Commuters mostly seem to be able to drive relatively direct routes between locations, even though cases with substantial detours are also evident at second glance. Connections in which walking were the preferred alternative are displayed in red and fairly rare in Nigeria. Figure \eqref{fig:Mali_roads} presents the case of Mali, which paints a different picture: for many connections through the Sahara desert in the North-East of the country, walking straight lines in the sand is actually the fastest way to get from A to B.
 
 %In some rare cases (less than 0.1 per cent of all connections), the OSM algorithm cannot find any route between two neighbouring centroid locations. This mostly is due to an obvious geographic impossibility to connect two nodes. In Guinea-Bissau, for instance one location lies on the Bolama Islands just off the shore of mainland Guinea-Bissau. Its neighbouring locations are all on the mainland and hence unreachable by car. In other cases, both locations to be connected are in deep jungle or swampy regions. In all these cases, I treat the link as if the two locations were not neighbours in the first place. That implies I even forgo the backup possibility of walking the entire distance, with the thought in mind that nobody can walk between islands or through the densest jungle.
 
@@ -130,7 +224,7 @@ where $N(i)$ denotes the set of surrounding neighbours of node $i$. $\delta_{i,k
   \textrm{ln}\Big(\frac{\delta^{I}_{i,k}}{\textrm{dist}_{i,k}}\Big) = \textrm{ln}(\delta_{0}^{I}) - 0.11*(\textrm{dist}_{i,k} > 50km) + 0.12*\textrm{ln}(\textrm{ruggedness}_{i,k})
 \end{equation}
 
-Note that every route in my sample is longer than 50 kilometres and the corresponding dummy term is hence always 1. $\delta_{0}^{I}$ is a scaling parameter. Following \citeauthor{fajgelbaum_optimal_2017}, I normalise $K=1$ for every country and thus flexibly alter $\delta_{0}^{I}$ such that equation (\ref{eq:infr_building_constraint}) is satisfied.
+Note that every route in my sample is longer than 50 kilometres and the corresponding dummy term is hence always 1. $\delta_{0}^{I}$ is a scaling parameter. Following \citeauthor{fajgelbaum_optimal_2017}, I normalise $K=1$ for every country and thus flexibly alter $\delta_{0}^{I}$ such that equation \eqref{eq:infr_building_constraint} is satisfied.
 
 \subsubsection{Trade cost parameter $\delta_{i,k}^{\tau}$}
 Trade costs between locations are modelled in the standard iceberg formulation, whereby in order for one unit to arrive in destination $k$, precisely $(1+\tau_{i,k})$ units have to leave origin $i$. Perhaps surprisingly, even though trade costs are such an influential concept in the trade literature very few reliable estimates of their magnitude exist. \citeauthor{fajgelbaum_optimal_2017} propose a tractable functional form in which $\tau_{i,k}(Q_{i,k}, I_{i,k})$ depends negatively on the invested infrastructure $I_{i,k}$ (derived above) and positively on goods shipped $Q_{i,k}$ on a given link (a notion they refer to as \emph{congestion}):
@@ -172,7 +266,7 @@ Since labor is fixed, I do not have to impose a strict production function. In f
 
 \subsection{Simulation}
 
-After these steps, a discretised network representation now exists for every African country. Nodes in the network are the spaced centroid locations of each grid cell. They combine the characteristics of the entire grid cell (population, output, etc.) in one point. Edges in the network are road connections between centroids. Each edge carries a number of characteristics (average speed, trade costs, and infrastructure building costs). Figure \ref{fig:matlab_networks} presents this discretised network specification for the two countries from above. Nodes are printed larger proportional to their population. A node's colour scale reflects night light intensity per capita (a statistic which is only calculated for illustrative purposes). Edges are drawn thicker proportional to the initial infrastructure investment (i.e. average attainable speed).
+After these steps, a discretised network representation now exists for every African country. Nodes in the network are the spaced centroid locations of each grid cell. They combine the characteristics of the entire grid cell (population, output, etc.) in one point. Edges in the network are road connections between centroids. Each edge carries a number of characteristics (average speed, trade costs, and infrastructure building costs). Figure \eqref{fig:matlab_networks} presents this discretised network specification for the two countries from above. Nodes are printed larger proportional to their population. A node's colour scale reflects night light intensity per capita (a statistic which is only calculated for illustrative purposes). Edges are drawn thicker proportional to the initial infrastructure investment (i.e. average attainable speed).
 
 For each country, I proceed to conduct two simulation exercises. In the first, infrastructure $I_{i,k}$ is treated as fixed. This is to obtain a baseline estimate of the spatial variation of welfare in each country. I conduct a social planner exercise whose goal it is to choose trade flows in order to maximise total welfare. This fairly standard static exercise generates the need for trade mostly out of product differentiation. Cities do not produce the agricultural good and hence need to import from surrounding rural backlands, and vice-versa. To facilitate computation and make the problem tractable, \citeauthor{fajgelbaum_optimal_2017} show that instead of optimising over the space of trade flows, the social planner can indeed optimise over the much sparser set of prices. Since strong convexity holds, the solution is unique and a certain price field will induce trade flows and consumption patterns that maximise total welfare. The authors also show how the two welfare theorems hold in this setting and the social planner outcome can hence be supported by a decentralised market solution.
 
@@ -180,7 +274,7 @@ As labor is fixed, the resulting solution will have two properties. Firstly, tot
 
 Following this static exercise, I proceed to the main task of endogeneising the infrastructure matrix $I_{i,k}$. Intuitively, the social planner is now free to improve connections to a remote area in order to supply them better. \citeauthor{fajgelbaum_optimal_2017}'s main contribution is showing that under particular assumptions, this task can be accomplished simply by means of an additional constraint. Improving on infrastructure yields the benefit of more utility smoothing over space, yet comes at cost $\delta_{i,k}^{I}$. Returns to improving $I_{i,k}$ are not unbounded, however, as the congestion assumption ensures convexity and hence an interior solution to trade flows exists.
 
-To gain a notion of network inefficiency, I run the following scenario: while the social planner is free to manipulate any given link between neighbouring locations, take away or add to existing infrastructure, the total amount of infrastructure in the economy remains fixed. Formally, this corresponds to $K = 1$ in equation \ref{eq:infr_building_constraint} and is what \citeauthor{fajgelbaum_optimal_2017} call the \textit{Optimal Reallocation Scenario}. If the social planner wants to improve the connection between two given locations, she will have to take away infrastructure from somewhere else in the country. The entire exercise does not seek to identify where to place the optimal new investment, but rather represents an utterly fictitious scenario in which every road can be lifted from the ground, reshuffled, and eventually located someplace else.\footnote{Note that equation \ref{eq:infr_building_constraint} only fixes $\sum_{i}^{}\sum_{k \in N(i)}^{} \delta_{i,k}^{I}I_{i,k} = K$. Hence, not the overall sum of infrastructure is fixed, but more precisely the overall cost of infrastructure. This still allows the social planner to take away one unit of infrastructure on a very expensive (high $\delta_{i,k}^{I}$) link and exchange it for much more than one unit on a cheaper (low $\delta_{i,k}^{I}$) link.} This procedure does not measure how many roads a country has, but rather how well they are placed. It does not look at whether the entire country is full of speedy roads, but rather whether those roads connect the right locations.
+To gain a notion of network inefficiency, I run the following scenario: while the social planner is free to manipulate any given link between neighbouring locations, take away or add to existing infrastructure, the total amount of infrastructure in the economy remains fixed. Formally, this corresponds to $K = 1$ in equation \eqref{eq:infr_building_constraint} and is what \citeauthor{fajgelbaum_optimal_2017} call the \textit{Optimal Reallocation Scenario}. If the social planner wants to improve the connection between two given locations, she will have to take away infrastructure from somewhere else in the country. The entire exercise does not seek to identify where to place the optimal new investment, but rather represents an utterly fictitious scenario in which every road can be lifted from the ground, reshuffled, and eventually located someplace else.\footnote{Note that equation \eqref{eq:infr_building_constraint} only fixes $\sum_{i}^{}\sum_{k \in N(i)}^{} \delta_{i,k}^{I}I_{i,k} = K$. Hence, not the overall sum of infrastructure is fixed, but more precisely the overall cost of infrastructure. This still allows the social planner to take away one unit of infrastructure on a very expensive (high $\delta_{i,k}^{I}$) link and exchange it for much more than one unit on a cheaper (low $\delta_{i,k}^{I}$) link.} This procedure does not measure how many roads a country has, but rather how well they are placed. It does not look at whether the entire country is full of speedy roads, but rather whether those roads connect the right locations.
 
 \begin{figure}
 \centering
@@ -199,11 +293,11 @@ To gain a notion of network inefficiency, I run the following scenario: while th
 \label{fig:restructure_centralafricanrepublic}
 \end{figure}
 
-Figure \ref{fig:restructure_centralafricanrepublic} visualises this reallocation exercise for the Central African Republic. Subfigure \ref{fig:before_restructure} displays the discretised network representation of the country, comparable to figures \ref{fig:nigeria_mat} and \ref{fig:Mali_mat}. The edges to this network are printed almost evenly thick, implying that infrastructure is fairly evenly distributed across the country. Subfigure \ref{fig:after_restructure} then displays the country after the network reshuffling exercise. Two patterns stand out. First, the social planner sees a heavy need to connect the populous areas in the south west of the country to with more speedy roads. For that, she is willing to salvage some of the unnecessary infrastructure in the middle or north of the country. Second, there still seems to be a benefit from having a few trails connecting the south west with the north east of the country. Some clear north-south and east-west highways spanning multiple regions emerge.
+Figure \eqref{fig:restructure_centralafricanrepublic} visualises this reallocation exercise for the Central African Republic. Subfigure \eqref{fig:before_restructure} displays the discretised network representation of the country, comparable to figures \eqref{fig:nigeria_mat} and \eqref{fig:Mali_mat}. The edges to this network are printed almost evenly thick, implying that infrastructure is fairly evenly distributed across the country. Subfigure \eqref{fig:after_restructure} then displays the country after the network reshuffling exercise. Two patterns stand out. First, the social planner sees a heavy need to connect the populous areas in the south west of the country to with more speedy roads. For that, she is willing to salvage some of the unnecessary infrastructure in the middle or north of the country. Second, there still seems to be a benefit from having a few trails connecting the south west with the north east of the country. Some clear north-south and east-west highways spanning multiple regions emerge.
 
-I conduct the reallocation scenario for every African country. Five small countries (Cape Verde, Comoros, The Gambia, Mauritius, and Reunion) are too small to form a sensible network as they only show up as a single location in the dataset and are henceforth no longer considered. Computation times are greatly diminished when exploiting the strong convexity of the optimisation setting and solving the dual problem as outlined in the appendix of \cite{fajgelbaum_optimal_2017}. Optimisations are performed via Matlab's \texttt{fmincon} command. When conducting the simulations, I bound the social planner's set of permissible roads from below, at 4 km/h (such that $I_{i,k} \geq 4$ $ \forall i,k$). This is motivated by the assumption at the beginning that walking straight lines at this speed is conceived as an outside option and always available to any commuter. The social planner should not be able to force commuters to travel slower than walking, in order to build a faster road elsewhere.\footnote{Contrarily, I do not restrict possible investments from above (or at least not in addition to the restriction imposed by equation \ref{eq:infr_building_constraint}), as this could violate the strong convexity of the problem. Not bounding the problem in principle allows the social planner to build supersonic speed highways. However, the model is calibrated in a way that makes this very unattractive to the planner anyway. After simulating reallocation in every African country, less than 0.8\% of all built roads were suggested to be over 260 km/h. Still, one outlier of 2007 km/h (in Egypt) and one of 1755 km/h (in South Africa) remain.}
+I conduct the reallocation scenario for every African country. Five small countries (Cape Verde, Comoros, The Gambia, Mauritius, and Reunion) are too small to form a sensible network as they only show up as a single location in the dataset and are henceforth no longer considered. Computation times are greatly diminished when exploiting the strong convexity of the optimisation setting and solving the dual problem as outlined in the appendix of \cite{fajgelbaum_optimal_2017}. Optimisations are performed via Matlab's \texttt{fmincon} command. When conducting the simulations, I bound the social planner's set of permissible roads from below, at 4 km/h (such that $I_{i,k} \geq 4$ $ \forall i,k$). This is motivated by the assumption at the beginning that walking straight lines at this speed is conceived as an outside option and always available to any commuter. The social planner should not be able to force commuters to travel slower than walking, in order to build a faster road elsewhere.\footnote{Contrarily, I do not restrict possible investments from above (or at least not in addition to the restriction imposed by equation \eqref{eq:infr_building_constraint}), as this could violate the strong convexity of the problem. Not bounding the problem in principle allows the social planner to build supersonic speed highways. However, the model is calibrated in a way that makes this very unattractive to the planner anyway. After simulating reallocation in every African country, less than 0.8\% of all built roads were suggested to be over 260 km/h. Still, one outlier of 2007 km/h (in Egypt) and one of 1755 km/h (in South Africa) remain.}
 
-After successfully reshuffling a country's transport network, overall welfare will necessarily (weakly) increase. It is the social planner's objective to maximise overall welfare, and since the original network composition is always still available, the entire country cannot on aggregate be worse off than before. Note as before that due to labor immobility, overall production (light output) will be the same as before. Welfare gains are solely due to enabling mutual benefits from trade by connecting the right locations. The Central African Republic of figure \ref{fig:restructure_centralafricanrepublic}, for instance, stands to gain 1.84\% of overall welfare just by reshuffling roads. Since this welfare gain is rather hard to materialise, I prefer thinking of it as a measure of network inefficiency. The higher the hypothetical gains from merely reshuffling existing roads, the more haphazard the existing allocation of roads, and hence the more inefficient the current transport network.
+After successfully reshuffling a country's transport network, overall welfare will necessarily (weakly) increase. It is the social planner's objective to maximise overall welfare, and since the original network composition is always still available, the entire country cannot on aggregate be worse off than before. Note as before that due to labor immobility, overall production (light output) will be the same as before. Welfare gains are solely due to enabling mutual benefits from trade by connecting the right locations. The Central African Republic of figure \eqref{fig:restructure_centralafricanrepublic}, for instance, stands to gain 1.84\% of overall welfare just by reshuffling roads. Since this welfare gain is rather hard to materialise, I prefer thinking of it as a measure of network inefficiency. The higher the hypothetical gains from merely reshuffling existing roads, the more haphazard the existing allocation of roads, and hence the more inefficient the current transport network.
 
 \begin{figure}
 \centering
@@ -213,7 +307,7 @@ After successfully reshuffling a country's transport network, overall welfare wi
 \label{fig:countries_by_welfare_gain}
 \end{figure}
 
-Figure \ref{fig:countries_by_welfare_gain} displays all African countries and their measure of network inefficiency. The closer the forgone welfare gain to zero (the lighter the country's colour), the more efficient the current allocation of roads. The Central African Republic's measure of 1.84\% makes the country look rather good in comparison. Some (mostly more developed) countries like South Africa (0.47\%) or Tunisia (0.24\%) perform even better. Many countries are leaving much more on the table like Somalia (4.76\%) or Chad (4.28\%). No African country, however, has a more ill advised road network than South Sudan (6.66\%). This might not come as a surprise, as the world's youngest country has largely inherited a road network that was not conceived to sustain an independent nation, but connect it to its former capital up north. On a simple cross-country level, more inefficient networks are significantly correlated with more corruption ($p < 0.01$), less property rights ($p < 0.01$) and less 2010 log GDP ($p=0.07$). Note that these are merely descriptive correlations which are far from implying any form of causation.\footnote{Data from \cite{the_world_bank_world_2017}. For corruption and property rights, data is only available for 35 countries and correlations are hence performed on this truncated sample.}
+Figure \eqref{fig:countries_by_welfare_gain} displays all African countries and their measure of network inefficiency. The closer the forgone welfare gain to zero (the lighter the country's colour), the more efficient the current allocation of roads. The Central African Republic's measure of 1.84\% makes the country look rather good in comparison. Some (mostly more developed) countries like South Africa (0.47\%) or Tunisia (0.24\%) perform even better. Many countries are leaving much more on the table like Somalia (4.76\%) or Chad (4.28\%). No African country, however, has a more ill advised road network than South Sudan (6.66\%). This might not come as a surprise, as the world's youngest country has largely inherited a road network that was not conceived to sustain an independent nation, but connect it to its former capital up north. On a simple cross-country level, more inefficient networks are significantly correlated with more corruption ($p < 0.01$), less property rights ($p < 0.01$) and less 2010 log GDP ($p=0.07$). Note that these are merely descriptive correlations which are far from implying any form of causation.\footnote{Data from \cite{the_world_bank_world_2017}. For corruption and property rights, data is only available for 35 countries and correlations are hence performed on this truncated sample.}
 
 While each country only stands to gain overall welfare from this reallocation procedure, individual locations might very well lose in the process. Intuitively, some regions might be equipped with far too many good roads such that the social planner takes these roads away to use someplace else. Comparing each grid cell's welfare before and after the major reshuffling can help identify regions which are currently over or under-provided for. More formally, I define
 
@@ -245,7 +339,7 @@ While each country only stands to gain overall welfare from this reallocation pr
 \end{figure}
 % End Figure
 
-as the \emph{Infrastructure Gap} for each grid cell $i$. Figure \ref{fig:zeta_countries} displays the spatial distribution of the infrastructure gap $\zeta_{i}$ for Madagascar, Kenya, and Chad. The darker a grid cell's shade, the more it is disadvantaged by the inefficiencies of the current network. The lighter a cell, the more overprovided a region is with infrastructure.
+as the \emph{Infrastructure Gap} for each grid cell $i$. Figure \eqref{fig:zeta_countries} displays the spatial distribution of the infrastructure gap $\zeta_{i}$ for Madagascar, Kenya, and Chad. The darker a grid cell's shade, the more it is disadvantaged by the inefficiencies of the current network. The lighter a cell, the more overprovided a region is with infrastructure.
 
 % Figure
 \begin{figure}
@@ -257,12 +351,14 @@ as the \emph{Infrastructure Gap} for each grid cell $i$. Figure \ref{fig:zeta_co
 \end{figure}
 % End Figure
 
-Figure \ref{fig:all_gridcells_by_zeta}, lastly, displays the spatial variation of $\zeta_{i}$ over all 10,000+ grid cells of the entire African continent. When interpreting this map, note that grid cells are undergoing the reshuffling scenario solely within their respective country. National borders hence play a role and can at times even clearly be inferred from the printed map. Keeping this in mind, the map reveals substantial spatial variation in the infrastructure gap across the African continent. The luckiest region (in Namibia) stands to loose almost 30\% of total welfare if the fictitious social planner intervened and reshuffled roads away from. On the other hand of the spectrum, the residents of one grid cell in Gabon are missing out on a welfare hike of more than 50\%. Moreover, abandoned regions are clearly displaying spatial correlation with large neighbouring swaths of land collectively missing out on infrastructure improvements in certain countries. This begs the conclusion that countries do not just overlook single grid cells but rather live with vast stretches of disadvantaged regions.
+Figure \eqref{fig:all_gridcells_by_zeta}, lastly, displays the spatial variation of $\zeta_{i}$ over all 10,000+ grid cells of the entire African continent. When interpreting this map, note that grid cells are undergoing the reshuffling scenario solely within their respective country. National borders hence play a role and can at times even clearly be inferred from the printed map. Keeping this in mind, the map reveals substantial spatial variation in the infrastructure gap across the African continent. The luckiest region (in Namibia) stands to loose almost 30\% of total welfare if the fictitious social planner intervened and reshuffled roads away from. On the other hand of the spectrum, the residents of one grid cell in Gabon are missing out on a welfare hike of more than 50\%. Moreover, abandoned regions are clearly displaying spatial correlation with large neighbouring swaths of land collectively missing out on infrastructure improvements in certain countries. This begs the conclusion that countries do not just overlook single grid cells but rather live with vast stretches of disadvantaged regions.
 
 In the following section, I proceed to investigate the patterns behind this heterogeneity of network inefficiency over space.
 % End Chapter
 
 \section{Results}
+
+
 
 % Figure
 \begin{table}[] \centering
@@ -270,36 +366,35 @@ In the following section, I proceed to investigate the patterns behind this hete
   \label{RailKM_zeta}
   \resizebox{\textwidth}{!}{
 
-
   \begin{tabular}{@{\extracolsep{5pt}}lcccccccc}
-\\[-1.8ex]\hline
-\hline \\[-1.8ex]
- & \multicolumn{8}{c}{\textit{Dependent variable:}} \\
-\cline{2-9}
-\\[-1.8ex] & \multicolumn{8}{c}{Infrastructure Gap $\zeta_{i}$} \\
-\\[-1.8ex] & (1) & (2) & (3) & (4) & (5) & (6) & (7) & (8)\\
-\hline \\[-1.8ex]
- KM of Colonial Railroads & $-$0.0002$^{***}$ & $-$0.0001$^{***}$ & $-$0.0002$^{***}$ & $-$0.0002$^{***}$ &  &  &  &  \\
-  & (0.0001) & (0.0001) & (0.0001) & (0.0001) &  &  &  &  \\
-  & & & & & & & & \\
- Km of Colonial Placebo Railroads &  &  &  &  & 0.00004 & $-$0.0002 & $-$0.0003 & $-$0.0003 \\
-  &  &  &  &  & (0.0003) & (0.0003) & (0.0003) & (0.0003) \\
-  & & & & & & & & \\
-\hline \\[-1.8ex]
-Country FE &  & Yes & Yes & Yes &  & Yes & Yes & Yes \\
-Geographic controls &  &  & Yes & Yes &  &  & Yes & Yes \\
-Simulation controls &  &  &  & Yes &  &  &  & Yes \\
-Observations & 10,158 & 10,158 & 10,158 & 10,158 & 10,158 & 10,158 & 10,158 & 10,158 \\
-R$^{2}$ & 0.001 & 0.099 & 0.111 & 0.113 & 0.00000 & 0.098 & 0.110 & 0.112 \\
-\hline
-\hline \\[-1.8ex]
-\textit{Note:}  & \multicolumn{8}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\
-\end{tabular}
+  \\[-1.8ex]\hline
+  \hline \\[-1.8ex]
+   & \multicolumn{8}{c}{\textit{Dependent variable:}} \\
+  \cline{2-9}
+  \\[-1.8ex] & \multicolumn{8}{c}{Infrastructure Gap $\zeta_{i}$} \\
+  \\[-1.8ex] & (1) & (2) & (3) & (4) & (5) & (6) & (7) & (8)\\
+  \hline \\[-1.8ex]
+   KM of Colonial Railroads & $-$0.0002$^{***}$ & $-$0.0001$^{***}$ & $-$0.0002$^{***}$ & $-$0.0002$^{***}$ &  &  &  &  \\
+    & (0.0001) & (0.0001) & (0.0001) & (0.0001) &  &  &  &  \\
+    & & & & & & & & \\
+   KM of Colonial Placebo Railroads &  &  &  &  & 0.00004 & $-$0.0002 & $-$0.0003 & $-$0.0003 \\
+    &  &  &  &  & (0.0003) & (0.0003) & (0.0003) & (0.0003) \\
+    & & & & & & & & \\
+  \hline \\[-1.8ex]
+  Country FE &  & Yes & Yes & Yes &  & Yes & Yes & Yes \\
+  Geographic controls &  &  & Yes & Yes &  &  & Yes & Yes \\
+  Simulation controls &  &  &  & Yes &  &  &  & Yes \\
+  Observations & 10,158 & 10,158 & 10,158 & 10,158 & 10,158 & 10,158 & 10,158 & 10,158 \\
+  R$^{2}$ & 0.001 & 0.099 & 0.112 & 0.114 & 0.00000 & 0.098 & 0.111 & 0.113 \\
+  \hline
+  \hline \\[-1.8ex]
+  \textit{Note:}  & \multicolumn{8}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\
+  \end{tabular}
 
 }
 
 \justify
-\textit{\\ \footnotesize This table displays results of estimation of equation \ref{eq:regression} on the sample of 0.5x0.5 degree grid cells for the entire African continent (excluding five small countries, see text). Dependent variable is the infrastructure gap for each grid cell. Columns (1)-(4) estimate the effect of colonial infrastructure investments on today's infrastructure gap. Starting with a simple univariate cross-section in (1), column (2) adds 49 country-fixed effects. Column (3) adds geographic controls, consisting of altitude, temperature, average land suitability, malaria prevalence, yearly growing days, average precipitation, and the fourth-order polynomial of latitude and longitude. Simulation controls are added in column (4) and are comprised of population, night lights, ruggedness, and a dummy for whether a cell is classified as urban. These are indicators that went into the original infrastructure re-allocation simulation and are hence not orthogonal to $\zeta$. Columns (5)-(8) repeat these calculations with railroads that were planned, but never built (``placebo railroads''). Results are robust to using only the subsample of 33 countries with any colonial infrastructure investment as reported by \cite{jedwab_permanent_2016}, plus South Africa. Heteroskedasticity-robust standard errors are clustered on the 3x3 degree level and are shown in parantheses.}
+\textit{\\ \footnotesize This table displays results of estimation of equation \eqref{eq:regression} on the sample of 0.5x0.5 degree grid cells for the entire African continent (excluding five small countries, see text). Dependent variable is the infrastructure gap for each grid cell. Columns (1)-(4) estimate the effect of colonial infrastructure investments on today's infrastructure gap. Starting with a simple univariate cross-section in (1), column (2) adds 49 country-fixed effects. Column (3) adds geographic controls, consisting of altitude, temperature, average land suitability, malaria prevalence, yearly growing days, average precipitation, the fourth-order polynomial of latitude and longitude, and an indicator of whether the grid cell lies on the border of a country's network. Simulation controls are added in column (4) and are comprised of population, night lights, ruggedness, and a dummy for whether a cell is classified as urban. These are indicators that went into the original infrastructure re-allocation simulation and are hence not orthogonal to $\zeta$. Columns (5)-(8) repeat these calculations with railroads that were planned, but never built (``placebo railroads''). Results are robust to using only the subsample of 33 countries with any colonial infrastructure investment as reported by \cite{jedwab_permanent_2016}, plus South Africa. Heteroskedasticity-robust standard errors are clustered on the 3x3 degree level and are shown in parantheses.}
 \end{table}
 % End Figure
 
@@ -312,52 +407,52 @@ R$^{2}$ & 0.001 & 0.099 & 0.111 & 0.113 & 0.00000 & 0.098 & 0.110 & 0.112 \\
 
 
   \begin{tabular}{@{\extracolsep{5pt}}lcccccccc}
-\\[-1.8ex]\hline
-\hline \\[-1.8ex]
- & \multicolumn{8}{c}{\textit{Dependent variable: Infrastructure Gap $\zeta$}} \\
-\cline{2-9}
-\\[-1.8ex] & \multicolumn{6}{c}{Full Sample} &  \multicolumn{2}{c}{Restricted Sample} \\
-\\[-1.8ex] & (1) & (2) & (3) & (4) & (5) & (6) & (7) & (8)\\
-\hline \\[-1.8ex]
- $<10$ KM to Colonial Railroad & $-$0.013$^{***}$ & $-$0.015$^{***}$ & $-$0.016$^{***}$ &  &  &  & $-$0.014$^{***}$ &  \\
-  & (0.003) & (0.004) & (0.004) &  &  &  & (0.004) &  \\
-  & & & & & & & & \\
- $10-20$ KM to Colonial Railroad & $-$0.013$^{***}$ & $-$0.015$^{***}$ & $-$0.016$^{***}$ &  &  &  & $-$0.015$^{***}$ &  \\
-  & (0.005) & (0.005) & (0.005) &  &  &  & (0.005) &  \\
-  & & & & & & & & \\
- $20-30$ KM to Colonial Railroad & $-$0.002 & $-$0.004 & $-$0.005 &  &  &  & $-$0.004 &  \\
-  & (0.004) & (0.004) & (0.004) &  &  &  & (0.004) &  \\
-  & & & & & & & & \\
- $30-40$ KM to Colonial Railroad & 0.010$^{**}$ & 0.008$^{*}$ & 0.008 &  &  &  & 0.008$^{*}$ &  \\
-  & (0.005) & (0.005) & (0.005) &  &  &  & (0.005) &  \\
-  & & & & & & & & \\
- $<10$ KM to Colonial Placebo Railroad &  &  &  & $-$0.005 & $-$0.005 & $-$0.006 &  & $-$0.007$^{*}$ \\
-  &  &  &  & (0.004) & (0.004) & (0.004) &  & (0.004) \\
-  & & & & & & & & \\
- $10-20$ KM to Colonial Placebo Railroad &  &  &  & $-$0.003 & $-$0.004 & $-$0.004 &  & $-$0.004 \\
-  &  &  &  & (0.005) & (0.005) & (0.005) &  & (0.005) \\
-  & & & & & & & & \\
- $20-30$ KM to Colonial Placebo Railroad &  &  &  & $-$0.001 & $-$0.001 & $-$0.001 &  & $-$0.003 \\
-  &  &  &  & (0.004) & (0.004) & (0.004) &  & (0.004) \\
-  & & & & & & & & \\
- $30-40$ KM to Colonial Placebo Railroad &  &  &  & 0.007 & 0.006 & 0.005 &  & 0.003 \\
-  &  &  &  & (0.004) & (0.004) & (0.004) &  & (0.004) \\
-  & & & & & & & & \\
-\hline \\[-1.8ex]
-Country FE & Yes & Yes & Yes & Yes & Yes & Yes & Yes & Yes \\
-Geographic controls &  & Yes & Yes &  & Yes & Yes & Yes & Yes \\
-Simulation controls &  &  & Yes &  &  & Yes & Yes & Yes \\
-Observations & 10,158 & 10,158 & 10,158 & 10,158 & 10,158 & 10,158 & 6,362 & 6,362 \\
-R$^{2}$ & 0.101 & 0.114 & 0.116 & 0.099 & 0.110 & 0.112 & 0.115 & 0.110 \\
-\hline
-\hline \\[-1.8ex]
-\textit{Note:}  & \multicolumn{8}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\
-\end{tabular}
+  \\[-1.8ex]\hline
+  \hline \\[-1.8ex]
+   & \multicolumn{8}{c}{\textit{Dependent variable:}} \\
+  \cline{2-9}
+  \\[-1.8ex] & \multicolumn{8}{c}{Infrastructure Gap $\zeta_{i}$} \\
+  \\[-1.8ex] & (1) & (2) & (3) & (4) & (5) & (6) & (7) & (8)\\
+  \hline \\[-1.8ex]
+   $<10$ KM to Colonial Railroad & $-$0.013$^{***}$ & $-$0.015$^{***}$ & $-$0.017$^{***}$ &  &  &  & $-$0.014$^{***}$ &  \\
+    & (0.003) & (0.004) & (0.004) &  &  &  & (0.004) &  \\
+    & & & & & & & & \\
+   $10-20$ KM to Colonial Railroad & $-$0.013$^{***}$ & $-$0.015$^{***}$ & $-$0.017$^{***}$ &  &  &  & $-$0.015$^{***}$ &  \\
+    & (0.005) & (0.005) & (0.005) &  &  &  & (0.005) &  \\
+    & & & & & & & & \\
+   $20-30$ KM to Colonial Railroad & $-$0.002 & $-$0.004 & $-$0.005 &  &  &  & $-$0.005 &  \\
+    & (0.004) & (0.004) & (0.004) &  &  &  & (0.004) &  \\
+    & & & & & & & & \\
+   $30-40$ KM to Colonial Railroad & 0.010$^{**}$ & 0.008$^{*}$ & 0.007 &  &  &  & 0.008 &  \\
+    & (0.005) & (0.005) & (0.005) &  &  &  & (0.005) &  \\
+    & & & & & & & & \\
+   $<10$ KM to Colonial Placebo Railroad &  &  &  & $-$0.005 & $-$0.005 & $-$0.006 &  & $-$0.007$^{*}$ \\
+    &  &  &  & (0.004) & (0.004) & (0.004) &  & (0.004) \\
+    & & & & & & & & \\
+   $10-20$ KM to Colonial Placebo Railroad &  &  &  & $-$0.003 & $-$0.004 & $-$0.004 &  & $-$0.005 \\
+    &  &  &  & (0.005) & (0.005) & (0.005) &  & (0.005) \\
+    & & & & & & & & \\
+   $20-30$ KM to Colonial Placebo Railroad &  &  &  & $-$0.001 & $-$0.001 & $-$0.001 &  & $-$0.004 \\
+    &  &  &  & (0.004) & (0.004) & (0.004) &  & (0.004) \\
+    & & & & & & & & \\
+   $30-40$ KM to Colonial Placebo Railroad &  &  &  & 0.007 & 0.006 & 0.005 &  & 0.003 \\
+    &  &  &  & (0.004) & (0.004) & (0.004) &  & (0.004) \\
+    & & & & & & & & \\
+  \hline \\[-1.8ex]
+  Country FE & Yes & Yes & Yes & Yes & Yes & Yes & Yes & Yes \\
+  Geographic controls &  & Yes & Yes &  & Yes & Yes & Yes & Yes \\
+  Simulation controls &  &  & Yes &  &  & Yes & Yes & Yes \\
+  Observations & 10,158 & 10,158 & 10,158 & 10,158 & 10,158 & 10,158 & 6,362 & 6,362 \\
+  R$^{2}$ & 0.101 & 0.115 & 0.118 & 0.099 & 0.111 & 0.114 & 0.116 & 0.110 \\
+  \hline
+  \hline \\[-1.8ex]
+  \textit{Note:}  & \multicolumn{8}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\
+  \end{tabular}
 
 }
 
 \justify
-\textit{\\ \footnotesize This table displays effects of various distance-intervals on the infrastructure gap $\zeta$. Explanatory covariates are dummy-variables indicating whether a cell's centroid is within X kilometres to its closest colonial railroad. Geographic controls consist of altitude, temperature, average land suitability, malaria prevalence, yearly growing days, average precipitation, and the fourth-order polynomial of latitude and longitude. Simulation controls are comprised of population, night lights, ruggedness, and a dummy for whether a cell is classified as urban. Columns (1)-(3) examine the effect of actually built colonial railroads. Columns (4)-(6) repeat these calculations with railroads that were planned, but never built (``placebo railroads''). Columns (7)-(8) restrict the sample to the 32 countries on which data for colonial railways is available. Heteroskedasticity-robust standard errors are clustered on the 3x3 degree level and are shown in parantheses.}
+\textit{\\ \footnotesize This table displays effects of various distance-intervals on the infrastructure gap $\zeta$. Explanatory covariates are dummy-variables indicating whether a cell's centroid is within X kilometres to its closest colonial railroad. Geographic controls consist of altitude, temperature, average land suitability, malaria prevalence, yearly growing days, average precipitation, the fourth-order polynomial of latitude and longitude, and an indicator of whether the grid cell lies on the border of a country's network. Simulation controls are comprised of population, night lights, ruggedness, and a dummy for whether a cell is classified as urban. Columns (1)-(3) examine the effect of actually built colonial railroads. Columns (4)-(6) repeat these calculations with railroads that were planned, but never built (``placebo railroads''). Columns (7)-(8) restrict the sample to the 32 countries on which data for colonial railways is available. Heteroskedasticity-robust standard errors are clustered on the 3x3 degree level and are shown in parantheses.}
 \end{table}
 % End Figure
 
@@ -374,10 +469,10 @@ R$^{2}$ & 0.101 & 0.114 & 0.116 & 0.099 & 0.110 & 0.112 & 0.115 & 0.110 \\
   \hline \\[-1.8ex]
    & \multicolumn{6}{c}{\textit{Dependent variable:}} \\
   \cline{2-7}
-  \\[-1.8ex] & \multicolumn{6}{c}{Infrastructure Gap $\zeta$} \\
+  \\[-1.8ex] & \multicolumn{6}{c}{Infrastructure Gap $\zeta_{i}$} \\
   \\[-1.8ex] & (1) & (2) & (3) & (4) & (5) & (6)\\
   \hline \\[-1.8ex]
-   KM of Colonial Rails for Military Purposes & $-$0.0002$^{***}$ & $-$0.0002$^{***}$ &  &  & $-$0.0002$^{**}$ & $-$0.0002$^{**}$ \\
+   KM of Colonial Rails for Military Purposes & $-$0.0002$^{***}$ & $-$0.0002$^{***}$ &  &  & $-$0.0002$^{***}$ & $-$0.0002$^{***}$ \\
     & (0.0001) & (0.0001) &  &  & (0.0001) & (0.0001) \\
     & & & & & & \\
    KM of Colonial Rails for Mining Purposes &  &  & $-$0.0001 & $-$0.0001 & $-$0.0001 & $-$0.0001 \\
@@ -388,7 +483,7 @@ R$^{2}$ & 0.101 & 0.114 & 0.116 & 0.099 & 0.110 & 0.112 & 0.115 & 0.110 \\
   Geographic controls & Yes & Yes & Yes & Yes & Yes & Yes \\
   Simulation controls &  & Yes &  & Yes &  & Yes \\
   Observations & 10,158 & 10,158 & 10,158 & 10,158 & 10,158 & 10,158 \\
-  R$^{2}$ & 0.110 & 0.112 & 0.110 & 0.112 & 0.110 & 0.113 \\
+  R$^{2}$ & 0.112 & 0.114 & 0.111 & 0.113 & 0.112 & 0.114 \\
   \hline
   \hline \\[-1.8ex]
   \textit{Note:}  & \multicolumn{6}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\
@@ -397,7 +492,7 @@ R$^{2}$ & 0.101 & 0.114 & 0.116 & 0.099 & 0.110 & 0.112 & 0.115 & 0.110 \\
 }
 
 \justify
-\textit{\\ \footnotesize This table replicated the estimations of Table \ref{RailKM_zeta} in estimating effects of colonial railroads on the infrastructure gap $\zeta$. Colonial rails are classified as built for military or mining purposes (or neither or both) by \cite{jedwab_permanent_2016}. Geographic controls consist of altitude, temperature, average land suitability, malaria prevalence, yearly growing days, average precipitation, and the fourth-order polynomial of latitude and longitude. Simulation controls are comprised of population, night lights, ruggedness, and a dummy for whether a cell is classified as urban. Results are mostly robust for using only the sub-sample of 32 countries for which this data is available, however the p-value of negative impact of military rails increases to $p=0.013$ (Country FE and Geographic Controls) and $p=0.096$ (Country FE, Geographic, and Simulation Controls). Heteroskedasticity-robust standard errors are clustered on the 3x3 degree level and are shown in parantheses.}
+\textit{\\ \footnotesize This table replicated the estimations of Table \eqref{RailKM_zeta} in estimating effects of colonial railroads on the infrastructure gap $\zeta$. Colonial rails are classified as built for military or mining purposes (or neither or both) by \cite{jedwab_permanent_2016}. Geographic controls consist of altitude, temperature, average land suitability, malaria prevalence, yearly growing days, average precipitation, the fourth-order polynomial of latitude and longitude, and an indicator of whether the grid cell lies on the border of a country's network. Simulation controls are comprised of population, night lights, ruggedness, and a dummy for whether a cell is classified as urban. Results are mostly robust for using only the sub-sample of 32 countries for which this data is available, however the p-value of negative impact of military rails increases to $p=0.013$ (Country FE and Geographic Controls) and $p=0.096$ (Country FE, Geographic, and Simulation Controls). Heteroskedasticity-robust standard errors are clustered on the 3x3 degree level and are shown in parantheses.}
 \end{table}
 % End Figure
 

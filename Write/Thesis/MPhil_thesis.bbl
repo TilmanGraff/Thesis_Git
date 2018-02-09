@@ -1,4 +1,4 @@
-\begin{thebibliography}{19}
+\begin{thebibliography}{21}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\urlprefix}{URL }
@@ -11,6 +11,11 @@
 \newblock \emph{Journal of the European Economic Association} 9(2), pp.
   246--277
 
+\bibitem[{Allen and Arkolakis(2016)}]{allen_welfare_2016}
+\textbf{Allen, Treb and Costas Arkolakis} (\textbf{2016}).
+\newblock The Welfare Effects of Transportation Infrastructure Improvements.
+\newblock Working {{Paper}}, Dartmouth and Yale
+
 \bibitem[{Anderson and Van~Wincoop(2004)}]{Anderson_Tradecosts_2004}
 \textbf{Anderson, James~E. and Eric Van~Wincoop} (\textbf{2004}).
 \newblock Trade Costs.
@@ -20,7 +25,7 @@
 \textbf{Atkin, David and Dave Donaldson} (\textbf{2015}).
 \newblock Who's {{Getting Globalized}}? {{The Size}} and {{Implications}} of
   {{Intra}}-National {{Trade Costs}}.
-\newblock Working paper, {National Bureau of Economic Research}
+\newblock Working {{Paper}}, {National Bureau of Economic Research}
 
 \bibitem[{Collier et~al.(2015)Collier, Kirchberger, and
   S{\"o}derbom}]{collier_cost_2015}
@@ -38,7 +43,12 @@
 \bibitem[{Fajgelbaum and Schaal(2017)}]{fajgelbaum_optimal_2017}
 \textbf{Fajgelbaum, Pablo~D. and Edouard Schaal} (\textbf{2017}).
 \newblock Optimal Transport Networks in Spatial Equilibrium.
-\newblock Working paper, {National Bureau of Economic Research}
+\newblock Working {{Paper}}, {National Bureau of Economic Research}
+
+\bibitem[{Galichon(2016)}]{Galichon_OptimalTransportMethods_2016}
+\textbf{Galichon, Alfred} (\textbf{2016}).
+\newblock \emph{Optimal {{Transport Methods}} in {{Economics}}}.
+\newblock {Princeton University Press}
 
 \bibitem[{Henderson et~al.(2018)Henderson, Squires, Storeygard, and
   Weil}]{henderson_global_2018}
@@ -46,7 +56,7 @@
   (\textbf{2018}).
 \newblock The {{Global Spatial Distribution}} of {{Economic Activity}}:
   {{Nature}}, {{History}}, and the {{Role}} of {{Trade}}.
-\newblock \emph{The Quarterly Journal of Economics} forthcoming
+\newblock \emph{The Quarterly Journal of Economics} 133(1)
 
 \bibitem[{Henderson et~al.(2012)Henderson, Storeygard, and
   Weil}]{henderson_measuring_2012}
@@ -65,7 +75,7 @@
 \textbf{Jedwab, Remi and Adam Storeygard} (\textbf{2017}).
 \newblock The {{Average}} and {{Heterogeneous Effects}} of {{Transportation
   Investments}}: {{Evidence}} from Sub-{{Saharan Africa}} 1960-2010.
-\newblock Working paper
+\newblock Working {{Paper}}
 
 \bibitem[{Lall et~al.(2017)Lall, Henderson, and Venables}]{lall_africas_2017}
 \textbf{Lall, Somik~Vinay, J.~Vernon Henderson, and Anthony~J. Venables}
@@ -77,7 +87,7 @@
 \textbf{Lee, Yong~Suk} (\textbf{2016}).
 \newblock International {{Isolation}} and {{Regional Inequality}}: {{Evidence}}
   from {{Sanctions}} on {{North Korea}}.
-\newblock Working paper, {Stanford University}
+\newblock Working {{Paper}}, {Stanford University}
 
 \bibitem[{Michalopoulos and Papaioannou(2018)}]{michalopoulos_spatial_2018}
 \textbf{Michalopoulos, Stelios and Elias Papaioannou} (\textbf{2018}).
