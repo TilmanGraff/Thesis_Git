@@ -14,7 +14,6 @@ centroids.country = categorical(centroids.country);
 
 % Defines parameters
 
-rho = 2;
 alpha = 0.4;
 beta = 1.245;
 gamma = 0.5*beta;
@@ -37,12 +36,12 @@ inflows = @(P, I, delta_tau, delta_I, adj) reshape(sum(Q(P, I, adj, delta_tau, b
 % for countryID = 38
     countryname = (country_names(countryID))
      if exist(strcat("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/productivities/productivities_", (countryname), ".csv"))  && ~exist(strcat("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/Network_outcomes/", (countryname), "_outcomes.csv"))
-    
+
         % Split centroids by country
         case_centroids = centroids(centroids.country == countryname,:);
         num_locations = size(case_centroids, 1)
-     if num_locations > 2 
-        
+     if num_locations > 2
+
         % Read in characteristics
         population = cellfun(@str2double, case_centroids.pop);
 
@@ -62,7 +61,7 @@ inflows = @(P, I, delta_tau, delta_I, adj) reshape(sum(Q(P, I, adj, delta_tau, b
         weights = ones(J, 1);
 
         %% Optimisation
-    
+
         % defines static problem with current infrastructure
         Lagrange_I_static  = @(P) deal((sum(weights .* population .* (c(P).^(alpha)), 1) ...
         - sum(sum(P .* (C(P, population) + outflows(P, I, delta_tau, delta_I, adj) - inflows(P, I, delta_tau, delta_I, adj) ...
@@ -105,7 +104,7 @@ inflows = @(P, I, delta_tau, delta_I, adj) reshape(sum(Q(P, I, adj, delta_tau, b
             csvwrite(strcat("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/MatlabOnline_results/P_stat", (countryname), ".csv"), P_stat);
             strcat("Finished P_stat on ", datestr(datetime('now'))) % just for display purposes
         end
-        
+
         % Optimise full problem
         strcat("Started P_opt on ", datestr(datetime('now'))) % just for display purposes
         [P_opt] = fmincon(Lagrange_I_opt, P_stat,A,b,Aeq,beq,lb,ub, nonlcon, options_trustregion);
@@ -144,14 +143,14 @@ inflows = @(P, I, delta_tau, delta_I, adj) reshape(sum(Q(P, I, adj, delta_tau, b
         msize_opt = 25*((c(P_opt).^alpha).*population) / max((c(P_opt).^alpha).*population)+0.1;
 
         win_loss = ((c(P_opt).^alpha).*population) ./ ((c(P_stat).^alpha).*population);
-        
+
         f = figure;
         p = uipanel('Parent',f,'BorderType','none', 'BackgroundColor','white');
         p.Title = countryname;
         p.TitlePosition = 'centertop';
         p.FontSize = 12;
         p.FontWeight = 'bold';
-       
+
 
         subplot(2,1,1, 'Parent', p)
         plot_1 = plot(graph_stat, 'XData', (cellfun(@str2double, case_centroids.x)), 'YData', (cellfun(@str2double, case_centroids.y)), 'Linewidth', edgeweights_stat, 'MarkerSize', msize_stat, 'NodeCData', price_index_stat);
@@ -182,14 +181,13 @@ inflows = @(P, I, delta_tau, delta_I, adj) reshape(sum(Q(P, I, adj, delta_tau, b
           sum(inflows(P_stat, I, delta_tau, delta_I, adj), 2) sum(outflows(P_stat, I, delta_tau, delta_I, adj), 2) sum(inflows(P_opt, optimal_infrastructure, delta_tau, delta_I, adj), 2) ...
           sum(outflows(P_opt, optimal_infrastructure, delta_tau, delta_I, adj), 2)], ...
           'VariableNames', {'rownumber', 'P_stat', 'P_opt', 'util_stat', 'util_opt', 'inflows_stat', 'outflows_stat', 'inflows_opt', 'outflows_opt'}), strcat("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/Network_outcomes/", (countryname), "_outcomes.csv"));
-        
+
        end
     end
-    
-     
+
+
 
 
 
     clear msize_opt msize_stat plot_1 plot_2 edgeweights_opt edgeweights_stat
 end
-

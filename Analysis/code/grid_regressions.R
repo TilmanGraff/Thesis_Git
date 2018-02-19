@@ -18,7 +18,7 @@ jedwab_countries <- c("Angola", "Benin", "Guinea-Bissau", "Botswana", "Burkina-F
 jedwab_countries_via_all_rails <- c("Angola", "Benin", "Botswana", "Burkina-Faso", "Burundi", "Cameroon", "Congo", "Democratic-Republic-of-the-Congo", "Djibouti", "Equatorial-Guinea", "Eritrea", "Ethiopia", "Ghana", "Guinea", "Cote-dIvoire", "Kenya", "Liberia", "Malawi", "Mali", "Mozambique", "Namibia", "Nigeria", "Senegal", "Sierra-Leone", "Somalia", "Sudan", "South-Sudan", "United-Republic-of-Tanzania", "Togo", "Uganda", "Zambia", "Zimbabwe", "South-Africa")
 
 opt_loc <- opt_loc[!is.na(opt_loc$RailKM) & !is.na(opt_loc$PlaceboKM) & !is.na(opt_loc$cluster),]
-#opt_loc <- opt_loc[opt_loc$country %in% jedwab_countries_via_all_rails,]
+opt_loc <- opt_loc[opt_loc$country %in% jedwab_countries_via_all_rails,]
 #opt_loc <- opt_loc[opt_loc$country != "South-Africa",]
 
 
@@ -35,17 +35,17 @@ opt_loc$border_cell <- opt_loc$border < 8
 ###################
 # RailKM
 #
-mod.1 <- lm(zeta~RailKM, data=opt_loc)
-mod.2 <- lm(zeta~RailKM+factor(country), data=opt_loc)
-mod.3 <- lm(zeta~RailKM+factor(country)+altitude+temp+landsuit+malaria+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+border, data=opt_loc)
-mod.4 <- lm(zeta~RailKM+factor(country)+altitude+temp+landsuit+malaria+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+pop+urban+border, data=opt_loc)
-
-mod.5 <- lm(zeta~PlaceboKM, data=opt_loc)
-mod.6 <- lm(zeta~PlaceboKM+factor(country), data=opt_loc)
-mod.7 <- lm(zeta~PlaceboKM+factor(country)+altitude+temp+landsuit+malaria+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+border, data=opt_loc)
-mod.8 <- lm(zeta~PlaceboKM+factor(country)+altitude+temp+landsuit+malaria+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+pop+urban+border, data=opt_loc)
-
-covariate_labels <- c("KM of Colonial Railroads", "KM of Colonial Placebo Railroads")
+# mod.1 <- lm(zeta~RailKM, data=opt_loc)
+# mod.2 <- lm(zeta~RailKM+factor(country), data=opt_loc)
+# mod.3 <- lm(zeta~RailKM+factor(country)+altitude+temp+landsuit+malaria+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+border, data=opt_loc)
+# mod.4 <- lm(zeta~RailKM+factor(country)+altitude+temp+landsuit+malaria+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+pop+urban+border, data=opt_loc)
+#
+# mod.5 <- lm(zeta~PlaceboKM, data=opt_loc)
+# mod.6 <- lm(zeta~PlaceboKM+factor(country), data=opt_loc)
+# mod.7 <- lm(zeta~PlaceboKM+factor(country)+altitude+temp+landsuit+malaria+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+border, data=opt_loc)
+# mod.8 <- lm(zeta~PlaceboKM+factor(country)+altitude+temp+landsuit+malaria+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+pop+urban+border, data=opt_loc)
+#
+# covariate_labels <- c("KM of Colonial Railroads", "KM of Colonial Placebo Railroads")
 
 
 ###################
@@ -108,17 +108,17 @@ covariate_labels <- c("KM of Colonial Railroads", "KM of Colonial Placebo Railro
 
 ###################
 # IV stuff
-# opt_loc <- opt_loc[opt_loc$isnode ==0,]
-# opt_loc$smaller_40 <- opt_loc$dist2rail <= 40
-# opt_loc$emst_40 <- opt_loc$dist2emst <= 40
-#
-# mod.OLS <- lm(zeta~RailKM_military+factor(country)+altitude+temp+landsuit+malaria+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+pop, data=opt_loc)
-# mod.IV <- ivreg(zeta~RailKM_military+factor(country)+altitude+temp+landsuit+malaria+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+pop | . - RailKM_military + emst_40, data=opt_loc)
-#
-# # # all of this does not work. My idea being maybe that being close to the emst somehow indicates that this is a smartly positioned railway. Those will obviously not be re-arranged?
-#
-#
-# covariate_labels <- c("KM of Colonial Rails for Military Purposes")
+opt_loc <- opt_loc[opt_loc$isnode ==0,]
+opt_loc$smaller_20 <- opt_loc$dist2rail <= 20
+opt_loc$emst_40 <- opt_loc$dist2emst <= 100
+
+mod.OLS <- lm(zeta~RailKM+factor(country)+altitude+temp+landsuit+malaria+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+pop+border, data=opt_loc)
+mod.IV <- ivreg(zeta~RailKM+factor(country)+altitude+temp+landsuit+malaria+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+border+rugg+lights+pop | . - RailKM + emst_40, data=opt_loc)
+
+# # all of this does not work. My idea being maybe that being close to the emst somehow indicates that this is a smartly positioned railway. Those will obviously not be re-arranged?
+
+
+covariate_labels <- c("KM of Colonial Rails for Military Purposes")
 
 #######################################################
 #### Display results
@@ -179,4 +179,4 @@ for(i in ls(pattern="mod.")){
 control_list = list(country, geog, sim_controls)
 
 
-stargazer(mo_list, se=se_list, type="latex",  keep = c("ail", "placebo", "KM", "ten", "thirty", "smaller"), p.auto=TRUE, t.auto=TRUE, add.lines=control_list, keep.stat=c("rsq", "n"), covariate.labels = covariate_labels)
+stargazer(mo_list, se=se_list, type="text",  keep = c("ail", "placebo", "KM", "ten", "thirty", "smaller, emst"), p.auto=TRUE, t.auto=TRUE, add.lines=control_list, keep.stat=c("rsq", "n"), covariate.labels = covariate_labels)

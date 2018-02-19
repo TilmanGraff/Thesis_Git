@@ -7,11 +7,12 @@ centroids = readtable("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_G
 centroids.country = categorical(centroids.country);
 
 
-% centroids.productivity = cellfun(@str2double,centroids.lights) ./ cellfun(@str2double,centroids.pop);
+centroids.productivity = cellfun(@str2double,centroids.lights) ./ cellfun(@str2double,centroids.pop);
 
 
 for countryID = 1:length(country_names)
 
+    
     countryname = (country_names(countryID));
 
     speed = csvread(strcat("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/speed/speed_", (countryname), ".csv"), 1, 0);
