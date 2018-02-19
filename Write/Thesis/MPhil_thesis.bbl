@@ -1,4 +1,4 @@
-\begin{thebibliography}{21}
+\begin{thebibliography}{27}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\urlprefix}{URL }
@@ -16,8 +16,14 @@
 \newblock The Welfare Effects of Transportation Infrastructure Improvements.
 \newblock Working {{Paper}}, Dartmouth and Yale
 
+\bibitem[{Anderson and
+  Van~Wincoop(2003)}]{Anderson_Gravitygravitassolution_2003}
+\textbf{Anderson, James~E. and Eric Van~Wincoop} (\textbf{2003}).
+\newblock Gravity with Gravitas: A Solution to the Border Puzzle.
+\newblock \emph{the american economic review} 93(1), pp. 170--192
+
 \bibitem[{Anderson and Van~Wincoop(2004)}]{Anderson_Tradecosts_2004}
-\textbf{Anderson, James~E. and Eric Van~Wincoop} (\textbf{2004}).
+---{}---{}--- (\textbf{2004}).
 \newblock Trade Costs.
 \newblock \emph{Journal of Economic Literature} 42(3), pp. 691--751
 
@@ -27,6 +33,11 @@
   {{Intra}}-National {{Trade Costs}}.
 \newblock Working {{Paper}}, {National Bureau of Economic Research}
 
+\bibitem[{Boulhol and {de Serres}(2010)}]{Boulhol_Havedevelopedcountries_2010}
+\textbf{Boulhol, H. and A.~{de Serres}} (\textbf{2010}).
+\newblock Have Developed Countries Escaped the Curse of Distance?
+\newblock \emph{Journal of Economic Geography} 10(1), pp. 113--139
+
 \bibitem[{Collier et~al.(2015)Collier, Kirchberger, and
   S{\"o}derbom}]{collier_cost_2015}
 \textbf{Collier, Paul, Martina Kirchberger, and Mans S{\"o}derbom}
@@ -34,11 +45,29 @@
 \newblock The Cost of Road Infrastructure in Low-and Middle-Income Countries.
 \newblock \emph{The World bank economic review} 30(3), pp. 522--548
 
+\bibitem[{De~Luca et~al.(2018)De~Luca, Hodler, Raschky, and
+  Valsecchi}]{DeLuca_Ethnicfavoritismaxiom_2018}
+\textbf{De~Luca, Giacomo, Roland Hodler, Paul~A. Raschky, and Michele
+  Valsecchi} (\textbf{2018}).
+\newblock Ethnic Favoritism: {{An}} Axiom of Politics?
+\newblock \emph{Journal of Development Economics} 132, pp. 115--129
+
 \bibitem[{Donaldson and Storeygard(2016)}]{donaldson_view_2016}
 \textbf{Donaldson, Dave and Adam Storeygard} (\textbf{2016}).
 \newblock The {{View}} from {{Above}}: {{Applications}} of {{Satellite Data}}
   in {{Economics}}.
 \newblock \emph{Journal of Economic Perspectives} 30(4), pp. 171--198
+
+\bibitem[{Doxsey-Whitfield et~al.(2015)Doxsey-Whitfield, MacManus, Adamo,
+  Pistolesi, Squires, Borkovska, and
+  Baptista}]{Doxsey-Whitfield_TakingAdvantageImproved_2015}
+\textbf{Doxsey-Whitfield, Erin, Kytt MacManus, Susana~B. Adamo, Linda
+  Pistolesi, John Squires, Olena Borkovska, and Sandra~R. Baptista}
+  (\textbf{2015}).
+\newblock Taking {{Advantage}} of the {{Improved Availability}} of {{Census
+  Data}}: {{A First Look}} at the {{Gridded Population}} of the {{World}},
+  {{Version}} 4.
+\newblock \emph{Papers in Applied Geography} 1(3), pp. 226--234
 
 \bibitem[{Fajgelbaum and Schaal(2017)}]{fajgelbaum_optimal_2017}
 \textbf{Fajgelbaum, Pablo~D. and Edouard Schaal} (\textbf{2017}).
@@ -89,8 +118,14 @@
   from {{Sanctions}} on {{North Korea}}.
 \newblock Working {{Paper}}, {Stanford University}
 
+\bibitem[{Michalopoulos and Papaioannou(2014)}]{michalopoulos_national_2014}
+\textbf{Michalopoulos, Stelios and Elias Papaioannou} (\textbf{2014}).
+\newblock National {{Institutions}} and {{Subnational Development}} in
+  {{Africa}}.
+\newblock \emph{The Quarterly Journal of Economics} 129(1), pp. 151--213
+
 \bibitem[{Michalopoulos and Papaioannou(2018)}]{michalopoulos_spatial_2018}
-\textbf{Michalopoulos, Stelios and Elias Papaioannou} (\textbf{2018}).
+---{}---{}--- (\textbf{2018}).
 \newblock Spatial {{Patterns}} of {{Development}}: {{A Meso Approach}}.
 \newblock \emph{Annual Review of Economics} forthcoming
 
@@ -107,6 +142,13 @@
 \newblock
   \url{https://data.humdata.org/dataset/south-sudan-administrative-boundaries}~(Accessed:
   2017-12-17)
+
+\bibitem[{Pinkovskiy and Sala-i
+  Martin(2016)}]{Pinkovskiy_LightsCameraIncome_2016}
+\textbf{Pinkovskiy, Maxim and Xavier Sala-i Martin} (\textbf{2016}).
+\newblock Lights, {{Camera}} \ldots{} {{Income}}! {{Illuminating}} the
+  {{National Accounts}}-{{Household Surveys Debate}}.
+\newblock \emph{The Quarterly Journal of Economics} 131(2), pp. 579--631
 
 \bibitem[{Sandvik(2008)}]{Sandvik_WorldBordersDataset_2008}
 \textbf{Sandvik, Bjorn} (\textbf{2008}).

@@ -5,12 +5,12 @@
 \BOOKMARK [2][-]{subsection.2.3}{Optimal Infrastructure Provision}{section.2}% 5
 \BOOKMARK [2][-]{subsection.2.4}{Planner's Problem and Equilibrium}{section.2}% 6
 \BOOKMARK [1][-]{section.3}{Bringing the model to the data \205 Towards a spatial measure of African network inefficiency}{}% 7
-\BOOKMARK [2][-]{subsection.3.1}{Data Sources}{section.3}% 8
-\BOOKMARK [2][-]{subsection.3.2}{Road Network}{section.3}% 9
+\BOOKMARK [2][-]{subsection.3.1}{Network Nodes}{section.3}% 8
+\BOOKMARK [2][-]{subsection.3.2}{Network Edges}{section.3}% 9
 \BOOKMARK [3][-]{subsubsection.3.2.1}{Road Data}{subsection.3.2}% 10
 \BOOKMARK [3][-]{subsubsection.3.2.2}{Infrastructure matrix Ii,k}{subsection.3.2}% 11
-\BOOKMARK [3][-]{subsubsection.3.2.3}{Infrastructure building cost matrix i,kI}{subsection.3.2}% 12
-\BOOKMARK [3][-]{subsubsection.3.2.4}{Trade cost parameter i,k}{subsection.3.2}% 13
+\BOOKMARK [3][-]{subsubsection.3.2.3}{Trade cost parameter i,k}{subsection.3.2}% 12
+\BOOKMARK [3][-]{subsubsection.3.2.4}{Infrastructure building cost matrix i,kI}{subsection.3.2}% 13
 \BOOKMARK [2][-]{subsection.3.3}{Heterogeneous goods}{section.3}% 14
 \BOOKMARK [2][-]{subsection.3.4}{Simulation}{section.3}% 15
 \BOOKMARK [1][-]{section.4}{Results}{}% 16
