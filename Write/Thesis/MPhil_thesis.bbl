@@ -1,4 +1,4 @@
-\begin{thebibliography}{27}
+\begin{thebibliography}{28}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\urlprefix}{URL }
@@ -78,6 +78,12 @@
 \textbf{Galichon, Alfred} (\textbf{2016}).
 \newblock \emph{Optimal {{Transport Methods}} in {{Economics}}}.
 \newblock {Princeton University Press}
+
+\bibitem[{Head and Mayer(2014)}]{Head_GravityEquationsWorkhorse_2014}
+\textbf{Head, Keith and Thierry Mayer} (\textbf{2014}).
+\newblock Gravity {{Equations}}: {{Workhorse}},{{Toolkit}}, and {{Cookbook}}.
+\newblock In: \emph{Handbook of {{International Economics}}}, volume~4, pp.
+  131--195. {Elsevier}
 
 \bibitem[{Henderson et~al.(2018)Henderson, Squires, Storeygard, and
   Weil}]{henderson_global_2018}

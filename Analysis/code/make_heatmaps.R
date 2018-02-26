@@ -85,9 +85,9 @@ edges[2, ] <- (edges[2, ] - mean(edges[2, ])) * scale.parameter + mean(edges[2,
 
 
 
-#png(filename=paste("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/zeta_heatmaps/African_countries_zeta.png", sep=""), width=6, height=6, units = 'in', res=300 )
-#print(spplot(africa, "zeta", col="transparent", col.regions=my.palette, cuts=8, xlim=edges[1,], ylim=edges[2,], main="Africa")) # cuts always has to be one less than n in the definition of my.palette
-#dev.off()
+png(filename=paste("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/zeta_heatmaps/African_countries_zeta.png", sep=""), width=6, height=6, units = 'in', res=300 )
+print(spplot(africa, "zeta", col="transparent", col.regions=my.palette, cuts=8, xlim=edges[1,], ylim=edges[2,])) # cuts always has to be one less than n in the definition of my.palette
+dev.off()
 
 ###
 # 2) Trying to make this happen within Countries
@@ -128,11 +128,18 @@ for(country in country_names){
     edges[2, ] <- (edges[2, ] - mean(edges[2, ])) * scale.parameter + mean(edges[2,
         ]) + yshift
 
+    max_extend <- max(abs(edges[1,2]-edges[1,1]), abs(edges[2,2]-edges[2,1]))
 
-     #png(filename=paste("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/zeta_heatmaps/", country, "_zeta.png", sep=""))
+    edges[1,1] <- mean(edges[1,]) - 0.5*max_extend
+    edges[1,2] <- mean(edges[1,]) + 0.5*max_extend
 
-    #print(spplot(polygon_dataframe, "zeta", col="transparent", col.regions=my.palette, cuts=8, xlim=edges[1,], ylim=edges[2,], main = country))
-     #dev.off()
+    edges[2,1] <- mean(edges[2,]) - 0.5*max_extend
+    edges[2,2] <- mean(edges[2,]) + 0.5*max_extend
+
+     png(filename=paste("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/zeta_heatmaps/", country, "_zeta.png", sep=""))
+
+    print(spplot(polygon_dataframe, "zeta", col="transparent", col.regions=my.palette, cuts=8, xlim=edges[1,], ylim=edges[2,], main = country, colorkey=list(labels=list(cex=1.4))))
+    dev.off()
   }
 }
 
@@ -182,6 +189,6 @@ polygon_dataframe$zeta_bracket <- cut(polygon_dataframe$zeta, br)
 
  png(filename=paste("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/zeta_heatmaps/African_gridcells_zeta.png", sep=""), width=6, height=6, units = 'in', res = 300)
 
-print(spplot(polygon_dataframe, "zeta_bracket", col="transparent", col.regions=my.palette, cuts=8, xlim=edges[1,], ylim=edges[2,], main = "Africa"))
+print(spplot(polygon_dataframe, "zeta_bracket", col="transparent", col.regions=my.palette, cuts=8, xlim=edges[1,], ylim=edges[2,]))
 
  dev.off()

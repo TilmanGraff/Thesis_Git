@@ -1051,10 +1051,8 @@ FUNCTION {booklet}
   date.block
   format.title "title" output.check
   new.block
-  howpublished "howpublished" bibinfo.check output
   address "address" bibinfo.check output
   new.block
-  format.url output
   new.block
   format.note output
   fin.entry
@@ -1123,7 +1121,6 @@ FUNCTION {incollection}
     }
   if$
   new.block
-  format.url output
   new.block
   format.note output
   fin.entry

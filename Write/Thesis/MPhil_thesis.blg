@@ -6,45 +6,45 @@ Database file #1: Thesis_library.bib
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Warning--missing institution in allen_welfare_2016
 Warning--missing institution in jedwab_average_2017
-You've used 27 entries,
-            3074 wiz_defined-function locations,
-            803 strings with 11814 characters,
-and the built_in function-call counts, 16604 in all, are:
-= -- 1474
-> -- 634
-< -- 34
-+ -- 219
-- -- 181
-* -- 1204
-:= -- 2493
-add.period$ -- 54
-call.type$ -- 27
-change.case$ -- 173
-chr.to.int$ -- 28
-cite$ -- 29
-duplicate$ -- 1287
-empty$ -- 1187
-format.name$ -- 273
-if$ -- 3412
+You've used 28 entries,
+            3066 wiz_defined-function locations,
+            812 strings with 12111 characters,
+and the built_in function-call counts, 17384 in all, are:
+= -- 1546
+> -- 656
+< -- 37
++ -- 226
+- -- 187
+* -- 1259
+:= -- 2596
+add.period$ -- 57
+call.type$ -- 28
+change.case$ -- 181
+chr.to.int$ -- 29
+cite$ -- 30
+duplicate$ -- 1350
+empty$ -- 1251
+format.name$ -- 284
+if$ -- 3583
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 218
-newline$ -- 141
-num.names$ -- 108
-pop$ -- 421
+missing$ -- 228
+newline$ -- 146
+num.names$ -- 112
+pop$ -- 444
 preamble$ -- 1
-purify$ -- 168
+purify$ -- 174
 quote$ -- 0
-skip$ -- 589
+skip$ -- 619
 stack$ -- 0
-substring$ -- 760
-swap$ -- 762
-text.length$ -- 14
+substring$ -- 803
+swap$ -- 798
+text.length$ -- 16
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 237
+type$ -- 246
 warning$ -- 2
-while$ -- 123
+while$ -- 129
 width$ -- 0
-write$ -- 349
+write$ -- 364
 (There were 2 warnings)

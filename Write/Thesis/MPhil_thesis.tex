@@ -297,7 +297,7 @@ As discussed above, the model stays agnostic about how grid cells produce their 
 
 After these steps, a discretised network representation now exists for every African country. Nodes in the network are the spaced centroid locations of each grid cell. They combine the characteristics of the entire grid cell (population, output, etc.) in one point. Edges in the network are road connections between centroids. Each edge carries a number of characteristics (average speed, trade costs, and infrastructure building costs). Figure \eqref{fig:matlab_networks} presents this discretised network specification for the four countries from above. Nodes are printed larger proportional to their population. A node's colour scale reflects night light intensity per capita (a statistic which is only calculated for illustrative purposes). Edges are drawn thicker proportional to the initial infrastructure investment (i.e. average attainable speed).
 
-For each country, I proceed to conduct two simulation exercises. In the first, infrastructure $I_{i,k}$ is treated as fixed. This is to obtain a baseline estimate of the spatial variation of welfare in each country. Locations are still allowed to trade with each other, but only over the exogeneous current road network. Formally, this corresponds to solving a slightly truncated version of the social planner exercise from above, where $I_{i,k}$ is simply dropped from the planner's set of control variables.\footnote{Recall that the optimal network allocation exercise nests the problem of solving for optimal trade flows. Hence, every other aspect of the model remains unaffected by fixing $I_{i,k}$. Note that this makes the \emph{Network Building Constraint} \eqref{eq:network_building} non-binding. The same outcome could be achieved by introducing an additional constraint $I_{i,k} = I_{i,k}^{\textrm{empirical}}$, however at higher computational requirements.} By construction, the resulting solution will have two properties. Firstly, total output over the entire country will remain untouched. Inputs are not defined and hence do not shift to more productive regions. Indeed, any welfare gains will be attained solely by shipping the right mix of goods to the right regions. Secondly, labor immobility will leave welfare differences between regions as agents cannot simply move to more privileged cells. The social planner would like to overcome these differences, but is confronted with trade costs which might leave certain remote areas much worse off than well-connected ones.
+For each country, I proceed to conduct two simulation exercises. For both, I calibrate the curvature parameter of the utility function at $\alpha = 0.4$ and the elasticity of substitution parameter at $\sigma=4$.\footnote{The parametrisation of $\alpha$ is identical in \cite{fajgelbaum_optimal_2017}. They, however, calibrate elasticity of substitution at $\sigma=5$, so slightly higher than my parameter. \cite{Head_GravityEquationsWorkhorse_2014} review 32 related studies and find a mean parameter of $\sigma=4.51$. This average is, however, driven by some positive outliers as the median parameter is much to the left of that. To account for this slant, I choose $\sigma=4$.} In the first simulation exercise, infrastructure $I_{i,k}$ is treated as fixed. This is to obtain a baseline estimate of the spatial variation of welfare in each country. Locations are still allowed to trade with each other, but only over the exogeneous current road network. Formally, this corresponds to solving a slightly truncated version of the social planner exercise from above, where $I_{i,k}$ is simply dropped from the planner's set of control variables and exogeneously set to the empirical infrastructure matrix $I_{i,k}^{\textrm{empirical}}$.\footnote{Recall that the optimal network allocation exercise nests the problem of solving for optimal trade flows. Hence, every other aspect of the model remains unaffected by fixing $I_{i,k}$. Trivially, this makes the \emph{Network Building Constraint} \eqref{eq:network_building} non-binding. The same outcome could be achieved at much higher computational costs by simply introducing an additional constraint $I_{i,k} = I_{i,k}^{\textrm{empirical}}$ to the social planner's problem.} By construction, the resulting solution will have two properties. Firstly, total output over the entire country will remain untouched. Inputs are not defined and hence do not shift to more productive regions. Indeed, any welfare gains will be attained solely by shipping the right mix of goods to the right regions. Secondly, labor immobility will leave welfare differences between regions as agents cannot simply move to more privileged cells. The social planner would like to overcome these differences, but is confronted with trade costs which might leave certain remote areas much worse off than well-connected ones.
 
 Following this static exercise, I proceed to the main task of endogeneising the infrastructure matrix $I_{i,k}$. With the \emph{Network Building Constraint} binding total infrastructure investment at the level of the current road network, the social planner is now free to reshuffle roads within the country in order to improve connections as she chooses. If she wants to improve the connection between two given locations, she will have to take away infrastructure from somewhere else in the country. Intuitively, this reallocation exercise does not seek to identify where to place the optimal next investment, but rather represents an utterly fictitious scenario in which every road can be lifted from the ground, reshuffled, and eventually located someplace else.\footnote{Note that equation \eqref{eq:network_building} only fixes $\sum_{i}^{}\sum_{k \in N(i)}^{} \delta_{i,k}^{I}I_{i,k} = K$. Hence, not the overall sum of infrastructure is fixed, but more precisely the overall cost of infrastructure. This still allows the social planner to take away one unit of infrastructure on a very expensive (high $\delta_{i,k}^{I}$) link and exchange it for much more than one unit on a cheaper (low $\delta_{i,k}^{I}$) link.} The procedure does not measure how many roads a country has, but rather how well they are placed. It does not look at whether the entire country is full of speedy roads, but rather whether those roads connect the right locations.
 
@@ -343,32 +343,54 @@ I conduct the reallocation scenario for every African country. Five small countr
 \label{fig:Reallocations}
 \end{figure}
 
-Figure \eqref{fig:Reallocations} visualises this reallocation exercise for several countries. Subfigure \eqref{fig:cae_pre} displays the discretised network representation of the Central African Republic, comparable to figures \eqref{fig:nigeria_mat} -- \eqref{fig:Rwanda_mat}. The edges to this network are printed almost evenly thick, implying that infrastructure is fairly evenly distributed across the country. Subfigure \eqref{fig:cae_post} then displays the country after the network reshuffling exercise. Three patterns stand out. First, the social planner sees a clear need to connect the populous areas in the South West of the country with each other. Some southern nodes are granted extensive, almost highway-like connections to their immediate neighbours. For that, the social planner is willing to salvage some of the apparently unnecessary infrastructure in the middle or north of the country. Second, there still seems to be a benefit from having a few trails connecting the South West with the North East. Some clear North-South and East-West trails spanning multiple regions emerge. Thirdly, Figure \eqref{fig:cae_post} prints nodes in a colour scale corresponding to individual welfare gains and losses for each location. As can be seen from first-glance, most southern regions stand to gain between five to ten per cent of total welfare from this scenario. Hardly any nodes seem to lose welfare, even though on second glance a few instances become apparent.
+Figure \eqref{fig:Reallocations} visualises this reallocation exercise for several countries. Subfigure \eqref{fig:cae_pre} displays the discretised network representation of the Central African Republic, comparable to figures \eqref{fig:nigeria_mat} -- \eqref{fig:Rwanda_mat}. The edges to this network are printed almost evenly thick, implying that infrastructure is fairly evenly distributed across the country. Subfigure \eqref{fig:cae_post} then displays the country after the network reshuffling exercise. Three patterns stand out. First, the social planner sees a clear need to connect the populous areas in the South West of the country with each other. Some southern nodes are granted extensive, almost highway-like connections to their immediate neighbours. For that, the social planner is willing to salvage some of the apparently unnecessary infrastructure in the middle or north of the country. Second, there still seems to be a benefit from having a few trails connecting the South West with the North East. Some clear North-South and East-West trails spanning multiple regions emerge. Thirdly, nodes are printed in a colour scale corresponding to individual welfare gains and losses for each location. As can be seen from first-glance, most southern regions stand to gain between five and ten per cent of total welfare from this scenario. Hardly any nodes seem to lose welfare, even though on second glance a few instances become apparent.
 
 Tanzania in Figures \eqref{fig:tanzania_pre} -- \eqref{fig:tanzania_post} displays a more decentralised optimal network solution. The reallocation scenario results in the main urban areas being better connected to their immediate surroundings, but no clear overarching network seems to emerge. There also does not appear to be any necessity to connect hinterland regions with the primal city Dar es Salaam in the West. Indeed, the largest city slightly loses welfare with the reallocation at the expense of multiple smaller population centres in the North.\footnote{On a sidenote, Tanzania also illustrates an interesting case where a tiny fraction of the country is fully detached from the rest of the network. Just north of Dar es Sallam, the island of Zanzibar constitutes a one-node subnetwork of its own. Not surprisingly, it remains completely unaffected by the reshuffling of roads on the mainland. Instances like these are relatively common in the dataset.} Small Rwanda in Figures \eqref{fig:rwanda_pre} -- \eqref{fig:rwanda_post} helps illustrating some of the forces at hand in a less crowded graph. Starting from a fairly evenly distributed transport network, the reallocation dynamics lead to much more variation in infrastructure provision. Some links are deemed superfluous and hence reduced to the smallest admissible level, while others are scaled multiple times their starting infrastructure level. Furthermore, high welfare gains are reported by direct neighbours of big production centres and urban grid cells. These are unassuming grid cells with average population or output levels, merely equipped with the geographical blessing of being close to a bigger neighbour. This leads to the conclusion that while better infrastructure combats the welfare costs of geographical distance, proximity to hubs still matters. Even an optimally designed transport network is ultimately not able to overcome the \emph{curse of distance}.\footnote{A term coined by \cite{Boulhol_Havedevelopedcountries_2010}.}
 
-After successfully reshuffling a country's transport network, overall welfare will necessarily (weakly) increase. It is the social planner's objective to maximise overall welfare, and since the original network composition is always still available, the entire country cannot on aggregate be worse off than before. Note again that overall production (light output) will be unaffected by the entire exercise. Welfare gains are solely caused by enabling mutual benefits from trade through connecting the right locations. Nevertheless, welfare gains are substantial. The Central African Republic of Figure \eqref{fig:Reallocations}, for instance, stands to gain 1.84\% of overall welfare just by reshuffling its roads. Since this welfare gain is rather hard to materialise, I prefer thinking of it as a measure of network inefficiency. The higher the hypothetical gains from merely reshuffling existing roads, the more haphazard the existing allocation of roads, and hence the more inefficient the current transport network.
+After successfully reshuffling a country's transport network, overall welfare will necessarily (weakly) increase. It is the social planner's objective to maximise overall welfare, and since the original network composition is always still available, the entire country cannot on aggregate be worse off than before. Note again that overall production (light output) will be unaffected by the entire exercise. Welfare gains are solely caused by enabling mutual benefits from trade through connecting the right locations. Nevertheless, they are substantial. The Central African Republic of Figure \eqref{fig:Reallocations}, for instance, stands to gain 1.84\% of overall welfare just by reshuffling its roads. Tanzania (1.7\%) and Rwanda (1.27\%) are slightly closer to their hypothetical optimum.
 
 \begin{figure}
 \centering
 \caption{African countries by network inefficiency}
-\includegraphics[width=0.6\textwidth]{/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/zeta_heatmaps/African_countries_zeta.png}
+\includegraphics[width=0.6\textwidth,trim={1cm 4cm 1cm 3cm},clip]{/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/zeta_heatmaps/African_countries_zeta.png}
 
 \label{fig:countries_by_welfare_gain}
+\justify
+\begin{spacing}{0.7}
+\textit{\footnotesize Map of the African continent. Countries coloured according to their welfare gain under the optimal reallocation counterfactual. Scale from almost 7\% (dark red) to $<1\%$ (white) welfare gains. Gains are computed by comparing the population-weighted sum of utility levels over all grid cells in a country before and after the reallocation exercise. As labor is immobile, the measure perfectly corresponds to per capita utility gains as well.}
+\end{spacing}
 \end{figure}
 
-Figure \eqref{fig:countries_by_welfare_gain} displays all African countries and their measure of network inefficiency. The closer the forgone welfare gain to zero (the lighter the country's colour), the more efficient the current allocation of roads. The Central African Republic's measure of 1.84\% makes the country look rather good in comparison. Some (mostly more developed) countries like South Africa (0.47\%) or Tunisia (0.24\%) perform even better. Many countries are leaving much more on the table like Somalia (4.76\%) or Chad (4.28\%). No African country, however, has a more ill advised road network than South Sudan (6.66\%). This might not come as a surprise, as the world's youngest country has largely inherited a road network that was not conceived to sustain an independent nation, but connect it to its former capital up north. On a simple cross-country level, more inefficient networks are significantly correlated with more corruption ($p < 0.01$), less property rights ($p < 0.01$) and less 2010 log GDP ($p=0.07$). Note that these are merely descriptive correlations which are far from implying any form of causation.\footnote{Data from \cite{the_world_bank_world_2017}. For corruption and property rights, data is only available for 35 countries and correlations are hence performed on this truncated sample.}
+Figure \eqref{fig:countries_by_welfare_gain} displays all African countries and their hypothetical welfare gain. The three countries considered above perform rather well in comparison. Some (mostly more developed) countries like South Africa (0.5\%) or Tunisia (0.2\%) perform even better. Many countries are leaving much more on the table, like Somalia (4.8\%) or Chad (4.3\%). No African country, however, has a more ill advised road network than South Sudan. Its citizens stand to gain almost 6.7\% of overall welfare if just their roads were better placed. This might not come as a surprise, as the world's newest country has largely inherited a road network that was not conceived to sustain an independent nation, but rather connect it to its former capital up north.
 
-While each country only stands to gain overall welfare from this reallocation procedure, individual locations might very well lose in the process. Intuitively, some regions might be equipped with far too many good roads such that the social planner takes these roads away to use someplace else. Comparing each grid cell's welfare before and after the major reshuffling can help identify regions which are currently over or under-provided for. More formally, I define
+Forgone welfare gains can be conceived as an intuitive measure for overall network inefficiency. The closer hypothetical gains to zero (the lighter the country's colour), the more efficient the current allocation of roads. Vice-versa, if a country stands to gain a lot from reshuffling, then the current network is deemed more inefficient. On a simple cross-section, countries with less efficient networks are significantly correlated with more corruption ($p < 0.01$), less property rights ($p < 0.01$) and less 2010 log GDP ($p=0.07$). Note that these are merely descriptive correlations which are far from implying any form of causation.\footnote{Data from \cite{the_world_bank_world_2017}. For corruption and property rights, data is only available for 35 countries and correlations are hence performed on this truncated sample. Interestingly, network efficiency is \emph{not} statistically associated with earlier independence years ($p=0.8$) or more artifical border designs ($p=0.3$) as reported by \cite{Alesina_ArtificialStates_2011}.}
+
+While each country only stands to gain overall welfare from this reallocation procedure, individual locations might very well lose in the process. Intuitively, some regions might be equipped with far too many good roads such that the social planner takes these roads away to use someplace else. Comparing each grid cell's welfare before and after the major reshuffling can help identifying regions which are currently over or under-provided for. More formally, I define
 
 \begin{equation}
-  \zeta_{i} = \frac{\textrm{Welfare under the optimal Infrastructure}_{i}}{\textrm{Welfare under the current Infrastructure}_{i}}
+  \Lambda_{i} = \frac{\textrm{Welfare under the optimal Infrastructure}_{i}}{\textrm{Welfare under the current Infrastructure}_{i}}
 \end{equation}
 
 % Figure
 \begin{figure}
 \centering
-\caption{Spatial Distribution of $\zeta_{i}$ for sample countries}
+\caption{Spatial Distribution of $\Lambda_{i}$ for sample countries}
+
+\begin{subfigure}[c]{0.32\textwidth}
+\includegraphics[width=\textwidth]{/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/zeta_heatmaps/Central-African-Republic_zeta.png}
+\caption{Central African Republic}
+\label{fig:Central African Republic_zeta}
+\end{subfigure}
+\begin{subfigure}[c]{0.32\textwidth}
+\includegraphics[width=\textwidth]{/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/zeta_heatmaps/United-Republic-of-Tanzania_zeta.png}
+\caption{Tanzania}
+\label{fig:Tanzania_zeta}
+\end{subfigure}
+\begin{subfigure}[c]{0.32\textwidth}
+\includegraphics[width=\textwidth]{/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/zeta_heatmaps/Rwanda_zeta.png}
+\caption{Rwanda}
+\label{fig:Rwanda_zeta}
+\end{subfigure}
 
 \begin{subfigure}[c]{0.32\textwidth}
 \includegraphics[width=\textwidth]{/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/zeta_heatmaps/Madagascar_zeta.png}
@@ -385,26 +407,43 @@ While each country only stands to gain overall welfare from this reallocation pr
 \caption{Chad}
 \label{fig:Chad_zeta}
 \end{subfigure}
+
+
+
 \label{fig:zeta_countries}
+\justify
+\begin{spacing}{0.7}
+\textit{\footnotesize Six African countries by their Local Infrastructure Discrimination Index $\Lambda_{i}$ on the grid cell level. Maps show each country as the 0.5 x 0.5 degree grid used for the network optimisation. For each map, darker shaded cells correspond to higher $\Lambda_{i}$ levels and hence more infrastructure discrimination compared to optimal network. To better visualise within-country variation, colour scale slightly changes from country to country.}
+\end{spacing}
 \end{figure}
 % End Figure
 
-as the \emph{Infrastructure Gap} for each grid cell $i$. Figure \eqref{fig:zeta_countries} displays the spatial distribution of the infrastructure gap $\zeta_{i}$ for Madagascar, Kenya, and Chad. The darker a grid cell's shade, the more it is disadvantaged by the inefficiencies of the current network. The lighter a cell, the more overprovided a region is with infrastructure.
+as the \emph{Local Infrastructure Discrimination Index} for grid cell $i$. Areas with high $\Lambda_{i}$ scores would be gaining under the optimal reallocation scenario and are hence under provided for in the network's current state. A low $\Lambda_{i}$, on the other hand, implies that a region is \emph{too} well off given its position in the network and hence should be stripped of some of its infrastructure to increase overall welfare. Figure \eqref{fig:zeta_countries} displays the spatial distribution of $\Lambda_{i}$ for six countries. The darker a grid cell's shade, the more it is disadvantaged by the inefficiencies of the current network. Figures \eqref{fig:Central African Republic_zeta} -- \eqref{fig:Rwanda_zeta} display what could already be inferred from the colouring of the nodes in Figure \eqref{fig:Reallocations}: The Central African Republic has too little roads in the South West and too many in the East, Tanzania shows no clear spatial pattern, and Rwanda only engages in minor reshuffling. In Figures \eqref{fig:Madagascar_zeta} -- \eqref{fig:Chad_zeta} it, furthermore, becomes apparent that Madagascar's infrastructure network discriminates against the island's heartland (note how the coastal areas tend to be much lighter than the hinterland), Kenya would profit from connecting Nairobi to its surroundings, and Chad's South is discriminated against compared to the North.
+
+
 
 % Figure
 \begin{figure}
 \centering
-\caption{Spatial Distribution of $\zeta_{i}$ for entire sample}
-\includegraphics[width=0.65\textwidth,trim={1cm 1cm 1cm 1cm},clip]{/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/zeta_heatmaps/African_gridcells_zeta.png}
+\caption{Spatial Distribution of $\Lambda_{i}$ for entire sample}
+\includegraphics[width=0.65\textwidth,trim={1cm 4cm 1cm 5cm},clip]{/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/zeta_heatmaps/African_gridcells_zeta.png}
 
 \label{fig:all_gridcells_by_zeta}
+\justify
+\begin{spacing}{0.7}
+\textit{\footnotesize Africa as represented by 10,167 grid cells of 0.5 x 0.5 degrees. Cells coloured according to their $\Lambda_{i}$ index of local infrastructure discrimination. Darker cells would benefit from reallocating national infrastructure networks. Note that the hypothetical reallocation scenario is conducted on the country-level. Cells from different countries are hence not immediately comparable. Maps's colouring follows an equal-interval rule such that every colour in the spectrum has an equal amount of members. This is to visualise the measure's variation but leads to unequal bracket-sizes for each colour.}
+\end{spacing}
 \end{figure}
 % End Figure
 
-Figure \eqref{fig:all_gridcells_by_zeta}, lastly, displays the spatial variation of $\zeta_{i}$ over all 10,000+ grid cells of the entire African continent. When interpreting this map, note that grid cells are undergoing the reshuffling scenario solely within their respective country. National borders hence play a role and can at times even clearly be inferred from the printed map. Keeping this in mind, the map reveals substantial spatial variation in the infrastructure gap across the African continent. The luckiest region (in Namibia) stands to loose almost 30\% of total welfare if the fictitious social planner intervened and reshuffled roads away from. On the other hand of the spectrum, the residents of one grid cell in Gabon are missing out on a welfare hike of more than 50\%. Moreover, abandoned regions are clearly displaying spatial correlation with large neighbouring swaths of land collectively missing out on infrastructure improvements in certain countries. This begs the conclusion that countries do not just overlook single grid cells but rather live with vast stretches of disadvantaged regions.
+Figure \eqref{fig:all_gridcells_by_zeta}, lastly, displays the spatial variation of $\Lambda_{i}$ over all 10,000+ grid cells of the entire African continent. When interpreting this map, note that grid cells are undergoing the reshuffling scenario solely within their respective country. National borders hence play a role and can at times even clearly be inferred from the printed map. Keeping this in mind, the map reveals substantial spatial variation in the infrastructure gap across the African continent. The luckiest region (in Namibia) stands to loose almost 30\% of total welfare if the fictitious social planner intervened and reshuffled roads away from it. On the other extreme of the spectrum, the residents of one grid cell in Gabon are missing out on a welfare hike of more than 50\%. Moreover, abandoned regions are clearly displaying spatial correlation with large neighbouring swaths of land collectively missing out on infrastructure improvements in certain countries. This begs the conclusion that countries do not just overlook single grid cells but rather live with vast stretches of disadvantaged regions. The index is evidently representing more than just haphazard noise.
 
-In the following section, I proceed to investigate the patterns behind this heterogeneity of network inefficiency over space.
+In the following sections, I proceed to investigate the patterns behind this heterogeneity of network infrastructure discrimination over space.
 % End Chapter
+
+\section{Empirical Strategy}
+
+
 
 \section{Results}
 
@@ -421,7 +460,7 @@ In the following section, I proceed to investigate the patterns behind this hete
   \hline \\[-1.8ex]
    & \multicolumn{8}{c}{\textit{Dependent variable:}} \\
   \cline{2-9}
-  \\[-1.8ex] & \multicolumn{8}{c}{Infrastructure Gap $\zeta_{i}$} \\
+  \\[-1.8ex] & \multicolumn{8}{c}{Infrastructure Gap $\Lambda_{i}$} \\
   \\[-1.8ex] & (1) & (2) & (3) & (4) & (5) & (6) & (7) & (8)\\
   \hline \\[-1.8ex]
    KM of Colonial Railroads & $-$0.0002$^{***}$ & $-$0.0001$^{***}$ & $-$0.0002$^{***}$ & $-$0.0002$^{***}$ &  &  &  &  \\
@@ -461,7 +500,7 @@ In the following section, I proceed to investigate the patterns behind this hete
   \hline \\[-1.8ex]
    & \multicolumn{8}{c}{\textit{Dependent variable:}} \\
   \cline{2-9}
-  \\[-1.8ex] & \multicolumn{8}{c}{Infrastructure Gap $\zeta_{i}$} \\
+  \\[-1.8ex] & \multicolumn{8}{c}{Infrastructure Gap $\Lambda_{i}$} \\
   \\[-1.8ex] & (1) & (2) & (3) & (4) & (5) & (6) & (7) & (8)\\
   \hline \\[-1.8ex]
    $<10$ KM to Colonial Railroad & $-$0.013$^{***}$ & $-$0.015$^{***}$ & $-$0.017$^{***}$ &  &  &  & $-$0.014$^{***}$ &  \\
@@ -519,7 +558,7 @@ In the following section, I proceed to investigate the patterns behind this hete
   \hline \\[-1.8ex]
    & \multicolumn{6}{c}{\textit{Dependent variable:}} \\
   \cline{2-7}
-  \\[-1.8ex] & \multicolumn{6}{c}{Infrastructure Gap $\zeta_{i}$} \\
+  \\[-1.8ex] & \multicolumn{6}{c}{Infrastructure Gap $\Lambda_{i}$} \\
   \\[-1.8ex] & (1) & (2) & (3) & (4) & (5) & (6)\\
   \hline \\[-1.8ex]
    KM of Colonial Rails for Military Purposes & $-$0.0002$^{***}$ & $-$0.0002$^{***}$ &  &  & $-$0.0002$^{***}$ & $-$0.0002$^{***}$ \\
@@ -542,7 +581,7 @@ In the following section, I proceed to investigate the patterns behind this hete
 }
 
 \justify
-\textit{\\ \footnotesize This table replicated the estimations of Table \eqref{RailKM_zeta} in estimating effects of colonial railroads on the infrastructure gap $\zeta$. Colonial rails are classified as built for military or mining purposes (or neither or both) by \cite{jedwab_permanent_2016}. Geographic controls consist of altitude, temperature, average land suitability, malaria prevalence, yearly growing days, average precipitation, the fourth-order polynomial of latitude and longitude, and an indicator of whether the grid cell lies on the border of a country's network. Simulation controls are comprised of population, night lights, ruggedness, and a dummy for whether a cell is classified as urban. Results are mostly robust for using only the sub-sample of 32 countries for which this data is available, however the p-value of negative impact of military rails increases to $p=0.013$ (Country FE and Geographic Controls) and $p=0.096$ (Country FE, Geographic, and Simulation Controls). Heteroskedasticity-robust standard errors are clustered on the 3x3 degree level and are shown in parantheses.}
+\textit{\\ \footnotesize This table replicates the estimations of Table \eqref{RailKM_zeta} in estimating effects of colonial railroads on the infrastructure gap $\zeta$. Colonial rails are classified as built for military or mining purposes (or neither or both) by \cite{jedwab_permanent_2016}. Geographic controls consist of altitude, temperature, average land suitability, malaria prevalence, yearly growing days, average precipitation, the fourth-order polynomial of latitude and longitude, and an indicator of whether the grid cell lies on the border of a country's network. Simulation controls are comprised of population, night lights, ruggedness, and a dummy for whether a cell is classified as urban. Results are mostly robust for using only the sub-sample of 32 countries for which this data is available, however the p-value of negative impact of military rails increases to $p=0.013$ (Country FE and Geographic Controls) and $p=0.096$ (Country FE, Geographic, and Simulation Controls). Heteroskedasticity-robust standard errors are clustered on the 3x3 degree level and are shown in parantheses.}
 \end{table}
 % End Figure
 
