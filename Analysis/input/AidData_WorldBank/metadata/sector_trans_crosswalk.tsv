@@ -1,0 +1,84 @@
+sector_value	ad_sector_codes	ad_sector_names
+Agricultural extension and research	311	Agriculture
+Animal production	311	Agriculture
+Crops	311	Agriculture
+Forestry	312	Forestry
+General agriculture, fishing and forestry sector	310	Agriculture, forestry, fishing
+Irrigation and drainage	311	Agriculture
+Adult literacy/non-formal education	112	Basic education
+General education sector	111	Education, level unspecified
+Pre-primary education	112	Basic education
+Primary education	112	Basic education
+Secondary education	113	Secondary education
+Tertiary education	114	Post-secondary education
+Vocational training	113	Secondary education
+Energy efficiency in Heat and Power	230	Energy generation and supply
+General energy sector	230	Energy generation and supply
+Hydropower	140	Water supply and sanitation
+Mining and other extractive	322	Mineral resources and mining
+Oil and gas	322	Mineral resources and mining
+Other Mining and Extractive Industries	322	Mineral resources and mining
+Other Renewable Energy	230	Energy generation and supply
+Power	230	Energy generation and supply
+Renewable energy	230	Energy generation and supply
+Thermal Power Generation	230	Energy generation and supply
+Transmission and Distribution of Electricity	230	Energy generation and supply
+Banking	240	Banking and financial services
+Capital markets	240	Banking and financial services
+General finance sector	240	Banking and financial services
+Housing finance	240	Banking and financial services
+Micro- and SME finance	240	Banking and financial services
+Microfinance	240	Banking and financial services
+Non-compulsory health finance	240	Banking and financial services
+Non-compulsory pensions and insurance	240	Banking and financial services
+Other non-bank financial intermediaries	240	Banking and financial services
+Payments, settlements, and remittance systems	240	Banking and financial services
+SME Finance	240	Banking and financial services
+Health	120	Health
+Other social services	160	Other social infrastructure and services
+Agro-industry	321	Industry
+Agro-industry, marketing, and trade	321	Industry
+General industry and trade sector	151	Government and civil society, general
+Housing construction	430	Other
+Other domestic and international trade	331	Trade policy and regulations
+Other industry	321	Industry
+Petrochemicals and fertilizers	311	Agriculture
+General information and communications sector	220	Communications
+Information technology	220	Communications
+Postal services	220	Communications
+Telecommunications	220	Communications
+Central government administration	151	Government and civil society, general
+Compulsory health finance	121	Health, general
+Compulsory pension and unemployment insurance	160	Other social infrastructure and services
+General public administration sector	151	Government and civil society, general
+Law and justice	151	Government and civil society, general
+Public administration- Agriculture, fishing and forestry	311	Agriculture
+Public administration- Education	111	Education, level unspecified
+Public administration- Energy and mining	230	Energy generation and supply
+Public administration- Financial Sector	240	Banking and financial services
+Public administration- Health	121	Health, general
+Public administration- Industry and trade	331	Trade policy and regulations
+Public administration- Information and communications	220	Communications
+Public administration- Other social services	160	Other social infrastructure and services
+Public administration- Transportation	210	Transport and storage
+Public administration- Water, sanitation and flood protection	140	Water supply and sanitation
+Sub-national government administration	151	Government and civil society, general
+Aviation	210	Transport and storage
+General transportation sector	210	Transport and storage
+Ports, waterways and shipping	210	Transport and storage
+Railways	210	Transport and storage
+Roads and highways	210	Transport and storage
+Rural and Inter-Urban Roads and Highways	210	Transport and storage
+Urban Transport	210	Transport and storage
+Flood protection	410	General environmental protection
+General water, sanitation and flood protection sector	140	Water supply and sanitation
+Sanitation	140	Water supply and sanitation
+Sewerage	140	Water supply and sanitation
+Solid waste management	140	Water supply and sanitation
+Wastewater Collection and Transportation	140	Water supply and sanitation
+Wastewater Treatment and Disposal	140	Water supply and sanitation
+Water supply	140	Water supply and sanitation
+Coal Mining	322	Mineral resources and mining
+Media	220	Communications
+Unspecified	998	Unallocated/ unspecified
+Credit Reporting and Secured Transactions	240	Banking and financial services

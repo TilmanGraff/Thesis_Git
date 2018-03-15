@@ -1,4 +1,4 @@
-\begin{thebibliography}{28}
+\begin{thebibliography}{34}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\urlprefix}{URL }
@@ -32,6 +32,13 @@
 \newblock Who's {{Getting Globalized}}? {{The Size}} and {{Implications}} of
   {{Intra}}-National {{Trade Costs}}.
 \newblock Working {{Paper}}, {National Bureau of Economic Research}
+
+\bibitem[{Bester et~al.(2011)Bester, Conley, and
+  Hansen}]{Bester_Inferencedependentdata_2011}
+\textbf{Bester, C.~Alan, Timothy~G. Conley, and Christian~B. Hansen}
+  (\textbf{2011}).
+\newblock Inference with Dependent Data Using Cluster Covariance Estimators.
+\newblock \emph{Journal of Econometrics} 165(2), pp. 137--151
 
 \bibitem[{Boulhol and {de Serres}(2010)}]{Boulhol_Havedevelopedcountries_2010}
 \textbf{Boulhol, H. and A.~{de Serres}} (\textbf{2010}).
@@ -100,6 +107,13 @@
 \newblock Measuring {{Economic Growth}} from {{Outer Space}}.
 \newblock \emph{American Economic Review} 102(2), pp. 994--1028
 
+\bibitem[{Herranz-Lonc{\'a}n and
+  Fourie(2017)}]{Herranz-Loncan_publicbenefitRailways_2017}
+\textbf{Herranz-Lonc{\'a}n, Alfonso and Johan Fourie} (\textbf{2017}).
+\newblock ``{{For}} the Public Benefit''? {{Railways}} in the {{British Cape
+  Colony}}.
+\newblock \emph{European Review of Economic History} pp. 1--28
+
 \bibitem[{Jedwab and Moradi(2016)}]{jedwab_permanent_2016}
 \textbf{Jedwab, Remi and Alexander Moradi} (\textbf{2016}).
 \newblock The {{Permanent Effects}} of {{Transportation Revolutions}} in {{Poor
@@ -124,16 +138,31 @@
   from {{Sanctions}} on {{North Korea}}.
 \newblock Working {{Paper}}, {Stanford University}
 
+\bibitem[{Michaels and Rauch(2017)}]{michaels_resetting_2017}
+\textbf{Michaels, Guy and Ferdinand Rauch} (\textbf{2017}).
+\newblock Resetting the {{Urban Network}}: 117-2012.
+\newblock \emph{The Economic Journal}
+
 \bibitem[{Michalopoulos and Papaioannou(2014)}]{michalopoulos_national_2014}
 \textbf{Michalopoulos, Stelios and Elias Papaioannou} (\textbf{2014}).
 \newblock National {{Institutions}} and {{Subnational Development}} in
   {{Africa}}.
 \newblock \emph{The Quarterly Journal of Economics} 129(1), pp. 151--213
 
+\bibitem[{Michalopoulos and Papaioannou(2016)}]{michalopoulos_long-run_2016}
+---{}---{}--- (\textbf{2016}).
+\newblock The {{Long}}-{{Run Effects}} of the {{Scramble}} for {{Africa}}.
+\newblock \emph{American Economic Review} 106(7), pp. 1802--1848
+
 \bibitem[{Michalopoulos and Papaioannou(2018)}]{michalopoulos_spatial_2018}
 ---{}---{}--- (\textbf{2018}).
 \newblock Spatial {{Patterns}} of {{Development}}: {{A Meso Approach}}.
 \newblock \emph{Annual Review of Economics} forthcoming
+
+\bibitem[{Murdock(1959)}]{Murdock_Africaitspeoples_1959}
+\textbf{Murdock, George~Peter} (\textbf{1959}).
+\newblock \emph{Africa: Its Peoples and Their Culture History}.
+\newblock {McGraw-Hill}, New York ; London
 
 \bibitem[{Nunn and Puga(2012)}]{nunn_ruggedness:_2012}
 \textbf{Nunn, Nathan and Diego Puga} (\textbf{2012}).
@@ -183,5 +212,13 @@
 \newblock
   \url{https://data.worldbank.org/data-catalog/world-development-indicators}~(Accessed:
   2017-12-12)
+
+\bibitem[{Vogt et~al.(2015)Vogt, Bormann, R{\"u}egger, Cederman, Hunziker, and
+  Girardin}]{Vogt_IntegratingDataEthnicity_2015}
+\textbf{Vogt, Manuel, Nils-Christian Bormann, Seraina R{\"u}egger, Lars-Erik
+  Cederman, Philipp Hunziker, and Luc Girardin} (\textbf{2015}).
+\newblock Integrating {{Data}} on {{Ethnicity}}, {{Geography}}, and
+  {{Conflict}}: {{The Ethnic Power Relations Data Set Family}}.
+\newblock \emph{Journal of Conflict Resolution} 59(7), pp. 1327--1342
 
 \end{thebibliography}

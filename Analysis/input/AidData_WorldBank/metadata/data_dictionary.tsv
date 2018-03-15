@@ -1,0 +1,41 @@
+file_name	field_name	field_description	documentation	type
+projects.csv	project_id	Unique project identifier		string
+projects.csv	is_geocoded	flag to indicate whether a project was geocoded (1 indicates 'geocoded' and 0 indicates 'not geocoded')		integer
+projects.csv	project_title	Descriptive text string		string
+projects.csv	start_actual_isodate	the start date of the project in iso format (YYYY-MM-DD)		string
+projects.csv	start_actual_type	the type of project start (ex. Start-actual)	http://iatistandard.org/201/codelists/ActivityDateType/	string
+projects.csv	end_actual_isodate	the end date of the project in iso format (YYYY-MM-DD)		string
+projects.csv	end_actual_type	the type of project end date ( ex. End-actual)	http://iatistandard.org/201/codelists/ActivityDateType/	string
+projects.csv	donors	pipe delimited list of donors (ex: Name of Donor 1 | Name of Donor 2)		string
+projects.csv	donors_iso3	pipe delimited list of donors iso3 codes	https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3	string
+projects.csv	recipients	pipe delimited list of recipients (ex: Name of recipient 1 | Name of recipient 2)		string
+projects.csv	recipients_iso3	pipe delimited list of recipients iso3 codes	https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3	string
+projects.csv	ad_sector_codes	crosswalked sector codes ; crosswalked to AidData Sectors. Pipe delimited	http://aiddata.org/sites/default/files/aiddata_coding_scheme_0.pdf	integer or string
+projects.csv	ad_sector_names	crosswalked sector names ; crosswalked to AidData Sectors. Pipe delimited	http://aiddata.org/sites/default/files/aiddata_coding_scheme_0.pdf	string
+projects.csv	ad_purpose_codes	crosswalked purpose codes ; crosswalked to AidData Purpose Codes. Pipe delimited	http://aiddata.org/sites/default/files/aiddata_coding_scheme_0.pdf	integer or string
+projects.csv	ad_purpose_names	crosswalked purpose names ; crosswalked to AidData Purpose Names. Pipe delimited	http://aiddata.org/sites/default/files/aiddata_coding_scheme_0.pdf	string
+projects.csv	status	status of the project, see documentation for code definitions	http://iatistandard.org/201/codelists/ActivityStatus/	string
+projects.csv	transactions_start_year	the earliest year associated with the project across start_actual_isodate and transaction_year attributes		integer
+projects.csv	transactions_end_year	the latest year associated with the project across end_actual_isodate and transaction_year attributes		integer
+projects.csv	total_commitments	sum of all committed dollars associated with the project ID from the transactions table		float
+projects.csv	total_disbursements	sum of all disbursed dollars associated with the project ID from the transactions table (this value is temporally relevant to the date of the dataset's most recent export)		float
+locations.csv	project_id	Unique project identifier		string
+locations.csv	project_location_id	unique project location identifier (project_id + '_' + geoname_id)		string
+locations.csv	precision_code	the precision code most representative of the location, see documentation for code definitions	http://iatistandard.org/201/codelists/GeographicalPrecision/	integer
+locations.csv	geoname_id	the geoname id retrieved from http://geonames.org	http://www.geonames.org/	integer
+locations.csv	place_name	the name of a place (from geonames)		string
+locations.csv	latitude	latitude of a location in decimal degrees		float
+locations.csv	longitude	longitude of a location in decimal degrees		float
+locations.csv	location_type_code	one of the location type codes from http://www.geonames.org/export/codes.html		string
+locations.csv	location_type_name	the location type name associated with the location type code		string
+locations.csv	gazatteer_adm_code	the hierarchical order of place, represented by geoname IDs, associated with the place name's geoname_id. Hierarchy is pipe delimited		string
+locations.csv	gazatteer_adm_name	the hierarchical order of place, represented by place names, associated with the place_name's geoname_id. Hierarchy is pipe delimited		string
+locations.csv	location_class	the location class code most representative of the location, see documentation for code definitions	http://iatistandard.org/201/codelists/GeographicLocationClass/	integer
+locations.csv	geographic_exactness	the geographic exactness code most representative of the location, see documentation for code definitions	http://iatistandard.org/201/codelists/GeographicExactness/	integer
+transactions.csv	transaction_id	a unique alphanumeric string for each transaction record		string
+transactions.csv	project_id	Unique project identifier		string
+transactions.csv	transaction_isodate	the date of the transaction in iso format (YYYY-MM-DD)		string
+transactions.csv	transaction_year	the year of the transaction (ex. 2007)		integer
+transactions.csv	transaction_value_code	type of transaction (ex C=commitment, D=disbursement)		string
+transactions.csv	transaction_currency	type of currency (ex. USD)		string
+transactions.csv	transaction_value	amount in currency of transaction (ex. 45000.00)		float

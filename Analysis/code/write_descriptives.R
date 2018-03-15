@@ -32,3 +32,13 @@ for(country in country_names){
 national_zeta <- national_zeta[order(-national_zeta$zeta),]
 
 print(xtable(national_zeta), include.rownames = FALSE) # gives you latex table
+
+
+###
+# MAKE HISTORGRAM
+###
+
+png(filename=paste("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/descriptives/histogram.png", sep=""))
+hist(opt_loc$zeta, breaks=50, col="salmon", main="", xlab="")
+curve(dnorm(x, mean=mean(opt_loc$zeta), sd=sd(opt_loc$zeta))*380, add=T)
+dev.off()

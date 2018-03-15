@@ -44,6 +44,11 @@
 \let\oldref\ref
 \renewcommand{\ref}[1]{(\oldref{#1})}
 
+\newcommand{\mysubcaption}[1]{
+\justify
+\begin{spacing}{0.7}
+\textit{\footnotesize #1}
+\end{spacing}}
 
 \title{Spatial Inefficiencies in Africa's Trade Network}
 \author{Tilman Graff -- University of Oxford}
@@ -355,10 +360,7 @@ After successfully reshuffling a country's transport network, overall welfare wi
 \includegraphics[width=0.6\textwidth,trim={1cm 4cm 1cm 3cm},clip]{/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/zeta_heatmaps/African_countries_zeta.png}
 
 \label{fig:countries_by_welfare_gain}
-\justify
-\begin{spacing}{0.7}
-\textit{\footnotesize Map of the African continent. Countries coloured according to their welfare gain under the optimal reallocation counterfactual. Scale from almost 7\% (dark red) to $<1\%$ (white) welfare gains. Gains are computed by comparing the population-weighted sum of utility levels over all grid cells in a country before and after the reallocation exercise. As labor is immobile, the measure perfectly corresponds to per capita utility gains as well.}
-\end{spacing}
+\mysubcaption{Map of the African continent. Countries coloured according to their welfare gain under the optimal reallocation counterfactual. Scale from almost 7\% (dark red) to $<1\%$ (white) welfare gains. Gains are computed by comparing the population-weighted sum of utility levels over all grid cells in a country before and after the reallocation exercise. As labor is immobile, the measure perfectly corresponds to per capita utility gains as well.}
 \end{figure}
 
 Figure \eqref{fig:countries_by_welfare_gain} displays all African countries and their hypothetical welfare gain. The three countries considered above perform rather well in comparison. Some (mostly more developed) countries like South Africa (0.5\%) or Tunisia (0.2\%) perform even better. Many countries are leaving much more on the table, like Somalia (4.8\%) or Chad (4.3\%). No African country, however, has a more ill advised road network than South Sudan. Its citizens stand to gain almost 6.7\% of overall welfare if just their roads were better placed. This might not come as a surprise, as the world's newest country has largely inherited a road network that was not conceived to sustain an independent nation, but rather connect it to its former capital up north.
@@ -411,10 +413,7 @@ While each country only stands to gain overall welfare from this reallocation pr
 
 
 \label{fig:zeta_countries}
-\justify
-\begin{spacing}{0.7}
-\textit{\footnotesize Six African countries by their Local Infrastructure Discrimination Index $\Lambda_{i}$ on the grid cell level. Maps show each country as the 0.5 x 0.5 degree grid used for the network optimisation. For each map, darker shaded cells correspond to higher $\Lambda_{i}$ levels and hence more infrastructure discrimination compared to optimal network. To better visualise within-country variation, colour scale slightly changes from country to country.}
-\end{spacing}
+\mysubcaption{Six African countries by their Local Infrastructure Discrimination Index $\Lambda_{i}$ on the grid cell level. Maps show each country as the 0.5 x 0.5 degree grid used for the network optimisation. For each map, darker shaded cells correspond to higher $\Lambda_{i}$ levels and hence more infrastructure discrimination compared to optimal network. To better visualise within-country variation, colour scale slightly changes from country to country.}
 \end{figure}
 % End Figure
 
@@ -429,21 +428,41 @@ as the \emph{Local Infrastructure Discrimination Index} for grid cell $i$. Areas
 \includegraphics[width=0.65\textwidth,trim={1cm 4cm 1cm 5cm},clip]{/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/zeta_heatmaps/African_gridcells_zeta.png}
 
 \label{fig:all_gridcells_by_zeta}
-\justify
-\begin{spacing}{0.7}
-\textit{\footnotesize Africa as represented by 10,167 grid cells of 0.5 x 0.5 degrees. Cells coloured according to their $\Lambda_{i}$ index of local infrastructure discrimination. Darker cells would benefit from reallocating national infrastructure networks. Note that the hypothetical reallocation scenario is conducted on the country-level. Cells from different countries are hence not immediately comparable. Maps's colouring follows an equal-interval rule such that every colour in the spectrum has an equal amount of members. This is to visualise the measure's variation but leads to unequal bracket-sizes for each colour.}
-\end{spacing}
+\mysubcaption{Africa as represented by 10,167 grid cells of 0.5 x 0.5 degrees. Cells coloured according to their $\Lambda_{i}$ index of local infrastructure discrimination. Darker cells would benefit from reallocating national infrastructure networks. Note that the hypothetical reallocation scenario is conducted on the country-level. Cells from different countries are hence not immediately comparable. Maps's colouring follows an equal-interval rule such that every colour in the spectrum has an equal amount of members. This is to visualise the measure's variation but leads to unequal bracket-sizes for each colour.}
 \end{figure}
 % End Figure
 
-Figure \eqref{fig:all_gridcells_by_zeta}, lastly, displays the spatial variation of $\Lambda_{i}$ over all 10,000+ grid cells of the entire African continent. When interpreting this map, note that grid cells are undergoing the reshuffling scenario solely within their respective country. National borders hence play a role and can at times even clearly be inferred from the printed map. Keeping this in mind, the map reveals substantial spatial variation in the infrastructure gap across the African continent. The luckiest region (in Namibia) stands to loose almost 30\% of total welfare if the fictitious social planner intervened and reshuffled roads away from it. On the other extreme of the spectrum, the residents of one grid cell in Gabon are missing out on a welfare hike of more than 50\%. Moreover, abandoned regions are clearly displaying spatial correlation with large neighbouring swaths of land collectively missing out on infrastructure improvements in certain countries. This begs the conclusion that countries do not just overlook single grid cells but rather live with vast stretches of disadvantaged regions. The index is evidently representing more than just haphazard noise.
+Figure \eqref{fig:all_gridcells_by_zeta}, lastly, displays the spatial variation of $\Lambda_{i}$ over all 10,000+ grid cells of the entire African continent. When interpreting this map, note that grid cells are undergoing the reshuffling scenario solely within their respective country. National borders hence play a role and can at times even clearly be inferred from the printed map. Keeping this in mind, the map reveals substantial spatial variation in the infrastructure gap across the African continent.\footnote{There are two reasons why I conduct the simulation procedure within countries and not over the entire African continent. One is computational; the requirements for numerically solving the model increase quadratically in the number of locations $\mathcal{I}$. The largest country in Africa (Algeria) is made up of almost 900 locations and already strains computing power quite heavily. Simulating all of Africa's 10,000+ locations at once is then almost unattainable with available technology. The second reason is interpretational; while lifting a country's roads from the ground and flexibly reshuffling them across the nation is already a fictitious scenario, it still operates within a government transport authority's locus of control. Regions disadvantaged by their own government can reasonably considered discriminated against. This is less the case if one were to optimise over the entire continent. Without a central planning body for all of Africa, it is hard to interpret why a road in e.g. Tunisia should rather be moved into Namibia.} The luckiest region (in Namibia) stands to loose almost 30\% of total welfare if the fictitious social planner intervened and reshuffled roads away from it. On the other extreme of the spectrum, the residents of one grid cell in Gabon are missing out on a welfare hike of more than 50\%. Moreover, abandoned regions are clearly displaying spatial correlation with large neighbouring swaths of land collectively missing out on infrastructure improvements in certain countries. This begs the conclusion that countries do not just overlook single grid cells but rather live with vast stretches of disadvantaged regions. The index is evidently representing more than just haphazard noise.
 
-In the following sections, I proceed to investigate the patterns behind this heterogeneity of network infrastructure discrimination over space.
+In the following sections, I proceed to analyse patterns behind this heterogeneity of network infrastructure discrimination over space.
 % End Chapter
 
 \section{Empirical Strategy}
+Why are some African roads in the wrong place? To investigate which areas have too much or too little infrastructure, I employ the Local Infrastructure Discrimination Index $\Lambda_{i}$ as dependent variable in a standard OLS regression setting. In the base specification, I estimate
+\begin{equation}
+  \Lambda_{i,c} = \beta v_{i,c} + X_{i,c}\gamma + \alpha_{c} + \epsilon_{i,c}
+  \label{eq:grid_ols}
+\end{equation}
+for a variety of different independent variables $v_{i,c}$ of grid cell $i$ in country $c$. $\alpha_{c}$ denotes country-fixed effects, $X$ is a vector of other covariates, and $\beta$ is the coefficient of interest. The dependent variable $\Lambda_{i}$ appears be reasonably well approximated by a normal distribution and hence no transformation is undertaken. However, as seen in Figure \eqref{fig:all_gridcells_by_zeta}, local infrastructure discrimination clearly displays autocorrelation over space. The error term $\epsilon_{i,c}$ is thus not i.i.d. To account for this problem, I follow \cite{Bester_Inferencedependentdata_2011} and construct a higher-level spatial grid of 3 degrees latitude by 3 degrees longitude and cluster standard errors within each of these higher-level grid cells. Errors are  allowed to covary within each cluster, not but between them. This technique draws its power from the fact that  clusters are constructed in the most arbitrary manner possible and do not rely on potentially endogenous partitions like national borders \citep{michaels_resetting_2017}.\footnote{There are 332 such clusters. Since 3 is evenly divisible by the observation-level grid cell size of 0.5 degrees, each cluster in principle fits 36 observations. The median cluster does indeed comprise 36 cells, but some border-regions fit fewer observations. On average, there are 31 observations in a cluster.}
 
+\begin{figure}
+\centering
+\caption{$\Lambda_{h}$ over Ethnic Homelands}
 
+\begin{subfigure}[c]{0.48\textwidth}
+\includegraphics[width=\textwidth,trim={1cm 3cm 0.5cm 4cm},clip]{/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/other_maps/ethnicity_zeta.png}
+\caption{Murdock definition}
+\label{fig:Murdock_map}
+\end{subfigure}
+\begin{subfigure}[c]{0.48\textwidth}
+\includegraphics[width=\textwidth,trim={1cm 3cm 0.5cm 4cm},clip]{/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/other_maps/epr_zeta.png}
+\caption{EPR definition}
+\label{fig:EPR_map}
+\end{subfigure}
+
+\label{fig:ethn_maps}
+\mysubcaption{Spatial distribution of Local Infrastructure Discrimination Index $\Lambda_{h}$, aggregated over ethnic homelands. Subfigure (a) presents pre-colonial homelands as initially defined in an ethnolinguistic map by \cite{Murdock_Africaitspeoples_1959} and intersected with current political borders \citep[following][]{michalopoulos_long-run_2016}. Subfigure (b) depicts current boundaries of politically active ethnic groups as defined in the Ethnic Power Relations (EPR) datset by \cite{Vogt_IntegratingDataEthnicity_2015}.}
+\end{figure}
 
 \section{Results}
 
@@ -451,7 +470,7 @@ In the following sections, I proceed to investigate the patterns behind this het
 
 % Figure
 \begin{table}[] \centering
-  \caption{Colonial Railroads and Infrastructure Gap}
+  \caption{Colonial Railroads and Local Infrastructure Discrimination Index}
   \label{RailKM_zeta}
   \resizebox{\textwidth}{!}{
 
@@ -460,7 +479,7 @@ In the following sections, I proceed to investigate the patterns behind this het
   \hline \\[-1.8ex]
    & \multicolumn{8}{c}{\textit{Dependent variable:}} \\
   \cline{2-9}
-  \\[-1.8ex] & \multicolumn{8}{c}{Infrastructure Gap $\Lambda_{i}$} \\
+  \\[-1.8ex] & \multicolumn{8}{c}{Local Infrastructure Discrimination Index $\Lambda_{i}$} \\
   \\[-1.8ex] & (1) & (2) & (3) & (4) & (5) & (6) & (7) & (8)\\
   \hline \\[-1.8ex]
    KM of Colonial Railroads & $-$0.0002$^{***}$ & $-$0.0001$^{***}$ & $-$0.0002$^{***}$ & $-$0.0002$^{***}$ &  &  &  &  \\
@@ -482,8 +501,7 @@ In the following sections, I proceed to investigate the patterns behind this het
 
 }
 
-\justify
-\textit{\\ \footnotesize This table displays results of estimation of equation \eqref{eq:regression} on the sample of 0.5x0.5 degree grid cells for the entire African continent (excluding five small countries, see text). Dependent variable is the infrastructure gap for each grid cell. Columns (1)-(4) estimate the effect of colonial infrastructure investments on today's infrastructure gap. Starting with a simple univariate cross-section in (1), column (2) adds 49 country-fixed effects. Column (3) adds geographic controls, consisting of altitude, temperature, average land suitability, malaria prevalence, yearly growing days, average precipitation, the fourth-order polynomial of latitude and longitude, and an indicator of whether the grid cell lies on the border of a country's network. Simulation controls are added in column (4) and are comprised of population, night lights, ruggedness, and a dummy for whether a cell is classified as urban. These are indicators that went into the original infrastructure re-allocation simulation and are hence not orthogonal to $\zeta$. Columns (5)-(8) repeat these calculations with railroads that were planned, but never built (``placebo railroads''). Results are robust to using only the subsample of 33 countries with any colonial infrastructure investment as reported by \cite{jedwab_permanent_2016}, plus South Africa. Heteroskedasticity-robust standard errors are clustered on the 3x3 degree level and are shown in parantheses.}
+\mysubcaption{This table displays results of estimation of equation \eqref{eq:regression} on the sample of 0.5x0.5 degree grid cells for the entire African continent (excluding five small countries, see text). Dependent variable is the Local Infrastructure Discrimination Index for each grid cell. Columns (1)-(4) estimate the effect of colonial infrastructure investments on today's Local Infrastructure Discrimination Index. Starting with a simple univariate cross-section in (1), column (2) adds 49 country-fixed effects. Column (3) adds geographic controls, consisting of altitude, temperature, average land suitability, malaria prevalence, yearly growing days, average precipitation, the fourth-order polynomial of latitude and longitude, and an indicator of whether the grid cell lies on the border of a country's network. Simulation controls are added in column (4) and are comprised of population, night lights, ruggedness, and a dummy for whether a cell is classified as urban. These are indicators that went into the original infrastructure re-allocation simulation and are hence not orthogonal to $\Lambda$. Columns (5)-(8) repeat these calculations with railroads that were planned, but never built (``placebo railroads''). Results are robust to using only the subsample of 33 countries with any colonial infrastructure investment as reported by \cite{jedwab_permanent_2016}, plus South Africa. Heteroskedasticity-robust standard errors are clustered on the 3x3 degree level and are shown in parantheses.}
 \end{table}
 % End Figure
 
@@ -500,7 +518,7 @@ In the following sections, I proceed to investigate the patterns behind this het
   \hline \\[-1.8ex]
    & \multicolumn{8}{c}{\textit{Dependent variable:}} \\
   \cline{2-9}
-  \\[-1.8ex] & \multicolumn{8}{c}{Infrastructure Gap $\Lambda_{i}$} \\
+  \\[-1.8ex] & \multicolumn{8}{c}{Local Infrastructure Discrimination Index $\Lambda_{i}$} \\
   \\[-1.8ex] & (1) & (2) & (3) & (4) & (5) & (6) & (7) & (8)\\
   \hline \\[-1.8ex]
    $<10$ KM to Colonial Railroad & $-$0.013$^{***}$ & $-$0.015$^{***}$ & $-$0.017$^{***}$ &  &  &  & $-$0.014$^{***}$ &  \\
@@ -540,11 +558,29 @@ In the following sections, I proceed to investigate the patterns behind this het
 
 }
 
-\justify
-\textit{\\ \footnotesize This table displays effects of various distance-intervals on the infrastructure gap $\zeta$. Explanatory covariates are dummy-variables indicating whether a cell's centroid is within X kilometres to its closest colonial railroad. Geographic controls consist of altitude, temperature, average land suitability, malaria prevalence, yearly growing days, average precipitation, the fourth-order polynomial of latitude and longitude, and an indicator of whether the grid cell lies on the border of a country's network. Simulation controls are comprised of population, night lights, ruggedness, and a dummy for whether a cell is classified as urban. Columns (1)-(3) examine the effect of actually built colonial railroads. Columns (4)-(6) repeat these calculations with railroads that were planned, but never built (``placebo railroads''). Columns (7)-(8) restrict the sample to the 32 countries on which data for colonial railways is available. Heteroskedasticity-robust standard errors are clustered on the 3x3 degree level and are shown in parantheses.}
+\mysubcaption{This table displays effects of various distance-intervals on the Local Infrastructure Discrimination Index $\Lambda$. Explanatory covariates are dummy-variables indicating whether a cell's centroid is within X kilometres to its closest colonial railroad. Geographic controls consist of altitude, temperature, average land suitability, malaria prevalence, yearly growing days, average precipitation, the fourth-order polynomial of latitude and longitude, and an indicator of whether the grid cell lies on the border of a country's network. Simulation controls are comprised of population, night lights, ruggedness, and a dummy for whether a cell is classified as urban. Columns (1)-(3) examine the effect of actually built colonial railroads. Columns (4)-(6) repeat these calculations with railroads that were planned, but never built (``placebo railroads''). Columns (7)-(8) restrict the sample to the 32 countries on which data for colonial railways is available. Heteroskedasticity-robust standard errors are clustered on the 3x3 degree level and are shown in parantheses.}
 \end{table}
 % End Figure
 
+
+\begin{figure}
+\centering
+\caption{Colonial Railway Network}
+
+\begin{subfigure}[c]{0.48\textwidth}
+\includegraphics[width=\textwidth,trim={10cm 11cm 6cm 10cm},clip]{/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/other_maps/all_rails.png}
+\caption{Colonial Rails (red) and Placebo Rails (blue)}
+\label{fig:Railroad_Map}
+\end{subfigure}
+\begin{subfigure}[c]{0.48\textwidth}
+\includegraphics[width=\textwidth,trim={10cm 11cm 6cm 10cm},clip]{/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/other_maps/emst.png}
+\caption{EMST Lines and Buffer}
+\label{fig:EMST_Map}
+\end{subfigure}
+
+\label{fig:Rail Maps}
+\mysubcaption{Maps displaying the network of railway lines and placebo railroads. Data from \cite{jedwab_permanent_2016} and \cite{Herranz-Loncan_publicbenefitRailways_2017}. Subfigure (a) prints in red  railroads built by the colonial powers between 1890 and 1960. Lines that were initially planned but never actually built are printed in blue. Subfigure (b) prints the euclidean minimum spanning tree (EMST), connecting the initial urban network of 1900 (red dots) with the least amount of total rail kilometres \citep[see ][]{jedwab_permanent_2016}. This is the rail system that would have minimised total infrastructure costs if the colonial powers had cooperated and jointly devised an ideal network. Subfigure (b) also prints a buffer of 40km around the EMST.}
+\end{figure}
 
 % Figure
 \begin{table}[] \centering
@@ -553,35 +589,39 @@ In the following sections, I proceed to investigate the patterns behind this het
   \resizebox{\textwidth}{!}{
 
 
-  \begin{tabular}{@{\extracolsep{5pt}}lcccccc}
+  \begin{tabular}{@{\extracolsep{5pt}}lcccccccc}
   \\[-1.8ex]\hline
   \hline \\[-1.8ex]
-   & \multicolumn{6}{c}{\textit{Dependent variable:}} \\
-  \cline{2-7}
-  \\[-1.8ex] & \multicolumn{6}{c}{Infrastructure Gap $\Lambda_{i}$} \\
-  \\[-1.8ex] & (1) & (2) & (3) & (4) & (5) & (6)\\
+   & \multicolumn{8}{c}{\textit{Dependent variable:}} \\
+  \cline{2-9}
+  \\[-1.8ex] & (1) & (2) & (3) & (4) & (5) & (6) & (7) & (8)\\
   \hline \\[-1.8ex]
-   KM of Colonial Rails for Military Purposes & $-$0.0002$^{***}$ & $-$0.0002$^{***}$ &  &  & $-$0.0002$^{***}$ & $-$0.0002$^{***}$ \\
-    & (0.0001) & (0.0001) &  &  & (0.0001) & (0.0001) \\
-    & & & & & & \\
-   KM of Colonial Rails for Mining Purposes &  &  & $-$0.0001 & $-$0.0001 & $-$0.0001 & $-$0.0001 \\
-    &  &  & (0.0001) & (0.0001) & (0.0001) & (0.0001) \\
-    & & & & & & \\
+   KM of Rails  & $-$0.0002$^{***}$ & $-$0.0002$^{***}$ &  &  & $-$0.0002$^{***}$ & $-$0.0002$^{***}$ &  &  \\
+   \hspace*{3mm} for Military Purposes & (0.0001) & (0.0001) &  &  & (0.0001) & (0.0001) &  &  \\
+    & & & & & & & & \\
+   KM of Rails &  &  & $-$0.0001 & $-$0.0001 & $-$0.0001 & $-$0.0001 &  &  \\
+  \hspace*{3mm} for Mining Purposes    &  &  & (0.0001) & (0.0001) & (0.0001) & (0.0001) &  &  \\
+    & & & & & & & & \\
+    KM of Rails &  &  &  &  &  &  & $-$0.0003$^{***}$ &  \\
+  \hspace*{3mm} within EMST Buffer &  &  &  &  &  &  & (0.0001) &  \\
+     & & & & & & & & \\
+    KM of Rails &  &  &  &  &  &  &  & $-$0.0001$^{**}$ \\
+  \hspace*{3mm} outside EMST Buffer &  &  &  &  &  &  &  & (0.0001) \\
+     & & & & & & & & \\
   \hline \\[-1.8ex]
-  Country FE & Yes & Yes & Yes & Yes & Yes & Yes \\
-  Geographic controls & Yes & Yes & Yes & Yes & Yes & Yes \\
-  Simulation controls &  & Yes &  & Yes &  & Yes \\
-  Observations & 10,158 & 10,158 & 10,158 & 10,158 & 10,158 & 10,158 \\
-  R$^{2}$ & 0.112 & 0.114 & 0.111 & 0.113 & 0.112 & 0.114 \\
+  Country FE & Yes & Yes & Yes & Yes & Yes & Yes & Yes & Yes \\
+  Geographic controls & Yes & Yes & Yes & Yes & Yes & Yes & Yes & Yes \\
+  Simulation controls &  & Yes &  & Yes &  & Yes & Yes & Yes \\
+  Observations & 10,158 & 10,158 & 10,158 & 10,158 & 10,158 & 10,158 & 10,039 & 10,039 \\
+  R$^{2}$ & 0.112 & 0.114 & 0.111 & 0.113 & 0.112 & 0.114 & 0.115 & 0.114 \\
   \hline
   \hline \\[-1.8ex]
-  \textit{Note:}  & \multicolumn{6}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\
+  \textit{Note:}  & \multicolumn{8}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\
   \end{tabular}
 
 }
 
-\justify
-\textit{\\ \footnotesize This table replicates the estimations of Table \eqref{RailKM_zeta} in estimating effects of colonial railroads on the infrastructure gap $\zeta$. Colonial rails are classified as built for military or mining purposes (or neither or both) by \cite{jedwab_permanent_2016}. Geographic controls consist of altitude, temperature, average land suitability, malaria prevalence, yearly growing days, average precipitation, the fourth-order polynomial of latitude and longitude, and an indicator of whether the grid cell lies on the border of a country's network. Simulation controls are comprised of population, night lights, ruggedness, and a dummy for whether a cell is classified as urban. Results are mostly robust for using only the sub-sample of 32 countries for which this data is available, however the p-value of negative impact of military rails increases to $p=0.013$ (Country FE and Geographic Controls) and $p=0.096$ (Country FE, Geographic, and Simulation Controls). Heteroskedasticity-robust standard errors are clustered on the 3x3 degree level and are shown in parantheses.}
+\mysubcaption{This table replicates the estimations of Table \eqref{RailKM_zeta} in estimating effects of colonial railroads on the Local Infrastructure Discrimination Index $\Lambda$. Colonial rails are classified as built for military or mining purposes (or neither or both) by \cite{jedwab_permanent_2016}. Columns (7)-(8) distinguish between railway kilometres within and outside the 40km-wide buffer around the euclidean minimum spanning tree (EMST) of the initial urban network. Geographic controls consist of altitude, temperature, average land suitability, malaria prevalence, yearly growing days, average precipitation, the fourth-order polynomial of latitude and longitude, and an indicator of whether the grid cell lies on the border of a country's network. Simulation controls are comprised of population, night lights, ruggedness, and a dummy for whether a cell is classified as urban. Results are mostly robust for using only the sub-sample of 32 countries for which this data is available, however the p-value of negative impact of military rails increases to $p=0.013$ (Country FE and Geographic Controls) and $p=0.096$ (Country FE, Geographic, and Simulation Controls). Heteroskedasticity-robust standard errors are clustered on the 3x3 degree level and are shown in parantheses.}
 \end{table}
 % End Figure
 

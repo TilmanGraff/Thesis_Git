@@ -1,13 +1,17 @@
 # Fdb version 3
-["bibtex MPhil_thesis"] 1519665249 "MPhil_thesis.aux" "MPhil_thesis.bbl" "MPhil_thesis" 1519665252
+["bibtex MPhil_thesis"] 1521040988 "MPhil_thesis.aux" "MPhil_thesis.bbl" "MPhil_thesis" 1521040994
   "./cantoni_copy.bst" 1519299460 31804 60671cc588feaf916e452d009b3df8df ""
-  "MPhil_thesis.aux" 1519390800 13845 704b100d401c0059aab219a3c7ef46ba ""
+  "MPhil_thesis.aux" 1521040994 16130 54683756e0b35f5c61ec9f0e18d70fe3 ""
   "MPhil_thesis.bcf" 0 -1 0 ""
-  "Thesis_library.bib" 1519557286 106491 0eac6c293f5e51bf99be3e401717e2ca ""
+  "Thesis_library.bib" 1520873073 110232 f992658cab957d7103e8af8a8e2b58d2 ""
   (generated)
-  "MPhil_thesis.bbl"
   "MPhil_thesis.blg"
-["pdflatex"] 1519390795 "MPhil_thesis.tex" "MPhil_thesis.pdf" "MPhil_thesis" 1519665252
+  "MPhil_thesis.bbl"
+["pdflatex"] 1521040988 "MPhil_thesis.tex" "MPhil_thesis.pdf" "MPhil_thesis" 1521040994
+  "/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/other_maps/all_rails.png" 1520617042 262079 0d209ff3e5ffd760a42490809bac4b07 ""
+  "/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/other_maps/emst.png" 1520618970 310606 fcf71bfa14c0c94269f0b6c3bed4cfc5 ""
+  "/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/other_maps/epr_zeta.png" 1520871750 230172 70adffeb74398d8e3144e9af490d1857 ""
+  "/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/other_maps/ethnicity_zeta.png" 1520871643 285652 aae77de66e76b611dd200b218065f28b ""
   "/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/zeta_heatmaps/African_countries_zeta.png" 1519390633 202400 07b33076fab543a677fee528c8f559b0 ""
   "/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/zeta_heatmaps/African_gridcells_zeta.png" 1519390743 212432 6b2c95ea6d5e1822f3b77e71cb9d50c4 ""
   "/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/zeta_heatmaps/Central-African-Republic_zeta.png" 1519389776 22034 4cb81692e4140b7ec349a2883f64510d ""
@@ -245,12 +249,12 @@
   "/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1466971120 1888048 f2c5faed5981a516f406b2ccc20bff71 ""
   "/usr/local/texlive/2016/texmf-var/web2c/pdftex/pdflatex.fmt" 1466971197 3873397 8a9803c9a2ff9bda306fedbddebc13fa ""
   "/usr/local/texlive/2016/texmf.cnf" 1463979140 577 2938757e76f31531e65cc647e3507693 ""
-  "MPhil_thesis.aux" 1519390800 13845 704b100d401c0059aab219a3c7ef46ba ""
-  "MPhil_thesis.bbl" 1519665252 8575 1c9b7493215f24f249ce3643af3e36c6 "bibtex MPhil_thesis"
-  "MPhil_thesis.out" 1519390800 1170 f548a1e3cc8c324fdffe727b86e2f23d ""
-  "MPhil_thesis.tex" 1519478960 84064 9710e2a7de4f6e3eb5546d6397f8d635 ""
+  "MPhil_thesis.aux" 1521040994 16130 54683756e0b35f5c61ec9f0e18d70fe3 ""
+  "MPhil_thesis.bbl" 1521040988 10365 d61f2c062372f3c6884064eb86ab31be "bibtex MPhil_thesis"
+  "MPhil_thesis.out" 1521040994 1224 63c84d701de13bf983586c6ae418bb09 ""
+  "MPhil_thesis.tex" 1521040972 90283 0234d27b84c4c5da980ffe9aa6d6696e ""
   (generated)
+  "MPhil_thesis.log"
   "MPhil_thesis.out"
   "MPhil_thesis.aux"
-  "MPhil_thesis.log"
   "MPhil_thesis.pdf"

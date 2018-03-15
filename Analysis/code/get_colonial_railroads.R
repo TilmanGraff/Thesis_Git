@@ -6,6 +6,7 @@ library("rgeos", lib.loc="/Library/Frameworks/R.framework/Versions/3.4/Resources
 library("Imap", lib.loc="/Library/Frameworks/R.framework/Versions/3.2/Resources/library")
 library("gepaf", lib.loc="/Library/Frameworks/R.framework/Versions/3.4/Resources/library")
 library("vegan", lib.loc="/Library/Frameworks/R.framework/Versions/3.4/Resources/library")
+library("scales", lib.loc="/Library/Frameworks/R.framework/Versions/3.4/Resources/library")
 
 rails <- readOGR("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/input/Railroads/Built/Railroads.TAB")
 
@@ -35,17 +36,6 @@ opt_loc$id_closest_rail <- NA
 for(i in 1:nrow(opt_loc)){ # over all centroids (10,000)
 
   loc <- c(opt_loc$x[i], opt_loc$y[i])
-  #mindist <- 10^9
-  #whichline <- NA
-
-  #for(j in 1:length(all_rails)){ # over all rails (240)
-
-  #  dist <- dist2Line(loc, all_rails@lines[[j]]@Lines[[1]]@coords)[1]
-
-  #  if(mindist > dist){ # iteratively updates to find smallest distance
-  #    mindist <- dist
-  #    whichline <- j # saves slot number of closest rail
-  #  }
 
   dist <- dist2Line(loc, all_rails)
   opt_loc$dist2rail[i] <- dist[1] / 1000
@@ -176,12 +166,35 @@ for(i in 1:nrow(polygon_dataframe)){
 
 write.csv(opt_loc, file="/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/temp/opt_loc_with_raildist.csv", row.names = FALSE)
 
+# Draw railroads
+library(scales)
+
+ png(filename=paste("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/other_maps/Railroads.png", sep=""), width=6, height=6, units = 'in', res = 300)
+
+print(plot(polygon_dataframe, lwd=0.5, border=alpha("black", 0.5)))
+print(plot(all_rails, lwd=1.5, col="red", add=T))
+dev.off()
+
+
 ####################################
 # Placebo Lines
 ####################################
 
 # this code somehow vanished...
 # its the same as above really...
+
+placebo <- readOGR("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/input/Railroads/Placebo/placebo_1916_1922.TAB")
+
+south_african_placebo <- readOGR("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/input/Railroads/South_Africa_placebo.shp")
+
+south_african_placebo@data <- as.data.frame(placebo@data[1:length(south_african_placebo),]) # this creates an empty databox for south africa (of data which I do not have), in order to merge seemlessly
+colnames(south_african_placebo@data) <- "placebo_year"
+south_african_placebo@data[1] <- NA
+
+south_african_placebo <- spTransform(south_african_placebo, CRS("+proj=longlat +ellps=WGS84 +datum=WGS84")) # gives common CRS to merge seemlessly
+placebo <- spTransform(placebo, CRS("+proj=longlat +ellps=WGS84 +datum=WGS84")) # gives common CRS to merge seemlessly
+
+all_placebo <- rbind(placebo, south_african_placebo) # merges
 
 
 ####################################
@@ -209,13 +222,14 @@ kimberley <- c(24.733504, -28.766301)
 vryburg <- c(24.755151, -26.932349)
 
 sa_nodes <- rbind(cape, beaufort_west, bleomfontain, port_elizabeth, johannesburg, pretoria, eendekuil, port_nolloth, de_aar, george, port_alfred, east_london, kimberley, vryburg)
-
 dta <- as.data.frame(rep(1, nrow(sa_nodes)))
 colnames(dta) <- "node"
-
 sa_pts <- SpatialPointsDataFrame(SpatialPoints(sa_nodes, proj4string = CRS(proj4string(nodes))), data=dta)
-
 all_nodes <- rbind(nodes, sa_pts)
+
+###
+# A) all nodes EMST
+###
 
 dist_matrix <- matrix(0, nrow=length(all_nodes), ncol=length(all_nodes))
 
@@ -232,7 +246,36 @@ for(i in 1:length(all_nodes)){
 connections <- as.data.frame(cbind(2:length(all_nodes), spantree(dist_matrix)$kid))
 row.names(connections) <- 1:nrow(connections)
 
-my_emst <- (SpatialLinesDataFrame(SpatialLines(lapply(1:nrow(connections), function(x) Lines(list(Line(rbind(cbind(as.numeric(all_nodes@coords[connections[x,1],1]), as.numeric(all_nodes@coords[connections[x,1],2])), cbind(as.numeric(all_nodes@coords[connections[x,2],1]), as.numeric(all_nodes@coords[connections[x,2],2]))))), paste(x)))), connections))
+my_emst <- (SpatialLinesDataFrame(SpatialLines(lapply(1:nrow(connections), function(x) Lines(list(Line(rbind(cbind(as.numeric(all_nodes@coords[connections[x,1],1]), as.numeric(all_nodes@coords[connections[x,1],2])), cbind(as.numeric(all_nodes@coords[connections[x,2],1]), as.numeric(all_nodes@coords[connections[x,2],2]))))), paste(x))), proj4string = CRS(proj4string(nodes))), connections))
+
+###
+# B) Subregions
+###
+#
+# subregions <- unionSpatialPolygons(polygon_dataframe, IDs=polygon_dataframe@data$subregion)
+#
+# for(region in 1:length(subregions)){
+#
+#   nodes_subset <- gIntersection(all_nodes, subregions[region])
+#
+#   dist_matrix <- matrix(0, nrow=length(nodes_subset), ncol=length(nodes_subset))
+#   for(i in 1:length(nodes_subset)){
+#     for(j in i:length(nodes_subset)){
+#       dist_matrix[i,j] <- gdist(as.numeric(nodes_subset@coords[i,1]), as.numeric(nodes_subset@coords[i,2]), as.numeric(nodes_subset@coords[j,1]), as.numeric(nodes_subset@coords[j,2]), units="km")
+#       dist_matrix[j,i] <- dist_matrix[i,j]
+#     }
+#   }
+#   connections <- as.data.frame(cbind(2:length(nodes_subset), spantree(dist_matrix)$kid))
+#   row.names(connections) <- 1:nrow(connections)
+#
+#    assign(paste("sub_emst", region, sep="_"), (SpatialLinesDataFrame(SpatialLines(lapply(1:nrow(connections), function(x) Lines(list(Line(rbind(cbind(as.numeric(nodes_subset@coords[connections[x,1],1]), as.numeric(nodes_subset@coords[connections[x,1],2])), cbind(as.numeric(nodes_subset@coords[connections[x,2],1]), as.numeric(nodes_subset@coords[connections[x,2],2]))))), paste(x))), proj4string = CRS(proj4string(nodes))), connections)))
+#
+# }
+#
+
+###
+# dist2emst
+###
 
 opt_loc$dist2emst <- NA
 
@@ -247,7 +290,9 @@ for(i in 1:nrow(opt_loc)){ # over all centroids (10,000)
 }
 
 
+###
 # indicate EMST nodes
+###
 
 df_coords <- rbind(nodes@coords, sa_nodes)
 row.names(df_coords) <- 1:nrow(df_coords)
@@ -308,3 +353,54 @@ for(i in 1:nrow(polygon_dataframe)){
 }
 
 write.csv(opt_loc, file="/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/temp/opt_loc_with_raildist.csv", row.names = FALSE)
+
+#####
+# Differential lines by EMST
+#####
+
+buffer_emst <- spTransform(buffer(spTransform(my_emst, CRS("+proj=robin +datum=WGS84")), width=40000), CRS("+proj=longlat +datum=WGS84")) # this is a double projection: I first project it from longlat to metric coordiantes ("robin"), apply the buffer of 40KM in each direction, and then reproject it to longlat for it to be adjusted to the rest of the space
+
+rails_in_buffer <- gIntersection(buffer_emst, all_rails)
+
+opt_loc$bufferKM <- NA
+
+for(i in 1:nrow(polygon_dataframe)){
+  single_cell <- polygon_dataframe[which(polygon_dataframe@data$ID == polygon_dataframe@data$ID[i]),]
+  if(gIntersects(single_cell, rails_in_buffer)){
+    intersect <- gIntersection(single_cell, rails_in_buffer)
+    if(!("coords" %in% slotNames(intersect))){
+    if("lineobj" %in% slotNames(intersect)){
+      opt_loc[opt_loc$ID == polygon_dataframe@data$ID[i], "bufferKM"] <- Reduce("+",lapply(1:length(intersect@lineobj@lines), function(j) sum(LineLength(intersect@lineobj@lines[[j]]@Lines[[1]]@coords, longlat = T))))
+      print(c(i, "with multiple"))
+    } else{
+      opt_loc[opt_loc$ID == polygon_dataframe@data$ID[i], "bufferKM"] <-  LineLength(intersect@lines[[1]]@Lines[[1]]@coords, longlat = T)
+      print(i)
+    }
+
+  }
+  } else{
+    opt_loc[opt_loc$ID == polygon_dataframe@data$ID[i], "bufferKM"] <- 0
+}
+}
+
+write.csv(opt_loc[,c("ID", "bufferKM")], file="/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/temp/ID_bufferKM.csv", row.names = FALSE)
+
+
+#####
+# Railroad Maps
+#####
+
+africa <- readOGR("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/input/Railroads/Territory/Africa.TAB")
+
+png(filename=paste("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/other_maps/all_rails.png", sep=""), width=6, height=6, units = 'in', res=300 )
+plot(africa)
+plot(all_rails, col="red", add=T)
+plot(all_placebo, col="blue", add=T)
+dev.off()
+
+png(filename=paste("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/other_maps/emst.png", sep=""), width=6, height=6, units = 'in', res=300 )
+plot(africa)
+plot(my_emst, col="orange", add=T)
+plot(buffer_emst, col=alpha("orange", 0.1), add=T, border=alpha("grey", 0.3))
+plot(all_nodes, add=T, col=alpha("red", 0.5), pch=20, cex=.5)
+dev.off()
