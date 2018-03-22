@@ -339,23 +339,31 @@ clipped <- gIntersection(ethn_all, africa, byid=T)
 clipped$ID <- 1:length(clipped)
 
 acled_merged$map_ID <- NA
+epr_merged$map_ID <- NA
 
 for(i in 1:length(clipped)){
 
   one_polygon <- clipped[which(clipped$ID == i),]
   main_slot <- one_polygon@plotOrder[1]
 
-  merger <- point.in.polygon(acled_merged$first.x, acled_merged$first.y, one_polygon@polygons[[1]]@Polygons[[main_slot]]@coords[,1], one_polygon@polygons[[1]]@Polygons[[main_slot]]@coords[,2])
+  merger.acled <- point.in.polygon(acled_merged$first.x, acled_merged$first.y, one_polygon@polygons[[1]]@Polygons[[main_slot]]@coords[,1], one_polygon@polygons[[1]]@Polygons[[main_slot]]@coords[,2])
+  merger.epr <- point.in.polygon(epr_merged$first.x, epr_merged$first.y, one_polygon@polygons[[1]]@Polygons[[main_slot]]@coords[,1], one_polygon@polygons[[1]]@Polygons[[main_slot]]@coords[,2])
 
-  if(sum(merger) == 1){
-    acled_merged[merger==1,"map_ID"] <- i
+  if(sum(merger.acled) == 1){
+    acled_merged[merger.acled==1,"map_ID"] <- i
   }
+
+
+  if(sum(merger.epr) == 1){
+      epr_merged[merger.epr==1,"map_ID"] <- i
+    }
 
 
 }
 
 mappable_dataset <- merge(clipped, acled_merged, by.x="ID", by.y="map_ID")
-mappable_dataset <- mappable_dataset[!is.na(mappable_dataset@data$tuple_ID),]
+mappable_dataset <- merge(mappable_dataset, epr_merged[,c("map_ID", "dis")], by.x="ID", by.y="map_ID")
+mappable_dataset <- mappable_dataset[!is.na(mappable_dataset@data$tuple_ID) & !is.na(mappable_dataset@data$dis),]
 
 my.palette <- brewer.pal(n = 9, name = "OrRd") # for an orange palette
 

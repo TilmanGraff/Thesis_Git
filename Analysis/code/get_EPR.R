@@ -27,50 +27,69 @@ for(i in 1:(length(epr_poly))){
   opt_loc[merger==1,"gwgroupid"] <- epr_poly@data[i,"gwgroupid"]
 }
 
-opt_loc <- merge(opt_loc, epr[epr$to==2013,c("gwgroupid", "status", "group")], by="gwgroupid", all.x=T)
+epr$hist_discr <- 0
+epr$hist_monop <- 0
 
-write.csv(opt_loc[,c("ID", "status", "group")], file="/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/temp/opt_loc_epr.csv", row.names = FALSE)
+for(id in unique(epr$gwgroupid)){
+  subset <- epr[epr$gwgroupid==id,"status"]
+
+  if("DISCRIMINATED" %in% subset){
+    epr[epr$gwgroupid==id, "hist_discr"] <- 1
+  }
+  if("MONOPOLY" %in% subset){
+    epr[epr$gwgroupid==id, "hist_monop"] <- 1
+  }
+
+}
+
+opt_loc <- merge(opt_loc, epr[epr$to==2013,c("gwgroupid", "status", "group", "hist_discr", "hist_monop")], by="gwgroupid", all.x=T)
+
+write.csv(opt_loc[,c("ID", "status", "group", "hist_discr", "hist_monop")], file="/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/temp/opt_loc_epr.csv", row.names = FALSE)
 
 ###############
 # ON ETHNICITY LEVEL
 ###############
 
-# opt_ethn <- as.data.frame(unique(opt_loc[!is.na(opt_loc$gwgroupid), "gwgroupid"]))
-# colnames(opt_ethn) <- "gwgroupid"
-#
-# for(i in 1:nrow(opt_ethn)){
-#   subset <- opt_loc[opt_loc$gwgroupid==opt_ethn$gwgroupid[i],]
-#   subset <- subset[!is.na(subset$rownumber),]
-#
-#   opt_ethn[i, "group"] <- subset[1, "group"]
-#   opt_ethn[i, "country"] <- subset[1, "country"]
-#   opt_ethn[i, "pop"] <- sum(subset$pop, na.rm=T)
-#   opt_ethn[i, "rugg"] <- mean(subset$rugg, na.rm=T)
-#   opt_ethn[i, "malaria"] <- mean(subset$malaria, na.rm=T)
-#   opt_ethn[i, "lights"] <- mean(subset$lights, na.rm=T)
-#   opt_ethn[i, "growingdays"] <- mean(subset$growingdays, na.rm=T)
-#   opt_ethn[i, "temp"] <- mean(subset$temp, na.rm=T)
-#   opt_ethn[i, "altitude"] <- mean(subset$altitude, na.rm=T)
-#   opt_ethn[i, "urban"] <- mean(subset$urban, na.rm=T)
-#   opt_ethn[i, "landsuit"] <- mean(subset$landsuit, na.rm=T)
-#   opt_ethn[i, "precip"] <- mean(subset$precip, na.rm=T)
-#   opt_ethn[i, "x"] <- mean(subset$x, na.rm=T)
-#   opt_ethn[i, "y"] <- mean(subset$y, na.rm=T)
-#   opt_ethn[i, "first.x"] <- subset[1, "x"]
-#   opt_ethn[i, "first.y"] <- subset[1, "y"]
-#   opt_ethn[i, "RailKM"] <- sum(subset$RailKM, na.rm=T)
-#
-#   if(opt_ethn[i, "pop"] >0 ){
-#     opt_ethn[i, "zeta"] <- (sum(subset$pop * subset$util_opt)  / sum(subset$pop * subset$util_stat))
-#   } else{
-#     opt_ethn[i, "zeta"] <- NA
-#   }
-#   opt_ethn[i, "strict_mean_zeta"] <- mean(subset$zeta, na.rm=T)
-#   opt_ethn[i, "status"] <- subset[1, "status"]
-#
-# }
-#
-# write.csv(opt_ethn, file="/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/temp/opt_ethn.csv", row.names = FALSE)
+opt_ethn <- as.data.frame(unique(opt_loc[!is.na(opt_loc$gwgroupid), "gwgroupid"]))
+colnames(opt_ethn) <- "gwgroupid"
+
+for(i in 1:nrow(opt_ethn)){
+  subset <- opt_loc[opt_loc$gwgroupid==opt_ethn$gwgroupid[i],]
+  subset <- subset[!is.na(subset$rownumber),]
+
+  opt_ethn[i, "group"] <- subset[1, "group"]
+  opt_ethn[i, "country"] <- subset[1, "country"]
+  opt_ethn[i, "pop"] <- sum(subset$pop, na.rm=T)
+  opt_ethn[i, "rugg"] <- mean(subset$rugg, na.rm=T)
+  opt_ethn[i, "malaria"] <- mean(subset$malaria, na.rm=T)
+  opt_ethn[i, "lights"] <- mean(subset$lights, na.rm=T)
+  opt_ethn[i, "growingdays"] <- mean(subset$growingdays, na.rm=T)
+  opt_ethn[i, "temp"] <- mean(subset$temp, na.rm=T)
+  opt_ethn[i, "altitude"] <- mean(subset$altitude, na.rm=T)
+  opt_ethn[i, "urban"] <- mean(subset$urban, na.rm=T)
+  opt_ethn[i, "landsuit"] <- mean(subset$landsuit, na.rm=T)
+  opt_ethn[i, "precip"] <- mean(subset$precip, na.rm=T)
+  opt_ethn[i, "x"] <- mean(subset$x, na.rm=T)
+  opt_ethn[i, "y"] <- mean(subset$y, na.rm=T)
+  opt_ethn[i, "first.x"] <- subset[1, "x"]
+  opt_ethn[i, "first.y"] <- subset[1, "y"]
+  opt_ethn[i, "RailKM"] <- sum(subset$RailKM, na.rm=T)
+
+  if(opt_ethn[i, "pop"] >0 ){
+    opt_ethn[i, "zeta"] <- (sum(subset$pop * subset$util_opt)  / sum(subset$pop * subset$util_stat))
+  } else{
+    opt_ethn[i, "zeta"] <- NA
+  }
+  opt_ethn[i, "strict_mean_zeta"] <- mean(subset$zeta, na.rm=T)
+  opt_ethn[i, "status"] <- subset[1, "status"]
+
+   opt_ethn[i, "hist_discr"] <- subset[1, "hist_discr"]
+   opt_ethn[i, "hist_monop"] <- subset[1, "hist_monop"]
+
+
+}
+
+write.csv(opt_ethn, file="/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/temp/opt_ethn.csv", row.names = FALSE)
 
 ###########
 # Make heatmap

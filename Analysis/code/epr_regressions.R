@@ -11,7 +11,7 @@ rm(list=ls(pattern="mod")) # this removes all models from the RStudio environmen
 
 opt_ethn <- read.csv("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/temp/opt_ethn.csv")
 mich_epr <- read.csv("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/temp/mich_epr.csv")
-mich_epr <- merge(mich_epr, opt_ethn[,c("country", "group", "status")], by=c("group", "country"), all.x=T)
+mich_epr <- merge(mich_epr, opt_ethn[,c("country", "group", "status", "hist_discr", "hist_monop")], by=c("group", "country"), all.x=T)
 
 mich_epr$x_2 <- mich_epr$x^2
 mich_epr$x_3 <- mich_epr$x^3
@@ -29,10 +29,12 @@ mich_epr$monopoly <- as.numeric(mich_epr$epr_scale == 7)
 
 ## models
 
-mod.1 <- lm(zeta~discriminated+factor(country)+lnkm2split+altitude+temp+landsuit+malaria+growingdays+x+x_2+x_3+x_4+y+y_2+y_3+y_4+pop+lights+rugg+urban, data=mich_epr)
-mod.2 <- lm(zeta~monopoly+factor(country)+lnkm2split+altitude+temp+landsuit+malaria+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+pop+lights+rugg+urban, data=mich_epr)
-mod.3 <- lm(zeta~participation+factor(country)+lnkm2split+altitude+temp+landsuit+malaria+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+pop+lights+rugg+urban, data=mich_epr)
-mod.4 <- lm(zeta~epr_scale+factor(country)+lnkm2split+altitude+temp+landsuit+malaria+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+pop+lights+rugg+urban, data=mich_epr)
+# mod.5 <- lm(zeta~etwar+factor(country)+split5pc+lnkm2split+altitude+temp+landsuit+malaria+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+pop+lights+rugg+urban, data=mich_epr)
+# mod.6 <- lm(zeta~dis+factor(country)+split5pc+lnkm2split+altitude+temp+landsuit+malaria+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+pop+lights+rugg+urban, data=mich_epr)
+# mod.7 <- lm(zeta~ex+factor(country)+split5pc+lnkm2split+altitude+temp+landsuit+malaria+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+pop+lights+rugg+urban, data=mich_epr)
+mod.5 <- lm(zeta~etwar+factor(country)+altitude+temp+landsuit+malaria+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+pop+lights+rugg+urban, data=mich_epr)
+mod.6 <- lm(zeta~dis+factor(country)+altitude+temp+landsuit+malaria+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+pop+lights+rugg+urban, data=mich_epr)
+mod.7 <- lm(zeta~ex+factor(country)+altitude+temp+landsuit+malaria+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+pop+lights+rugg+urban, data=mich_epr)
 
 #######################################################
 #### Display results
@@ -95,4 +97,4 @@ for(i in ls(pattern="mod.")){
 control_list = list(country, geog, sim_controls)
 
 
-stargazer(mo_list, se=se_list, type="text",  keep = c("dis", "zeta", "epr", "part", "monopoly"), p.auto=TRUE, t.auto=TRUE, add.lines=control_list, keep.stat=c("n"))
+stargazer(mo_list, se=se_list, type="latex",  keep = c("ex", "war", "dis", "his", "zeta", "epr", "part", "monopoly"), p.auto=TRUE, t.auto=TRUE, add.lines=control_list, keep.stat=c("n", "rsq"))
