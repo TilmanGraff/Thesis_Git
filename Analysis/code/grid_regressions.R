@@ -70,7 +70,7 @@ opt_loc$not_buffer_KM <- opt_loc$RailKM - opt_loc$bufferKM
 
 ###################
 # RailKM
-#
+# #
 # mod.1 <- lm(zeta~RailKM, data=opt_loc)
 # mod.2 <- lm(zeta~RailKM+factor(country), data=opt_loc)
 # mod.3 <- lm(zeta~RailKM+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+border, data=opt_loc)
@@ -80,14 +80,14 @@ opt_loc$not_buffer_KM <- opt_loc$RailKM - opt_loc$bufferKM
 # mod.6 <- lm(zeta~PlaceboKM+factor(country), data=opt_loc)
 # mod.7 <- lm(zeta~PlaceboKM+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+border, data=opt_loc)
 # mod.8 <- lm(zeta~PlaceboKM+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+pop+urban+border, data=opt_loc)
-# #
-# covariate_labels <- c("KM of Colonial Railroads", "KM of Colonial Placebo Railroads")
+# # #
+# # covariate_labels <- c("KM of Colonial Railroads", "KM of Colonial Placebo Railroads")
 
 
 ###################
 # Distance blocks
 
-#
+# #
 # data_small <- opt_loc[opt_loc$country %in% jedwab_countries_via_all_rails,]
 #
 # #mod.1 <- lm(zeta~smaller_ten+ten_twenty+twenty_thirty+thirty_fourty, data=opt_loc)
@@ -259,4 +259,4 @@ for(i in ls(pattern="mod.")){
 control_list = list(country, geog, sim_controls)
 
 
-stargazer(mo_list, se=se_list, type="latex",  keep = c("buffer", "participation", "monopoly", "discr", "hist", "epr", "zeta","worldbank", "wb", "disbursement","ail", "placebo", "KM", "ten", "thirty", "smaller", "emst"), p.auto=TRUE, t.auto=TRUE, add.lines=control_list, keep.stat=c("rsq", "n"), order=c(1,3,4,2), dep.var.labels.include=F)
+stargazer(mo_list, se=se_list, type="text",  keep = c("buffer", "participation", "monopoly", "discr", "hist", "epr", "zeta","worldbank", "wb", "disbursement","ail", "placebo", "KM", "ten", "thirty", "smaller", "emst"), p.auto=TRUE, t.auto=TRUE, add.lines=control_list, keep.stat=c("rsq", "n"), order=c(1,3,4,2), dep.var.labels.include=F)

@@ -395,7 +395,7 @@ africa <- readOGR("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/A
 png(filename=paste("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/other_maps/all_rails.png", sep=""), width=6, height=6, units = 'in', res=300 )
 plot(africa)
 plot(all_rails, col="red", add=T)
-plot(all_placebo, col="blue", add=T)
+plot(all_placebo, col="blue", add=T, lty=2)
 dev.off()
 
 png(filename=paste("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/other_maps/emst.png", sep=""), width=6, height=6, units = 'in', res=300 )

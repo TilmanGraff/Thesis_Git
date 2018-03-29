@@ -17,7 +17,7 @@
  total={210mm,297mm},
  left=15mm,
  right=15mm,
- top=25mm,
+ top=20mm,
  bottom=20mm,
  }
 
@@ -375,7 +375,7 @@ While each country only stands to gain overall welfare from this reallocation pr
 \end{equation}
 
 % Figure
-\begin{figure}
+\begin{figure}[t]
 \centering
 \caption{Spatial Distribution of $\Lambda_{i}$ for sample countries}
 
@@ -445,19 +445,28 @@ Why are some African roads in the wrong place? To investigate which areas have t
   \Lambda_{i,c} = \beta v_{i,c} + X_{i,c}\gamma + \delta_{c} + \epsilon_{i,c}
   \label{eq:grid_ols}
 \end{equation}
-for a variety of different independent variables $v_{i,c}$ of grid cell $i$ in country $c$. $\delta_{c}$ denotes country-fixed effects, $X$ is a vector of controls, and $\beta$ is the coefficient of interest. The dependent variable $\Lambda_{i}$ roughly follows a normal distribution and hence no transformation is undertaken. However, as seen in Figure \eqref{fig:all_gridcells_by_zeta}, local infrastructure discrimination clearly displays autocorrelation over space causing the error term $\epsilon_{i,c}$ to not be distributed independently. To account for this problem, I follow \cite{Bester_Inferencedependentdata_2011} and construct a higher-level spatial grid of 3 degrees latitude by 3 degrees longitude and cluster standard errors within each of these higher-level grid cells. Errors are  allowed to covary within each cluster, but not between them. This technique draws its power from constructing clusters in the most arbitrary manner possible without relying on potentially endogenous partitions like national borders or administrative units \citep[see e.g.][]{michaels_resetting_2017}.\footnote{There are 332 such clusters. Since 3 is evenly divisible by the observation-level grid cell size of 0.5 degrees, each cluster in principle fits 36 observations. The median cluster does indeed comprise 36 cells, but some border-regions fit fewer observations. On average, there are 31 observations in a cluster.}
+for a variety of different independent variables $v_{i,c}$ of grid cell $i$ in country $c$. $\delta_{c}$ denotes country-fixed effects, $X$ is a vector of controls, and $\beta$ is the coefficient of interest. The dependent variable $\Lambda_{i}$ roughly follows a normal distribution and hence no transformation is undertaken. However, as seen in Figure \eqref{fig:all_gridcells_by_zeta}, local infrastructure discrimination clearly displays autocorrelation over space causing the error term $\epsilon_{i,c}$ to not be distributed independently. To account for this problem, I follow \cite{Bester_Inferencedependentdata_2011} and construct a higher-level spatial grid of 3 degrees latitude by 3 degrees longitude and cluster standard errors within each of these higher-level grid cells. Errors are  allowed to covary within each cluster, but not between them. This technique draws its power from constructing clusters in the most arbitrary manner possible without relying on potentially endogenous partitions like national borders or administrative units \citep[see e.g.][]{michaels_resetting_2017}.\footnote{There are 332 such clusters. Since 3 degrees is evenly divisible by the observation-level grid cell size of 0.5 degrees, each cluster in principle fits 36 observations. The median cluster does indeed comprise 36 cells, but some border-regions fit fewer observations. On average, there are 31 observations in a cluster.}
 
-The vector of controls $X$ captures observable characteristics of each grid cell which might plausibly account for some of the variation in $\Lambda_{i}$. \cite{henderson_global_2018} show how a surprisingly parsimonious set of geographical and agricultural covariates explain a substantial part of the global variation in economic activity. Making use of their data, I include in $X$ each grid cell's average altitude, average temperature and precipitation, land suitability for agriculture, length of the annual growing period, and an index for the stability of malaria transmission. I also include mutually exclusive (and collectively exhaustive) dummy variables classifying each grid cell into one of twelve predominant vegetation regions \citep[or \emph{Biomes}, see][]{henderson_global_2018}. To flexibly account for any broad geographic trend over the entire continent, I additionally add fourth-order polynomials of both latitude and longitude for each grid cell. To take into account that some regions have a natural advantage in conducting trade, I also include indicators for whether a grid cell's centroid is within 25 kilometres of a natural harbor, big lake, or navigable river respectively. Lastly, I create a dummy for whether a cell is at the border of a country's trade network and has less than eight immediate neighbours.
+Including country-fixed effects is of particular importance, as $\Lambda_{i,c}$ is constructed by optimising trade flows within each country separately. A grid cell in Egypt is hence not directly comparable to one in Sierra Leone. Country-fixed effects account for this underlying heterogeneity and make observations comparable internationally. In addition, the vector of controls $X$ captures observable characteristics of each grid cell which might plausibly account for some of the variation in $\Lambda_{i,c}$. \cite{henderson_global_2018} show that a surprisingly parsimonious set of geographical and agricultural covariates explains a substantial part of the global variation in economic activity. Making use of their data, I include in $X$ each grid cell's average altitude, average temperature and precipitation, land suitability for agriculture, length of the annual growing period, and an index for the stability of malaria transmission. I also include mutually exclusive (and collectively exhaustive) dummy variables classifying each grid cell into one of twelve predominant vegetation regions \citep[or \emph{Biomes}, see][]{henderson_global_2018}. To flexibly account for any broad geographic trend over the entire continent, I additionally add fourth-order polynomials of both latitude and longitude for each grid cell. To take into account that some regions have a natural advantage in conducting trade, I also include indicators for whether a grid cell's centroid is within 25 kilometres of a natural harbor, big lake, or navigable river respectively. Lastly, I create a dummy for whether a cell is at the border of a country's trade network and has less than eight immediate neighbours.
 
 I call the set of controls outlined so far \emph{``Geographic Controls''}. They are in principle unaffected by human decisions about the design of trade networks and therefore plausibly exogeneous. Another set of covariates, however, poses more difficulties. These are the variables that were already used to calibrate the optimal reallocation simulation from above, namely a cell's population, light output, ruggedness, and classification into urban and rural.\footnote{Recall that population and output were crucial components of the planner's problem, ruggedness went int the cost of building new infrastructure $\delta^{I}_{i,k}$, and the urban/rural classification determined which good a cell produced.} I call these \emph{``Simulation Controls''}. It is important to be aware that $\Lambda_{i}$ is, among others, already a product of the intricate interplay between these factors. There is hence a danger for plain OLS to detect a spurious, mechanical relationship between them, potentially biasing results. On the other hand, not controlling for the spatial distribution of people and economic activity creates the risk of confounding estimates by means of omitted variable bias. For instance, if colonial railroads were built to connect cities and $\Lambda_{i}$ tends to be higher for urban areas, naive OLS will falsely identify a relationship between railroads and network inefficiency that is not actually there. To confront this dilemma, I always report estimates with and without the set of simulation controls. As can be seen below, however, results turn out to be largely similar between the two, hinting at the highly non linear genesis of $\Lambda_{i}$
 
 In this thesis, I investigate three potential sources of network inefficiency in Africa: colonial-era infrastructure investments, ethnic power relations, and foreign aid. Each individual setting faces different challenges to identification but they are all based on the framework outlined above. The following sections present empirical strategies and results for all three strands of inquiry.
 
 \subsection{Colonial Infrastructure Investments}
-At the Berlin Conference of 1884--1885, European powers unilaterally decided to split up the African continent into spheres of influence amongst themselves, setting off what is known as the \emph{Scramble for Africa}. The colonising powers seized control, formed local administrative hierarchies, and set up extractive economies in their effort to transform the continent in a multitude of dimensions. 
+At the Berlin Conference of 1884--1885, European powers unilaterally decided to split up the African continent into spheres of influence amongst themselves, setting off what is known as the \emph{Scramble for Africa}. The colonising powers rushed to secure areas of control, formed local administrative hierarchies, and set up extractive economies depriving the continent of its natural resources. The following decades went on to transform the continent in a multitude of dimensions. A large strand of literature has investigated the long-run effects of colonial policies on contemporary comparative development in Africa, including institutional reforms \citep{Acemoglu_ColonialOriginsComparative_2001,acemoglu_reversal_2002}, border design \citep{michalopoulos_long-run_2016}, and missionary education \citep{Wantchekon_EducationHumanCapital_2015}.
 
+The colonial powers also transformed the landscape of many African regions by devising large scale infrastructure projects. Starting in the late 19th century, numerous railway lines were built to facilitate the transport of goods and troops through the vast newly appropriated territories. Between 1890 and 1960, British, French, Belgian, German, Italian, and Portuguese administrations all undertook efforts to permeate their colonies with more or less sophisticated railway networks \citep{jedwab_permanent_2016}. There were two main motivations for this: supporting the extractive economies and ensuring military domination \citep{jedwab_history_2017}. On the one hand, rail tracks were used to transport crops and minerals from the fields and mines of the African heartland to the nearest harbour city from which they were shipped back to Europe. On the other hand, geopolitical considerations led the colonial governments to rapidly expand their network to showcase their military might and secure their spheres of influence.
 
-% Figure
+In Nigeria, for example, the British colonial administration was under pressure to counter increasing advances by the French into the northern parts of the country. In response,  three major railway lines were built to connect the North with the coast \citep{Falola_historyNigeria_2008}. However, these were used not only for military purposes, but also to transport ground nuts, palm oil, and cocoa to the harbours in Lagos, Port Harcourt, and Calabar \citep{ekundare_economic_1973}. Transporting goods between the various regions of the country had been relying on head porterage for centuries, rendering interregional trade in commodities all but impossible.\footnote{Until the construction of colonial railways, the only systematic interregional trade in many African countries had been the slave trade. Over five centuries leading up to the Berlin Conference about 18 million Africans were enslaved and traded out of the country, the majority by ship to the New World \citep{nunn_long-term_2008}.} Trips on the newly constructed lines were slow and arduous compared to modern standards, but nevertheless marked the first time goods and people could relatively easily travel between the different parts of the country. As a result, Britain secured their strategic grip on Nigeria's north, extracted minerals and crops on a large scale, and saw export volumes skyrocket \citep{chaves_reinventing_2013,woltjer_economic_2018}. Though their economic gains hardly ever benefited the local population, the construction of railroads could be seen as a transformative event for the Nigerian economy.\footnote{Other case studies for Ghana \citep{jedwab_permanent_2016}, Kenya \citep{jedwab_history_2017}, India \citep{donaldson_railroads_2010}, or the US \citep{donaldson_railroads_2016,swisher_reassessing_2017} describe similarly transformative impacts of railroad construction on the local economy at the time.}
+
+Apart from boosting the development of trade and migration at the time, colonial railroads have also been found to have a persistent impact on the spatial organisation of economic activity today. \cite{jedwab_permanent_2016} show how urbanisation started to center around railway tracks in the decades following their construction. Even as most railway lines have fallen into disrepair and road traffic has replaced trains as the most important means of transport, economic activity today still clusters in places close to the former rail lines. \citeauthor{jedwab_permanent_2016} see this as evidence that other spatial equilibria could have emerged, but railway locations facilitated equilibrium selection.
+
+Is the current equilibrium efficient? To investigate whether railways from the colonial period still have an impact on trade network inefficiency today, I overlay the 10,000+ grid cells of my data set with every railway line built by the colonial powers in Sub-Saharan Africa. Figure \eqref{fig:Railroad_Map} prints in red all lines built between 1890 and the various independence dates. Data on railroad positioning comes from \cite{jedwab_permanent_2016}, with the exception of South Africa, for which I manually digitise a map from \cite{Herranz-Loncan_publicbenefitRailways_2017}. No comparable data is available for Madagascar, Egypt, and the Maghreb countries, which also saw some colonial railway construction. As discussed below, findings are robust to excluding grid cells from these countries.
+
+For every grid cell, I compute the total number of colonial railway kilometres crossing the cell. This serves as tangible measure for the stock of physical transport capital invested into each region. The majority of cells (91\%) are not crossed by a colonial railway and hence have zero railroad kilometres. Those that are crossed by a line usually have between 20 and 60 railroad kilometres, while some important rail crossings or transport hubs have up to 100 kilometres of railroads (in a 55 by 55 kilometre cell nevertheless). While this measure captures the intensive margin of colonial infrastructure investment, I also construct a measure of extensive margin railroad exposure by computing the distance from a cell's centroid to its closest track. Furthermore, every railroad line comes with a classification of being constructed primarily for military purposes or mining purposes (or neither, or both), allowing for more nuanced analysis. Lastly, to account for potential endogeneity concerns, I also compute the same statistics for a set of railway lines the colonisers planned, but never built. As \citeauthor{jedwab_permanent_2016} explain, these projects were not realised only for a series of arguably random historical events like unforeseeable cuts to financing, the outbreak of wars, or sudden retirements of adminstration officials. If any effects are to be attested to the construction of railroads during the colonial era, no impact should be found for these \emph{placebo} railroads. These tracks are printed in blue in Figure \eqref{fig:Railroad_Map}.\footnote{Data for placebo lines also come from \cite{jedwab_permanent_2016} and \cite{Herranz-Loncan_publicbenefitRailways_2017}.}
+
+% Figure Maps of Rails
 \begin{figure}
 \centering
 \caption{Colonial Railway Network}
@@ -478,34 +487,10 @@ At the Berlin Conference of 1884--1885, European powers unilaterally decided to 
 \end{figure}
 % End Figure
 
-
-% Figure
-\begin{figure}
-\centering
-\caption{$\Lambda_{h}$ over Ethnic Homelands}
-
-\begin{subfigure}[c]{0.48\textwidth}
-\includegraphics[width=\textwidth,trim={1cm 3cm 0.5cm 4cm},clip]{/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/other_maps/ethnicity_zeta.png}
-\caption{Murdock definition}
-\label{fig:Murdock_map}
-\end{subfigure}
-\begin{subfigure}[c]{0.48\textwidth}
-\includegraphics[width=\textwidth,trim={1cm 3cm 0.5cm 4cm},clip]{/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/other_maps/epr_zeta.png}
-\caption{EPR definition}
-\label{fig:EPR_map}
-\end{subfigure}
-
-\label{fig:ethn_maps}
-\mysubcaption{Spatial distribution of Local Infrastructure Discrimination Index $\Lambda_{h}$, aggregated over ethnic homelands. Subfigure (a) presents pre-colonial homelands as initially defined in an ethnolinguistic map by \cite{Murdock_Africaitspeoples_1959} and intersected with current political borders \citep[following][]{michalopoulos_long-run_2016}. Subfigure (b) depicts current boundaries of politically active ethnic groups as defined in the Ethnic Power Relations (EPR) datset by \cite{Vogt_IntegratingDataEthnicity_2015}.}
-\end{figure}
-% End Figure
-
-
-
-% Figure
-\begin{table}[] \centering
+% Figure Table of RailKM_zeta
+\begin{table}[t] \centering
   \caption{Colonial Railroads and Local Infrastructure Discrimination Index}
-  \label{RailKM_zeta}
+  \label{tab:RailKM_zeta}
   \resizebox{\textwidth}{!}{
 
   \begin{tabular}{@{\extracolsep{5pt}}lcccccccc}
@@ -535,15 +520,71 @@ At the Berlin Conference of 1884--1885, European powers unilaterally decided to 
 
 }
 
-\mysubcaption{This table displays results of estimation of equation \eqref{eq:grid_ols} on the sample of 0.5x0.5 degree grid cells for the entire African continent (excluding five small countries, see text). Dependent variable is the Local Infrastructure Discrimination Index for each grid cell. Columns (1)-(4) estimate the effect of colonial infrastructure investments on today's Local Infrastructure Discrimination Index. Starting with a simple univariate cross-section in (1), column (2) adds 49 country-fixed effects. Column (3) adds geographic controls, consisting of altitude, temperature, average land suitability, malaria prevalence, yearly growing days, average precipitation, indicators for the 12 predominant agricultural biomes, indicators for whether a cell is within 25 KM of a natural harbor, navigable river, or lake, the fourth-order polynomial of latitude and longitude, and an indicator of whether the grid cell lies on the border of a country's network. Simulation controls are added in column (4) and are comprised of population, night lights, ruggedness, and a dummy for whether a cell is classified as urban. These are indicators that went into the original infrastructure re-allocation simulation and are hence not orthogonal to $\Lambda$. Columns (5)-(8) repeat these calculations with railroads that were planned, but never built (``placebo railroads''). Results are robust to using only the subsample of 33 countries with any colonial infrastructure investment as reported by \cite{jedwab_permanent_2016}, plus South Africa. Heteroskedasticity-robust standard errors are clustered on the 3x3 degree level and are shown in parantheses.}
+\mysubcaption{Results of estimation of equation \eqref{eq:grid_ols} on the sample of 0.5x0.5 degree grid cells for the entire African continent (excluding five small countries, see text). Dependent variable is the Local Infrastructure Discrimination Index for each grid cell. Columns (1)-(4) estimate the effect of colonial infrastructure investments as measured by the total number of colonial railroad kilometres crossing a cell. Starting with a simple univariate cross-section in (1), column (2) adds 49 country-fixed effects. Column (3) adds geographic controls, consisting of altitude, temperature, average land suitability, malaria prevalence, yearly growing days, average precipitation, indicators for the 12 predominant agricultural biomes, indicators for whether a cell is within 25 KM of a natural harbor, navigable river, or lake, the fourth-order polynomial of latitude and longitude, and an indicator of whether the grid cell lies on the border of a country's network. Simulation controls are added in column (4) and are comprised of population, night lights, ruggedness, and a dummy for whether a cell is classified as urban. These are indicators that went into the original infrastructure re-allocation simulation and are hence not orthogonal to $\Lambda$. Columns (5)-(8) repeat these calculations with railroads that were planned, but never built (``placebo railroads''). Results are robust to using only the subsample of 33 countries with colonial infrastructure investment as reported by \cite{jedwab_permanent_2016}, plus South Africa. Heteroskedasticity-robust standard errors are clustered on the 3x3 degree level and are shown in parantheses.}
 \end{table}
 % End Figure
 
+Table \eqref{tab:RailKM_zeta} displays results from OLS estimation of Equation \eqref{eq:grid_ols} with $\Lambda_{i,c}$ on the left hand side and rail kilometres as explanatory variable $v_{i,c}$. Column (1) displays the plain cross-sectional relationship without controls and reveals a statistically significant negative association between the two variables. Grid cells with high colonial railroad investment also have significantly lower infrastructure discrimination today. Recall that low values of $\Lambda_{i,c}$ correspond to regions losing welfare if the social planner were to optimally reallocate infrastructure. On a merely descriptive level, the negative estimate of column (1) hence implies that regions with colonial railroads crossing through them would on average see infrastructure (and welfare) being redistributed to those areas without colonial investments. This plain correlational relationship is far from implying any form of causation. A score of other variables could instead be responsible for this observational association, most prominently population. As \citeauthor{jedwab_permanent_2016} show, areas with colonial railroads are more populous today. If the social planner were to redistribute infrastructure from urban to rural areas, for example, any estimated relationship between railways and $\Lambda_{i,c}$ would be spurious. To investigate these reservations, columns (2) -- (4) gradually extend the set of observable controls. The point estimate and statistical significance of the persistence of railroads, however, is robust to including country fixed effects, geographical controls, and simulation controls as described above. In the richest specification of column (4), every ten kilometres of colonial railway construction lead grid cells to lose $0.002$ percentage points of welfare at the hand of areas without any investment.
 
-% Figure
+The colonial authorities did not place railroads randomly. Decisions on where to invest in expensive transport infrastructure is rather subject to cost-benefit analyses, regional economic potential, and projections about which areas are expected to thrive. This poses a threat to identification as the construction of railroads does not constitute a perfect natural experiment. Rather, columns (1) -- (4) of Table \eqref{tab:RailKM_zeta} estimate the joint effect of a region being selected as a site for railroad investment \emph{together} with the actual investment. If the selection process relies on unobservables characteristics which impact $\Lambda_{i,c}$ today, estimates will be biased.\footnote{One could make the case that this bias might mask a much stronger effect in the same direction as in Table \eqref{tab:RailKM_zeta}. If railroads were built in areas which were expected to do well in the future, these regions might be receiving more infrastructure from the social planner today. This would attenuate the negative effect in columns (1) -- (4). However, other potential directions for the bias are conceivable as well.} To isolate the effect of actual infrastructure investments, columns (5) -- (8) repeat the exercise for the set of placebo railroads. If these are assumed to have undergone the same planning process as the actual railways, these regressions reveal the distorting power of site selection. None of the estimates are significantly different from zero, suggesting that the link in columns (1) -- (4) is a causal one. The results are virtually identical when using only the subsample of 34 countries for which data on colonial railroad placement is available (not reported).
+
+The effects described in Table \eqref{tab:RailKM_zeta} are small, yet remarkable. Across the African continent, areas that received large infrastructure investments a century ago are still \emph{too} well off given their position in the national trade network. In contrast, areas that were not crossed by tracks are inefficiently short on infrastructure today. To see that this is a non-trivial finding, note that, firstly, most of the colonial railway lines have been in disrepair for decades and thus do not immediately dictate trade flows today. Secondly, recall that the optimal network reallocation and construction of $\Lambda_{i,c}$ was based on roads and cars, not rails and trains. The implication is hence \emph{not} that colonial railway systems themselves are inadequate to efficiently sustain inter-regional trade today. Rather the transport revolution a century ago coordinated the entire economy into a certain spatial equilibrium, which persists even though it has become inefficient. African nations would benefit from moving to a better equilibrium, but are locked in the current state. The placement of colonial railroads set in motion a process of spatial sorting with people, infrastructure, and output clustering in locations which are suboptimal today. The social planner tries to overcome these misallocations and move infrastructure away from regions once considered important by the colonisers. To summarise, \citeauthor{jedwab_permanent_2016} show that colonial investments helped the economy to coordinate on one of many spatial equilibria, while my findings suggest that this is not the optimal one.\footnote{Note that the spatial equilibrium induced by colonial railroads could have still been optimal \emph{at the time}. My argument solely concerns the persistent effects of investments a century ago on network efficiency \emph{today}.}
+
+% Figure Table RailKM_mining_military
 \begin{table}[] \centering
+  \caption{Heterogeneous Effects of Colonial Railroads}
+  \label{tab:RailKM_mining_military}
+  \resizebox{\textwidth}{!}{
+
+
+  \begin{tabular}{@{\extracolsep{5pt}}lcccccccc}
+  \\[-1.8ex]\hline
+  \hline \\[-1.8ex]
+   & \multicolumn{8}{c}{\textit{Dependent variable: Local Infrastructure Discrimination Index $\Lambda_{i}$}} \\
+  \cline{2-9}
+  \\[-1.8ex] & (1) & (2) & (3) & (4) & (5) & (6) & (7) & (8)\\
+  \hline \\[-1.8ex]
+   KM of Rails & $-$0.0002$^{***}$ & $-$0.0002$^{***}$ &  &  & $-$0.0002$^{**}$ & $-$0.0002$^{**}$ &  &  \\
+   \hspace*{3mm} for Military Purposes & (0.0001) & (0.0001) &  &  & (0.0001) & (0.0001) &  &  \\
+    & & & & & & & & \\
+   KM of Rails  &  &  & $-$0.0001 & $-$0.0001 & $-$0.0001 & $-$0.0001 &  &  \\
+  \hspace*{3mm} for Mining Purposes &  &  & (0.0001) & (0.0001) & (0.0001) & (0.0001) &  &  \\
+    & & & & & & & & \\
+    KM of Rails &  &  &  &  &  &  & $-$0.0003$^{***}$ &  \\
+  \hspace*{3mm} within EMST Buffer &  &  &  &  &  &  & (0.0001) &  \\
+     & & & & & & & & \\
+    KM of Rails  &  &  &  &  &  &  &  & $-$0.0001$^{**}$ \\
+  \hspace*{3mm} outside EMST Buffer &  &  &  &  &  &  &  & (0.0001) \\
+     & & & & & & & & \\
+  \hline \\[-1.8ex]
+  Country FE & Yes & Yes & Yes & Yes & Yes & Yes & Yes & Yes \\
+  Geographic controls & Yes & Yes & Yes & Yes & Yes & Yes & Yes & Yes \\
+  Simulation controls &  & Yes &  & Yes &  & Yes & Yes & Yes \\
+  Observations & 10,158 & 10,158 & 10,158 & 10,158 & 10,158 & 10,158 & 10,039 & 10,039 \\
+  R$^{2}$ & 0.123 & 0.125 & 0.122 & 0.124 & 0.123 & 0.125 & 0.126 & 0.125 \\
+  \hline
+  \hline \\[-1.8ex]
+  \textit{Note:}  & \multicolumn{8}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\
+  \end{tabular}
+
+}
+
+\mysubcaption{Replication of estimations of Table \eqref{tab:RailKM_zeta} in estimating effects of colonial railroads on the Local Infrastructure Discrimination Index $\Lambda$. Colonial rails are classified as built for military or mining purposes (or neither or both) by \cite{jedwab_permanent_2016}. Columns (7)-(8) distinguish between railway kilometres within and outside the 40km-wide buffer around the euclidean minimum spanning tree (EMST) of the initial urban network. Geographic controls consist of altitude, temperature, average land suitability, malaria prevalence, yearly growing days, average precipitation, indicators for the 12 predominant agricultural biomes, indicators for whether a cell is within 25 KM of a natural harbor, navigable river, or lake, the fourth-order polynomial of latitude and longitude, and an indicator of whether the grid cell lies on the border of a country's network. Simulation controls are comprised of population, night lights, ruggedness, and a dummy for whether a cell is classified as urban. Results are robust to using only the subsample of 34 countries with colonial infrastructure investment, with only the estimate in column (8) estimated less precisely (but still $p<0.1$). Heteroskedasticity-robust standard errors are clustered on the 3x3 degree level and are shown in parantheses.}
+\end{table}
+% End Figure
+
+Which railways were responsible for coordinating African economies into a suboptimal spatial equilibrium? To understand the forces behind this dynamic, I split the sample of all colonial railways by their initial construction purpose. As discussed above, most tracks were built with military or mining considerations in mind. Similarly to the exercise above, I separately calculate the total number of mining and military railroad kilometres respectively. Table \eqref{tab:RailKM_mining_military} repeats the estimations from above for both subsets of railways. As can be seen from columns (1) -- (6), the effect is exclusively driven by railways built for military purposes. The social planner seeks to take welfare away from regions which were crossed by lines built for military domination. Railroads constructed to support the mining trade are not associated with areas too well off today. This distinction holds both when including the variables separately (columns 1-4) and jointly (columns 5-6).
+
+This finding offers an intuitive understanding of how the current spatial distribution is inefficient. All colonial infrastructure investments spurred urbanisation close-by, regardless of their construction purpose. Since mining lines arguably cross areas that are still important trade routes today, the social planner sees no need to reorganise economic activity away from them. Areas surrounding rails built with military consideration in mind, however, have since lost their strategic importance. As the nature of military domination, state authority, and conflict have changed since the 19th century, there is no immediate value of clustering economic activity and infrastructure close to former military lines anymore. It is those sunk investments that skew the spatial equilibrium towards an inefficient state.
+
+To further investigate the notion of differentiating railroad lines by their strategic importance, I follow \cite{jedwab_permanent_2016} and \cite{faber_trade_2014} and construct the euclidean minimum spanning tree (EMST) for the African urban network in 1900. This is the network which minimises the total euclidean distance of edges while ensuring that all nodes are connected to each other. Following \citeauthor{jedwab_permanent_2016}, I take as nodes all African cities with a population of over 10,000 people in 1900.\footnote{This amounts to 119 nodes. 105 of these are reported by \cite{jedwab_permanent_2016}, 14 are in South Africa and from a map in \cite{Herranz-Loncan_publicbenefitRailways_2017}.} Figure \eqref{fig:EMST_Map} prints the cities and the tree connecting them. I then construct a 40 kilometre buffer around the EMST lines and split all colonial railways by whether or not they are located within this buffer.\footnote{The choice of 40 kilometres is arbitrary and directly follows \cite{jedwab_permanent_2016}.} Intuitively, rails within the buffer have more strategic military importance than those outside it. Railroads built to support regional trade do not necessarily have to be on the straight line between major cities -- lines with the aim of quickly transporting troops do.
+
+Columns (7) -- (8) of Table \eqref{tab:RailKM_mining_military} estimate the heterogeneous effects of both kinds of railway kilometres. Following \citeauthor{jedwab_permanent_2016}, I drop grid cells containing one of the 119 nodes spanning the EMST. Results are inconclusive. While railroad kilometres inside the buffer around the EMST are strongly associated with areas being too well off today, the same holds to a lesser degree to those outside of it. The estimate for rails close to the EMST is three times as large as the one for rails far away, however both are significantly smaller than zero. This leads to the conclusion that all colonial railways clustered economic activity in inefficient locations, only those built for strategic purposes did so even more. The social planner would like to reorganise infrastructure away from all former railway areas, but she would start at those constructed for geopolitical reasons.
+
+% Figure Table RailBlocks_zeta
+\begin{table}[t] \centering
   \caption{General Equilibrium Effects of Colonial Railroads}
-  \label{RailBlocks_zeta}
+  \label{tab:RailBlocks_zeta}
   \resizebox{\textwidth}{!}{
 
 
@@ -553,7 +594,7 @@ At the Berlin Conference of 1884--1885, European powers unilaterally decided to 
    & \multicolumn{8}{c}{\textit{Dependent variable: Local Infrastructure Discrimination Index $\Lambda_{i}$}} \\
    \cline{2-9}
      \\[-1.8ex]
-   & \multicolumn{6}{c}{\small full sample} & \multicolumn{2}{c}{\small restricted sample} \\
+   & \multicolumn{6}{c}{\small \textit{Full Sample}} & \multicolumn{2}{c}{\small \textit{Restricted Sample}} \\
   \cline{2-7} \cline{8-9}
   \\[-1.8ex] & (1) & (2) & (3) & (4) & (5) & (6) & (7) & (8)\\
   \hline \\[-1.8ex]
@@ -594,52 +635,20 @@ At the Berlin Conference of 1884--1885, European powers unilaterally decided to 
 
 }
 
-\mysubcaption{This table displays effects of various distance-intervals on the Local Infrastructure Discrimination Index $\Lambda$. Explanatory covariates are dummy-variables indicating whether a cell's centroid is within X kilometres to its closest colonial railroad. Geographic controls consist of altitude, temperature, average land suitability, malaria prevalence, yearly growing days, average precipitation, indicators for the 12 predominant agricultural biomes, indicators for whether a cell is within 25 KM of a natural harbor, navigable river, or lake, the fourth-order polynomial of latitude and longitude, and an indicator of whether the grid cell lies on the border of a country's network. Simulation controls are comprised of population, night lights, ruggedness, and a dummy for whether a cell is classified as urban. Columns (1)-(3) examine the effect of actually built colonial railroads. Columns (4)-(6) repeat these calculations with railroads that were planned, but never built (``placebo railroads''). Columns (7)-(8) restrict the sample to the 32 countries on which data for colonial railways is available. Heteroskedasticity-robust standard errors are clustered on the 3x3 degree level and are shown in parantheses.}
+\mysubcaption{This table displays effects of various distance-intervals on the Local Infrastructure Discrimination Index $\Lambda$. Explanatory covariates are dummy-variables indicating whether a cell's centroid is within X kilometres to its closest colonial railroad. Distance larger than 40 kilometres is the omitted category. Geographic controls consist of altitude, temperature, average land suitability, malaria prevalence, yearly growing days, average precipitation, indicators for the 12 predominant agricultural biomes, indicators for whether a cell is within 25 KM of a natural harbor, navigable river, or lake, the fourth-order polynomial of latitude and longitude, and an indicator of whether the grid cell lies on the border of a country's network. Simulation controls are comprised of population, night lights, ruggedness, and a dummy for whether a cell is classified as urban. Columns (1)-(3) examine the effect of actually built colonial railroads. Columns (4)-(6) repeat these calculations with railroads that were planned, but never built (``placebo railroads''). Columns (7)-(8) restrict the sample to the 32 countries on which data for colonial railways is available. Heteroskedasticity-robust standard errors are clustered on the 3x3 degree level and are shown in parantheses.}
 \end{table}
 % End Figure
 
-% Figure
-\begin{table}[] \centering
-  \caption{Heterogeneous Effects of Colonial Railroads}
-  \label{RailBlocks_mining_military}
-  \resizebox{\textwidth}{!}{
+So far, the empirical analysis has merely revolved around intensive margin effects of colonial railroads. Areas with more railways are stripped off more infrastructure by the social planner. But what about the extensive margin? Until how far away does the confounding effect of former train lines last? Table \eqref{tab:RailBlocks_zeta} displays results from regressing $\Lambda_{i,c}$ on a series of indicators denoting whether a grid cell's centroid is within certain distance intervals from its closest colonial rail line. Columns (1) -- (3) jointly estimate the effects of being within [0 -- 10], (10 -- 20], (20 -- 30], (30 -- 40], or (40+) kilometres from the closest passing railroad (with $(40+)$ being the omitted category). These distance intervals correspond to the ones \cite{jedwab_permanent_2016} find to be most significant in uncovering local reallocation effects. Apart from revealing the geographical extend to which colonial investments persist to skew spatial infrastructure systems today, these analyses can also help uncover general equilibrium effects. Are areas close to railroads better off at the expense of their immediate neighbours?
 
+Estimates from columns (1) -- (3) lend support to this claim. Grid cells with centroids less than 10 kilometres away from a passing railroad line are between $1.3$ and $1.7$ percentage points too well off compared to the omitted category of distances greater than 40 kilometres. The estimate is significantly different from zero and robust to gradually introducing additional controls. The same dynamic also holds for cells within 20 kilometres of a passing line, but becomes undetectable further out. Moreover, one can even detect an adverse effect for cells between 30 and 40 kilometres away. Those cells would be granted additional welfare from redistributive efforts by the social planner. Though the estimate becomes increasingly imprecise and even insignificantly different from zero as further controls are introduced, the point estimate does not move much. It seems as if the confounding effect of colonial infrastructure policies is a local one. Areas blessed with a close-by railway line are still too well off today, which comes at the expense of their neighbouring regions just a few kilometres away.
 
-  \begin{tabular}{@{\extracolsep{5pt}}lcccccccc}
-  \\[-1.8ex]\hline
-  \hline \\[-1.8ex]
-   & \multicolumn{8}{c}{\textit{Dependent variable: Local Infrastructure Discrimination Index $\Lambda_{i}$}} \\
-  \cline{2-9}
-  \\[-1.8ex] & (1) & (2) & (3) & (4) & (5) & (6) & (7) & (8)\\
-  \hline \\[-1.8ex]
-   KM of Rails & $-$0.0002$^{***}$ & $-$0.0002$^{***}$ &  &  & $-$0.0002$^{**}$ & $-$0.0002$^{**}$ &  &  \\
-   \hspace*{3mm} for Military Purposes & (0.0001) & (0.0001) &  &  & (0.0001) & (0.0001) &  &  \\
-    & & & & & & & & \\
-   KM of Rails  &  &  & $-$0.0001 & $-$0.0001 & $-$0.0001 & $-$0.0001 &  &  \\
-  \hspace*{3mm} for Mining Purposes &  &  & (0.0001) & (0.0001) & (0.0001) & (0.0001) &  &  \\
-    & & & & & & & & \\
-    KM of Rails &  &  &  &  &  &  & $-$0.0003$^{***}$ &  \\
-  \hspace*{3mm} within EMST Buffer &  &  &  &  &  &  & (0.0001) &  \\
-     & & & & & & & & \\
-    KM of Rails  &  &  &  &  &  &  &  & $-$0.0001$^{**}$ \\
-  \hspace*{3mm} outside EMST Buffer &  &  &  &  &  &  &  & (0.0001) \\
-     & & & & & & & & \\
-  \hline \\[-1.8ex]
-  Country FE & Yes & Yes & Yes & Yes & Yes & Yes & Yes & Yes \\
-  Geographic controls & Yes & Yes & Yes & Yes & Yes & Yes & Yes & Yes \\
-  Simulation controls &  & Yes &  & Yes &  & Yes & Yes & Yes \\
-  Observations & 10,158 & 10,158 & 10,158 & 10,158 & 10,158 & 10,158 & 10,039 & 10,039 \\
-  R$^{2}$ & 0.123 & 0.125 & 0.122 & 0.124 & 0.123 & 0.125 & 0.126 & 0.125 \\
-  \hline
-  \hline \\[-1.8ex]
-  \textit{Note:}  & \multicolumn{8}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\
-  \end{tabular}
+To gain more confidence in the causal nature of this dynamic, columns (4) -- (6) once again repeat the same exercise with placebo railroads. Of the twelve estimates produced, none is significantly different from zero. Columns (7) and (8) print results from estimating the the same equation with the full set of controls, but restricting the sample to only grid cells in the 34 countries with data on colonial railway investment. In previous estimation, this restriction had virtually no effect on estimates' size, sign, and significance (and hence was not explicitly reported). In the current case, however, truncating the sample by roughly a third produces a barely significant estimate for areas close to placebo railroads. All other results remain more or less the same. While this is certainly noteworthy, I believe this association to be merely spurious. In fact, by the law of large numbers, one would even statistically expect at least one of 16 placebo estimations to be within a p-value of less than $0.1$. The causal nature of local reallocation dynamics initiated by colonial infrastructure investments is hardly attenuated through this spurious finding.
 
-}
+In this section, I have shown how large scale transport infrastructure projects from the colonial period persist to skew the spatial composition of African trade networks towards a suboptimal state. Areas with crossed by more colonial railway kilometres are too well off given their position in national trade systems today, even though these railroads were constructed over a century ago. Transport lines devised to meet military or strategic needs are associated with particularly strong effects. I also show that these projects set off local reallocation dynamics through which areas close to a line benefit at the expense of their neighbours. My results contribute to the plethora of studies examining the persistent impact of detrimental colonial policies on current development in Africa. However, recent history is hardly the only cause for heterogeneous development on the continent. In the following sections, I investigate two very different channels through which Africa's trade network might potentially be confounded: deep rooted ethnic tensions and most recent foreign aid.
 
-\mysubcaption{This table replicates the estimations of Table \eqref{RailKM_zeta} in estimating effects of colonial railroads on the Local Infrastructure Discrimination Index $\Lambda$. Colonial rails are classified as built for military or mining purposes (or neither or both) by \cite{jedwab_permanent_2016}. Columns (7)-(8) distinguish between railway kilometres within and outside the 40km-wide buffer around the euclidean minimum spanning tree (EMST) of the initial urban network. Geographic controls consist of altitude, temperature, average land suitability, malaria prevalence, yearly growing days, average precipitation, indicators for the 12 predominant agricultural biomes, indicators for whether a cell is within 25 KM of a natural harbor, navigable river, or lake, the fourth-order polynomial of latitude and longitude, and an indicator of whether the grid cell lies on the border of a country's network. Simulation controls are comprised of population, night lights, ruggedness, and a dummy for whether a cell is classified as urban.}
-\end{table}
-% End Figure
+\subsection{Ethnic Relations}
+
 
 % Figure
 \begin{table}[] \centering
@@ -687,6 +696,31 @@ At the Berlin Conference of 1884--1885, European powers unilaterally decided to 
 \mysubcaption{This table displays statistically insignificant effects of various indicators of ethnic power relations on the local infrastructure discrimination index. The sample comprises regions of politically relevant ethnic groups. Columns (1) -- (2) conduct regressions on the grid cell level. Column (1) first tests for an association between $\Lambda_{i}$ and an indicator for whether the cell is in an ethnic homeland that was politically discriminated against at some point in 1960--2010 as reported by \cite{Vogt_IntegratingDataEthnicity_2015}. Column (2) similarly reports effects of whether the cell is in an ethnic homeland that held a power monopoly at some point 1960--2010. Columns (3) -- (8) report estimates from ethnicity-level regressions. (3) and (4) analyse the effect of being involved in a major or minor civil conflict between 1960--2010. (5) and (6) analyse ethnic discrimination as in (1). (7) and (8) investigate effects of being excluded from the government at some point between 1960--2010. Geographic controls consist of altitude, temperature, average land suitability, malaria prevalence, yearly growing days, average precipitation, the fourth-order polynomial of latitude and longitude, and an indicator of whether the grid cell lies on the border of a country's network. Simulation controls are comprised of population, night lights, ruggedness, and a dummy for whether a cell is classified as urban. Ethnicity controls consist of the log area of a homeland and a dummy indicating whether the ethnic homeland was split by the arbitrary border drawings from the colonial powers. Ethnicity-level data from \cite{michalopoulos_long-run_2016}. Heteroskedasticity-robust standard errors are clustered on the 3x3 degree level (for columns 1--2) and the country level (columns 3--8) respectively.}
 \end{table}
 % End Figure
+
+
+
+% Figure
+\begin{figure}
+\centering
+\caption{$\Lambda_{h}$ over Ethnic Homelands}
+
+\begin{subfigure}[c]{0.48\textwidth}
+\includegraphics[width=\textwidth,trim={1cm 3cm 0.5cm 4cm},clip]{/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/other_maps/ethnicity_zeta.png}
+\caption{Murdock definition}
+\label{fig:Murdock_map}
+\end{subfigure}
+\begin{subfigure}[c]{0.48\textwidth}
+\includegraphics[width=\textwidth,trim={1cm 3cm 0.5cm 4cm},clip]{/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/other_maps/epr_zeta.png}
+\caption{EPR definition}
+\label{fig:EPR_map}
+\end{subfigure}
+
+\label{fig:ethn_maps}
+\mysubcaption{Spatial distribution of Local Infrastructure Discrimination Index $\Lambda_{h}$, aggregated over ethnic homelands. Subfigure (a) presents pre-colonial homelands as initially defined in an ethnolinguistic map by \cite{Murdock_Africaitspeoples_1959} and intersected with current political borders \citep[following][]{michalopoulos_long-run_2016}. Subfigure (b) depicts current boundaries of politically active ethnic groups as defined in the Ethnic Power Relations (EPR) datset by \cite{Vogt_IntegratingDataEthnicity_2015}.}
+\end{figure}
+% End Figure
+
+
 
 %-------------------------------------------------
 

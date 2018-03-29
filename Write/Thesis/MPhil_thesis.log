@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.6.26)  22 MAR 2018 22:32
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.6.26)  29 MAR 2018 15:51
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1134,14 +1134,14 @@ Package caption Info: End \AtBeginDocument code.
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: 
 * h-part:(L,W,R)=(42.67912pt, 512.14963pt, 42.67912pt)
-* v-part:(T,H,B)=(71.13188pt, 717.00946pt, 56.9055pt)
+* v-part:(T,H,B)=(56.9055pt, 731.23584pt, 56.9055pt)
 * \paperwidth=597.50787pt
 * \paperheight=845.04684pt
 * \textwidth=512.14963pt
-* \textheight=717.00946pt
+* \textheight=731.23584pt
 * \oddsidemargin=-29.59087pt
 * \evensidemargin=-29.59087pt
-* \topmargin=-38.1381pt
+* \topmargin=-52.36449pt
 * \headheight=12.0pt
 * \headsep=25.0pt
 * \topskip=11.0pt
@@ -1179,7 +1179,7 @@ LaTeX Font Warning: Font shape `OT1/cmr/bx/sc' undefined
 
 [5] [6] [7] [8]
 </Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/Road_
-Networks/network_Nigeria.png, id=257, 481.8pt x 481.8pt>
+Networks/network_Nigeria.png, id=263, 481.8pt x 481.8pt>
 File: /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/
 Road_Networks/network_Nigeria.png Graphic file (type png)
 
@@ -1190,7 +1190,7 @@ s_Git/Build/output/Road_Networks/network_Nigeria.png used on input line 199.
 (pdftex.def)             Requested size: 220.22058pt x 192.57648pt.
 
 </Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/Road_
-Networks/network_Mali.png, id=260, 481.8pt x 481.8pt>
+Networks/network_Mali.png, id=266, 481.8pt x 481.8pt>
 File: /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/
 Road_Networks/network_Mali.png Graphic file (type png)
 
@@ -1201,7 +1201,7 @@ s_Git/Build/output/Road_Networks/network_Mali.png used on input line 204.
 (pdftex.def)             Requested size: 220.22058pt x 192.57648pt.
 
 </Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/Road_
-Networks/network_Ethiopia.png, id=262, 481.8pt x 481.8pt>
+Networks/network_Ethiopia.png, id=268, 481.8pt x 481.8pt>
 File: /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/
 Road_Networks/network_Ethiopia.png Graphic file (type png)
 
@@ -1212,7 +1212,7 @@ s_Git/Build/output/Road_Networks/network_Ethiopia.png used on input line 210.
 (pdftex.def)             Requested size: 220.22058pt x 192.57648pt.
 
 </Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/Road_
-Networks/network_Rwanda.png, id=264, 481.8pt x 481.8pt>
+Networks/network_Rwanda.png, id=270, 481.8pt x 481.8pt>
 File: /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/
 Road_Networks/network_Rwanda.png Graphic file (type png)
 
@@ -1221,12 +1221,12 @@ oad_Networks/network_Rwanda.png>
 Package pdftex.def Info: /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesi
 s_Git/Build/output/Road_Networks/network_Rwanda.png used on input line 215.
 (pdftex.def)             Requested size: 220.22058pt x 192.57648pt.
-[9] [10 </Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/outp
-ut/Road_Networks/network_Nigeria.png> </Users/Tilmanski/Documents/UNI/MPhil/Sec
-ond Year/Thesis_Git/Build/output/Road_Networks/network_Mali.png> </Users/Tilman
-ski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/Road_Networks/netwo
-rk_Ethiopia.png> </Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/B
-uild/output/Road_Networks/network_Rwanda.png>]
+[9 </Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/Ro
+ad_Networks/network_Nigeria.png> </Users/Tilmanski/Documents/UNI/MPhil/Second Y
+ear/Thesis_Git/Build/output/Road_Networks/network_Mali.png> </Users/Tilmanski/D
+ocuments/UNI/MPhil/Second Year/Thesis_Git/Build/output/Road_Networks/network_Et
+hiopia.png> </Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/
+output/Road_Networks/network_Rwanda.png>] [10]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 233.
@@ -1284,9 +1284,9 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 254.
 
-[12] [13]
+[12]
 </Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/Matla
-b_graphs/initial_infrastructure/Nigeria_graph.png, id=349, 562.2606pt x 421.575
+b_graphs/initial_infrastructure/Nigeria_graph.png, id=347, 562.2606pt x 421.575
 pt>
 File: /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/
 Matlab_graphs/initial_infrastructure/Nigeria_graph.png Graphic file (type png)
@@ -1299,7 +1299,7 @@ on input line 279.
 (pdftex.def)             Requested size: 230.46576pt x 204.9525pt.
 
 </Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/Matla
-b_graphs/initial_infrastructure/Mali_graph.png, id=351, 562.2606pt x 421.575pt>
+b_graphs/initial_infrastructure/Mali_graph.png, id=349, 562.2606pt x 421.575pt>
 File: /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/
 Matlab_graphs/initial_infrastructure/Mali_graph.png Graphic file (type png)
 
@@ -1311,7 +1311,7 @@ input line 284.
 (pdftex.def)             Requested size: 230.46576pt x 204.9525pt.
 
 </Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/Matla
-b_graphs/initial_infrastructure/Ethiopia_graph.png, id=353, 562.2606pt x 421.57
+b_graphs/initial_infrastructure/Ethiopia_graph.png, id=351, 562.2606pt x 421.57
 5pt>
 File: /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/
 Matlab_graphs/initial_infrastructure/Ethiopia_graph.png Graphic file (type png)
@@ -1325,7 +1325,7 @@ s_Git/Build/output/Matlab_graphs/initial_infrastructure/Ethiopia_graph.png used
 (pdftex.def)             Requested size: 230.46576pt x 204.9525pt.
 
 </Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/Matla
-b_graphs/initial_infrastructure/Rwanda_graph.png, id=355, 562.2606pt x 421.575p
+b_graphs/initial_infrastructure/Rwanda_graph.png, id=353, 562.2606pt x 421.575p
 t>
 File: /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/
 Matlab_graphs/initial_infrastructure/Rwanda_graph.png Graphic file (type png)
@@ -1336,16 +1336,16 @@ Package pdftex.def Info: /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesi
 s_Git/Build/output/Matlab_graphs/initial_infrastructure/Rwanda_graph.png used o
 n input line 295.
 (pdftex.def)             Requested size: 230.46576pt x 204.9525pt.
-[14 </Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/M
-atlab_graphs/initial_infrastructure/Nigeria_graph.png (PNG copy)> </Users/Tilma
-nski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/Matlab_graphs/init
-ial_infrastructure/Mali_graph.png (PNG copy)> </Users/Tilmanski/Documents/UNI/M
-Phil/Second Year/Thesis_Git/Build/output/Matlab_graphs/initial_infrastructure/E
-thiopia_graph.png (PNG copy)> </Users/Tilmanski/Documents/UNI/MPhil/Second Year
-/Thesis_Git/Build/output/Matlab_graphs/initial_infrastructure/Rwanda_graph.png 
-(PNG copy)>] [15]
+[13] [14 </Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/out
+put/Matlab_graphs/initial_infrastructure/Nigeria_graph.png (PNG copy)> </Users/
+Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/Matlab_graphs
+/initial_infrastructure/Mali_graph.png (PNG copy)> </Users/Tilmanski/Documents/
+UNI/MPhil/Second Year/Thesis_Git/Build/output/Matlab_graphs/initial_infrastruct
+ure/Ethiopia_graph.png (PNG copy)> </Users/Tilmanski/Documents/UNI/MPhil/Second
+ Year/Thesis_Git/Build/output/Matlab_graphs/initial_infrastructure/Rwanda_graph
+.png (PNG copy)>]
 </Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/Matla
-b_graphs/Nicer_graphs/Central-African-Republic_stat.png, id=392, 562.2606pt x 4
+b_graphs/Nicer_graphs/Central-African-Republic_stat.png, id=389, 562.2606pt x 4
 21.575pt>
 File: /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/
 Matlab_graphs/Nicer_graphs/Central-African-Republic_stat.png Graphic file (type
@@ -1359,7 +1359,7 @@ s_Git/Build/output/Matlab_graphs/Nicer_graphs/Central-African-Republic_stat.png
 (pdftex.def)             Requested size: 230.46576pt x 195.81682pt.
 
 </Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/Matla
-b_graphs/Nicer_graphs/Central-African-Republic_opt.png, id=394, 562.2606pt x 42
+b_graphs/Nicer_graphs/Central-African-Republic_opt.png, id=391, 562.2606pt x 42
 1.575pt>
 File: /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/
 Matlab_graphs/Nicer_graphs/Central-African-Republic_opt.png Graphic file (type 
@@ -1373,7 +1373,7 @@ used on input line 322.
 (pdftex.def)             Requested size: 230.46576pt x 195.81682pt.
 
 </Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/Matla
-b_graphs/Nicer_graphs/United-Republic-of-Tanzania_stat.png, id=396, 562.2606pt 
+b_graphs/Nicer_graphs/United-Republic-of-Tanzania_stat.png, id=393, 562.2606pt 
 x 421.575pt>
 File: /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/
 Matlab_graphs/Nicer_graphs/United-Republic-of-Tanzania_stat.png Graphic file (t
@@ -1387,7 +1387,7 @@ png used on input line 328.
 (pdftex.def)             Requested size: 230.46576pt x 195.81682pt.
 
 </Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/Matla
-b_graphs/Nicer_graphs/United-Republic-of-Tanzania_opt.png, id=398, 562.2606pt x
+b_graphs/Nicer_graphs/United-Republic-of-Tanzania_opt.png, id=395, 562.2606pt x
  421.575pt>
 File: /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/
 Matlab_graphs/Nicer_graphs/United-Republic-of-Tanzania_opt.png Graphic file (ty
@@ -1401,7 +1401,7 @@ ng used on input line 333.
 (pdftex.def)             Requested size: 230.46576pt x 195.81682pt.
 
 </Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/Matla
-b_graphs/Nicer_graphs/Rwanda_stat.png, id=400, 562.2606pt x 421.575pt>
+b_graphs/Nicer_graphs/Rwanda_stat.png, id=397, 562.2606pt x 421.575pt>
 File: /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/
 Matlab_graphs/Nicer_graphs/Rwanda_stat.png Graphic file (type png)
 
@@ -1413,7 +1413,7 @@ e 339.
 (pdftex.def)             Requested size: 230.46576pt x 209.98932pt.
 
 </Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/Matla
-b_graphs/Nicer_graphs/Rwanda_opt.png, id=402, 562.2606pt x 421.575pt>
+b_graphs/Nicer_graphs/Rwanda_opt.png, id=399, 562.2606pt x 421.575pt>
 File: /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/
 Matlab_graphs/Nicer_graphs/Rwanda_opt.png Graphic file (type png)
 
@@ -1426,14 +1426,11 @@ s_Git/Build/output/Matlab_graphs/Nicer_graphs/Rwanda_opt.png used on input line
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[16]
+[15]
 
-LaTeX Warning: Text page 17 contains only floats.
+LaTeX Warning: Text page 16 contains only floats.
 
-
-Overfull \vbox (5.21362pt too high) has occurred while \output is active []
-
-[17 </Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/M
+[16 </Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/M
 atlab_graphs/Nicer_graphs/Central-African-Republic_stat.png (PNG copy)> </Users
 /Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/Matlab_graph
 s/Nicer_graphs/Central-African-Republic_opt.png (PNG copy)> </Users/Tilmanski/D
@@ -1445,7 +1442,7 @@ l/Second Year/Thesis_Git/Build/output/Matlab_graphs/Nicer_graphs/Rwanda_stat.pn
 g (PNG copy)> </Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Buil
 d/output/Matlab_graphs/Nicer_graphs/Rwanda_opt.png (PNG copy)>]
 </Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/ze
-ta_heatmaps/African_countries_zeta.png, id=436, 1806.75pt x 1806.75pt>
+ta_heatmaps/African_countries_zeta.png, id=434, 1806.75pt x 1806.75pt>
 File: /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/outp
 ut/zeta_heatmaps/African_countries_zeta.png Graphic file (type png)
 
@@ -1455,10 +1452,9 @@ Package pdftex.def Info: /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesi
 s_Git/Analysis/output/zeta_heatmaps/African_countries_zeta.png used on input li
 ne 361.
 (pdftex.def)             Requested size: 307.2929pt x 282.31203pt.
-[18 </Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/outpu
-t/zeta_heatmaps/African_countries_zeta.png>]
+[17]
 </Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/ze
-ta_heatmaps/Central-African-Republic_zeta.png, id=453, 481.8pt x 481.8pt>
+ta_heatmaps/Central-African-Republic_zeta.png, id=451, 481.8pt x 481.8pt>
 File: /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/outp
 ut/zeta_heatmaps/Central-African-Republic_zeta.png Graphic file (type png)
 
@@ -1470,7 +1466,7 @@ nput line 383.
 (pdftex.def)             Requested size: 163.89162pt x 163.89069pt.
 
 </Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/ze
-ta_heatmaps/United-Republic-of-Tanzania_zeta.png, id=454, 481.8pt x 481.8pt>
+ta_heatmaps/United-Republic-of-Tanzania_zeta.png, id=452, 481.8pt x 481.8pt>
 File: /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/outp
 ut/zeta_heatmaps/United-Republic-of-Tanzania_zeta.png Graphic file (type png)
 
@@ -1482,7 +1478,7 @@ n input line 388.
 (pdftex.def)             Requested size: 163.89162pt x 163.89069pt.
 
 </Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/ze
-ta_heatmaps/Rwanda_zeta.png, id=455, 481.8pt x 481.8pt>
+ta_heatmaps/Rwanda_zeta.png, id=453, 481.8pt x 481.8pt>
 File: /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/outp
 ut/zeta_heatmaps/Rwanda_zeta.png Graphic file (type png)
 
@@ -1493,7 +1489,7 @@ s_Git/Analysis/output/zeta_heatmaps/Rwanda_zeta.png used on input line 393.
 (pdftex.def)             Requested size: 163.89162pt x 163.89069pt.
 
 </Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/ze
-ta_heatmaps/Madagascar_zeta.png, id=456, 481.8pt x 481.8pt>
+ta_heatmaps/Madagascar_zeta.png, id=454, 481.8pt x 481.8pt>
 File: /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/outp
 ut/zeta_heatmaps/Madagascar_zeta.png Graphic file (type png)
 
@@ -1505,7 +1501,7 @@ s_Git/Analysis/output/zeta_heatmaps/Madagascar_zeta.png used on input line 399.
 (pdftex.def)             Requested size: 163.89162pt x 163.89069pt.
 
 </Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/ze
-ta_heatmaps/Kenya_zeta.png, id=457, 481.8pt x 481.8pt>
+ta_heatmaps/Kenya_zeta.png, id=455, 481.8pt x 481.8pt>
 File: /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/outp
 ut/zeta_heatmaps/Kenya_zeta.png Graphic file (type png)
 
@@ -1516,7 +1512,7 @@ s_Git/Analysis/output/zeta_heatmaps/Kenya_zeta.png used on input line 404.
 (pdftex.def)             Requested size: 163.89162pt x 163.89069pt.
 
 </Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/ze
-ta_heatmaps/Chad_zeta.png, id=458, 481.8pt x 481.8pt>
+ta_heatmaps/Chad_zeta.png, id=456, 481.8pt x 481.8pt>
 File: /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/outp
 ut/zeta_heatmaps/Chad_zeta.png Graphic file (type png)
 
@@ -1525,17 +1521,10 @@ t/zeta_heatmaps/Chad_zeta.png>
 Package pdftex.def Info: /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesi
 s_Git/Analysis/output/zeta_heatmaps/Chad_zeta.png used on input line 409.
 (pdftex.def)             Requested size: 163.89162pt x 163.89069pt.
-[19 </Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/outpu
-t/zeta_heatmaps/Central-African-Republic_zeta.png> </Users/Tilmanski/Documents/
-UNI/MPhil/Second Year/Thesis_Git/Analysis/output/zeta_heatmaps/United-Republic-
-of-Tanzania_zeta.png> </Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_
-Git/Analysis/output/zeta_heatmaps/Rwanda_zeta.png> </Users/Tilmanski/Documents/
-UNI/MPhil/Second Year/Thesis_Git/Analysis/output/zeta_heatmaps/Madagascar_zeta.
-png> </Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/outp
-ut/zeta_heatmaps/Kenya_zeta.png> </Users/Tilmanski/Documents/UNI/MPhil/Second Y
-ear/Thesis_Git/Analysis/output/zeta_heatmaps/Chad_zeta.png>]
+[18 </Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/outpu
+t/zeta_heatmaps/African_countries_zeta.png>]
 </Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/ze
-ta_heatmaps/African_gridcells_zeta.png, id=480, 1806.75pt x 1806.75pt>
+ta_heatmaps/African_gridcells_zeta.png, id=472, 1806.75pt x 1806.75pt>
 File: /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/outp
 ut/zeta_heatmaps/African_gridcells_zeta.png Graphic file (type png)
 
@@ -1545,100 +1534,103 @@ Package pdftex.def Info: /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesi
 s_Git/Analysis/output/zeta_heatmaps/African_gridcells_zeta.png used on input li
 ne 429.
 (pdftex.def)             Requested size: 332.89412pt x 294.98627pt.
-[20 </Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/outpu
-t/zeta_heatmaps/African_gridcells_zeta.png>] [21]
+[19 </Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/outpu
+t/zeta_heatmaps/Central-African-Republic_zeta.png> </Users/Tilmanski/Documents/
+UNI/MPhil/Second Year/Thesis_Git/Analysis/output/zeta_heatmaps/United-Republic-
+of-Tanzania_zeta.png> </Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_
+Git/Analysis/output/zeta_heatmaps/Rwanda_zeta.png> </Users/Tilmanski/Documents/
+UNI/MPhil/Second Year/Thesis_Git/Analysis/output/zeta_heatmaps/Madagascar_zeta.
+png> </Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/outp
+ut/zeta_heatmaps/Kenya_zeta.png> </Users/Tilmanski/Documents/UNI/MPhil/Second Y
+ear/Thesis_Git/Analysis/output/zeta_heatmaps/Chad_zeta.png>] [20 </Users/Tilman
+ski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/zeta_heatmaps/Af
+rican_gridcells_zeta.png>] [21] [22]
 </Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/ot
-her_maps/all_rails.png, id=512, 1806.75pt x 1806.75pt>
+her_maps/all_rails.png, id=588, 1806.75pt x 1806.75pt>
 File: /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/outp
 ut/other_maps/all_rails.png Graphic file (type png)
 
 <use /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/outpu
 t/other_maps/all_rails.png>
 Package pdftex.def Info: /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesi
-s_Git/Analysis/output/other_maps/all_rails.png used on input line 466.
+s_Git/Analysis/output/other_maps/all_rails.png used on input line 475.
 (pdftex.def)             Requested size: 245.82962pt x 219.94218pt.
 
 </Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/ot
-her_maps/emst.png, id=514, 1806.75pt x 1806.75pt>
+her_maps/emst.png, id=590, 1806.75pt x 1806.75pt>
 File: /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/outp
 ut/other_maps/emst.png Graphic file (type png)
 
 <use /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/outpu
 t/other_maps/emst.png>
 Package pdftex.def Info: /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesi
-s_Git/Analysis/output/other_maps/emst.png used on input line 471.
+s_Git/Analysis/output/other_maps/emst.png used on input line 480.
 (pdftex.def)             Requested size: 245.82962pt x 219.94218pt.
+[23] [24 </Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/
+output/other_maps/all_rails.png> </Users/Tilmanski/Documents/UNI/MPhil/Second Y
+ear/Thesis_Git/Analysis/output/other_maps/emst.png>]
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 534.
+
+[25] [26] [27]
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 654.
+
 
 </Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/ot
-her_maps/ethnicity_zeta.png, id=522, 1204.5pt x 1204.5pt>
+her_maps/ethnicity_zeta.png, id=676, 1204.5pt x 1204.5pt>
 File: /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/outp
 ut/other_maps/ethnicity_zeta.png Graphic file (type png)
 
 <use /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/outpu
 t/other_maps/ethnicity_zeta.png>
 Package pdftex.def Info: /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesi
-s_Git/Analysis/output/other_maps/ethnicity_zeta.png used on input line 488.
+s_Git/Analysis/output/other_maps/ethnicity_zeta.png used on input line 708.
 (pdftex.def)             Requested size: 245.82962pt x 212.7057pt.
 
 </Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/ot
-her_maps/epr_zeta.png, id=524, 1204.5pt x 1204.5pt>
+her_maps/epr_zeta.png, id=678, 1204.5pt x 1204.5pt>
 File: /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/outp
 ut/other_maps/epr_zeta.png Graphic file (type png)
 
 <use /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/outpu
 t/other_maps/epr_zeta.png>
 Package pdftex.def Info: /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesi
-s_Git/Analysis/output/other_maps/epr_zeta.png used on input line 493.
+s_Git/Analysis/output/other_maps/epr_zeta.png used on input line 713.
 (pdftex.def)             Requested size: 245.82962pt x 212.7057pt.
-
-LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 506.
-
-
-LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 544.
-
-
-LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 602.
-
-
-LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 645.
-
-[22] [23 </Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/
-output/other_maps/all_rails.png> </Users/Tilmanski/Documents/UNI/MPhil/Second Y
-ear/Thesis_Git/Analysis/output/other_maps/emst.png> </Users/Tilmanski/Documents
-/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/other_maps/ethnicity_zeta.png
-> </Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/
-other_maps/epr_zeta.png>] (./MPhil_thesis.bbl [24] [25] [26] [27]
-Underfull \hbox (badness 3108) in paragraph at lines 210--215
+[28] [29] (./MPhil_thesis.bbl [30 </Users/Tilmanski/Documents/UNI/MPhil/Second 
+Year/Thesis_Git/Analysis/output/other_maps/ethnicity_zeta.png> </Users/Tilmansk
+i/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/other_maps/epr_zet
+a.png>] [31]
+Underfull \hbox (badness 3108) in paragraph at lines 277--282
 []\OT1/cmr/bx/n/10.95 The World Bank \OT1/cmr/m/n/10.95 (\OT1/cmr/bx/n/10.95 20
 17\OT1/cmr/m/n/10.95 ).  World De-vel-op-ment In-di-ca-tors.  []$\OT1/cmtt/m/n/
 10.95 https : / / data . worldbank . org /
  []
 
-) [28]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 699.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 699.
+) [32]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 733.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 733.
 (./MPhil_thesis.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 699.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 699.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 733.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 733.
 Package rerunfilecheck Info: File `MPhil_thesis.out' has not changed.
-(rerunfilecheck)             Checksum: 8B9E195D2C27B978416D6876B93FA097;1278.
+(rerunfilecheck)             Checksum: 412DB594504A405F809DE4804408DE18;1344.
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 699.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 733.
  ) 
 Here is how much of TeX's memory you used:
- 22210 strings out of 493014
- 442108 string characters out of 6133351
- 578652 words of memory out of 5000000
- 25181 multiletter control sequences out of 15000+600000
- 17288 words of font info for 66 fonts, out of 8000000 for 9000
+ 22277 strings out of 493014
+ 443927 string characters out of 6133351
+ 545337 words of memory out of 5000000
+ 25223 multiletter control sequences out of 15000+600000
+ 17634 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,18n,77p,2402b,545s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 55i,18n,77p,2402b,547s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></
@@ -1663,10 +1655,10 @@ f-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2016/texmf-
 dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2016/texmf-d
 ist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2016/texmf-dis
 t/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on MPhil_thesis.pdf (28 pages, 2603549 bytes).
+Output written on MPhil_thesis.pdf (32 pages, 2630500 bytes).
 PDF statistics:
- 706 PDF objects out of 1000 (max. 8388607)
- 584 compressed objects within 6 object streams
- 128 named destinations out of 1000 (max. 500000)
- 399 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 835 PDF objects out of 1000 (max. 8388607)
+ 707 compressed objects within 8 object streams
+ 153 named destinations out of 1000 (max. 500000)
+ 407 words of extra memory for PDF output out of 10000 (max. 10000000)
 

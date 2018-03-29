@@ -1,7 +1,21 @@
-\begin{thebibliography}{34}
+\begin{thebibliography}{47}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\urlprefix}{URL }
+
+\bibitem[{Acemoglu et~al.(2001)Acemoglu, Johnson, and
+  Robinson}]{Acemoglu_ColonialOriginsComparative_2001}
+\textbf{Acemoglu, Daron, Simon Johnson, and James~A. Robinson} (\textbf{2001}).
+\newblock The {{Colonial Origins}} of {{Comparative Development}}: {{An
+  Empirical Investigation}}.
+\newblock \emph{American Economic Review} 91(5), pp. 1369--1401
+
+\bibitem[{Acemoglu et~al.(2002)Acemoglu, Johnson, and
+  Robinson}]{acemoglu_reversal_2002}
+---{}---{}--- (\textbf{2002}).
+\newblock Reversal of Fortune: {{Geography}} and Institutions in the Making of
+  the Modern World Income Distribution.
+\newblock \emph{The Quarterly Journal of Economics} 117(4), pp. 1231--1294
 
 \bibitem[{Alesina et~al.(2011)Alesina, Easterly, and
   Matuszeski}]{Alesina_ArtificialStates_2011}
@@ -45,6 +59,14 @@
 \newblock Have Developed Countries Escaped the Curse of Distance?
 \newblock \emph{Journal of Economic Geography} 10(1), pp. 113--139
 
+\bibitem[{Chaves et~al.(2013)Chaves, Engerman, and
+  Robinson}]{chaves_reinventing_2013}
+\textbf{Chaves, Isa{\'\i}as~N., Stanley~L. Engerman, and James~A. Robinson}
+  (\textbf{2013}).
+\newblock Reinventing the Wheel: {{The}} Economic Benefits of Wheeled
+  Transportation in Early {{British Colonial West Africa}}.
+\newblock Technical report, {National Bureau of Economic Research}
+
 \bibitem[{Collier et~al.(2015)Collier, Kirchberger, and
   S{\"o}derbom}]{collier_cost_2015}
 \textbf{Collier, Paul, Martina Kirchberger, and Mans S{\"o}derbom}
@@ -58,6 +80,18 @@
   Valsecchi} (\textbf{2018}).
 \newblock Ethnic Favoritism: {{An}} Axiom of Politics?
 \newblock \emph{Journal of Development Economics} 132, pp. 115--129
+
+\bibitem[{Donaldson(2010)}]{donaldson_railroads_2010}
+\textbf{Donaldson, Dave} (\textbf{2010}).
+\newblock Railroads of the {{Raj}}: {{Estimating}} the Impact of Transportation
+  Infrastructure.
+\newblock Technical report, {National Bureau of Economic Research}
+
+\bibitem[{Donaldson and Hornbeck(2016)}]{donaldson_railroads_2016}
+\textbf{Donaldson, Dave and Richard Hornbeck} (\textbf{2016}).
+\newblock Railroads and {{American Economic Growth}}: {{A}} ``{{Market
+  Access}}'' {{Approach}}.
+\newblock \emph{The Quarterly Journal of Economics} 131(2), pp. 799--858
 
 \bibitem[{Donaldson and Storeygard(2016)}]{donaldson_view_2016}
 \textbf{Donaldson, Dave and Adam Storeygard} (\textbf{2016}).
@@ -76,10 +110,26 @@
   {{Version}} 4.
 \newblock \emph{Papers in Applied Geography} 1(3), pp. 226--234
 
+\bibitem[{Ekundare(1973)}]{ekundare_economic_1973}
+\textbf{Ekundare, R.~Olufemi} (\textbf{1973}).
+\newblock \emph{An Economic History of {{Nigeria}}, 1860-1960}.
+\newblock {Methuen}, London
+
+\bibitem[{Faber(2014)}]{faber_trade_2014}
+\textbf{Faber, Benjamin} (\textbf{2014}).
+\newblock Trade {{Integration}}, {{Market Size}}, and {{Industrialization}}:
+  {{Evidence}} from {{China}}'s {{National Trunk Highway System}}.
+\newblock \emph{The Review of Economic Studies} 81(3), pp. 1046--1070
+
 \bibitem[{Fajgelbaum and Schaal(2017)}]{fajgelbaum_optimal_2017}
 \textbf{Fajgelbaum, Pablo~D. and Edouard Schaal} (\textbf{2017}).
 \newblock Optimal Transport Networks in Spatial Equilibrium.
 \newblock Working {{Paper}}, {National Bureau of Economic Research}
+
+\bibitem[{Falola and Heaton(2008)}]{Falola_historyNigeria_2008}
+\textbf{Falola, Toyin and Matthew~M. Heaton} (\textbf{2008}).
+\newblock \emph{A History of {{Nigeria}}}.
+\newblock {Cambridge University Press}, Cambridge, UK ; New York
 
 \bibitem[{Galichon(2016)}]{Galichon_OptimalTransportMethods_2016}
 \textbf{Galichon, Alfred} (\textbf{2016}).
@@ -113,6 +163,12 @@
 \newblock ``{{For}} the Public Benefit''? {{Railways}} in the {{British Cape
   Colony}}.
 \newblock \emph{European Review of Economic History} pp. 1--28
+
+\bibitem[{Jedwab et~al.(2017)Jedwab, Kerby, and Moradi}]{jedwab_history_2017}
+\textbf{Jedwab, Remi, Edward Kerby, and Alexander Moradi} (\textbf{2017}).
+\newblock History, {{Path Dependence}} and {{Development}}: {{Evidence}} from
+  {{Colonial Railways}}, {{Settlers}} and {{Cities}} in {{Kenya}}.
+\newblock \emph{The Economic Journal} 127(603), pp. 1467--1494
 
 \bibitem[{Jedwab and Moradi(2016)}]{jedwab_permanent_2016}
 \textbf{Jedwab, Remi and Alexander Moradi} (\textbf{2016}).
@@ -164,6 +220,11 @@
 \newblock \emph{Africa: Its Peoples and Their Culture History}.
 \newblock {McGraw-Hill}, New York ; London
 
+\bibitem[{Nunn(2008)}]{nunn_long-term_2008}
+\textbf{Nunn, Nathan} (\textbf{2008}).
+\newblock The Long-Term Effects of {{Africa}}'s Slave Trades.
+\newblock \emph{The Quarterly Journal of Economics} 123(1), pp. 139--176
+
 \bibitem[{Nunn and Puga(2012)}]{nunn_ruggedness:_2012}
 \textbf{Nunn, Nathan and Diego Puga} (\textbf{2012}).
 \newblock Ruggedness: {{The}} Blessing of Bad Geography in {{Africa}}.
@@ -206,6 +267,12 @@
   {{Urban Growth}} in {{Sub}}-{{Saharan Africa}}.
 \newblock \emph{The Review of Economic Studies} 83(3), pp. 1263--1295
 
+\bibitem[{Swisher(2017)}]{swisher_reassessing_2017}
+\textbf{Swisher, I.~V.} (\textbf{2017}).
+\newblock Reassessing Railroads and Growth: {{Accounting}} for Transport
+  Network Endogeneity.
+\newblock Technical report, {Faculty of Economics, University of Cambridge}
+
 \bibitem[{{The World Bank}(2017)}]{the_world_bank_world_2017}
 \textbf{{The World Bank}} (\textbf{2017}).
 \newblock World {{Development Indicators}}.
@@ -220,5 +287,21 @@
 \newblock Integrating {{Data}} on {{Ethnicity}}, {{Geography}}, and
   {{Conflict}}: {{The Ethnic Power Relations Data Set Family}}.
 \newblock \emph{Journal of Conflict Resolution} 59(7), pp. 1327--1342
+
+\bibitem[{Wantchekon et~al.(2015)Wantchekon, Kla{\v s}nja, and
+  Novta}]{Wantchekon_EducationHumanCapital_2015}
+\textbf{Wantchekon, Leonard, Marko Kla{\v s}nja, and Natalija Novta}
+  (\textbf{2015}).
+\newblock Education and {{Human Capital Externalities}}: {{Evidence}} from
+  {{Colonial Benin}}.
+\newblock \emph{The Quarterly Journal of Economics} 130(2), pp. 703--757
+
+\bibitem[{Woltjer et~al.(2018)Woltjer, Frankema, and
+  Williamson}]{woltjer_economic_2018}
+\textbf{Woltjer, Pieter, Ewout Frankema, and Jeffrey Williamson}
+  (\textbf{2018}).
+\newblock An {{Economic Rationale}} for the {{West African Scramble}}?: {{The
+  Commercial Transition}} and the {{Commodity Price Boom}} of 1835-1885.
+\newblock \emph{Journal of Economic History} 78(2), pp. 1--45
 
 \end{thebibliography}
