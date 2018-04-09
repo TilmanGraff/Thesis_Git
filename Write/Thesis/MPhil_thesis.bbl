@@ -1,4 +1,4 @@
-\begin{thebibliography}{47}
+\begin{thebibliography}{77}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\urlprefix}{URL }
@@ -8,7 +8,7 @@
 \textbf{Acemoglu, Daron, Simon Johnson, and James~A. Robinson} (\textbf{2001}).
 \newblock The {{Colonial Origins}} of {{Comparative Development}}: {{An
   Empirical Investigation}}.
-\newblock \emph{American Economic Review} 91(5), pp. 1369--1401
+\newblock \emph{The American Economic Review} 91(5), pp. 1369--1401
 
 \bibitem[{Acemoglu et~al.(2002)Acemoglu, Johnson, and
   Robinson}]{acemoglu_reversal_2002}
@@ -25,21 +25,47 @@
 \newblock \emph{Journal of the European Economic Association} 9(2), pp.
   246--277
 
+\bibitem[{Alesina and La~Ferrara(2005)}]{Alesina_EthnicDiversityEconomic_2005}
+\textbf{Alesina, Alberto and Eliana La~Ferrara} (\textbf{2005}).
+\newblock Ethnic {{Diversity}} and {{Economic Performance}}.
+\newblock \emph{Journal of Economic Literature} 43(3), pp. 762--800
+
+\bibitem[{Alesina et~al.(2016)Alesina, Michalopoulos, and
+  Papaioannou}]{Alesina_Ethnicinequality_2016}
+\textbf{Alesina, Alberto, Stelios Michalopoulos, and Elias Papaioannou}
+  (\textbf{2016}).
+\newblock Ethnic Inequality.
+\newblock \emph{Journal of Political Economy} 124(2), pp. 428--488
+
 \bibitem[{Allen and Arkolakis(2016)}]{allen_welfare_2016}
 \textbf{Allen, Treb and Costas Arkolakis} (\textbf{2016}).
 \newblock The Welfare Effects of Transportation Infrastructure Improvements.
-\newblock Working {{Paper}}, Dartmouth and Yale
+\newblock Working {{Paper}}, {Dartmouth and Yale}
+
+\bibitem[{Altonji et~al.(2005)Altonji, Elder, and
+  Taber}]{Altonji_SelectionObservedUnobserved_2005}
+\textbf{Altonji, Joseph~G., Todd~E. Elder, and Christopher~R. Taber}
+  (\textbf{2005}).
+\newblock Selection on {{Observed}} and {{Unobserved Variables}}: {{Assessing}}
+  the {{Effectiveness}} of {{Catholic Schools}}.
+\newblock \emph{Journal of Political Economy} 113(1), pp. 151--184
 
 \bibitem[{Anderson and
   Van~Wincoop(2003)}]{Anderson_Gravitygravitassolution_2003}
 \textbf{Anderson, James~E. and Eric Van~Wincoop} (\textbf{2003}).
 \newblock Gravity with Gravitas: A Solution to the Border Puzzle.
-\newblock \emph{the american economic review} 93(1), pp. 170--192
+\newblock \emph{The American Economic Review} 93(1), pp. 170--192
 
 \bibitem[{Anderson and Van~Wincoop(2004)}]{Anderson_Tradecosts_2004}
 ---{}---{}--- (\textbf{2004}).
 \newblock Trade Costs.
 \newblock \emph{Journal of Economic Literature} 42(3), pp. 691--751
+
+\bibitem[{Angrist and Pischke(2008)}]{Angrist_MostlyHarmlessEconometrics_2008}
+\textbf{Angrist, Joshua~D. and J{\"o}rn-Steffen Pischke} (\textbf{2008}).
+\newblock \emph{Mostly {{Harmless Econometrics}}: {{An Empiricist}}'s
+  {{Companion}}.}
+\newblock {Princeton University Press}, New Jersey
 
 \bibitem[{Atkin and Donaldson(2015)}]{atkin_whos_2015}
 \textbf{Atkin, David and Dave Donaldson} (\textbf{2015}).
@@ -59,6 +85,31 @@
 \newblock Have Developed Countries Escaped the Curse of Distance?
 \newblock \emph{Journal of Economic Geography} 10(1), pp. 113--139
 
+\bibitem[{Briggs(2018)}]{Briggs_LeavingNoOne_2018}
+\textbf{Briggs, Ryan~C.} (\textbf{2018}).
+\newblock Leaving {{No One Behind}}? {{A New Test}} of {{Subnational Aid
+  Targeting}}.
+\newblock \emph{Journal of International Development}
+
+\bibitem[{Burgess et~al.(2015)Burgess, Jedwab, Miguel, Morjaria, and {Padr{\'o}
+  i Miquel}}]{burgess_value_2015}
+\textbf{Burgess, Robin, Remi Jedwab, Edward Miguel, Ameet Morjaria, and Gerard
+  {Padr{\'o} i Miquel}} (\textbf{2015}).
+\newblock The {{Value}} of {{Democracy}}: {{Evidence}} from {{Road Building}}
+  in {{Kenya}}.
+\newblock \emph{The American Economic Review} 105(6), pp. 1817--1851
+
+\bibitem[{Burnside and Dollar(2000)}]{Burnside_AidPoliciesGrowth_2000}
+\textbf{Burnside, Craig and David Dollar} (\textbf{2000}).
+\newblock Aid, {{Policies}}, and {{Growth}}.
+\newblock \emph{The American Economic Review} 90(4), p.~67
+
+\bibitem[{Cameron et~al.(2011)Cameron, Gelbach, and
+  Miller}]{Cameron_RobustInferenceMultiway_2011}
+\textbf{Cameron, A.~Colin, Jonah Gelbach, and Douglas Miller} (\textbf{2011}).
+\newblock Robust {{Inference}} with {{Multi}}-Way {{Clustering}}.
+\newblock \emph{Journal of Business \& Economic Statistics} 29(2), pp. 238--249
+
 \bibitem[{Chaves et~al.(2013)Chaves, Engerman, and
   Robinson}]{chaves_reinventing_2013}
 \textbf{Chaves, Isa{\'\i}as~N., Stanley~L. Engerman, and James~A. Robinson}
@@ -66,6 +117,19 @@
 \newblock Reinventing the Wheel: {{The}} Economic Benefits of Wheeled
   Transportation in Early {{British Colonial West Africa}}.
 \newblock Technical report, {National Bureau of Economic Research}
+
+\bibitem[{Clemens and Kremer(2016)}]{Clemens_NewRoleWorld_2016}
+\textbf{Clemens, Michael~A. and Michael Kremer} (\textbf{2016}).
+\newblock The {{New Role}} for the {{World Bank}}.
+\newblock \emph{Journal of Economic Perspectives} 30(1), pp. 53--76
+
+\bibitem[{Clemens et~al.(2012)Clemens, Radelet, Bhavnani, and
+  Bazzi}]{Clemens_CountingChickenswhen_2012}
+\textbf{Clemens, Michael~A., Steven Radelet, Rikhil~R. Bhavnani, and Samuel
+  Bazzi} (\textbf{2012}).
+\newblock Counting {{Chickens}} When They {{Hatch}}: {{Timing}} and the
+  {{Effects}} of {{Aid}} on {{Growth}}.
+\newblock \emph{The Economic Journal} 122(561), pp. 590--617
 
 \bibitem[{Collier et~al.(2015)Collier, Kirchberger, and
   S{\"o}derbom}]{collier_cost_2015}
@@ -81,11 +145,11 @@
 \newblock Ethnic Favoritism: {{An}} Axiom of Politics?
 \newblock \emph{Journal of Development Economics} 132, pp. 115--129
 
-\bibitem[{Donaldson(2010)}]{donaldson_railroads_2010}
-\textbf{Donaldson, Dave} (\textbf{2010}).
+\bibitem[{Donaldson(2018)}]{Donaldson_RailroadsRajEstimating_2018}
+\textbf{Donaldson, Dave} (\textbf{2018}).
 \newblock Railroads of the {{Raj}}: {{Estimating}} the Impact of Transportation
   Infrastructure.
-\newblock Technical report, {National Bureau of Economic Research}
+\newblock \emph{The American Economic Review} 108(4), pp. 899--934
 
 \bibitem[{Donaldson and Hornbeck(2016)}]{donaldson_railroads_2016}
 \textbf{Donaldson, Dave and Richard Hornbeck} (\textbf{2016}).
@@ -110,6 +174,51 @@
   {{Version}} 4.
 \newblock \emph{Papers in Applied Geography} 1(3), pp. 226--234
 
+\bibitem[{Dreher and Fuchs(2015)}]{Dreher_Rogueaidempirical_2015}
+\textbf{Dreher, Axel and Andreas Fuchs} (\textbf{2015}).
+\newblock Rogue Aid? {{An}} Empirical Analysis of {{China}}'s Aid Allocation.
+\newblock \emph{Canadian Journal of Economics/Revue canadienne
+  d'{\'e}conomique} 48(3), pp. 988--1023
+
+\bibitem[{Dreher et~al.(2016)Dreher, Fuchs, Hodler, Parks, Raschky, and
+  Tierney}]{Dreher_AiddemandAfrican_2016}
+\textbf{Dreher, Axel, Andreas Fuchs, Roland Hodler, Bradley Parks, Paul
+  Raschky, and Michael Tierney} (\textbf{2016}).
+\newblock Aid on Demand: {{African}} Leaders and the Geography of {{China}}'s
+  Foreign Assistance.
+\newblock Working {{Paper}}, {AidData}
+
+\bibitem[{Dreher et~al.(2017)Dreher, Fuchs, Parks, Strange, and
+  Tierney}]{Dreher_AidChinaGrowth_2017}
+\textbf{Dreher, Axel, Andreas Fuchs, Bradley Parks, Austin Strange, and Michael
+  Tierney} (\textbf{2017}).
+\newblock Aid, {{China}}, and {{Growth}}: {{Evidence}} from a {{New Global
+  Development Finance Dataset}}.
+\newblock {{AidData Working Paper}}~46, {AidData}, Williamsburg, VA
+
+\bibitem[{Dreher and Lohmann(2015)}]{Dreher_Aidgrowthregional_2015}
+\textbf{Dreher, Axel and Steffen Lohmann} (\textbf{2015}).
+\newblock Aid and Growth at the Regional Level.
+\newblock \emph{Oxford Review of Economic Policy} 31(3-4), pp. 420--446
+
+\bibitem[{Easterly and Levine(1997)}]{easterly_africas_1997}
+\textbf{Easterly, William and Ross Levine} (\textbf{1997}).
+\newblock Africa's Growth Tragedy: Policies and Ethnic Divisions.
+\newblock \emph{The Quarterly Journal of Economics} 112(4), pp. 1203--1250
+
+\bibitem[{Easterly et~al.(2004)Easterly, Levine, and
+  Roodman}]{Easterly_AidPoliciesGrowth_2004}
+\textbf{Easterly, William, Ross Levine, and David Roodman} (\textbf{2004}).
+\newblock Aid, {{Policies}}, and {{Growth}}: {{Comment}}.
+\newblock \emph{The American Economic Review} 94(3), pp. 774--780
+
+\bibitem[{Echikh(1998)}]{Echikh_Geologyhydrocarbonoccurrences_1998}
+\textbf{Echikh, K.} (\textbf{1998}).
+\newblock Geology and Hydrocarbon Occurrences in the {{Ghadames Basin}},
+  {{Algeria}}, {{Tunisia}}, {{Libya}}.
+\newblock \emph{Geological Society, London, Special Publications} 132(1), pp.
+  109--129
+
 \bibitem[{Ekundare(1973)}]{ekundare_economic_1973}
 \textbf{Ekundare, R.~Olufemi} (\textbf{1973}).
 \newblock \emph{An Economic History of {{Nigeria}}, 1860-1960}.
@@ -131,10 +240,28 @@
 \newblock \emph{A History of {{Nigeria}}}.
 \newblock {Cambridge University Press}, Cambridge, UK ; New York
 
+\bibitem[{Franck and Rainer(2012)}]{Franck_DoesLeaderEthnicity_2012}
+\textbf{Franck, Rapha{\"e}l and Ilia Rainer} (\textbf{2012}).
+\newblock Does the {{Leader}}'s {{Ethnicity Matter}}? {{Ethnic Favoritism}},
+  {{Education}}, and {{Health}} in {{Sub}}-{{Saharan Africa}}.
+\newblock \emph{American Political Science Review} 106(02), pp. 294--325
+
 \bibitem[{Galichon(2016)}]{Galichon_OptimalTransportMethods_2016}
 \textbf{Galichon, Alfred} (\textbf{2016}).
 \newblock \emph{Optimal {{Transport Methods}} in {{Economics}}}.
 \newblock {Princeton University Press}
+
+\bibitem[{Gennaioli and Rainer(2007)}]{gennaioli_modern_2007}
+\textbf{Gennaioli, Nicola and Ilia Rainer} (\textbf{2007}).
+\newblock The Modern Impact of Precolonial Centralization in {{Africa}}.
+\newblock \emph{Journal of Economic Growth} 12(3), pp. 185--234
+
+\bibitem[{Haushofer and
+  Shapiro(2016)}]{Haushofer_ShorttermImpactUnconditional_2016}
+\textbf{Haushofer, Johannes and Jeremy Shapiro} (\textbf{2016}).
+\newblock The {{Short}}-Term {{Impact}} of {{Unconditional Cash Transfers}} to
+  the {{Poor}}: {{Experimental Evidence}} from {{Kenya}}.
+\newblock \emph{The Quarterly Journal of Economics} 131(4), pp. 1973--2042
 
 \bibitem[{Head and Mayer(2014)}]{Head_GravityEquationsWorkhorse_2014}
 \textbf{Head, Keith and Thierry Mayer} (\textbf{2014}).
@@ -155,7 +282,7 @@
 \textbf{Henderson, J.~Vernon, Adam Storeygard, and David~N Weil}
   (\textbf{2012}).
 \newblock Measuring {{Economic Growth}} from {{Outer Space}}.
-\newblock \emph{American Economic Review} 102(2), pp. 994--1028
+\newblock \emph{The American Economic Review} 102(2), pp. 994--1028
 
 \bibitem[{Herranz-Lonc{\'a}n and
   Fourie(2017)}]{Herranz-Loncan_publicbenefitRailways_2017}
@@ -163,6 +290,11 @@
 \newblock ``{{For}} the Public Benefit''? {{Railways}} in the {{British Cape
   Colony}}.
 \newblock \emph{European Review of Economic History} pp. 1--28
+
+\bibitem[{Hodler and Raschky(2014)}]{Hodler_RegionalFavoritism_2014}
+\textbf{Hodler, Roland and Paul~A. Raschky} (\textbf{2014}).
+\newblock Regional {{Favoritism}}.
+\newblock \emph{The Quarterly Journal of Economics} 129(2), pp. 995--1033
 
 \bibitem[{Jedwab et~al.(2017)Jedwab, Kerby, and Moradi}]{jedwab_history_2017}
 \textbf{Jedwab, Remi, Edward Kerby, and Alexander Moradi} (\textbf{2017}).
@@ -180,7 +312,7 @@
 \textbf{Jedwab, Remi and Adam Storeygard} (\textbf{2017}).
 \newblock The {{Average}} and {{Heterogeneous Effects}} of {{Transportation
   Investments}}: {{Evidence}} from Sub-{{Saharan Africa}} 1960-2010.
-\newblock Working {{Paper}}
+\newblock Working {{Paper}}, {Tufts University}
 
 \bibitem[{Lall et~al.(2017)Lall, Henderson, and Venables}]{lall_africas_2017}
 \textbf{Lall, Somik~Vinay, J.~Vernon Henderson, and Anthony~J. Venables}
@@ -194,13 +326,26 @@
   from {{Sanctions}} on {{North Korea}}.
 \newblock Working {{Paper}}, {Stanford University}
 
+\bibitem[{Marshall(2015)}]{Marshall_PolityProjectCenter_2015}
+\textbf{Marshall, Monty~G.} (\textbf{2015}).
+\newblock Polity 4 {{Project}} - {{Center}} for {{Systemic Peace}}.
+\newblock \url{http://www.systemicpeace.org/inscrdata.html}~(Accessed:
+  2018-04-03)
+
 \bibitem[{Michaels and Rauch(2017)}]{michaels_resetting_2017}
 \textbf{Michaels, Guy and Ferdinand Rauch} (\textbf{2017}).
 \newblock Resetting the {{Urban Network}}: 117-2012.
 \newblock \emph{The Economic Journal}
 
+\bibitem[{Michalopoulos and
+  Papaioannou(2013)}]{michalopoulos_pre-colonial_2013}
+\textbf{Michalopoulos, Stelios and Elias Papaioannou} (\textbf{2013}).
+\newblock Pre-{{Colonial Ethnic Institutions}} and {{Contemporary African
+  Development}}.
+\newblock \emph{Econometrica} 81(1), pp. 113--152
+
 \bibitem[{Michalopoulos and Papaioannou(2014)}]{michalopoulos_national_2014}
-\textbf{Michalopoulos, Stelios and Elias Papaioannou} (\textbf{2014}).
+---{}---{}--- (\textbf{2014}).
 \newblock National {{Institutions}} and {{Subnational Development}} in
   {{Africa}}.
 \newblock \emph{The Quarterly Journal of Economics} 129(1), pp. 151--213
@@ -208,7 +353,7 @@
 \bibitem[{Michalopoulos and Papaioannou(2016)}]{michalopoulos_long-run_2016}
 ---{}---{}--- (\textbf{2016}).
 \newblock The {{Long}}-{{Run Effects}} of the {{Scramble}} for {{Africa}}.
-\newblock \emph{American Economic Review} 106(7), pp. 1802--1848
+\newblock \emph{The American Economic Review} 106(7), pp. 1802--1848
 
 \bibitem[{Michalopoulos and Papaioannou(2018)}]{michalopoulos_spatial_2018}
 ---{}---{}--- (\textbf{2018}).
@@ -218,7 +363,7 @@
 \bibitem[{Murdock(1959)}]{Murdock_Africaitspeoples_1959}
 \textbf{Murdock, George~Peter} (\textbf{1959}).
 \newblock \emph{Africa: Its Peoples and Their Culture History}.
-\newblock {McGraw-Hill}, New York ; London
+\newblock {McGraw-Hill}, New York; London
 
 \bibitem[{Nunn(2008)}]{nunn_long-term_2008}
 \textbf{Nunn, Nathan} (\textbf{2008}).
@@ -230,6 +375,17 @@
 \newblock Ruggedness: {{The}} Blessing of Bad Geography in {{Africa}}.
 \newblock \emph{Review of Economics and Statistics} 94(1), pp. 20--36
 
+\bibitem[{Nunn and Qian(2014)}]{Nunn_USFoodAid_2014}
+\textbf{Nunn, Nathan and Nancy Qian} (\textbf{2014}).
+\newblock {{US Food Aid}} and {{Civil Conflict}}.
+\newblock \emph{The American Economic Review} 104(6), pp. 1630--1666
+
+\bibitem[{Nunn and Wantchekon(2011)}]{nunn_slave_2011}
+\textbf{Nunn, Nathan and Leonard Wantchekon} (\textbf{2011}).
+\newblock The {{Slave Trade}} and the {{Origins}} of {{Mistrust}} in
+  {{Africa}}.
+\newblock \emph{The American Economic Review} 101(7), pp. 3221--3252
+
 \bibitem[{OCHA(2017)}]{OCHA_SouthSudanAdministrative_2017}
 \textbf{OCHA, United Nations Office for the Coordination of
   Humanitarian~Affairs} (\textbf{2017}).
@@ -239,12 +395,24 @@
   \url{https://data.humdata.org/dataset/south-sudan-administrative-boundaries}~(Accessed:
   2017-12-17)
 
+\bibitem[{Oster(2018)}]{Oster_UnobservableSelectionCoefficient_2018}
+\textbf{Oster, Emily} (\textbf{2018}).
+\newblock Unobservable {{Selection}} and {{Coefficient Stability}}: {{Theory}}
+  and {{Evidence}}.
+\newblock \emph{Journal of Business \& Economic Statistics} forthcoming, pp.
+  1--18
+
 \bibitem[{Pinkovskiy and Sala-i
   Martin(2016)}]{Pinkovskiy_LightsCameraIncome_2016}
 \textbf{Pinkovskiy, Maxim and Xavier Sala-i Martin} (\textbf{2016}).
 \newblock Lights, {{Camera}} \ldots{} {{Income}}! {{Illuminating}} the
   {{National Accounts}}-{{Household Surveys Debate}}.
 \newblock \emph{The Quarterly Journal of Economics} 131(2), pp. 579--631
+
+\bibitem[{Rajan and Subramanian(2008)}]{Rajan_Aidgrowthwhat_2008}
+\textbf{Rajan, Raghuram~G and Arvind Subramanian} (\textbf{2008}).
+\newblock Aid and Growth: What Does the Cross-Country Evidence Really Show?
+\newblock \emph{The Review of Economics and Statistics} 90(4), pp. 643--665
 
 \bibitem[{Sandvik(2008)}]{Sandvik_WorldBordersDataset_2008}
 \textbf{Sandvik, Bjorn} (\textbf{2008}).
@@ -261,11 +429,24 @@
   \url{http://sedac.ciesin.columbia.edu/data/collection/gpw-v4}~(Accessed:
   2017-11-26)
 
+\bibitem[{Soumahoro(2015)}]{Soumahoro_LeadershipfavouritismAfrica_2015}
+\textbf{Soumahoro, Souleymane} (\textbf{2015}).
+\newblock Leadership Favouritism in {{Africa}}.
+\newblock \emph{Applied Economics Letters} 22(15), pp. 1236--1239
+
 \bibitem[{Storeygard(2016)}]{storeygard_farther_2016}
 \textbf{Storeygard, Adam} (\textbf{2016}).
 \newblock Farther on down the {{Road}}: {{Transport Costs}}, {{Trade}} and
   {{Urban Growth}} in {{Sub}}-{{Saharan Africa}}.
 \newblock \emph{The Review of Economic Studies} 83(3), pp. 1263--1295
+
+\bibitem[{Strange et~al.(2017)Strange, Dreher, Fuchs, Parks, and
+  Tierney}]{Strange_TrackingUnderreportedFinancial_2017}
+\textbf{Strange, Austin~M., Axel Dreher, Andreas Fuchs, Bradley Parks, and
+  Michael~J. Tierney} (\textbf{2017}).
+\newblock Tracking {{Underreported Financial Flows}}: {{China}}'s {{Development
+  Finance}} and the {{Aid}}\textendash{}{{Conflict Nexus Revisited}}.
+\newblock \emph{Journal of Conflict Resolution} 61(5), pp. 935--963
 
 \bibitem[{Swisher(2017)}]{swisher_reassessing_2017}
 \textbf{Swisher, I.~V.} (\textbf{2017}).
@@ -273,8 +454,14 @@
   Network Endogeneity.
 \newblock Technical report, {Faculty of Economics, University of Cambridge}
 
-\bibitem[{{The World Bank}(2017)}]{the_world_bank_world_2017}
-\textbf{{The World Bank}} (\textbf{2017}).
+\bibitem[{{The World
+  Bank}(2017{\natexlab{a}})}]{TheWorldBank_WorldBankAnnual_2017}
+\textbf{{The World Bank}} (\textbf{2017}{\natexlab{a}}).
+\newblock The {{World Bank Annual Report}} 2017.
+\newblock Technical report, {The World Bank}, Washington DC
+
+\bibitem[{{The World Bank}(2017{\natexlab{b}})}]{the_world_bank_world_2017}
+---{}---{}--- (\textbf{2017}{\natexlab{b}}).
 \newblock World {{Development Indicators}}.
 \newblock
   \url{https://data.worldbank.org/data-catalog/world-development-indicators}~(Accessed:
