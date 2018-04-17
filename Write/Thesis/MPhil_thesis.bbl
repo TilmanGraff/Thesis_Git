@@ -1,4 +1,4 @@
-\begin{thebibliography}{77}
+\begin{thebibliography}{101}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\urlprefix}{URL }
@@ -16,6 +16,20 @@
 \newblock Reversal of Fortune: {{Geography}} and Institutions in the Making of
   the Modern World Income Distribution.
 \newblock \emph{The Quarterly Journal of Economics} 117(4), pp. 1231--1294
+
+\bibitem[{AidData(2017)}]{AidData_WorldBankGeocoded_2017}
+\textbf{AidData} (\textbf{2017}).
+\newblock World {{Bank Geocoded Research Release}}, {{Version}} 1.4.2.
+\newblock
+  \url{http://aiddata.org/data/world-bank-geocoded-research-release-level-1-v1-4-2}~(Accessed:
+  2018-04-06).
+\newblock Williamsburg, VA and Washington, DC
+
+\bibitem[{Alder(2017)}]{alder_chinese_2017}
+\textbf{Alder, Simon} (\textbf{2017}).
+\newblock Chinese {{Roads}} in {{India}}: {{The Effect}} of {{Transport
+  Infrastructure}} on {{Economic Development}}.
+\newblock Working {{Paper}}, {University of North Carolina at Chapel Hill}
 
 \bibitem[{Alesina et~al.(2011)Alesina, Easterly, and
   Matuszeski}]{Alesina_ArtificialStates_2011}
@@ -37,10 +51,21 @@
 \newblock Ethnic Inequality.
 \newblock \emph{Journal of Political Economy} 124(2), pp. 428--488
 
+\bibitem[{Allen and Arkolakis(2014)}]{allen_trade_2014}
+\textbf{Allen, Treb and Costas Arkolakis} (\textbf{2014}).
+\newblock Trade and the {{Topography}} of the {{Spatial Economy}}.
+\newblock \emph{The Quarterly Journal of Economics} 129(3), pp. 1085--1140
+
 \bibitem[{Allen and Arkolakis(2016)}]{allen_welfare_2016}
-\textbf{Allen, Treb and Costas Arkolakis} (\textbf{2016}).
+---{}---{}--- (\textbf{2016}).
 \newblock The Welfare Effects of Transportation Infrastructure Improvements.
 \newblock Working {{Paper}}, {Dartmouth and Yale}
+
+\bibitem[{Alpino and Hammersmark(2017)}]{Alpino_LightingPathInfluence_2017}
+\textbf{Alpino, Matteo and Jan-Egbert Hammersmark} (\textbf{2017}).
+\newblock Lighting the {{Path}}: {{The Influence}} of {{Historical Christian
+  Missions}} on {{Modern}}-Day {{Development Aid Allocation}} in {{Africa}}.
+\newblock {{AidData Working Paper}}~47, {AidData}, Williamsburg, VA
 
 \bibitem[{Altonji et~al.(2005)Altonji, Elder, and
   Taber}]{Altonji_SelectionObservedUnobserved_2005}
@@ -73,6 +98,27 @@
   {{Intra}}-National {{Trade Costs}}.
 \newblock Working {{Paper}}, {National Bureau of Economic Research}
 
+\bibitem[{Banerjee et~al.(2006)Banerjee, Deaton, Lustig, Rogoff, and
+  Hsu}]{Banerjee_EvaluationWorldBank_2006}
+\textbf{Banerjee, Abhijit, Angus Deaton, Nora Lustig, Ken Rogoff, and Edward
+  Hsu} (\textbf{2006}).
+\newblock An {{Evaluation}} of {{World Bank Research}}, 1998-2005.
+\newblock Technical report, {The World Bank}, Washington DC
+
+\bibitem[{Baum-Snow et~al.(2017)Baum-Snow, Brandt, Henderson, Turner, and
+  Zhang}]{baum-snow_roads_2017}
+\textbf{Baum-Snow, Nathaniel, Loren Brandt, J.~Vernon Henderson, Matthew~A.
+  Turner, and Qinghua Zhang} (\textbf{2017}).
+\newblock Roads, {{Railroads}}, and {{Decentralization}} of {{Chinese Cities}}.
+\newblock \emph{The Review of Economics and Statistics} 99(3), pp. 435--448
+
+\bibitem[{Bernot et~al.(2009)Bernot, Caselles, and
+  Morel}]{Bernot_OptimalTransportationNetworks_2009}
+\textbf{Bernot, Marc, Vicent Caselles, and Jean-Michel Morel} (\textbf{2009}).
+\newblock \emph{Optimal {{Transportation Networks}}}, volume 1955 of
+  \emph{Lecture Notes in Mathematics}.
+\newblock {Springer Berlin Heidelberg}, Berlin, Heidelberg
+
 \bibitem[{Bester et~al.(2011)Bester, Conley, and
   Hansen}]{Bester_Inferencedependentdata_2011}
 \textbf{Bester, C.~Alan, Timothy~G. Conley, and Christian~B. Hansen}
@@ -90,6 +136,11 @@
 \newblock Leaving {{No One Behind}}? {{A New Test}} of {{Subnational Aid
   Targeting}}.
 \newblock \emph{Journal of International Development}
+
+\bibitem[{Burgess and Donaldson(2012)}]{burgess_railroads_2012}
+\textbf{Burgess, Robin and Dave Donaldson} (\textbf{2012}).
+\newblock Railroads and the {{Demise}} of {{Famine}} in {{Colonial India}}.
+\newblock Technical report
 
 \bibitem[{Burgess et~al.(2015)Burgess, Jedwab, Miguel, Morjaria, and {Padr{\'o}
   i Miquel}}]{burgess_value_2015}
@@ -110,13 +161,22 @@
 \newblock Robust {{Inference}} with {{Multi}}-Way {{Clustering}}.
 \newblock \emph{Journal of Business \& Economic Statistics} 29(2), pp. 238--249
 
-\bibitem[{Chaves et~al.(2013)Chaves, Engerman, and
+\bibitem[{Castell{\'o}-Climent et~al.(2017)Castell{\'o}-Climent, Chaudhary, and
+  Mukhopadhyay}]{Castello-Climent_HigherEducationProsperity_2017}
+\textbf{Castell{\'o}-Climent, Amparo, Latika Chaudhary, and Abhiroop
+  Mukhopadhyay} (\textbf{2017}).
+\newblock Higher {{Education}} and {{Prosperity}}: {{From Catholic
+  Missionaries}} to {{Luminosity}} in {{India}}.
+\newblock \emph{The Economic Journal}
+
+\bibitem[{Chaves et~al.(2014)Chaves, Engerman, and
   Robinson}]{chaves_reinventing_2013}
 \textbf{Chaves, Isa{\'\i}as~N., Stanley~L. Engerman, and James~A. Robinson}
-  (\textbf{2013}).
+  (\textbf{2014}).
 \newblock Reinventing the Wheel: {{The}} Economic Benefits of Wheeled
   Transportation in Early {{British Colonial West Africa}}.
-\newblock Technical report, {National Bureau of Economic Research}
+\newblock In: \emph{Africa's {{Development}} in {{Historical Perspective}}}.
+  {Cambridge University Press}, New York
 
 \bibitem[{Clemens and Kremer(2016)}]{Clemens_NewRoleWorld_2016}
 \textbf{Clemens, Michael~A. and Michael Kremer} (\textbf{2016}).
@@ -137,6 +197,12 @@
   (\textbf{2015}).
 \newblock The Cost of Road Infrastructure in Low-and Middle-Income Countries.
 \newblock \emph{The World bank economic review} 30(3), pp. 522--548
+
+\bibitem[{Co{\c s}ar and Fajgelbaum(2016)}]{cosar_internal_2016}
+\textbf{Co{\c s}ar, A.~Kerem and Pablo~D. Fajgelbaum} (\textbf{2016}).
+\newblock Internal {{Geography}}, {{International Trade}}, and {{Regional
+  Specialization}}.
+\newblock \emph{American Economic Journal: Microeconomics} 8(1), pp. 24--56
 
 \bibitem[{De~Luca et~al.(2018)De~Luca, Hodler, Raschky, and
   Valsecchi}]{DeLuca_Ethnicfavoritismaxiom_2018}
@@ -201,6 +267,12 @@
 \newblock Aid and Growth at the Regional Level.
 \newblock \emph{Oxford Review of Economic Policy} 31(3-4), pp. 420--446
 
+\bibitem[{Duranton and
+  Venables(2017)}]{Duranton_PlaceBasedPoliciesDevelopment_2017}
+\textbf{Duranton, Gilles and Anthony~J Venables} (\textbf{2017}).
+\newblock Place-{{Based Policies}} for {{Development}}.
+\newblock Working {{Paper}}, {The World Bank}
+
 \bibitem[{Easterly and Levine(1997)}]{easterly_africas_1997}
 \textbf{Easterly, William and Ross Levine} (\textbf{1997}).
 \newblock Africa's Growth Tragedy: Policies and Ethnic Divisions.
@@ -230,6 +302,12 @@
   {{Evidence}} from {{China}}'s {{National Trunk Highway System}}.
 \newblock \emph{The Review of Economic Studies} 81(3), pp. 1046--1070
 
+\bibitem[{Fajgelbaum and
+  Gaubert(2018)}]{Fajgelbaum_OptimalSpatialPolicies_2018}
+\textbf{Fajgelbaum, Pablo~D. and Cecile Gaubert} (\textbf{2018}).
+\newblock Optimal {{Spatial Policies}}, {{Geography}} and {{Sorting}}.
+\newblock Working {{Paper}}, {UC Berkeley}
+
 \bibitem[{Fajgelbaum and Schaal(2017)}]{fajgelbaum_optimal_2017}
 \textbf{Fajgelbaum, Pablo~D. and Edouard Schaal} (\textbf{2017}).
 \newblock Optimal Transport Networks in Spatial Equilibrium.
@@ -240,11 +318,32 @@
 \newblock \emph{A History of {{Nigeria}}}.
 \newblock {Cambridge University Press}, Cambridge, UK ; New York
 
+\bibitem[{Foster and
+  Brice{\~n}o-Garmendia(2010)}]{Foster_AfricaInfrastructureTime_2010}
+\textbf{Foster, Vivien and Cecilia Brice{\~n}o-Garmendia} (\textbf{2010}).
+\newblock \emph{Africa's {{Infrastructure}}: {{A Time}} for
+  {{Transformation}}}.
+\newblock Africa Development Forum. {World Bank Publications}, Washington DC
+
 \bibitem[{Franck and Rainer(2012)}]{Franck_DoesLeaderEthnicity_2012}
 \textbf{Franck, Rapha{\"e}l and Ilia Rainer} (\textbf{2012}).
 \newblock Does the {{Leader}}'s {{Ethnicity Matter}}? {{Ethnic Favoritism}},
   {{Education}}, and {{Health}} in {{Sub}}-{{Saharan Africa}}.
 \newblock \emph{American Political Science Review} 106(02), pp. 294--325
+
+\bibitem[{Fujita et~al.(1999)Fujita, Krugman, and
+  Venables}]{Fujita_spatialeconomycities_1999}
+\textbf{Fujita, Masahisa, Paul~R. Krugman, and Anthony Venables}
+  (\textbf{1999}).
+\newblock \emph{The Spatial Economy: Cities, Regions, and International Trade}.
+\newblock {MIT Press}, Cambridge, Mass. ; London
+
+\bibitem[{Galiani et~al.(2017)Galiani, Knack, Xu, and
+  Zou}]{Galiani_effectaidgrowth_2017}
+\textbf{Galiani, Sebastian, Stephen Knack, Lixin~Colin Xu, and Ben Zou}
+  (\textbf{2017}).
+\newblock The Effect of Aid on Growth: Evidence from a {{Quasi}}-Experiment.
+\newblock \emph{Journal of Economic Growth} 22(1), pp. 1--33
 
 \bibitem[{Galichon(2016)}]{Galichon_OptimalTransportMethods_2016}
 \textbf{Galichon, Alfred} (\textbf{2016}).
@@ -314,6 +413,29 @@
   Investments}}: {{Evidence}} from Sub-{{Saharan Africa}} 1960-2010.
 \newblock Working {{Paper}}, {Tufts University}
 
+\bibitem[{Kocornik-Mina et~al.(2015)Kocornik-Mina, McDermott, Michaels, and
+  Rauch}]{Kocornik-Mina_Floodedcities_2015}
+\textbf{Kocornik-Mina, Adriana, Thomas~KJ McDermott, Guy Michaels, and
+  Ferdinand Rauch} (\textbf{2015}).
+\newblock Flooded Cities.
+\newblock Working {{Paper}}, {LSE and Oxford}
+
+\bibitem[{Krugman(1991{\natexlab{a}})}]{krugman_history_1991}
+\textbf{Krugman, Paul} (\textbf{1991}{\natexlab{a}}).
+\newblock History {{Versus Expectations}}.
+\newblock \emph{The Quarterly Journal of Economics} 106(2), pp. 651--667
+
+\bibitem[{Krugman(1991{\natexlab{b}})}]{krugman_increasing_1991}
+---{}---{}--- (\textbf{1991}{\natexlab{b}}).
+\newblock Increasing {{Returns}} and {{Economic Geography}}.
+\newblock \emph{Journal of Political Economy} 99(3), pp. 483--499
+
+\bibitem[{Krugman(1996)}]{Krugman_UrbanConcentrationRole_1996}
+---{}---{}--- (\textbf{1996}).
+\newblock Urban {{Concentration}}: {{The Role}} of {{Increasing Returns}} and
+  {{Transport Costs}}.
+\newblock \emph{International Regional Science Review} 19(1), pp. 1--26
+
 \bibitem[{Lall et~al.(2017)Lall, Henderson, and Venables}]{lall_africas_2017}
 \textbf{Lall, Somik~Vinay, J.~Vernon Henderson, and Anthony~J. Venables}
   (\textbf{2017}).
@@ -326,11 +448,25 @@
   from {{Sanctions}} on {{North Korea}}.
 \newblock Working {{Paper}}, {Stanford University}
 
+\bibitem[{Limao and Venables(2001)}]{limao_infrastructure_2001}
+\textbf{Limao, Nuno and Anthony~J. Venables} (\textbf{2001}).
+\newblock Infrastructure, Geographical Disadvantage, Transport Costs, and
+  Trade.
+\newblock \emph{The World Bank Economic Review} 15(3), pp. 451--479
+
 \bibitem[{Marshall(2015)}]{Marshall_PolityProjectCenter_2015}
 \textbf{Marshall, Monty~G.} (\textbf{2015}).
 \newblock Polity 4 {{Project}} - {{Center}} for {{Systemic Peace}}.
 \newblock \url{http://www.systemicpeace.org/inscrdata.html}~(Accessed:
   2018-04-03)
+
+\bibitem[{Michaels et~al.(2018)Michaels, Nigmatulina, Rauch, Regan, Baruah, and
+  Dahlstrand-Rudin}]{Michaels_PlanningAheadBetter_2018}
+\textbf{Michaels, Guy, Dzhamilya Nigmatulina, Ferdinand Rauch, Tanner Regan,
+  Neeraj Baruah, and Amanda Dahlstrand-Rudin} (\textbf{2018}).
+\newblock Planning {{Ahead}} for {{Better Neighborhoods}}: {{Long Run
+  Evidence}} from {{Tanzania}}.
+\newblock Working {{Paper}}, {LSE}
 
 \bibitem[{Michaels and Rauch(2017)}]{michaels_resetting_2017}
 \textbf{Michaels, Guy and Ferdinand Rauch} (\textbf{2017}).
@@ -370,10 +506,10 @@
 \newblock The Long-Term Effects of {{Africa}}'s Slave Trades.
 \newblock \emph{The Quarterly Journal of Economics} 123(1), pp. 139--176
 
-\bibitem[{Nunn and Puga(2012)}]{nunn_ruggedness:_2012}
-\textbf{Nunn, Nathan and Diego Puga} (\textbf{2012}).
-\newblock Ruggedness: {{The}} Blessing of Bad Geography in {{Africa}}.
-\newblock \emph{Review of Economics and Statistics} 94(1), pp. 20--36
+\bibitem[{Nunn(2010)}]{Nunn_ReligiousConversionColonial_2010}
+---{}---{}--- (\textbf{2010}).
+\newblock Religious {{Conversion}} in {{Colonial Africa}}.
+\newblock \emph{The American Economic Review} 100(2), pp. 147--152
 
 \bibitem[{Nunn and Qian(2014)}]{Nunn_USFoodAid_2014}
 \textbf{Nunn, Nathan and Nancy Qian} (\textbf{2014}).
@@ -440,6 +576,15 @@
   {{Urban Growth}} in {{Sub}}-{{Saharan Africa}}.
 \newblock \emph{The Review of Economic Studies} 83(3), pp. 1263--1295
 
+\bibitem[{Strandow et~al.(2011)Strandow, Findley, Nielson, and
+  Powell}]{Strandow_UCDPAidDatacodebook_2011a}
+\textbf{Strandow, Daniel, Michael Findley, Daniel Nielson, and Josh Powell}
+  (\textbf{2011}).
+\newblock The {{UCDP}} and {{AidData}} Codebook on Georeferencing Aid
+  {{Version}} 1.1.
+\newblock Technical report, {Department of Peace and Conflict Research, Uppsala
+  University}, Uppsala
+
 \bibitem[{Strange et~al.(2017)Strange, Dreher, Fuchs, Parks, and
   Tierney}]{Strange_TrackingUnderreportedFinancial_2017}
 \textbf{Strange, Austin~M., Axel Dreher, Andreas Fuchs, Bradley Parks, and
@@ -453,6 +598,18 @@
 \newblock Reassessing Railroads and Growth: {{Accounting}} for Transport
   Network Endogeneity.
 \newblock Technical report, {Faculty of Economics, University of Cambridge}
+
+\bibitem[{Teravaninthorn and Raballand(2009)}]{world_bank_transport_2008}
+\textbf{Teravaninthorn, Supee and Ga{\"e}l Raballand} (\textbf{2009}).
+\newblock \emph{Transport {{Prices}} and {{Costs}} in {{Africa}}: {{A Review}}
+  of the {{Main International Corridors}}}.
+\newblock Directions in Development; Infrastructure. {World Bank Publications},
+  Washington DC
+
+\bibitem[{{The Economist}(2015)}]{TheEconomist_All_2015}
+\textbf{{The Economist}} (\textbf{2015}).
+\newblock All Aboard.
+\newblock \emph{The Economist} February 26, 2015
 
 \bibitem[{{The World
   Bank}(2017{\natexlab{a}})}]{TheWorldBank_WorldBankAnnual_2017}

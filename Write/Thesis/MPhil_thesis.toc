@@ -1,0 +1,24 @@
+\contentsline {section}{\numberline {1}Introduction}{2}{section.1}
+\contentsline {section}{\numberline {2}A model of Optimal Transport Networks}{4}{section.2}
+\contentsline {subsection}{\numberline {2.1}Geography}{5}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Network Topography}{6}{subsection.2.2}
+\contentsline {subsection}{\numberline {2.3}Optimal Infrastructure Provision}{7}{subsection.2.3}
+\contentsline {subsection}{\numberline {2.4}Planner's Problem and Equilibrium}{8}{subsection.2.4}
+\contentsline {section}{\numberline {3}Bringing the Model to the Data -- Towards a spatial Measure of Network Inefficiency in Africa}{10}{section.3}
+\contentsline {subsection}{\numberline {3.1}Network Nodes}{10}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Network Edges}{11}{subsection.3.2}
+\contentsline {subsubsection}{\numberline {3.2.1}Road Data}{11}{subsubsection.3.2.1}
+\contentsline {subsubsection}{\numberline {3.2.2}Infrastructure matrix $I_{i,k}$}{14}{subsubsection.3.2.2}
+\contentsline {subsubsection}{\numberline {3.2.3}Trade cost parameter $\delta _{i,k}^{\tau }$}{14}{subsubsection.3.2.3}
+\contentsline {subsubsection}{\numberline {3.2.4}Infrastructure building cost matrix $\delta _{i,k}^{I}$}{15}{subsubsection.3.2.4}
+\contentsline {subsection}{\numberline {3.3}Heterogeneous goods}{16}{subsection.3.3}
+\contentsline {subsection}{\numberline {3.4}Simulation}{17}{subsection.3.4}
+\contentsline {section}{\numberline {4}An empirical investigation into Africa's trade network inefficiencies}{24}{section.4}
+\contentsline {subsection}{\numberline {4.1}Colonial Infrastructure Investments}{26}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Ethnic Relations}{32}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Foreign Aid}{41}{subsection.4.3}
+\contentsline {section}{\numberline {5}Conclusion}{48}{section.5}
+\contentsline {section}{Appendix}{54}{section*.17}
+\setcounter {tocdepth}{0}
+\contentsline {subsection}{\numberline {A}Solving the social planner's problem}{54}{subsection.Alph0.1}
+\contentsline {subsection}{\numberline {B}Further results}{54}{subsection.Alph0.2}

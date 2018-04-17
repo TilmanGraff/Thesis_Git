@@ -17,6 +17,7 @@ henderson_controls <- read.csv(file="/Users/Tilmanski/Documents/UNI/MPhil/Second
 years_in_power <- read.csv("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/temp/ID_years_in_power.csv")
 capitals <- read.csv("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/temp/ID_capitals.csv")
 missions <- read.csv("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/temp/ID_missions.csv")
+iv_ida <- read.csv("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/temp/ID_iv_ida.csv")
 
 opt_loc <- merge(opt_loc, borders, by=c("country", "rownumber"))
 opt_loc <- merge(opt_loc, aid, by="ID")
@@ -26,6 +27,8 @@ opt_loc <- merge(opt_loc, henderson_controls, by="ID")
 opt_loc <- merge(opt_loc, years_in_power, by="ID")
 opt_loc <- merge(opt_loc, capitals, by="ID")
 opt_loc <- merge(opt_loc, missions, by="ID")
+opt_loc <- merge(opt_loc, iv_ida, by="ID")
+
 
 jedwab_countries <- c("Angola", "Benin", "Guinea-Bissau", "Botswana", "Burkina-Faso", "Burundi", "Cameroon", "Central-African-Republic", "Chad", "Congo", "Democratic-Republic-of-the-Congo", "Djibouti", "Equatorial-Guinea", "Eritrea", "Ethiopia", "Gabon", "Gambia", "Ghana", "Guinea", "Cote-dIvoire", "Kenya", "Liberia", "Malawi", "Mali", "Mauritania", "Mozambique", "Namibia", "Niger", "Nigeria", "Rwanda", "Senegal", "Sierra-Leone", "Somalia", "Sudan", "South-Sudan", "United-Republic-of-Tanzania", "Togo", "Uganda", "Zambia", "Zimbabwe", "South-Africa")
 
@@ -34,7 +37,6 @@ jedwab_countries_via_all_rails <- c("Angola", "Benin", "Botswana", "Burkina-Faso
 #opt_loc <- opt_loc[!is.na(opt_loc$RailKM) & !is.na(opt_loc$PlaceboKM) & !is.na(opt_loc$cluster),]
 #opt_loc <- opt_loc[opt_loc$country %in% jedwab_countries_via_all_rails,]
 #opt_loc <- opt_loc[opt_loc$country != "South-Africa",]
-#opt_loc <- opt_loc[opt_loc$capital != 1,]
 
 
 opt_loc$x_2 <- opt_loc$x^2
@@ -57,14 +59,23 @@ opt_loc$thirty_fourty_p <- opt_loc$dist2placebo > 30 & opt_loc$dist2placebo <= 4
 
 opt_loc$border_cell <- opt_loc$border < 8
 
-opt_loc$wb_other_disbursements <- opt_loc$wb_disbursements-opt_loc$wb_transport_disbursements
-opt_loc$any_disbursements <- as.numeric(opt_loc$wb_disbursements>0)
-opt_loc$wb_placebo_project <- as.numeric(opt_loc$wb_disbursements==0 & opt_loc$wb_commitments!=0 )
-opt_loc$is_mission <- opt_loc$missions>0
-opt_loc$number_other_wb_projects <- opt_loc$number_wb_projects-opt_loc$number_wb_projects_transport
-opt_loc$number_wb_projects_transport_completed <- opt_loc$number_wb_projects_transport-opt_loc$number_wb_transport_projects_incompleted
-opt_loc$china_transport_aid_incompleted <- opt_loc$china_transport_aid - opt_loc$china_transport_aid_completed
-opt_loc$number_china_other_projects <- opt_loc$number_china_projects - opt_loc$number_china_projects_transport
+opt_loc$wb_dis_transp_incompl <- opt_loc$wb_dis_transp - opt_loc$wb_dis_transp_compl
+opt_loc$wb_num_transp_incompl <- opt_loc$wb_num_transp - opt_loc$wb_num_transp_compl
+
+opt_loc$china_dis_transp_incompl <- opt_loc$china_dis_transp - opt_loc$china_dis_transp_compl
+opt_loc$china_num_transp_incompl <- opt_loc$china_num_transp - opt_loc$china_num_transp_compl
+
+opt_loc$wb_dis_oth_compl <- opt_loc$wb_dis_compl - opt_loc$wb_dis_transp_compl
+
+
+# opt_loc$wb_other_disbursements <- opt_loc$wb_disbursements-opt_loc$wb_transport_disbursements
+# opt_loc$any_disbursements <- as.numeric(opt_loc$wb_disbursements>0)
+# opt_loc$wb_placebo_project <- as.numeric(opt_loc$wb_disbursements==0 & opt_loc$wb_commitments!=0 )
+# opt_loc$is_mission <- opt_loc$missions>0
+# opt_loc$number_other_wb_projects <- opt_loc$number_wb_projects-opt_loc$number_wb_projects_transport
+# opt_loc$number_wb_projects_transport_completed <- opt_loc$number_wb_projects_transport-opt_loc$number_wb_transport_projects_incompleted
+# opt_loc$china_transport_aid_incompleted <- opt_loc$china_transport_aid - opt_loc$china_transport_aid_completed
+# opt_loc$number_china_other_projects <- opt_loc$number_china_projects - opt_loc$number_china_projects_transport
 
 
 opt_loc$status <- factor(opt_loc$status, levels=c("DISCRIMINATED", "POWERLESS", "IRRELEVANT", "JUNIOR PARTNER", "SENIOR PARTNER", "DOMINANT", "MONOPOLY"))
@@ -75,6 +86,22 @@ opt_loc$monopoly <- as.numeric(opt_loc$epr_scale == 7)
 
 opt_loc$not_buffer_KM <- opt_loc$RailKM - opt_loc$bufferKM
 
+opt_loc$is_mission <- as.numeric(opt_loc$missions > 0)
+opt_loc$is_cath_mission <- as.numeric(opt_loc$missions_cath > 0)
+opt_loc$is_birthplace <- as.numeric(opt_loc$years_in_power>0)
+
+
+# if you want logs
+
+# for(var in colnames(opt_loc)[grepl("dis_", colnames(opt_loc))]){
+#   opt_loc[,var] <- log(0.01+opt_loc[,var])
+# }
+
+#opt_loc <- opt_loc[opt_loc$capital != 1,]
+# opt_loc <- opt_loc[opt_loc$is_birthplace != 1,]
+
+#opt_loc <- opt_loc[opt_loc$wb_dis < quantile(opt_loc$wb_dis, .99),]
+#opt_loc <- opt_loc[opt_loc$china_dis < quantile(opt_loc$china_dis, .99),]
 
 #########################################
 # RAILROADS
@@ -184,38 +211,73 @@ opt_loc$not_buffer_KM <- opt_loc$RailKM - opt_loc$bufferKM
 # AID WORLDBANK
 #########################################
 
-mod.1a <- lm(zeta~wb_disbursements+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+border_cell, data=opt_loc)
-mod.1b <- lm(zeta~wb_disbursements+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+pop+urban+border_cell, data=opt_loc)
-mod.2a <- lm(zeta~wb_transport_disbursements_completed+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+border_cell, data=opt_loc)
-mod.2b <- lm(zeta~wb_transport_disbursements_completed+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+pop+urban+border_cell, data=opt_loc)
-# mod.3a <- lm(zeta~wb_transport_disbursements_completed+wb_other_disbursements+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+border_cell, data=opt_loc)
-# mod.3b <- lm(zeta~wb_transport_disbursements_completed+wb_other_disbursements+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+pop+urban+border_cell, data=opt_loc)
-mod.4a <- lm(zeta~number_wb_projects+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+border_cell, data=opt_loc)
-mod.4b <- lm(zeta~number_wb_projects+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+pop+urban+border_cell, data=opt_loc)
-mod.5a <- lm(zeta~number_wb_projects_transport+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+border_cell, data=opt_loc)
-mod.5b <- lm(zeta~number_wb_projects_transport+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+pop+urban+border_cell, data=opt_loc)
+# opt_loc$wb_dis_compl <- log(opt_loc$wb_dis_compl+0.01)
+# opt_loc$wb_dis_transp_compl <- log(opt_loc$wb_dis_transp_compl+0.01)
+
+
+# mod.1a <- lm(zeta~wb_dis_compl+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+border_cell, data=opt_loc)
+# mod.1b <- lm(zeta~wb_dis_compl+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+pop+urban+border_cell, data=opt_loc)
+# mod.2a <- lm(zeta~wb_dis_transp_compl+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+border_cell, data=opt_loc)
+# mod.2b <- lm(zeta~wb_dis_transp_compl+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+pop+urban+border_cell, data=opt_loc)
+# mod.3a <- lm(zeta~wb_num_compl+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+border_cell, data=opt_loc)
+# mod.3b <- lm(zeta~wb_num_compl+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+pop+urban+border_cell, data=opt_loc)
+# mod.4a <- lm(zeta~wb_num_transp_compl+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+border_cell, data=opt_loc)
+# mod.4b <- lm(zeta~wb_num_transp_compl+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+pop+urban+border_cell, data=opt_loc)
+
+# Pre 2002 transport projects
+###
+
+mod.1a <- lm(zeta~wb_dis_old+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+border_cell, data=opt_loc)
+mod.1b <- lm(zeta~wb_dis_old+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+pop+urban+border_cell, data=opt_loc)
+mod.2a <- lm(zeta~wb_dis_transp_old+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+border_cell, data=opt_loc)
+mod.2b <- lm(zeta~wb_dis_transp_old+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+pop+urban+border_cell, data=opt_loc)
+mod.3a <- lm(zeta~wb_num_old+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+border_cell, data=opt_loc)
+mod.3b <- lm(zeta~wb_num_old+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+pop+urban+border_cell, data=opt_loc)
+mod.4a <- lm(zeta~wb_num_transp_old+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+border_cell, data=opt_loc)
+mod.4b <- lm(zeta~wb_num_transp_old+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+pop+urban+border_cell, data=opt_loc)
+
 
 #########################################
 # AID CHINA
 #########################################
-#
-# mod.1a <- lm(zeta~china_aid+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+border_cell, data=opt_loc)
-# mod.1b <- lm(zeta~china_aid+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+pop+urban+border_cell, data=opt_loc)
-# mod.2a <- lm(zeta~china_transport_aid+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+border_cell, data=opt_loc)
-# mod.2b <- lm(zeta~china_transport_aid+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+pop+urban+border_cell, data=opt_loc)
-# mod.3a <- lm(zeta~number_china_projects+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+border_cell, data=opt_loc)
-# mod.3b <- lm(zeta~number_china_projects+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+pop+urban+border_cell, data=opt_loc)
-# mod.4a <- lm(zeta~number_china_projects_transport+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+border_cell, data=opt_loc)
-# mod.4b <- lm(zeta~number_china_projects_transport+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+pop+urban+border_cell, data=opt_loc)
+
+# mod.1a <- lm(zeta~china_dis_compl+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+border_cell, data=opt_loc)
+# mod.1b <- lm(zeta~china_dis_compl+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+pop+urban+border_cell, data=opt_loc)
+# mod.2a <- lm(zeta~china_dis_transp_compl+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+border_cell, data=opt_loc)
+# mod.2b <- lm(zeta~china_dis_transp_compl+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+pop+urban+border_cell, data=opt_loc)
+# mod.3a <- lm(zeta~china_num_compl+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+border_cell, data=opt_loc)
+# mod.3b <- lm(zeta~china_num_compl+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+pop+urban+border_cell, data=opt_loc)
+# mod.4a <- lm(zeta~china_num_transp_compl+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+border_cell, data=opt_loc)
+# mod.4b <- lm(zeta~china_num_transp_compl+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+pop+urban+border_cell, data=opt_loc)
 #
 
 ####################
 # AID Specifications
 ####################
 
-# mod.1.IV <- ivreg(zeta~number_wb_projects_transport+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+pop+urban+border_cell | . -china_aid + missions, data=opt_loc)
-# mod.2.IV <- ivreg(zeta~number_other_wb_projects+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+pop+urban+border_cell | . -china_aid + missions , data=opt_loc)
-# mod.IV3 <- ivreg(wb_transport_disbursements_completed~zeta+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+pop+urban+border_cell | . - zeta + smaller_ten, data=opt_loc)
+#
+#
+# mod.1a.IV <- ivreg(zeta~wb_dis_compl+RailKM+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+border_cell | . -wb_dis_compl + is_mission, data=opt_loc)
+# mod.1b.IV <- ivreg(zeta~wb_dis_compl+RailKM+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+pop+urban+border_cell | . -wb_dis_compl + is_mission, data=opt_loc)
+# mod.2a.IV <- ivreg(zeta~wb_dis_transp_compl+RailKM+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+border_cell | . -wb_dis_transp_compl + is_mission, data=opt_loc)
+# mod.2b.IV <- ivreg(zeta~wb_dis_transp_compl+RailKM+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+pop+urban+border_cell | . -wb_dis_transp_compl + is_mission, data=opt_loc)
+# mod.3a.IV <- ivreg(zeta~wb_num_compl+RailKM+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+border_cell | . -wb_num_compl + is_mission, data=opt_loc)
+# mod.3b.IV <- ivreg(zeta~wb_num_compl+RailKM+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+pop+urban+border_cell | . -wb_num_compl + is_mission, data=opt_loc)
+# mod.4a.IV <- ivreg(zeta~wb_num_transp_compl+RailKM+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+border_cell | . -wb_num_transp_compl + is_mission, data=opt_loc)
+# mod.4b.IV <- ivreg(zeta~wb_num_transp_compl+RailKM+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+pop+urban+border_cell | . -wb_num_transp_compl + is_mission, data=opt_loc)
+
+
+# first stages
+#
+# mod.1a <- lm(wb_dis_compl~is_mission+factor(country)+RailKM+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+border_cell, data=opt_loc)
+# mod.1b <- lm(wb_dis_compl~is_mission+factor(country)+RailKM+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+pop+urban+border_cell, data=opt_loc)
+# mod.2a <- lm(wb_dis_transp_compl~is_mission+factor(country)+RailKM+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+border_cell, data=opt_loc)
+# mod.2b <- lm(wb_dis_transp_compl~is_mission+factor(country)+RailKM+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+pop+urban+border_cell, data=opt_loc)
+# mod.3a <- lm(wb_num_compl~is_mission+factor(country)+RailKM+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+border_cell, data=opt_loc)
+# mod.3b <- lm(wb_num_compl~is_mission+factor(country)+RailKM+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+pop+urban+border_cell, data=opt_loc)
+# mod.4a <- lm(wb_num_transp_compl~is_mission+factor(country)+RailKM+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+border_cell, data=opt_loc)
+# mod.4b <- lm(wb_num_transp_compl~is_mission+factor(country)+RailKM+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+pop+urban+border_cell, data=opt_loc)
+
 
 #######################################################
 #### Display results
@@ -227,6 +289,7 @@ for(i in ls(pattern="mod.")){
   mo_list[[paste(i)]] <- get(i)
 } else{
   mo_list[[paste(i)]] <- cluster.robust.se(get(i), opt_loc$cluster)
+  #mo_list[[paste(i)]] <- get(i)
 }
 }
 
@@ -253,7 +316,7 @@ country <- "Country FE" # this puts the respective Controls in a list for starga
 geog <- "Geographic controls"
 sim_controls <- "Simulation controls"
 keeplist <- vector()
-keeplist <- c(keeplist, c("incompleted", "china", "disbursements"))
+keeplist <- c(keeplist, c("wb", "china"))
 
 for(i in ls(pattern="mod.")){
   current <- get(i)
@@ -278,4 +341,4 @@ for(i in ls(pattern="mod.")){
 control_list = list(country, geog, sim_controls)
 
 
-stargazer(mo_list, se=se_list, type="latex",  keep = keeplist, p.auto=TRUE, t.auto=TRUE, add.lines=control_list, keep.stat=c("rsq", "n"), dep.var.labels.include=F)
+stargazer(mo_list, se=se_list, type="latex", keep = keeplist, p.auto=TRUE, t.auto=TRUE, add.lines=control_list, keep.stat=c("rsq", "n"), dep.var.labels.include=F)

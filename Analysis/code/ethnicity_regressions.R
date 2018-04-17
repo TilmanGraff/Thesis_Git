@@ -115,28 +115,54 @@ opt_loc$border_cell <- opt_loc$border < 8
 # mod.3b.small <- lm(zeta~years_in_power+years_in_power_polity+factor(wbcode)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+growingdays+precip+seadist1+borderdist1+lnkm2split+lights+rugg+pop, data=data_small)
 # mod.3c.small <- lm(zeta~ever_in_power+factor(wbcode)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+growingdays+precip+seadist1+borderdist1+lnkm2split+lights+rugg+pop, data=data_small)
 
+###
+# for appendix sans birthplaces
+###
+
+active_data_set <- acled
+active_data_set$ever_in_power <- as.numeric(active_data_set$years_in_power>0)
+active_data_set$polity <- as.numeric(active_data_set$polity>0.5)
+active_data_set$years_in_power_polity <- active_data_set$years_in_power*active_data_set$polity
+
+data_small <- active_data_set[active_data_set$capital != 1,]
+
+
+mod.1a <- lm(zeta_sans_birthplace~years_in_power+factor(wbcode)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+growingdays+precip+seadist1+borderdist1+lnkm2split, data=active_data_set)
+mod.1b <- lm(zeta_sans_birthplace~years_in_power+factor(wbcode)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+growingdays+precip+seadist1+borderdist1+lnkm2split+lights+rugg+pop, data=active_data_set)
+mod.1c <- lm(zeta_sans_birthplace~years_in_power+years_in_power_polity+factor(wbcode)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+growingdays+precip+seadist1+borderdist1+lnkm2split+lights+rugg+pop, data=active_data_set)
+
+mod.2a <- lm(zeta_sans_birthplace~ever_in_power+factor(wbcode)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+growingdays+precip+seadist1+borderdist1+lnkm2split, data=active_data_set)
+mod.2b <- lm(zeta_sans_birthplace~ever_in_power+factor(wbcode)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+growingdays+precip+seadist1+borderdist1+lnkm2split+lights+rugg+pop, data=active_data_set)
+
+#
+#
+mod.3a.small <- lm(zeta_sans_birthplace~years_in_power+factor(wbcode)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+growingdays+precip+seadist1+borderdist1+lnkm2split+lights+rugg+pop, data=data_small)
+mod.3b.small <- lm(zeta_sans_birthplace~years_in_power+years_in_power_polity+factor(wbcode)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+growingdays+precip+seadist1+borderdist1+lnkm2split+lights+rugg+pop, data=data_small)
+mod.3c.small <- lm(zeta_sans_birthplace~ever_in_power+factor(wbcode)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+growingdays+precip+seadist1+borderdist1+lnkm2split+lights+rugg+pop, data=data_small)
+
+
 #########################################
 # Years in Power Grid
 #########################################
 
 
-data_full <- opt_loc[opt_loc$country != "Western-Sahara",]
-data_full$ever_in_power <- as.numeric(data_full$years_in_power>0)
-data_full$polity <- as.numeric(data_full$polity>0.5)
-data_full$years_in_power_polity <- data_full$years_in_power*data_full$polity
-
-data_small <- data_full[data_full$capital != 1,]
-
-mod.1a.full <- lm(zeta~years_in_power+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+border_cell, data=data_full)
-mod.1b.full <- lm(zeta~years_in_power+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+pop+border_cell, data=data_full)
-mod.1c.full <- lm(zeta~years_in_power+years_in_power_polity+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+pop+border_cell, data=data_full)
-
-mod.2a.full <- lm(zeta~ever_in_power+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+border_cell, data=data_full)
-mod.2b.full <- lm(zeta~ever_in_power+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+pop+border_cell, data=data_full)
-
-mod.3a.full.small <- lm(zeta~years_in_power+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+pop+border_cell, data=data_small)
-mod.3b.full.small <- lm(zeta~years_in_power+years_in_power_polity+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+pop+border_cell, data=data_small)
-mod.3c.full.small <- lm(zeta~ever_in_power+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+pop+border_cell, data=data_small)
+# data_full <- opt_loc[opt_loc$country != "Western-Sahara",]
+# data_full$ever_in_power <- as.numeric(data_full$years_in_power>0)
+# data_full$polity <- as.numeric(data_full$polity>0.5)
+# data_full$years_in_power_polity <- data_full$years_in_power*data_full$polity
+#
+# data_small <- data_full[data_full$capital != 1,]
+#
+# mod.1a.full <- lm(zeta~years_in_power+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+border_cell, data=data_full)
+# mod.1b.full <- lm(zeta~years_in_power+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+pop+border_cell, data=data_full)
+# mod.1c.full <- lm(zeta~years_in_power+years_in_power_polity+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+pop+border_cell, data=data_full)
+#
+# mod.2a.full <- lm(zeta~ever_in_power+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+border_cell, data=data_full)
+# mod.2b.full <- lm(zeta~ever_in_power+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+pop+border_cell, data=data_full)
+#
+# mod.3a.full.small <- lm(zeta~years_in_power+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+pop+border_cell, data=data_small)
+# mod.3b.full.small <- lm(zeta~years_in_power+years_in_power_polity+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+pop+border_cell, data=data_small)
+# mod.3c.full.small <- lm(zeta~ever_in_power+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+pop+border_cell, data=data_small)
 
 #######################################################
 #### Display results
@@ -219,4 +245,4 @@ for(i in ls(pattern="mod.")){
 }
 control_list = list(country, geog, sim_controls)
 
-stargazer(mo_list, se=se_list, type="text", t=mde_list,  keep = keeplist, p.auto=TRUE, t.auto=TRUE, add.lines=control_list, keep.stat=c("rsq", "n"), report="vc*s", dep.var.labels.include=F)
+stargazer(mo_list, se=se_list, type="latex", t=mde_list,  keep = keeplist, p.auto=TRUE, t.auto=TRUE, add.lines=control_list, keep.stat=c("rsq", "n"), report="vc*s", dep.var.labels.include=F)
