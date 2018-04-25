@@ -26,7 +26,6 @@ rails <- spTransform(rails, CRS("+proj=longlat +ellps=WGS84 +datum=WGS84")) # gi
 
 all_rails <- rbind(rails, south_african_rails) # merges
 
-
 opt_loc <- read.csv("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/input/opt_loc.csv")
 
 opt_loc$dist2rail <- NA

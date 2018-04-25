@@ -8,14 +8,14 @@
 \contentsline {subsection}{\numberline {3.1}Network Nodes}{11}{subsection.3.1}
 \contentsline {subsection}{\numberline {3.2}Network Edges}{12}{subsection.3.2}
 \contentsline {subsubsection}{\numberline {3.2.1}Road Data}{12}{subsubsection.3.2.1}
-\contentsline {subsubsection}{\numberline {3.2.2}Infrastructure matrix $I_{i,k}$}{15}{subsubsection.3.2.2}
-\contentsline {subsubsection}{\numberline {3.2.3}Trade cost parameter $\delta _{i,k}^{\tau }$}{15}{subsubsection.3.2.3}
-\contentsline {subsubsection}{\numberline {3.2.4}Infrastructure building cost matrix $\delta _{i,k}^{I}$}{16}{subsubsection.3.2.4}
+\contentsline {subsubsection}{\numberline {3.2.2}Infrastructure matrix \relax \mathversion {bold}{$I_{i,k}$}}{15}{subsubsection.3.2.2}
+\contentsline {subsubsection}{\numberline {3.2.3}Trade cost parameter \relax \mathversion {bold}{$\delta _{i,k}^{\tau }$}}{15}{subsubsection.3.2.3}
+\contentsline {subsubsection}{\numberline {3.2.4}Infrastructure building cost matrix \relax \mathversion {bold}{$\delta _{i,k}^{I}$}}{16}{subsubsection.3.2.4}
 \contentsline {subsection}{\numberline {3.3}Heterogeneous goods}{17}{subsection.3.3}
-\contentsline {subsection}{\numberline {3.4}Simulation}{18}{subsection.3.4}
+\contentsline {subsection}{\numberline {3.4}Simulation}{17}{subsection.3.4}
 \contentsline {section}{\numberline {4}An empirical investigation into Africa's trade network inefficiencies}{25}{section.4}
-\contentsline {subsection}{\numberline {4.1}Colonial Infrastructure Investments}{27}{subsection.4.1}
-\contentsline {subsection}{\numberline {4.2}Ethnic Relations}{34}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.1}Colonial Infrastructure Investments}{26}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Ethnic Relations}{33}{subsection.4.2}
 \contentsline {subsection}{\numberline {4.3}Foreign Aid}{43}{subsection.4.3}
 \contentsline {section}{\numberline {5}Conclusion}{50}{section.5}
 \contentsline {section}{Appendix}{57}{section*.17}

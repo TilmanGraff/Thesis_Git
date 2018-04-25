@@ -1,4 +1,4 @@
-\begin{thebibliography}{101}
+\begin{thebibliography}{100}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\urlprefix}{URL }
@@ -80,11 +80,6 @@
 \textbf{Anderson, James~E. and Eric Van~Wincoop} (\textbf{2003}).
 \newblock Gravity with Gravitas: A Solution to the Border Puzzle.
 \newblock \emph{The American Economic Review} 93(1), pp. 170--192
-
-\bibitem[{Anderson and Van~Wincoop(2004)}]{Anderson_Tradecosts_2004}
----{}---{}--- (\textbf{2004}).
-\newblock Trade Costs.
-\newblock \emph{Journal of Economic Literature} 42(3), pp. 691--751
 
 \bibitem[{Angrist and Pischke(2008)}]{Angrist_MostlyHarmlessEconometrics_2008}
 \textbf{Angrist, Joshua~D. and J{\"o}rn-Steffen Pischke} (\textbf{2008}).
