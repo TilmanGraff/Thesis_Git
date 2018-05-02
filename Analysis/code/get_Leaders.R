@@ -160,3 +160,15 @@ df <- merge(opt_loc, df, by="ID", all.x=T)
 #colnames(years_in_power) <- c("ethn_NAME", "country", "years_in_power")
 
 write.csv(df[,c("ID", "years_in_power")], file="/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/temp/ID_years_in_power.csv", row.names = FALSE)
+
+
+# Draw Map
+
+world <- readOGR("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/input/World_Countries/TM_WORLD_BORDERS-0.3.shp") # reads in the global country shapefile
+africa <- world[world@data$REGION==2,]
+
+png(filename=paste("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/other_maps/birthplaces.png", sep=""), width=6, height=6, units = 'in', res=300 )
+plot(africa, lwd=.8)
+points(leaders$x, leaders$y, col="darkorange1")
+points(leaders$x, leaders$y, col="red", pch=4)
+dev.off()
