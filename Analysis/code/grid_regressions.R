@@ -104,6 +104,16 @@ opt_loc$is_birthplace <- as.numeric(opt_loc$years_in_power>0)
 #opt_loc <- opt_loc[opt_loc$china_dis < quantile(opt_loc$china_dis, .99),]
 
 #########################################
+# BASIC CORRELATIONS FOR APPENDIX
+#########################################
+
+mod.APP.1 <- lm(zeta~altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+border+x+x_2+x_3+x_4+y+y_2+y_3+y_4, data=opt_loc)
+mod.APP.2 <- lm(zeta~factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+border+x+x_2+x_3+x_4+y+y_2+y_3+y_4, data=opt_loc)
+mod.APP.3 <- lm(zeta~factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+border+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+pop+urban, data=opt_loc)
+
+
+
+#########################################
 # RAILROADS
 #########################################
 
@@ -227,14 +237,14 @@ opt_loc$is_birthplace <- as.numeric(opt_loc$years_in_power>0)
 # Pre 2002 transport projects
 ###
 
-mod.1a <- lm(zeta~wb_dis_old+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+border_cell, data=opt_loc)
-mod.1b <- lm(zeta~wb_dis_old+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+pop+urban+border_cell, data=opt_loc)
-mod.2a <- lm(zeta~wb_dis_transp_old+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+border_cell, data=opt_loc)
-mod.2b <- lm(zeta~wb_dis_transp_old+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+pop+urban+border_cell, data=opt_loc)
-mod.3a <- lm(zeta~wb_num_old+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+border_cell, data=opt_loc)
-mod.3b <- lm(zeta~wb_num_old+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+pop+urban+border_cell, data=opt_loc)
-mod.4a <- lm(zeta~wb_num_transp_old+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+border_cell, data=opt_loc)
-mod.4b <- lm(zeta~wb_num_transp_old+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+pop+urban+border_cell, data=opt_loc)
+# mod.1a <- lm(zeta~wb_dis_old+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+border_cell, data=opt_loc)
+# mod.1b <- lm(zeta~wb_dis_old+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+pop+urban+border_cell, data=opt_loc)
+# mod.2a <- lm(zeta~wb_dis_transp_old+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+border_cell, data=opt_loc)
+# mod.2b <- lm(zeta~wb_dis_transp_old+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+pop+urban+border_cell, data=opt_loc)
+# mod.3a <- lm(zeta~wb_num_old+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+border_cell, data=opt_loc)
+# mod.3b <- lm(zeta~wb_num_old+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+pop+urban+border_cell, data=opt_loc)
+# mod.4a <- lm(zeta~wb_num_transp_old+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+border_cell, data=opt_loc)
+# mod.4b <- lm(zeta~wb_num_transp_old+factor(country)+altitude+temp+landsuit+malaria+biomes1+biomes2_3+biomes4+biomes5+biomes6+biomes7_9+biomes8+biomes10+biomes11+biomes12+biomes13+biomes14+harbor25+river25+lake25+growingdays+precip+x+x_2+x_3+x_4+y+y_2+y_3+y_4+rugg+lights+pop+urban+border_cell, data=opt_loc)
 
 
 #########################################
@@ -339,6 +349,10 @@ for(i in ls(pattern="mod.")){
   keeplist <- c(keeplist, names(current$coefficients)[2])
 }
 control_list = list(country, geog, sim_controls)
+control_list_app <- list(country)
 
-
-stargazer(mo_list, se=se_list, type="latex", keep = keeplist, p.auto=TRUE, t.auto=TRUE, add.lines=control_list, keep.stat=c("rsq", "n"), dep.var.labels.include=F)
+if(!grepl("APP", names(mo_list))){
+  stargazer(mo_list, se=se_list, type="latex", keep = keeplist, p.auto=TRUE, t.auto=TRUE, add.lines=control_list, keep.stat=c("rsq", "n"), dep.var.labels.include=F)
+} else{
+  stargazer(mo_list, se=se_list, type="latex", p.auto=TRUE, t.auto=TRUE, add.lines=control_list_app, omit=c("factor", "Constant"), keep.stat=c("rsq", "n"), dep.var.labels.include=F)
+}
