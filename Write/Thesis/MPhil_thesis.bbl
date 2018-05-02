@@ -1,4 +1,4 @@
-\begin{thebibliography}{100}
+\begin{thebibliography}{101}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\urlprefix}{URL }
@@ -130,7 +130,7 @@
 \textbf{Briggs, Ryan~C.} (\textbf{2018}).
 \newblock Leaving {{No One Behind}}? {{A New Test}} of {{Subnational Aid
   Targeting}}.
-\newblock \emph{Journal of International Development}
+\newblock \emph{Journal of International Development} pp. 1--7
 
 \bibitem[{Burgess and Donaldson(2012)}]{burgess_railroads_2012}
 \textbf{Burgess, Robin and Dave Donaldson} (\textbf{2012}).
@@ -148,7 +148,7 @@
 \bibitem[{Burnside and Dollar(2000)}]{Burnside_AidPoliciesGrowth_2000}
 \textbf{Burnside, Craig and David Dollar} (\textbf{2000}).
 \newblock Aid, {{Policies}}, and {{Growth}}.
-\newblock \emph{The American Economic Review} 90(4), p.~67
+\newblock \emph{The American Economic Review} 90(4), pp. 847--868
 
 \bibitem[{Cameron et~al.(2011)Cameron, Gelbach, and
   Miller}]{Cameron_RobustInferenceMultiway_2011}
@@ -162,7 +162,7 @@
   Mukhopadhyay} (\textbf{2017}).
 \newblock Higher {{Education}} and {{Prosperity}}: {{From Catholic
   Missionaries}} to {{Luminosity}} in {{India}}.
-\newblock \emph{The Economic Journal}
+\newblock \emph{The Economic Journal} pp. 1--37
 
 \bibitem[{Chaves et~al.(2014)Chaves, Engerman, and
   Robinson}]{chaves_reinventing_2013}
@@ -311,7 +311,7 @@
 \bibitem[{Falola and Heaton(2008)}]{Falola_historyNigeria_2008}
 \textbf{Falola, Toyin and Matthew~M. Heaton} (\textbf{2008}).
 \newblock \emph{A History of {{Nigeria}}}.
-\newblock {Cambridge University Press}, Cambridge, UK ; New York
+\newblock {Cambridge University Press}, Cambridge, UK and New York
 
 \bibitem[{Foster and
   Brice{\~n}o-Garmendia(2010)}]{Foster_AfricaInfrastructureTime_2010}
@@ -369,7 +369,7 @@
   (\textbf{2018}).
 \newblock The {{Global Spatial Distribution}} of {{Economic Activity}}:
   {{Nature}}, {{History}}, and the {{Role}} of {{Trade}}.
-\newblock \emph{The Quarterly Journal of Economics} 133(1)
+\newblock \emph{The Quarterly Journal of Economics} 133(1), pp. 357--406
 
 \bibitem[{Henderson et~al.(2012)Henderson, Storeygard, and
   Weil}]{henderson_measuring_2012}
@@ -466,7 +466,7 @@
 \bibitem[{Michaels and Rauch(2017)}]{michaels_resetting_2017}
 \textbf{Michaels, Guy and Ferdinand Rauch} (\textbf{2017}).
 \newblock Resetting the {{Urban Network}}: 117-2012.
-\newblock \emph{The Economic Journal}
+\newblock \emph{The Economic Journal} pp. 1--35
 
 \bibitem[{Michalopoulos and
   Papaioannou(2013)}]{michalopoulos_pre-colonial_2013}
@@ -527,12 +527,15 @@
   \url{https://data.humdata.org/dataset/south-sudan-administrative-boundaries}~(Accessed:
   2017-12-17)
 
+\bibitem[{{OpenStreetMap}(2017)}]{OpenStreetMap__2017}
+\textbf{{OpenStreetMap}} (\textbf{2017}).
+\newblock \url{https://www.openstreetmap.org/}~(Accessed: 2017-11-02)
+
 \bibitem[{Oster(2018)}]{Oster_UnobservableSelectionCoefficient_2018}
 \textbf{Oster, Emily} (\textbf{2018}).
 \newblock Unobservable {{Selection}} and {{Coefficient Stability}}: {{Theory}}
   and {{Evidence}}.
-\newblock \emph{Journal of Business \& Economic Statistics} forthcoming, pp.
-  1--18
+\newblock \emph{Journal of Business \& Economic Statistics} forthcoming
 
 \bibitem[{Pinkovskiy and Sala-i
   Martin(2016)}]{Pinkovskiy_LightsCameraIncome_2016}

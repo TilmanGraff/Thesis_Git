@@ -4,44 +4,44 @@ The top-level auxiliary file: MPhil_thesis.aux
 The style file: cantoni_copy.bst
 Database file #1: Thesis_library.bib
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
-You've used 100 entries,
+You've used 101 entries,
             3066 wiz_defined-function locations,
-            1298 strings with 29738 characters,
-and the built_in function-call counts, 63754 in all, are:
-= -- 5532
-> -- 2476
-< -- 130
-+ -- 854
-- -- 709
-* -- 4615
-:= -- 9445
-add.period$ -- 205
-call.type$ -- 100
-change.case$ -- 657
-chr.to.int$ -- 101
-cite$ -- 100
-duplicate$ -- 5002
-empty$ -- 4632
-format.name$ -- 1038
-if$ -- 13311
+            1307 strings with 29866 characters,
+and the built_in function-call counts, 64652 in all, are:
+= -- 5630
+> -- 2487
+< -- 134
++ -- 858
+- -- 712
+* -- 4666
+:= -- 9563
+add.period$ -- 206
+call.type$ -- 101
+change.case$ -- 662
+chr.to.int$ -- 102
+cite$ -- 101
+duplicate$ -- 5069
+empty$ -- 4705
+format.name$ -- 1042
+if$ -- 13527
 int.to.chr$ -- 3
 int.to.str$ -- 1
-missing$ -- 869
-newline$ -- 507
-num.names$ -- 400
-pop$ -- 1622
+missing$ -- 875
+newline$ -- 511
+num.names$ -- 404
+pop$ -- 1637
 preamble$ -- 1
-purify$ -- 636
+purify$ -- 641
 quote$ -- 0
-skip$ -- 2284
+skip$ -- 2322
 stack$ -- 0
-substring$ -- 2856
-swap$ -- 3010
-text.length$ -- 63
+substring$ -- 2944
+swap$ -- 3055
+text.length$ -- 66
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 870
+type$ -- 879
 warning$ -- 0
-while$ -- 427
+while$ -- 437
 width$ -- 0
-write$ -- 1298
+write$ -- 1311
