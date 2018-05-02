@@ -1,24 +1,24 @@
-\contentsline {section}{\numberline {1}Introduction}{2}{section.1}
-\contentsline {section}{\numberline {2}A model of Optimal Transport Networks}{5}{section.2}
-\contentsline {subsection}{\numberline {2.1}Geography}{5}{subsection.2.1}
-\contentsline {subsection}{\numberline {2.2}Network Topography}{6}{subsection.2.2}
-\contentsline {subsection}{\numberline {2.3}Optimal Infrastructure Provision}{7}{subsection.2.3}
-\contentsline {subsection}{\numberline {2.4}Planner's Problem and Equilibrium}{9}{subsection.2.4}
-\contentsline {section}{\numberline {3}Bringing the Model to the Data -- Towards a spatial Measure of Network Inefficiency in Africa}{10}{section.3}
-\contentsline {subsection}{\numberline {3.1}Network Nodes}{11}{subsection.3.1}
-\contentsline {subsection}{\numberline {3.2}Network Edges}{12}{subsection.3.2}
-\contentsline {subsubsection}{\numberline {3.2.1}Road Data}{12}{subsubsection.3.2.1}
-\contentsline {subsubsection}{\numberline {3.2.2}Infrastructure matrix \relax \mathversion {bold}{$I_{i,k}$}}{15}{subsubsection.3.2.2}
-\contentsline {subsubsection}{\numberline {3.2.3}Trade cost parameter \relax \mathversion {bold}{$\delta _{i,k}^{\tau }$}}{15}{subsubsection.3.2.3}
-\contentsline {subsubsection}{\numberline {3.2.4}Infrastructure building cost matrix \relax \mathversion {bold}{$\delta _{i,k}^{I}$}}{16}{subsubsection.3.2.4}
-\contentsline {subsection}{\numberline {3.3}Heterogeneous goods}{17}{subsection.3.3}
-\contentsline {subsection}{\numberline {3.4}Simulation}{17}{subsection.3.4}
-\contentsline {section}{\numberline {4}An empirical investigation into Africa's trade network inefficiencies}{25}{section.4}
-\contentsline {subsection}{\numberline {4.1}Colonial Infrastructure Investments}{26}{subsection.4.1}
-\contentsline {subsection}{\numberline {4.2}Ethnic Relations}{33}{subsection.4.2}
-\contentsline {subsection}{\numberline {4.3}Foreign Aid}{43}{subsection.4.3}
-\contentsline {section}{\numberline {5}Conclusion}{50}{section.5}
-\contentsline {section}{Appendix}{57}{section*.17}
+\contentsline {section}{\numberline {1}Introduction}{3}{section.1}
+\contentsline {section}{\numberline {2}A model of Optimal Transport Networks}{7}{section.2}
+\contentsline {subsection}{\numberline {2.1}Geography}{7}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Network Topography}{8}{subsection.2.2}
+\contentsline {subsection}{\numberline {2.3}Optimal Infrastructure Provision}{10}{subsection.2.3}
+\contentsline {subsection}{\numberline {2.4}Planner's Problem and Equilibrium}{12}{subsection.2.4}
+\contentsline {section}{\numberline {3}Bringing the Model to the Data -- Towards a spatial Measure of Network Inefficiency in Africa}{14}{section.3}
+\contentsline {subsection}{\numberline {3.1}Network Nodes}{14}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Network Edges}{16}{subsection.3.2}
+\contentsline {subsubsection}{\numberline {3.2.1}Road Data}{16}{subsubsection.3.2.1}
+\contentsline {subsubsection}{\numberline {3.2.2}Infrastructure matrix \relax \mathversion {bold}{$I_{i,k}$}}{19}{subsubsection.3.2.2}
+\contentsline {subsubsection}{\numberline {3.2.3}Trade cost parameter \relax \mathversion {bold}{$\delta _{i,k}^{\tau }$}}{20}{subsubsection.3.2.3}
+\contentsline {subsubsection}{\numberline {3.2.4}Infrastructure building cost matrix \relax \mathversion {bold}{$\delta _{i,k}^{I}$}}{20}{subsubsection.3.2.4}
+\contentsline {subsection}{\numberline {3.3}Heterogeneous goods}{22}{subsection.3.3}
+\contentsline {subsection}{\numberline {3.4}Simulation}{22}{subsection.3.4}
+\contentsline {section}{\numberline {4}An empirical investigation into Africa's trade network inefficiencies}{31}{section.4}
+\contentsline {subsection}{\numberline {4.1}Colonial Infrastructure Investments}{33}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Ethnic Relations}{42}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Foreign Aid}{53}{subsection.4.3}
+\contentsline {section}{\numberline {5}Conclusion}{62}{section.5}
+\contentsline {section}{Appendix}{69}{section*.17}
 \setcounter {tocdepth}{0}
-\contentsline {subsection}{\numberline {A}Numerically solving the planner's problem}{57}{subsection.Alph0.1}
-\contentsline {subsection}{\numberline {B}Additional results}{58}{subsection.Alph0.2}
+\contentsline {subsection}{\numberline {A}Numerically solving the planner's problem}{69}{subsection.Alph0.1}
+\contentsline {subsection}{\numberline {B}Additional results}{70}{subsection.Alph0.2}

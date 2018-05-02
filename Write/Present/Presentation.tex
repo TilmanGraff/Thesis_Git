@@ -36,7 +36,7 @@
 \title{Spatial Inefficiencies in Africa's Trade Network}
 \author{Tilman Graff}
 \institute{University of Oxford}
-\date{\today}
+\date{30th April 2018}
 
 \begin{document}
 
@@ -76,18 +76,18 @@
   \begin{itemize}
     \item Are African roads where they should be?
     \item Which country has the most efficient trade network?
-    \item Do some regions have \emph{too} many roads?
+    \item Why do some regions have \emph{too} many roads?
   \end{itemize}
 \end{frame}
 
-\setbeamercovered{transparent}
-\begin{frame}
-  \frametitle{Motivation}
-  \centering
-  \onslide<1->{Individual transport policies \\
-  $\Longleftrightarrow$} \\
-  \onslide<2->{Overall network efficiency}
-\end{frame}
+% \setbeamercovered{transparent}
+% \begin{frame}
+%   \frametitle{Motivation}
+%   \centering
+%   \onslide<1->{Individual transport policies \\
+%   $\Longleftrightarrow$} \\
+%   \onslide<2->{Overall network efficiency}
+% \end{frame}
 
 
 \begin{frame}
@@ -279,12 +279,19 @@
 \end{figure}
 \end{frame}
 
-
+\begin{frame}
+\label{country_map}
+\frametitle{Welfare gains for entire countries}
+\begin{figure}
+    \includegraphics[width=0.65\textwidth, trim={1cm 4cm 0cm 2cm},clip]{/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/zeta_heatmaps/African_countries_zeta.png}
+    \caption{Percentage welfare gains for all countries in the sample}
+  \end{figure}
+\end{frame}
 
 \begin{frame}
-  \frametitle{$\Lambda_{i}$ for sample countries}
+  \frametitle{Local Infrastructure Discrimination Index $\Lambda_{i}$}
 \begin{figure}
-\caption{Local Infrastructure Discrimination Index $\Lambda_{i}$}
+\caption{$\Lambda_{i}$ for sample countries}
 \begin{subfigure}[c]{0.32\textwidth}
 \includegraphics[width=\textwidth]{/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/zeta_heatmaps/Madagascar_zeta.png}
 \caption{Madagascar}
@@ -310,9 +317,8 @@ $\Lambda_{i} = \frac{\textrm{Welfare under the optimal Infrastructure}_{i}}{\tex
     \label{Grid_Cell_Map}
   \begin{figure}
     \includegraphics[width=0.65\textwidth, trim={1cm 4cm 0cm 2cm},clip]{/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/zeta_heatmaps/African_gridcells_zeta.png}
-    \caption{African grid cells by $\Lambda_{i}$}
+    \caption{10,158 grid cells by $\Lambda_{i}$}
   \end{figure}
-  \hyperlink{backup:country_map}{\beamerbutton{Country Map}}
 \end{frame}
 
 \begin{frame}
@@ -386,9 +392,18 @@ Why do some areas have too few roads while others have too many?
 
 
 \begin{frame}
-\frametitle{Favoritism}
+\frametitle{Regional Favoritism}
+\begin{figure}
+\centering
+\includegraphics[width=0.6\textwidth,trim={15cm 16cm 10cm 8cm},clip]{/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/other_maps/birthplaces.png}
+\caption{Birthplaces of African heads of state since 1970}
+\label{fig:birthplaces}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Regional Favoritism}
 \begin{table}[!t] \centering
-  \caption{Regional Favoritism}
   \label{tab:favoritism}
   \resizebox{\textwidth}{!}{
 
@@ -544,14 +559,6 @@ R$^{2}$ & 0.123 & 0.125 & 0.123 & 0.125 & 0.124 & 0.126 & 0.123 & 0.125 \\
 \hyperlink{trade_model}{\beamerbutton{Back}}
 \end{frame}
 
-\begin{frame}
-\label{backup:country_map}
-\frametitle{Backup: $\Lambda$ for entire countries}
-\begin{figure}
-    \includegraphics[width=0.65\textwidth, trim={1cm 4cm 0cm 2cm},clip]{/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/zeta_heatmaps/African_countries_zeta.png}
-    \caption{African countries by $\Lambda_{i}$}
-  \end{figure}
-  \hyperlink{Grid_Cell_Map}{\beamerbutton{Back}}
-\end{frame}
+
 
 \end{document}

@@ -1,8 +1,9 @@
 # Fdb version 3
-["pdflatex"] 1524559939 "Presentation.tex" "Presentation.pdf" "Presentation" 1524559946
+["pdflatex"] 1524996685 "Presentation.tex" "Presentation.pdf" "Presentation" 1524996693
   "/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/other_maps/aid_China.png" 1523549979 410304 ff054cf9114f701b37492a03032a6e63 ""
   "/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/other_maps/aid_wb.png" 1523549970 588742 47e3c00a490581d0ff4fe9cb872c695a ""
   "/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/other_maps/all_rails.png" 1521558236 262079 0d209ff3e5ffd760a42490809bac4b07 ""
+  "/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/other_maps/birthplaces.png" 1524996199 315634 d115649a545859166ac9ef0524f4786b ""
   "/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/zeta_heatmaps/African_countries_zeta.png" 1519390633 202400 07b33076fab543a677fee528c8f559b0 ""
   "/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/zeta_heatmaps/African_gridcells_zeta.png" 1519390743 212432 6b2c95ea6d5e1822f3b77e71cb9d50c4 ""
   "/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/zeta_heatmaps/Chad_zeta.png" 1519389779 18227 f5ac884bd90b1c5a0a6a8555856f34db ""
@@ -263,15 +264,15 @@
   "/usr/local/texlive/2016/texmf.cnf" 1463979140 577 2938757e76f31531e65cc647e3507693 ""
   "Images/African_grid.png" 1519993053 274384 d1db83413e39c8af8d1de7a764141273 ""
   "Images/CAE_nodes.png" 1520004113 57862 1399323ecad8797e6123f08b8806cb2a ""
-  "Presentation.aux" 1524559945 8999 2d349e1ffb6b1f2552121a3e4338b456 ""
-  "Presentation.nav" 1524559945 3012 c31a161ced1d64d5b188ac63e9a316e3 ""
-  "Presentation.out" 1524559940 0 d41d8cd98f00b204e9800998ecf8427e ""
-  "Presentation.tex" 1524559931 20396 a486c5a8dfb4d3eb9aa76521e3c0d4b8 ""
+  "Presentation.aux" 1524996692 9168 6e252b6c1377b2f9ca6d2e17ffde0cc4 ""
+  "Presentation.nav" 1524996692 3008 145f068e89f81f7d86b2452b1716c92a ""
+  "Presentation.out" 1524996687 0 d41d8cd98f00b204e9800998ecf8427e ""
+  "Presentation.tex" 1524996685 20657 4e70bd1164b52983ae22cb69b1e94e8e ""
   (generated)
-  "Presentation.snm"
-  "Presentation.nav"
   "Presentation.toc"
+  "Presentation.log"
+  "Presentation.snm"
   "Presentation.aux"
+  "Presentation.nav"
   "Presentation.out"
   "Presentation.pdf"
-  "Presentation.log"

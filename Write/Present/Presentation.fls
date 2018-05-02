@@ -404,16 +404,16 @@ INPUT /usr/local/texlive/2016/texmf-dist/fonts/tfm/public/sansmathaccent/mathker
 INPUT /usr/local/texlive/2016/texmf-dist/fonts/tfm/public/sansmathaccent/mathkerncmssi8.tfm
 INPUT /usr/local/texlive/2016/texmf-dist/fonts/tfm/public/sansmathaccent/mathkerncmssi8.tfm
 INPUT /usr/local/texlive/2016/texmf-dist/fonts/tfm/public/cm/cmssi10.tfm
+INPUT /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Write/Present/Images/African_grid.png
+INPUT /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Write/Present/Images/African_grid.png
+INPUT /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Write/Present/Images/African_grid.png
+INPUT /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Write/Present/Images/African_grid.png
 INPUT /usr/local/texlive/2016/texmf-dist/fonts/tfm/public/cm/cmmi10.tfm
 INPUT /usr/local/texlive/2016/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm
 INPUT /usr/local/texlive/2016/texmf-dist/fonts/tfm/public/cm/cmex10.tfm
 INPUT /usr/local/texlive/2016/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm
 INPUT /usr/local/texlive/2016/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT /usr/local/texlive/2016/texmf-dist/fonts/tfm/public/sansmathaccent/mathkerncmssi10.tfm
-INPUT /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Write/Present/Images/African_grid.png
-INPUT /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Write/Present/Images/African_grid.png
-INPUT /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Write/Present/Images/African_grid.png
-INPUT /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Write/Present/Images/African_grid.png
 INPUT /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Write/Present/Images/CAE_nodes.png
 INPUT /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Write/Present/Images/CAE_nodes.png
 INPUT /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Write/Present/Images/CAE_nodes.png
@@ -456,6 +456,10 @@ INPUT /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/M
 INPUT /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/Matlab_graphs/Nicer_graphs/United-Republic-of-Tanzania_opt.png
 INPUT /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/Matlab_graphs/Nicer_graphs/United-Republic-of-Tanzania_opt.png
 INPUT /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/Matlab_graphs/Nicer_graphs/United-Republic-of-Tanzania_opt.png
+INPUT /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/zeta_heatmaps/African_countries_zeta.png
+INPUT /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/zeta_heatmaps/African_countries_zeta.png
+INPUT /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/zeta_heatmaps/African_countries_zeta.png
+INPUT /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/zeta_heatmaps/African_countries_zeta.png
 INPUT /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/zeta_heatmaps/Madagascar_zeta.png
 INPUT /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/zeta_heatmaps/Madagascar_zeta.png
 INPUT /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/zeta_heatmaps/Madagascar_zeta.png
@@ -482,6 +486,10 @@ INPUT /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/outpu
 INPUT /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/other_maps/all_rails.png
 INPUT /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/other_maps/all_rails.png
 INPUT /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/other_maps/all_rails.png
+INPUT /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/other_maps/birthplaces.png
+INPUT /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/other_maps/birthplaces.png
+INPUT /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/other_maps/birthplaces.png
+INPUT /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/other_maps/birthplaces.png
 INPUT /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/other_maps/aid_wb.png
 INPUT /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/other_maps/aid_wb.png
 INPUT /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/other_maps/aid_wb.png
@@ -495,10 +503,6 @@ INPUT /usr/local/texlive/2016/texmf-dist/fonts/tfm/public/cm/cmcsc10.tfm
 INPUT /usr/local/texlive/2016/texmf-dist/fonts/tfm/public/cm/cmssbx10.tfm
 INPUT /usr/local/texlive/2016/texmf-dist/fonts/tfm/public/cm/cmcsc10.tfm
 INPUT /usr/local/texlive/2016/texmf-dist/fonts/tfm/public/cm/cmcsc10.tfm
-INPUT /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/zeta_heatmaps/African_countries_zeta.png
-INPUT /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/zeta_heatmaps/African_countries_zeta.png
-INPUT /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/zeta_heatmaps/African_countries_zeta.png
-INPUT /Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/zeta_heatmaps/African_countries_zeta.png
 OUTPUT Presentation.nav
 OUTPUT Presentation.toc
 OUTPUT Presentation.snm
