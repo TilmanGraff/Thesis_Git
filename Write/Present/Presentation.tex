@@ -36,7 +36,7 @@
 \title{Spatial Inefficiencies in Africa's Trade Network}
 \author{Tilman Graff}
 \institute{University of Oxford}
-\date{30th April 2018}
+\date{\today}
 
 \begin{document}
 
@@ -191,7 +191,7 @@
     \item<2-> Consumers in $i$ consume $C_{i} = \bigg( \sum_{n}^{} (C_{i}^{n})^{\frac{\sigma-1}{\sigma}}\bigg)^{\frac{\sigma}{\sigma-1}}$
     \item<2-> Derive utility $u_{i}=c_{i}^{\alpha}$, where $c_{i} = \frac{C_{i}}{L_{i}}$
     \item<3-> Can trade with neighbouring nodes $N(i)$
-    \item<3-> Occur iceberg trade cost $\tau_{i,k}^{n} = \delta^{\tau}_{i,k} \frac{(Q_{i,k}^{n})^{\beta}}{I_{i,k}^{\gamma}}$
+    \item<3-> Incur iceberg trade cost $\tau_{i,k}^{n} = \delta^{\tau}_{i,k} \frac{(Q_{i,k}^{n})^{\beta}}{I_{i,k}^{\gamma}}$
     \begin{itemize}
     	  \item<3-> costs fall with $I_{i,k}$ (\emph{infrastructure})
       \item<3-> costs rise with $Q_{i,k}^{n}$ (\emph{congestion})
@@ -445,6 +445,62 @@ Why do some areas have too few roads while others have too many?
 
 
 \begin{frame}
+\frametitle{Ethnic Relations}
+\begin{figure}
+\centering
+\includegraphics[width=0.65\textwidth,trim={1cm 4cm 0cm 4.5cm},clip]{/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/other_maps/ethnicity_zeta.png}
+\caption{$\Lambda_{h}$ over ethnic homelands}
+\label{fig:ethnicities}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Ethnic Relations}
+\begin{table}[t] \centering
+  \caption{Null Effect of Ethnic Discrimination}
+  \label{tab:Ethn_discrimination}
+  \resizebox{\textwidth}{!}{
+
+
+  \begin{tabular}{@{\extracolsep{5pt}}lcccccccc}
+  \\[-1.8ex]\hline
+  \hline \\[-1.8ex]
+   & \multicolumn{8}{c}{\textit{Dependent variable: Local Infrastructure Discrimination Index $\Lambda_{h}$}} \\
+  \cline{2-9}
+  \\[-1.8ex] & (1) & (2) & (3) & (4) & (5) & (6) & (7) & (8)\\
+  \hline \\[-1.8ex]
+   Ethnicity discriminated against 1960--2010 & $-$0.001 & $-$0.001 &  &  &  &  &  &  \\
+  & (0.008) & (0.007) &  &  &  &  &  &  \\
+    & & & & & & & & \\
+   Ethnicity excluded from the &  &  & $-$0.006 & $-$0.005 &  &  &  &  \\
+    \hspace*{3mm} central government 1960--2010 &  &  & (0.005) & (0.005) &  &  &  &  \\
+    & & & & & & & & \\
+   Ethnicity involved in an &  &  &  &  & 0.002 & 0.002 &  &  \\
+    \hspace*{3mm}  ethnic war 1960--2010 &  &  &  &  & (0.008) & (0.008) &  &  \\
+    & & & & & & & & \\
+   Ethnicity split by colonial borders &  &  &  &  &  &  & $-$0.002 & $-$0.002 \\
+   &  &  &  &  &  &  & (0.004) & (0.004) \\
+    & & & & & & & & \\
+  \hline \\[-1.8ex]
+  Country FE & Yes & Yes & Yes & Yes & Yes & Yes & Yes & Yes \\
+  Geographic controls & Yes & Yes & Yes & Yes & Yes & Yes & Yes & Yes \\
+  Simulation controls &  & Yes &  & Yes &  & Yes &  & Yes \\
+  Observations & 496 & 496 & 496 & 496 & 496 & 496 & 932 & 932 \\
+  R$^{2}$ & 0.156 & 0.166 & 0.158 & 0.168 & 0.156 & 0.167 & 0.164 & 0.167 \\
+  \hline
+  \hline \\[-1.8ex]
+  \textit{Note:}  & \multicolumn{8}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\
+  \end{tabular}
+
+}
+\end{table}
+% \centering
+% \footnotesize
+%
+% Estimating Equation $\Lambda_{h,c} = \beta EthnicDiscrimination_{h,c} + \textbf{X}_{h,c}\gamma + \delta_{c} + \epsilon_{h,c}$
+\end{frame}
+
+\begin{frame}
 \frametitle{Does Aid go into the right locations?}
 \begin{figure}[t]
 \centering
@@ -469,7 +525,7 @@ Why do some areas have too few roads while others have too many?
 \frametitle{Does Aid go into the right locations?}
 \begin{table}[t] \centering
   \label{tab:RailKM_zeta}
-  \resizebox{0.9\textwidth}{!}{
+  \resizebox{\textwidth}{!}{
 
   \begin{tabular}{@{\extracolsep{5pt}}lcccccccc}
   \\[-1.8ex]\hline
@@ -498,29 +554,29 @@ Why do some areas have too few roads while others have too many?
  Simulation controls &  & Yes &  & Yes &  & Yes &  & Yes \\
  Observations & 10,158 & 10,158 & 10,158 & 10,158 & 10,158 & 10,158 & 10,158 & 10,158 \\
  R$^{2}$ & 0.125 & 0.128 & 0.125 & 0.127 & 0.127 & 0.131 & 0.126 & 0.129 \\
-   \hline \\[-1.8ex]
+    \hline
 
-\multicolumn{9}{l}{\textit{Panel B: Chinese Development Projects}} \\
-\\[-1.8ex]
-Total commitments & $-$0.0001$^{***}$ & $-$0.0001$^{***}$ &  &  &  &  &  &  \\
- \hspace*{3mm} in million 2011 US dollars & (0.00004) & (0.00004) &  &  &  &  &  &  \\
- & & & & & & & & \\
-Transport-sector commitments &  &  & $-$0.0003$^{**}$ & $-$0.0003$^{**}$ &  &  &  &  \\
- \hspace*{3mm} in million 2011 US dollars &  &  & (0.0001) & (0.0001) &  &  &  &  \\
- & & & & & & & & \\
-Number of projects &  &  &  &  & $-$0.003$^{***}$ & $-$0.004$^{***}$ &  &  \\
- &  &  &  &  & (0.001) & (0.001) &  &  \\
- & & & & & & & & \\
-Number of transport projects &  &  &  &  &  &  & $-$0.013$^{***}$ & $-$0.014$^{***}$ \\
- &  &  &  &  &  &  & (0.004) & (0.005) \\
- & & & & & & & & \\
- \\[-1.8ex]
-Country FE & Yes & Yes & Yes & Yes & Yes & Yes & Yes & Yes \\
-Geographic controls & Yes & Yes & Yes & Yes & Yes & Yes & Yes & Yes \\
-Simulation controls &  & Yes &  & Yes &  & Yes &  & Yes \\
-Observations & 10,158 & 10,158 & 10,158 & 10,158 & 10,158 & 10,158 & 10,158 & 10,158 \\
-R$^{2}$ & 0.123 & 0.125 & 0.123 & 0.125 & 0.124 & 0.126 & 0.123 & 0.125 \\
- \hline
+% \multicolumn{9}{l}{\textit{Panel B: Chinese Development Projects}} \\
+% \\[-1.8ex]
+% Total commitments & $-$0.0001$^{***}$ & $-$0.0001$^{***}$ &  &  &  &  &  &  \\
+%  \hspace*{3mm} in million 2011 US dollars & (0.00004) & (0.00004) &  &  &  &  &  &  \\
+%  & & & & & & & & \\
+% Transport-sector commitments &  &  & $-$0.0003$^{**}$ & $-$0.0003$^{**}$ &  &  &  &  \\
+%  \hspace*{3mm} in million 2011 US dollars &  &  & (0.0001) & (0.0001) &  &  &  &  \\
+%  & & & & & & & & \\
+% Number of projects &  &  &  &  & $-$0.003$^{***}$ & $-$0.004$^{***}$ &  &  \\
+%  &  &  &  &  & (0.001) & (0.001) &  &  \\
+%  & & & & & & & & \\
+% Number of transport projects &  &  &  &  &  &  & $-$0.013$^{***}$ & $-$0.014$^{***}$ \\
+%  &  &  &  &  &  &  & (0.004) & (0.005) \\
+%  & & & & & & & & \\
+%  \\[-1.8ex]
+% Country FE & Yes & Yes & Yes & Yes & Yes & Yes & Yes & Yes \\
+% Geographic controls & Yes & Yes & Yes & Yes & Yes & Yes & Yes & Yes \\
+% Simulation controls &  & Yes &  & Yes &  & Yes &  & Yes \\
+% Observations & 10,158 & 10,158 & 10,158 & 10,158 & 10,158 & 10,158 & 10,158 & 10,158 \\
+% R$^{2}$ & 0.123 & 0.125 & 0.123 & 0.125 & 0.124 & 0.126 & 0.123 & 0.125 \\
+%  \hline
  \hline \\[-1.8ex]
  \textit{Note:}  & \multicolumn{8}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\
  \end{tabular}
