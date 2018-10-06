@@ -1,47 +1,47 @@
-This is BibTeX, Version 0.99d (TeX Live 2016)
-Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+This is BibTeX, Version 0.99d (TeX Live 2018)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: MPhil_thesis.aux
 The style file: cantoni_copy.bst
-Database file #1: Thesis_library.bib
+Database file #1: Thesis_library2.bib
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
-You've used 101 entries,
+You've used 100 entries,
             3066 wiz_defined-function locations,
-            1307 strings with 29866 characters,
-and the built_in function-call counts, 64652 in all, are:
-= -- 5630
-> -- 2487
-< -- 134
-+ -- 858
-- -- 712
-* -- 4666
-:= -- 9563
-add.period$ -- 206
-call.type$ -- 101
-change.case$ -- 662
-chr.to.int$ -- 102
-cite$ -- 101
-duplicate$ -- 5069
-empty$ -- 4705
-format.name$ -- 1042
-if$ -- 13527
-int.to.chr$ -- 3
+            1223 strings with 26052 characters,
+and the built_in function-call counts, 64245 in all, are:
+= -- 5595
+> -- 2474
+< -- 133
++ -- 853
+- -- 709
+* -- 4619
+:= -- 9495
+add.period$ -- 204
+call.type$ -- 100
+change.case$ -- 657
+chr.to.int$ -- 101
+cite$ -- 100
+duplicate$ -- 5039
+empty$ -- 4675
+format.name$ -- 1038
+if$ -- 13451
+int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 875
-newline$ -- 511
-num.names$ -- 404
-pop$ -- 1637
+missing$ -- 872
+newline$ -- 506
+num.names$ -- 400
+pop$ -- 1634
 preamble$ -- 1
-purify$ -- 641
+purify$ -- 636
 quote$ -- 0
-skip$ -- 2322
+skip$ -- 2312
 stack$ -- 0
-substring$ -- 2944
-swap$ -- 3055
+substring$ -- 2933
+swap$ -- 3036
 text.length$ -- 66
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 879
+type$ -- 870
 warning$ -- 0
-while$ -- 437
+while$ -- 434
 width$ -- 0
-write$ -- 1311
+write$ -- 1299
