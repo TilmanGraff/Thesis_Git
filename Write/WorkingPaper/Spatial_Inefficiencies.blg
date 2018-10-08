@@ -1,0 +1,47 @@
+This is BibTeX, Version 0.99d (TeX Live 2018)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: Spatial_Inefficiencies.aux
+The style file: cantoni_copy.bst
+Database file #1: Spatial_Bib.bib
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+You've used 100 entries,
+            3066 wiz_defined-function locations,
+            1223 strings with 26068 characters,
+and the built_in function-call counts, 64245 in all, are:
+= -- 5595
+> -- 2474
+< -- 133
++ -- 853
+- -- 709
+* -- 4619
+:= -- 9495
+add.period$ -- 204
+call.type$ -- 100
+change.case$ -- 657
+chr.to.int$ -- 101
+cite$ -- 100
+duplicate$ -- 5039
+empty$ -- 4675
+format.name$ -- 1038
+if$ -- 13451
+int.to.chr$ -- 2
+int.to.str$ -- 1
+missing$ -- 872
+newline$ -- 506
+num.names$ -- 400
+pop$ -- 1634
+preamble$ -- 1
+purify$ -- 636
+quote$ -- 0
+skip$ -- 2312
+stack$ -- 0
+substring$ -- 2933
+swap$ -- 3036
+text.length$ -- 66
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 870
+warning$ -- 0
+while$ -- 434
+width$ -- 0
+write$ -- 1299
