@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.9.20)  7 OCT 2018 22:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.9.20)  13 OCT 2018 15:07
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -894,8 +894,18 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <6> not available
 LaTeX Font Warning: Font shape `OT1/cmr/bx/sc' undefined
 (Font)              using `OT1/cmr/bx/n' instead on input line 184.
 
+
+Overfull \hbox (21.66217pt too wide) detected at line 184
+[]
+ []
+
+
+Overfull \hbox (30.0pt too wide) in paragraph at lines 184--184
+[] 
+ []
+
 [8] [9] [10] [11]
-<../../Build/output/Road_Networks/network_Nigeria.png, id=408, 481.8pt x 481.8p
+<../../Build/output/Road_Networks/network_Nigeria.png, id=407, 481.8pt x 481.8p
 t>
 File: ../../Build/output/Road_Networks/network_Nigeria.png Graphic file (type p
 ng)
@@ -903,14 +913,14 @@ ng)
 Package pdftex.def Info: ../../Build/output/Road_Networks/network_Nigeria.png  
 used on input line 232.
 (pdftex.def)             Requested size: 220.22058pt x 192.57648pt.
-<../../Build/output/Road_Networks/network_Mali.png, id=411, 481.8pt x 481.8pt>
+<../../Build/output/Road_Networks/network_Mali.png, id=410, 481.8pt x 481.8pt>
 File: ../../Build/output/Road_Networks/network_Mali.png Graphic file (type png)
 
 <use ../../Build/output/Road_Networks/network_Mali.png>
 Package pdftex.def Info: ../../Build/output/Road_Networks/network_Mali.png  use
 d on input line 237.
 (pdftex.def)             Requested size: 220.22058pt x 192.57648pt.
-<../../Build/output/Road_Networks/network_Ethiopia.png, id=413, 481.8pt x 481.8
+<../../Build/output/Road_Networks/network_Ethiopia.png, id=412, 481.8pt x 481.8
 pt>
 File: ../../Build/output/Road_Networks/network_Ethiopia.png Graphic file (type 
 png)
@@ -918,7 +928,7 @@ png)
 Package pdftex.def Info: ../../Build/output/Road_Networks/network_Ethiopia.png 
  used on input line 243.
 (pdftex.def)             Requested size: 220.22058pt x 192.57648pt.
-<../../Build/output/Road_Networks/network_Rwanda.png, id=415, 481.8pt x 481.8pt
+<../../Build/output/Road_Networks/network_Rwanda.png, id=414, 481.8pt x 481.8pt
 >
 File: ../../Build/output/Road_Networks/network_Rwanda.png Graphic file (type pn
 g)
@@ -987,7 +997,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 285.
 
 [15]
-<../../Build/output/Matlab_graphs/Nicer_graphs/Nigeria_stat.png, id=501, 562.26
+<../../Build/output/Matlab_graphs/Nicer_graphs/Nigeria_stat.png, id=500, 562.26
 06pt x 421.575pt>
 File: ../../Build/output/Matlab_graphs/Nicer_graphs/Nigeria_stat.png Graphic fi
 le (type png)
@@ -995,7 +1005,7 @@ le (type png)
 Package pdftex.def Info: ../../Build/output/Matlab_graphs/Nicer_graphs/Nigeria_
 stat.png  used on input line 310.
 (pdftex.def)             Requested size: 230.46576pt x 195.81682pt.
-<../../Build/output/Matlab_graphs/Nicer_graphs/Mali_stat.png, id=503, 562.2606p
+<../../Build/output/Matlab_graphs/Nicer_graphs/Mali_stat.png, id=502, 562.2606p
 t x 421.575pt>
 File: ../../Build/output/Matlab_graphs/Nicer_graphs/Mali_stat.png Graphic file 
 (type png)
@@ -1003,7 +1013,7 @@ File: ../../Build/output/Matlab_graphs/Nicer_graphs/Mali_stat.png Graphic file
 Package pdftex.def Info: ../../Build/output/Matlab_graphs/Nicer_graphs/Mali_sta
 t.png  used on input line 315.
 (pdftex.def)             Requested size: 230.46576pt x 195.81682pt.
-<../../Build/output/Matlab_graphs/Nicer_graphs/Ethiopia_stat.png, id=505, 562.2
+<../../Build/output/Matlab_graphs/Nicer_graphs/Ethiopia_stat.png, id=504, 562.2
 606pt x 421.575pt>
 File: ../../Build/output/Matlab_graphs/Nicer_graphs/Ethiopia_stat.png Graphic f
 ile (type png)
@@ -1011,7 +1021,7 @@ ile (type png)
 Package pdftex.def Info: ../../Build/output/Matlab_graphs/Nicer_graphs/Ethiopia
 _stat.png  used on input line 321.
 (pdftex.def)             Requested size: 230.46576pt x 195.81682pt.
-<../../Build/output/Matlab_graphs/Nicer_graphs/Rwanda_stat.png, id=507, 562.260
+<../../Build/output/Matlab_graphs/Nicer_graphs/Rwanda_stat.png, id=506, 562.260
 6pt x 421.575pt>
 File: ../../Build/output/Matlab_graphs/Nicer_graphs/Rwanda_stat.png Graphic fil
 e (type png)
@@ -1028,7 +1038,7 @@ LaTeX Warning: No positions in optional float specifier.
                Default added (so using `tbp') on input line 392.
 
 <../../Build/output/Matlab_graphs/Nicer_graphs/Central-African-Republic_stat.pn
-g, id=556, 562.2606pt x 421.575pt>
+g, id=555, 562.2606pt x 421.575pt>
 File: ../../Build/output/Matlab_graphs/Nicer_graphs/Central-African-Republic_st
 at.png Graphic file (type png)
 <use ../../Build/output/Matlab_graphs/Nicer_graphs/Central-African-Republic_sta
@@ -1037,7 +1047,7 @@ Package pdftex.def Info: ../../Build/output/Matlab_graphs/Nicer_graphs/Central-
 African-Republic_stat.png  used on input line 392.
 (pdftex.def)             Requested size: 230.46576pt x 195.81682pt.
 <../../Build/output/Matlab_graphs/Nicer_graphs/Central-African-Republic_opt.png
-, id=558, 562.2606pt x 421.575pt>
+, id=557, 562.2606pt x 421.575pt>
 File: ../../Build/output/Matlab_graphs/Nicer_graphs/Central-African-Republic_op
 t.png Graphic file (type png)
 <use ../../Build/output/Matlab_graphs/Nicer_graphs/Central-African-Republic_opt
@@ -1046,7 +1056,7 @@ Package pdftex.def Info: ../../Build/output/Matlab_graphs/Nicer_graphs/Central-
 African-Republic_opt.png  used on input line 392.
 (pdftex.def)             Requested size: 230.46576pt x 195.81682pt.
 <../../Build/output/Matlab_graphs/Nicer_graphs/United-Republic-of-Tanzania_stat
-.png, id=560, 562.2606pt x 421.575pt>
+.png, id=559, 562.2606pt x 421.575pt>
 File: ../../Build/output/Matlab_graphs/Nicer_graphs/United-Republic-of-Tanzania
 _stat.png Graphic file (type png)
 <use ../../Build/output/Matlab_graphs/Nicer_graphs/United-Republic-of-Tanzania_
@@ -1055,7 +1065,7 @@ Package pdftex.def Info: ../../Build/output/Matlab_graphs/Nicer_graphs/United-R
 epublic-of-Tanzania_stat.png  used on input line 392.
 (pdftex.def)             Requested size: 230.46576pt x 195.81682pt.
 <../../Build/output/Matlab_graphs/Nicer_graphs/United-Republic-of-Tanzania_opt.
-png, id=562, 562.2606pt x 421.575pt>
+png, id=561, 562.2606pt x 421.575pt>
 File: ../../Build/output/Matlab_graphs/Nicer_graphs/United-Republic-of-Tanzania
 _opt.png Graphic file (type png)
 <use ../../Build/output/Matlab_graphs/Nicer_graphs/United-Republic-of-Tanzania_
@@ -1069,7 +1079,7 @@ e (type png)
 Package pdftex.def Info: ../../Build/output/Matlab_graphs/Nicer_graphs/Rwanda_s
 tat.png  used on input line 392.
 (pdftex.def)             Requested size: 230.46576pt x 209.98932pt.
-<../../Build/output/Matlab_graphs/Nicer_graphs/Rwanda_opt.png, id=565, 562.2606
+<../../Build/output/Matlab_graphs/Nicer_graphs/Rwanda_opt.png, id=564, 562.2606
 pt x 421.575pt>
 File: ../../Build/output/Matlab_graphs/Nicer_graphs/Rwanda_opt.png Graphic file
  (type png)
@@ -1083,7 +1093,7 @@ n-Republic_opt.png (PNG copy)> <../../Build/output/Matlab_graphs/Nicer_graphs/U
 nited-Republic-of-Tanzania_stat.png (PNG copy)> <../../Build/output/Matlab_grap
 hs/Nicer_graphs/United-Republic-of-Tanzania_opt.png (PNG copy)> <../../Build/ou
 tput/Matlab_graphs/Nicer_graphs/Rwanda_opt.png (PNG copy)>]
-<../../Analysis/output/zeta_heatmaps/African_countries_zeta.png, id=588, 1806.7
+<../../Analysis/output/zeta_heatmaps/African_countries_zeta.png, id=587, 1806.7
 5pt x 1806.75pt>
 File: ../../Analysis/output/zeta_heatmaps/African_countries_zeta.png Graphic fi
 le (type png)
@@ -1094,7 +1104,7 @@ zeta.png  used on input line 401.
 [20
 
 ]
-<../../Analysis/output/zeta_heatmaps/Central-African-Republic_zeta.png, id=604,
+<../../Analysis/output/zeta_heatmaps/Central-African-Republic_zeta.png, id=603,
  481.8pt x 481.8pt>
 File: ../../Analysis/output/zeta_heatmaps/Central-African-Republic_zeta.png Gra
 phic file (type png)
@@ -1103,14 +1113,14 @@ Package pdftex.def Info: ../../Analysis/output/zeta_heatmaps/Central-African-Re
 public_zeta.png  used on input line 423.
 (pdftex.def)             Requested size: 163.89162pt x 163.89069pt.
 <../../Analysis/output/zeta_heatmaps/United-Republic-of-Tanzania_zeta.png, id=6
-05, 481.8pt x 481.8pt>
+04, 481.8pt x 481.8pt>
 File: ../../Analysis/output/zeta_heatmaps/United-Republic-of-Tanzania_zeta.png 
 Graphic file (type png)
 <use ../../Analysis/output/zeta_heatmaps/United-Republic-of-Tanzania_zeta.png>
 Package pdftex.def Info: ../../Analysis/output/zeta_heatmaps/United-Republic-of
 -Tanzania_zeta.png  used on input line 428.
 (pdftex.def)             Requested size: 163.89162pt x 163.89069pt.
-<../../Analysis/output/zeta_heatmaps/Rwanda_zeta.png, id=606, 481.8pt x 481.8pt
+<../../Analysis/output/zeta_heatmaps/Rwanda_zeta.png, id=605, 481.8pt x 481.8pt
 >
 File: ../../Analysis/output/zeta_heatmaps/Rwanda_zeta.png Graphic file (type pn
 g)
@@ -1118,7 +1128,7 @@ g)
 Package pdftex.def Info: ../../Analysis/output/zeta_heatmaps/Rwanda_zeta.png  u
 sed on input line 433.
 (pdftex.def)             Requested size: 163.89162pt x 163.89069pt.
-<../../Analysis/output/zeta_heatmaps/Madagascar_zeta.png, id=607, 481.8pt x 481
+<../../Analysis/output/zeta_heatmaps/Madagascar_zeta.png, id=606, 481.8pt x 481
 .8pt>
 File: ../../Analysis/output/zeta_heatmaps/Madagascar_zeta.png Graphic file (typ
 e png)
@@ -1126,7 +1136,7 @@ e png)
 Package pdftex.def Info: ../../Analysis/output/zeta_heatmaps/Madagascar_zeta.pn
 g  used on input line 439.
 (pdftex.def)             Requested size: 163.89162pt x 163.89069pt.
-<../../Analysis/output/zeta_heatmaps/Kenya_zeta.png, id=608, 481.8pt x 481.8pt>
+<../../Analysis/output/zeta_heatmaps/Kenya_zeta.png, id=607, 481.8pt x 481.8pt>
 
 File: ../../Analysis/output/zeta_heatmaps/Kenya_zeta.png Graphic file (type png
 )
@@ -1134,7 +1144,7 @@ File: ../../Analysis/output/zeta_heatmaps/Kenya_zeta.png Graphic file (type png
 Package pdftex.def Info: ../../Analysis/output/zeta_heatmaps/Kenya_zeta.png  us
 ed on input line 444.
 (pdftex.def)             Requested size: 163.89162pt x 163.89069pt.
-<../../Analysis/output/zeta_heatmaps/Chad_zeta.png, id=609, 481.8pt x 481.8pt>
+<../../Analysis/output/zeta_heatmaps/Chad_zeta.png, id=608, 481.8pt x 481.8pt>
 File: ../../Analysis/output/zeta_heatmaps/Chad_zeta.png Graphic file (type png)
 
 <use ../../Analysis/output/zeta_heatmaps/Chad_zeta.png>
@@ -1147,7 +1157,7 @@ sis/output/zeta_heatmaps/United-Republic-of-Tanzania_zeta.png> <../../Analysis/
 output/zeta_heatmaps/Rwanda_zeta.png> <../../Analysis/output/zeta_heatmaps/Mada
 gascar_zeta.png> <../../Analysis/output/zeta_heatmaps/Kenya_zeta.png> <../../An
 alysis/output/zeta_heatmaps/Chad_zeta.png>]
-<../../Analysis/output/zeta_heatmaps/African_gridcells_zeta.png, id=637, 1806.7
+<../../Analysis/output/zeta_heatmaps/African_gridcells_zeta.png, id=636, 1806.7
 5pt x 1806.75pt>
 File: ../../Analysis/output/zeta_heatmaps/African_gridcells_zeta.png Graphic fi
 le (type png)
@@ -1157,14 +1167,14 @@ zeta.png  used on input line 469.
 (pdftex.def)             Requested size: 332.89412pt x 294.98627pt.
 [23 <../../Analysis/output/zeta_heatmaps/African_gridcells_zeta.png>] [24] [25]
 [26]
-<../../Analysis/output/other_maps/all_rails.png, id=756, 1806.75pt x 1806.75pt>
+<../../Analysis/output/other_maps/all_rails.png, id=755, 1806.75pt x 1806.75pt>
 
 File: ../../Analysis/output/other_maps/all_rails.png Graphic file (type png)
 <use ../../Analysis/output/other_maps/all_rails.png>
 Package pdftex.def Info: ../../Analysis/output/other_maps/all_rails.png  used o
 n input line 514.
 (pdftex.def)             Requested size: 245.82962pt x 219.94218pt.
-<../../Analysis/output/other_maps/emst.png, id=758, 1806.75pt x 1806.75pt>
+<../../Analysis/output/other_maps/emst.png, id=757, 1806.75pt x 1806.75pt>
 File: ../../Analysis/output/other_maps/emst.png Graphic file (type png)
 <use ../../Analysis/output/other_maps/emst.png>
 Package pdftex.def Info: ../../Analysis/output/other_maps/emst.png  used on inp
@@ -1172,7 +1182,7 @@ ut line 519.
 (pdftex.def)             Requested size: 245.82962pt x 219.94218pt.
 [27 <../../Analysis/output/other_maps/all_rails.png> <../../Analysis/output/oth
 er_maps/emst.png>] [28] [29] [30] [31] [32]
-<../../Analysis/output/other_maps/ethnicity_zeta.png, id=881, 1204.5pt x 1204.5
+<../../Analysis/output/other_maps/ethnicity_zeta.png, id=880, 1204.5pt x 1204.5
 pt>
 File: ../../Analysis/output/other_maps/ethnicity_zeta.png Graphic file (type pn
 g)
@@ -1182,13 +1192,13 @@ sed on input line 706.
 (pdftex.def)             Requested size: 332.89412pt x 272.47838pt.
 [33] [34 <../../Analysis/output/other_maps/ethnicity_zeta.png>] [35] [36] [37] 
 [38] [39] [40] [41]
-<../../Analysis/output/other_maps/aid_wb.png, id=1147, 1806.75pt x 1806.75pt>
+<../../Analysis/output/other_maps/aid_wb.png, id=1146, 1806.75pt x 1806.75pt>
 File: ../../Analysis/output/other_maps/aid_wb.png Graphic file (type png)
 <use ../../Analysis/output/other_maps/aid_wb.png>
 Package pdftex.def Info: ../../Analysis/output/other_maps/aid_wb.png  used on i
 nput line 880.
 (pdftex.def)             Requested size: 245.82962pt x 252.2113pt.
-<../../Analysis/output/other_maps/aid_China.png, id=1149, 1806.75pt x 1806.75pt
+<../../Analysis/output/other_maps/aid_China.png, id=1148, 1806.75pt x 1806.75pt
 >
 File: ../../Analysis/output/other_maps/aid_China.png Graphic file (type png)
 <use ../../Analysis/output/other_maps/aid_China.png>
@@ -1198,7 +1208,7 @@ n input line 885.
 [42] [43 <../../Analysis/output/other_maps/aid_wb.png> <../../Analysis/output/o
 ther_maps/aid_China.png>] [44] [45] [46] [47] [48] [49] (./Spatial_Inefficienci
 es.bbl [50] [51] [52]) [53] [54]
-<../../Analysis/output/descriptives/histogram.png, id=1330, 481.8pt x 481.8pt>
+<../../Analysis/output/descriptives/histogram.png, id=1329, 481.8pt x 481.8pt>
 File: ../../Analysis/output/descriptives/histogram.png Graphic file (type png)
 <use ../../Analysis/output/descriptives/histogram.png>
 Package pdftex.def Info: ../../Analysis/output/descriptives/histogram.png  used
@@ -1271,10 +1281,10 @@ dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2018/texmf-d
 ist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2018/texmf-dis
 t/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2018/texmf-dist
 /fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on Spatial_Inefficiencies.pdf (58 pages, 3411005 bytes).
+Output written on Spatial_Inefficiencies.pdf (58 pages, 3410978 bytes).
 PDF statistics:
- 1525 PDF objects out of 1728 (max. 8388607)
- 1352 compressed objects within 14 object streams
+ 1524 PDF objects out of 1728 (max. 8388607)
+ 1351 compressed objects within 14 object streams
  272 named destinations out of 1000 (max. 500000)
  464 words of extra memory for PDF output out of 10000 (max. 10000000)
 
