@@ -1,12 +1,12 @@
 This is BibTeX, Version 0.99d (TeX Live 2018)
 Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
-The top-level auxiliary file: MPhil_thesis.aux
+The top-level auxiliary file: Spatial_Inefficiencies.aux
 The style file: cantoni_copy.bst
-Database file #1: Thesis_library2.bib
+Database file #1: Spatial_Bib.bib
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 You've used 100 entries,
             3066 wiz_defined-function locations,
-            1223 strings with 26052 characters,
+            1223 strings with 26068 characters,
 and the built_in function-call counts, 64245 in all, are:
 = -- 5595
 > -- 2474
