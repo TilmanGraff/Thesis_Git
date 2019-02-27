@@ -1,4 +1,4 @@
-PWD /Users/tilmangraff/Documents/GitHub/Thesis_Git/Write/WorkingPaper
+PWD /Users/tilman/Documents/GitHub/Thesis_Git/Write/WorkingPaper
 INPUT /usr/local/texlive/2018/texmf.cnf
 INPUT /usr/local/texlive/2018/texmf-dist/web2c/texmf.cnf
 INPUT /usr/local/texlive/2018/texmf-var/web2c/pdftex/pdflatex.fmt
@@ -445,10 +445,6 @@ INPUT ../../Analysis/output/other_maps/all_rails.png
 INPUT ../../Analysis/output/other_maps/all_rails.png
 INPUT ../../Analysis/output/other_maps/all_rails.png
 INPUT ../../Analysis/output/other_maps/all_rails.png
-INPUT ../../Analysis/output/other_maps/emst.png
-INPUT ../../Analysis/output/other_maps/emst.png
-INPUT ../../Analysis/output/other_maps/emst.png
-INPUT ../../Analysis/output/other_maps/emst.png
 INPUT ../../Analysis/output/other_maps/ethnicity_zeta.png
 INPUT ../../Analysis/output/other_maps/ethnicity_zeta.png
 INPUT ../../Analysis/output/other_maps/ethnicity_zeta.png

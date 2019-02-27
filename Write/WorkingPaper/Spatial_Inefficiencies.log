@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.9.20)  13 OCT 2018 15:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.1.11)  27 FEB 2019 15:57
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1166,53 +1166,45 @@ Package pdftex.def Info: ../../Analysis/output/zeta_heatmaps/African_gridcells_
 zeta.png  used on input line 469.
 (pdftex.def)             Requested size: 332.89412pt x 294.98627pt.
 [23 <../../Analysis/output/zeta_heatmaps/African_gridcells_zeta.png>] [24] [25]
-[26]
-<../../Analysis/output/other_maps/all_rails.png, id=755, 1806.75pt x 1806.75pt>
+<../../Analysis/output/other_maps/all_rails.png, id=715, 1806.75pt x 1806.75pt>
 
 File: ../../Analysis/output/other_maps/all_rails.png Graphic file (type png)
 <use ../../Analysis/output/other_maps/all_rails.png>
 Package pdftex.def Info: ../../Analysis/output/other_maps/all_rails.png  used o
-n input line 514.
-(pdftex.def)             Requested size: 245.82962pt x 219.94218pt.
-<../../Analysis/output/other_maps/emst.png, id=757, 1806.75pt x 1806.75pt>
-File: ../../Analysis/output/other_maps/emst.png Graphic file (type png)
-<use ../../Analysis/output/other_maps/emst.png>
-Package pdftex.def Info: ../../Analysis/output/other_maps/emst.png  used on inp
-ut line 519.
-(pdftex.def)             Requested size: 245.82962pt x 219.94218pt.
-[27 <../../Analysis/output/other_maps/all_rails.png> <../../Analysis/output/oth
-er_maps/emst.png>] [28] [29] [30] [31] [32]
-<../../Analysis/output/other_maps/ethnicity_zeta.png, id=880, 1204.5pt x 1204.5
+n input line 508.
+(pdftex.def)             Requested size: 307.2929pt x 274.94618pt.
+[26 <../../Analysis/output/other_maps/all_rails.png>] [27] [28] [29] [30]
+<../../Analysis/output/other_maps/ethnicity_zeta.png, id=814, 1204.5pt x 1204.5
 pt>
 File: ../../Analysis/output/other_maps/ethnicity_zeta.png Graphic file (type pn
 g)
 <use ../../Analysis/output/other_maps/ethnicity_zeta.png>
 Package pdftex.def Info: ../../Analysis/output/other_maps/ethnicity_zeta.png  u
-sed on input line 706.
+sed on input line 674.
 (pdftex.def)             Requested size: 332.89412pt x 272.47838pt.
-[33] [34 <../../Analysis/output/other_maps/ethnicity_zeta.png>] [35] [36] [37] 
-[38] [39] [40] [41]
-<../../Analysis/output/other_maps/aid_wb.png, id=1146, 1806.75pt x 1806.75pt>
+[31 <../../Analysis/output/other_maps/ethnicity_zeta.png>] [32] [33] [34] [35] 
+[36]
+<../../Analysis/output/other_maps/aid_wb.png, id=1018, 1806.75pt x 1806.75pt>
 File: ../../Analysis/output/other_maps/aid_wb.png Graphic file (type png)
 <use ../../Analysis/output/other_maps/aid_wb.png>
 Package pdftex.def Info: ../../Analysis/output/other_maps/aid_wb.png  used on i
-nput line 880.
+nput line 817.
 (pdftex.def)             Requested size: 245.82962pt x 252.2113pt.
-<../../Analysis/output/other_maps/aid_China.png, id=1148, 1806.75pt x 1806.75pt
+<../../Analysis/output/other_maps/aid_China.png, id=1020, 1806.75pt x 1806.75pt
 >
 File: ../../Analysis/output/other_maps/aid_China.png Graphic file (type png)
 <use ../../Analysis/output/other_maps/aid_China.png>
 Package pdftex.def Info: ../../Analysis/output/other_maps/aid_China.png  used o
-n input line 885.
+n input line 822.
 (pdftex.def)             Requested size: 245.82962pt x 252.2113pt.
-[42] [43 <../../Analysis/output/other_maps/aid_wb.png> <../../Analysis/output/o
-ther_maps/aid_China.png>] [44] [45] [46] [47] [48] [49] (./Spatial_Inefficienci
-es.bbl [50] [51] [52]) [53] [54]
-<../../Analysis/output/descriptives/histogram.png, id=1329, 481.8pt x 481.8pt>
+[37] [38 <../../Analysis/output/other_maps/aid_wb.png> <../../Analysis/output/o
+ther_maps/aid_China.png>] [39] [40] [41] [42] [43] [44] (./Spatial_Inefficienci
+es.bbl [45] [46] [47]) [48] [49]
+<../../Analysis/output/descriptives/histogram.png, id=1202, 481.8pt x 481.8pt>
 File: ../../Analysis/output/descriptives/histogram.png Graphic file (type png)
 <use ../../Analysis/output/descriptives/histogram.png>
 Package pdftex.def Info: ../../Analysis/output/descriptives/histogram.png  used
- on input line 1087.
+ on input line 1024.
 (pdftex.def)             Requested size: 245.82962pt x 237.59865pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
@@ -1226,13 +1218,13 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[55 <../../Analysis/output/descriptives/histogram.png>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1355.
-[56] [57] [58]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1355.
+[50 <../../Analysis/output/descriptives/histogram.png>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1334.
+[51] [52] [53]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1334.
 (./Spatial_Inefficiencies.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1355.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1355.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1334.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1334.
 
 Package rerunfilecheck Info: File `Spatial_Inefficiencies.out' has not changed.
 
@@ -1240,16 +1232,16 @@ Package rerunfilecheck Info: File `Spatial_Inefficiencies.out' has not changed.
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1355.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1334.
  ) 
 Here is how much of TeX's memory you used:
- 22782 strings out of 492649
- 454397 string characters out of 6129622
- 691327 words of memory out of 5000000
- 25936 multiletter control sequences out of 15000+600000
+ 22729 strings out of 492649
+ 452554 string characters out of 6129622
+ 699696 words of memory out of 5000000
+ 25902 multiletter control sequences out of 15000+600000
  23290 words of font info for 86 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,18n,77p,4503b,617s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 55i,18n,77p,3180b,615s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></
@@ -1281,10 +1273,10 @@ dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2018/texmf-d
 ist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2018/texmf-dis
 t/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2018/texmf-dist
 /fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on Spatial_Inefficiencies.pdf (58 pages, 3410978 bytes).
+Output written on Spatial_Inefficiencies.pdf (53 pages, 3189763 bytes).
 PDF statistics:
- 1524 PDF objects out of 1728 (max. 8388607)
- 1351 compressed objects within 14 object streams
- 272 named destinations out of 1000 (max. 500000)
- 464 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1399 PDF objects out of 1440 (max. 8388607)
+ 1235 compressed objects within 13 object streams
+ 253 named destinations out of 1000 (max. 500000)
+ 453 words of extra memory for PDF output out of 10000 (max. 10000000)
 

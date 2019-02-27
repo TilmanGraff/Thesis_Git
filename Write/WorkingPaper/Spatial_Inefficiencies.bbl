@@ -1,4 +1,4 @@
-\begin{thebibliography}{100}
+\begin{thebibliography}{91}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\urlprefix}{URL }
@@ -65,14 +65,6 @@
 \newblock Lighting the {{Path}}: {{The Influence}} of {{Historical Christian
   Missions}} on {{Modern}}-Day {{Development Aid Allocation}} in {{Africa}}.
 \newblock {{AidData Working Paper}}~47, {AidData}, Williamsburg, VA
-
-\bibitem[{Altonji et~al.(2005)Altonji, Elder, and
-  Taber}]{Altonji_SelectionObservedUnobserved_2005}
-\textbf{Altonji, Joseph~G., Todd~E. Elder, and Christopher~R. Taber}
-  (\textbf{2005}).
-\newblock Selection on {{Observed}} and {{Unobserved Variables}}: {{Assessing}}
-  the {{Effectiveness}} of {{Catholic Schools}}.
-\newblock \emph{Journal of Political Economy} 113(1), pp. 151--184
 
 \bibitem[{Anderson and
   Van~Wincoop(2003)}]{Anderson_Gravitygravitassolution_2003}
@@ -162,15 +154,6 @@
 \newblock Higher {{Education}} and {{Prosperity}}: {{From Catholic
   Missionaries}} to {{Luminosity}} in {{India}}.
 \newblock \emph{The Economic Journal} pp. 1--37
-
-\bibitem[{Chaves et~al.(2014)Chaves, Engerman, and
-  Robinson}]{Chaves_ReinventingWheelEconomic_2014}
-\textbf{Chaves, Isa\'ias~N., Stanley~L. Engerman, and James~A. Robinson}
-  (\textbf{2014}).
-\newblock Reinventing the Wheel: {{The}} Economic Benefits of Wheeled
-  Transportation in Early {{British Colonial West Africa}}.
-\newblock In: \emph{Africa's {{Development}} in {{Historical Perspective}}}.
-  {Cambridge University Press}, New York
 
 \bibitem[{Clemens and Kremer(2016)}]{Clemens_NewRoleWorld_2016}
 \textbf{Clemens, Michael~A. and Michael Kremer} (\textbf{2016}).
@@ -286,11 +269,6 @@
 \newblock \emph{Geological Society, London, Special Publications} 132(1), pp.
   109--129
 
-\bibitem[{Ekundare(1973)}]{Ekundare_EconomicHistoryNigeria_1973}
-\textbf{Ekundare, R.~Olufemi} (\textbf{1973}).
-\newblock \emph{An Economic History of {{Nigeria}}, 1860-1960}.
-\newblock {Methuen}, London
-
 \bibitem[{Faber(2014)}]{Faber_TradeIntegrationMarket_2014}
 \textbf{Faber, Benjamin} (\textbf{2014}).
 \newblock Trade {{Integration}}, {{Market Size}}, and {{Industrialization}}:
@@ -308,11 +286,6 @@
 \textbf{Fajgelbaum, Pablo~D. and Edouard Schaal} (\textbf{2017}).
 \newblock Optimal Transport Networks in Spatial Equilibrium.
 \newblock Working {{Paper}}, {National Bureau of Economic Research}
-
-\bibitem[{Falola and Heaton(2008)}]{Falola_historyNigeria_2008}
-\textbf{Falola, Toyin and Matthew~M. Heaton} (\textbf{2008}).
-\newblock \emph{A History of {{Nigeria}}}.
-\newblock {Cambridge University Press}, Cambridge, UK and New York
 
 \bibitem[{Foster and
   {Brice\~no-Garmendia}(2010)}]{Foster_AfricaInfrastructureTime_2010}
@@ -504,13 +477,8 @@
 \newblock \emph{Africa: Its Peoples and Their Culture History}.
 \newblock {McGraw-Hill}, New York; London
 
-\bibitem[{Nunn(2008)}]{Nunn_LongtermEffectsAfrica_2008}
-\textbf{Nunn, Nathan} (\textbf{2008}).
-\newblock The Long-Term Effects of {{Africa}}'s Slave Trades.
-\newblock \emph{The Quarterly Journal of Economics} 123(1), pp. 139--176
-
 \bibitem[{Nunn(2010)}]{Nunn_ReligiousConversionColonial_2010}
----{}---{}--- (\textbf{2010}).
+\textbf{Nunn, Nathan} (\textbf{2010}).
 \newblock Religious {{Conversion}} in {{Colonial Africa}}.
 \newblock \emph{The American Economic Review} 100(2), pp. 147--152
 
@@ -518,12 +486,6 @@
 \textbf{Nunn, Nathan and Nancy Qian} (\textbf{2014}).
 \newblock {{US Food Aid}} and {{Civil Conflict}}.
 \newblock \emph{The American Economic Review} 104(6), pp. 1630--1666
-
-\bibitem[{Nunn and Wantchekon(2011)}]{Nunn_SlaveTradeOrigins_2011}
-\textbf{Nunn, Nathan and Leonard Wantchekon} (\textbf{2011}).
-\newblock The {{Slave Trade}} and the {{Origins}} of {{Mistrust}} in
-  {{Africa}}.
-\newblock \emph{The American Economic Review} 101(7), pp. 3221--3252
 
 \bibitem[{OCHA(2017)}]{OCHA_SouthSudanAdministrative_2017}
 \textbf{OCHA, United Nations Office for the Coordination of
@@ -536,12 +498,6 @@
 \bibitem[{{OpenStreetMap}(2017)}]{OpenStreetMap__2017}
 \textbf{{OpenStreetMap}} (\textbf{2017}).
 \newblock \url{https://www.openstreetmap.org/}
-
-\bibitem[{Oster(2018)}]{Oster_UnobservableSelectionCoefficient_2018}
-\textbf{Oster, Emily} (\textbf{2018}).
-\newblock Unobservable {{Selection}} and {{Coefficient Stability}}: {{Theory}}
-  and {{Evidence}}.
-\newblock \emph{Journal of Business \& Economic Statistics} forthcoming
 
 \bibitem[{Pinkovskiy and
   {Sala-i-Martin}(2016)}]{Pinkovskiy_LightsCameraIncome_2016}
@@ -565,11 +521,6 @@
 \textbf{{Socioeconomic Data {and} Applications Center}} (\textbf{2016}).
 \newblock Gridded {{Population}} of the {{World}} ({{GPW}}), v4 | {{SEDAC}}.
 \newblock \url{http://sedac.ciesin.columbia.edu/data/collection/gpw-v4}
-
-\bibitem[{Soumahoro(2015)}]{Soumahoro_LeadershipfavouritismAfrica_2015}
-\textbf{Soumahoro, Souleymane} (\textbf{2015}).
-\newblock Leadership Favouritism in {{Africa}}.
-\newblock \emph{Applied Economics Letters} 22(15), pp. 1236--1239
 
 \bibitem[{Storeygard(2016)}]{Storeygard_FartherRoadTransport_2016}
 \textbf{Storeygard, Adam} (\textbf{2016}).
@@ -633,13 +584,5 @@
 \newblock Education and {{Human Capital Externalities}}: {{Evidence}} from
   {{Colonial Benin}}.
 \newblock \emph{The Quarterly Journal of Economics} 130(2), pp. 703--757
-
-\bibitem[{Woltjer et~al.(2018)Woltjer, Frankema, and
-  Williamson}]{Woltjer_EconomicRationaleWest_2018}
-\textbf{Woltjer, Pieter, Ewout Frankema, and Jeffrey Williamson}
-  (\textbf{2018}).
-\newblock An {{Economic Rationale}} for the {{West African Scramble}}?: {{The
-  Commercial Transition}} and the {{Commodity Price Boom}} of 1835-1885.
-\newblock \emph{Journal of Economic History} 78(2), pp. 1--45
 
 \end{thebibliography}
