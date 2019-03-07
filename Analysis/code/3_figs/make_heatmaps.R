@@ -6,7 +6,7 @@
 
 # file.remove(list.files(path="/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/zeta_heatmaps/", full.names = T))
 
-opt_loc <- read.csv("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/input/opt_loc.csv")
+opt_loc <- read.csv("/Users/tilman/Documents/GitHub/Thesis_Git/Analysis/input/opt_loc.csv")
 
 country_table <- as.data.frame(table(opt_loc$country))
 country_names <- paste(country_table[country_table$Freq != 0,"Var1"])
@@ -34,17 +34,17 @@ national_zeta <- national_zeta[order(-national_zeta$zeta),]
 ####
 # 1) Map of all countries by their collective zeta
 
-library(RColorBrewer)
-library("rgdal", lib.loc="/Library/Frameworks/R.framework/Versions/3.4/Resources/library")
-library(classInt)
-library(sp)
+require("RColorBrewer")
+require("rgdal")
+require("classInt")
+require("sp")
 
-world <- readOGR("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/input/World_Countries/TM_WORLD_BORDERS-0.3.shp") # reads in the global country shapefile
+world <- readOGR("/Users/tilman/Documents/GitHub/Thesis_Git/Build/input/World_Countries/TM_WORLD_BORDERS-0.3.shp") # reads in the global country shapefile
 
 africa <- world[world@data$REGION==2,]
 
 
-ssudan <- readOGR("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/input/South-Sudan/ssd_admbnda_adm0_200k_ssnbs_20160114.shp")
+ssudan <- readOGR("/Users/tilman/Documents/GitHub/Thesis_Git/Build/input/South-Sudan/ssd_admbnda_adm0_200k_ssnbs_20160114.shp")
 
 ssudan@data <- africa@data[1,]
 ssudan@data[1,] <- NA
@@ -85,8 +85,8 @@ edges[2, ] <- (edges[2, ] - mean(edges[2, ])) * scale.parameter + mean(edges[2,
 
 
 
-png(filename=paste("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/zeta_heatmaps/African_countries_zeta.png", sep=""), width=6, height=6, units = 'in', res=300 )
-print(spplot(africa, "zeta", col="transparent", col.regions=my.palette, cuts=8, xlim=edges[1,], ylim=edges[2,])) # cuts always has to be one less than n in the definition of my.palette
+png(filename=paste("/Users/tilman/Documents/GitHub/Thesis_Git/Analysis/output/zeta_heatmaps/African_countries_zeta.png", sep=""), width=6, height=6, units = 'in', res=300 )
+print(spplot(africa, "zeta", col="transparent", col.regions=my.palette, cuts=8, xlim=edges[1,], ylim=edges[2,], colorkey=F, par.settings = list(axis.line = list(col = "transparent")))) # cuts always has to be one less than n in the definition of my.palette
 dev.off()
 
 ###
