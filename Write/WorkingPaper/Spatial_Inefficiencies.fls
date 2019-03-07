@@ -403,6 +403,10 @@ INPUT ../../Analysis/output/zeta_heatmaps/African_countries_zeta.png
 INPUT ../../Analysis/output/zeta_heatmaps/African_countries_zeta.png
 INPUT ../../Analysis/output/zeta_heatmaps/African_countries_zeta.png
 INPUT ../../Analysis/output/zeta_heatmaps/African_countries_zeta.png
+INPUT ../../Analysis/output/descriptives/country_barchart.pdf
+INPUT ../../Analysis/output/descriptives/country_barchart.pdf
+INPUT ../../Analysis/output/descriptives/country_barchart.pdf
+INPUT ../../Analysis/output/descriptives/country_barchart.pdf
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmbx7.tfm
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmmib10.tfm
