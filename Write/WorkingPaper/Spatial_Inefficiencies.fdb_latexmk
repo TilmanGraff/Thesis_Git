@@ -1,18 +1,19 @@
 # Fdb version 3
-["bibtex Spatial_Inefficiencies"] 1551282813 "Spatial_Inefficiencies.aux" "Spatial_Inefficiencies.bbl" "Spatial_Inefficiencies" 1551283043
+["bibtex Spatial_Inefficiencies"] 1551926201 "Spatial_Inefficiencies.aux" "Spatial_Inefficiencies.bbl" "Spatial_Inefficiencies" 1551927100
   "./cantoni_copy.bst" 1547132909 31804 60671cc588feaf916e452d009b3df8df ""
   "Spatial_Bib.bib" 1547132909 124312 b5bd847ac79092bf8ecc4080cbfa8e98 ""
-  "Spatial_Inefficiencies.aux" 1551283043 34134 c306bf71529387f8a6198f6c0c14ca3b ""
+  "Spatial_Inefficiencies.aux" 1551927099 33449 a53117e07b4d61ad7f52b0eecd2ff112 ""
   (generated)
-  "Spatial_Inefficiencies.bbl"
   "Spatial_Inefficiencies.blg"
-["pdflatex"] 1551283040 "Spatial_Inefficiencies.tex" "Spatial_Inefficiencies.pdf" "Spatial_Inefficiencies" 1551283043
+  "Spatial_Inefficiencies.bbl"
+["pdflatex"] 1551927097 "Spatial_Inefficiencies.tex" "Spatial_Inefficiencies.pdf" "Spatial_Inefficiencies" 1551927100
+  "../../Analysis/output/descriptives/country_barchart.pdf" 1551926543 5977 209530193780904565a65ecc976d5045 ""
   "../../Analysis/output/descriptives/histogram.png" 1547132908 21236 cfed647e51676ec7c6684a84fe7f4dda ""
   "../../Analysis/output/other_maps/aid_China.png" 1547132908 410304 ff054cf9114f701b37492a03032a6e63 ""
   "../../Analysis/output/other_maps/aid_wb.png" 1547132908 588742 47e3c00a490581d0ff4fe9cb872c695a ""
   "../../Analysis/output/other_maps/all_rails.png" 1547132908 262079 0d209ff3e5ffd760a42490809bac4b07 ""
   "../../Analysis/output/other_maps/ethnicity_zeta.png" 1547132908 304387 d330f3a5176980758b8cc3f7de7f5cb4 ""
-  "../../Analysis/output/zeta_heatmaps/African_countries_zeta.png" 1547132908 202400 07b33076fab543a677fee528c8f559b0 ""
+  "../../Analysis/output/zeta_heatmaps/African_countries_zeta.png" 1551926106 201616 53934527fad1b763becd8d3a694a327d ""
   "../../Analysis/output/zeta_heatmaps/African_gridcells_zeta.png" 1547132908 212432 6b2c95ea6d5e1822f3b77e71cb9d50c4 ""
   "../../Analysis/output/zeta_heatmaps/Central-African-Republic_zeta.png" 1547132908 22034 4cb81692e4140b7ec349a2883f64510d ""
   "../../Analysis/output/zeta_heatmaps/Chad_zeta.png" 1547132908 18227 f5ac884bd90b1c5a0a6a8555856f34db ""
@@ -268,12 +269,12 @@
   "/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1523934492 2717033 f61a5287d9c22a39a74f1979fe3f905c ""
   "/usr/local/texlive/2018/texmf-var/web2c/pdftex/pdflatex.fmt" 1547209289 4220280 c29fb41fa918facc757bc7e76d412496 ""
   "/usr/local/texlive/2018/texmf.cnf" 1523934483 577 0b39adfd7c93507ff20c9c14c2f1a33f ""
-  "Spatial_Inefficiencies.aux" 1551283043 34134 c306bf71529387f8a6198f6c0c14ca3b ""
-  "Spatial_Inefficiencies.bbl" 1551282813 28267 502ffe6ce39e497229f701534dba7a6a "bibtex Spatial_Inefficiencies"
-  "Spatial_Inefficiencies.out" 1551283043 1720 5c408241523e5a43f784974b5192812e ""
-  "Spatial_Inefficiencies.tex" 1551283040 210564 2c964bc492e260db4a7e22a4b0969d7f ""
+  "Spatial_Inefficiencies.aux" 1551927099 33449 a53117e07b4d61ad7f52b0eecd2ff112 ""
+  "Spatial_Inefficiencies.bbl" 1551926202 26913 bafd4281f3e8b65c14d294c0786dafe6 "bibtex Spatial_Inefficiencies"
+  "Spatial_Inefficiencies.out" 1551927099 1720 5c408241523e5a43f784974b5192812e ""
+  "Spatial_Inefficiencies.tex" 1551927097 209960 c19c383dcdf513a9e81f7da5c1f2a2d4 ""
   (generated)
-  "Spatial_Inefficiencies.pdf"
   "Spatial_Inefficiencies.aux"
   "Spatial_Inefficiencies.log"
+  "Spatial_Inefficiencies.pdf"
   "Spatial_Inefficiencies.out"

@@ -1,21 +1,7 @@
-\begin{thebibliography}{91}
+\begin{thebibliography}{87}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\urlprefix}{URL }
-
-\bibitem[{Acemoglu et~al.(2001)Acemoglu, Johnson, and
-  Robinson}]{Acemoglu_ColonialOriginsComparative_2001}
-\textbf{Acemoglu, Daron, Simon Johnson, and James~A. Robinson} (\textbf{2001}).
-\newblock The {{Colonial Origins}} of {{Comparative Development}}: {{An
-  Empirical Investigation}}.
-\newblock \emph{The American Economic Review} 91(5), pp. 1369--1401
-
-\bibitem[{Acemoglu et~al.(2002)Acemoglu, Johnson, and
-  Robinson}]{Acemoglu_ReversalFortuneGeography_2002}
----{}---{}--- (\textbf{2002}).
-\newblock Reversal of Fortune: {{Geography}} and Institutions in the Making of
-  the Modern World Income Distribution.
-\newblock \emph{The Quarterly Journal of Economics} 117(4), pp. 1231--1294
 
 \bibitem[{AidData(2017)}]{AidData_WorldBankGeocoded_2017}
 \textbf{AidData} (\textbf{2017}).
@@ -71,12 +57,6 @@
 \textbf{Anderson, James~E. and Eric Van~Wincoop} (\textbf{2003}).
 \newblock Gravity with Gravitas: A Solution to the Border Puzzle.
 \newblock \emph{The American Economic Review} 93(1), pp. 170--192
-
-\bibitem[{Angrist and Pischke(2008)}]{Angrist_MostlyHarmlessEconometrics_2008}
-\textbf{Angrist, Joshua~D. and J\"orn-Steffen Pischke} (\textbf{2008}).
-\newblock \emph{Mostly {{Harmless Econometrics}}: {{An Empiricist}}'s
-  {{Companion}}.}
-\newblock {Princeton University Press}, New Jersey
 
 \bibitem[{Atkin and Donaldson(2015)}]{Atkin_WhoGettingGlobalized_2015}
 \textbf{Atkin, David and Dave Donaldson} (\textbf{2015}).
@@ -576,13 +556,5 @@
 \newblock Integrating {{Data}} on {{Ethnicity}}, {{Geography}}, and
   {{Conflict}}: {{The Ethnic Power Relations Data Set Family}}.
 \newblock \emph{Journal of Conflict Resolution} 59(7), pp. 1327--1342
-
-\bibitem[{Wantchekon et~al.(2015)Wantchekon, Kla{\v s}nja, and
-  Novta}]{Wantchekon_EducationHumanCapital_2015}
-\textbf{Wantchekon, Leonard, Marko Kla{\v s}nja, and Natalija Novta}
-  (\textbf{2015}).
-\newblock Education and {{Human Capital Externalities}}: {{Evidence}} from
-  {{Colonial Benin}}.
-\newblock \emph{The Quarterly Journal of Economics} 130(2), pp. 703--757
 
 \end{thebibliography}
