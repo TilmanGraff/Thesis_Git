@@ -45,7 +45,7 @@ opt_loc_nat[opt_loc_nat$country=="Africa","col"] = "black"
 
 pdf("/Users/tilman/Documents/GitHub/Thesis_Git/Analysis/output/descriptives/country_barchart.pdf", width=8,height=8)
 par(mar=c(5,3,1,1))
-plot(0,0, type="n", xlab="Hypothetical welfare gain (in %)", ylab="", bty="n", axes=F, xlim=c(0, max(opt_loc_nat$welfare_gains)*1.1), ylim=c(1,nrow(opt_loc_nat)))
+plot(0,0, type="n", xlab="Hypothetical welfare gain", ylab="", bty="n", axes=F, xlim=c(0, max(opt_loc_nat$welfare_gains)*1.1), ylim=c(1,nrow(opt_loc_nat)))
 
 for(i in 1:nrow(opt_loc_nat)){
 
@@ -60,6 +60,6 @@ for(i in 1:nrow(opt_loc_nat)){
 }
 
 abline(v=0)
-axis(1, at=c(0:6))
+axis(1, at=c(0:6), labels=paste0(c(0:6), "%"))
 
 dev.off()

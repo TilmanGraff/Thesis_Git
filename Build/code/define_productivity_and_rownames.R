@@ -3,9 +3,7 @@
 # It then creates productivity matrices for every country with enough locations
 # It also slightly amends the pop_dens variable to account for gridcells that are partially covered by water
 
-
-
-centroids <- read.csv("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/centroids.csv")
+centroids <- read.csv("./Build/temp/centroids.csv")
 centroids <- centroids[centroids$region==2,]
 
 #########
@@ -13,7 +11,7 @@ centroids <- centroids[centroids$region==2,]
 #########
 
 
-filenames <- list.files(path="/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/rosettastones", full.names = T)
+filenames <- list.files(path="./Build/temp/rosettastones", full.names = T)
 
 rosetta <- read.csv(filenames[1]) # initialises
 
@@ -48,7 +46,7 @@ centroids_merged$pop_dens <- centroids_merged$pop / (centroids_merged$gridarea *
 
 # Delete existing matrices
 
- file.remove(list.files(path="/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/productivities", full.names = T))
+ file.remove(list.files(path="./Build/temp/productivities", full.names = T))
 
 # Gather country names
 country_table <- as.data.frame(table(centroids[centroids$region ==2, "country"]))

@@ -340,10 +340,12 @@ INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmmib10.tfm
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmbsy10.tfm
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
-INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmti9.tfm
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmcsc10.tfm
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmcsc10.tfm
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmtt10.tfm
+INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmti9.tfm
+INPUT Spatial_Inefficiencies.bbl
+INPUT Spatial_Inefficiencies.bbl
 INPUT ../../Build/output/Road_Networks/network_Nigeria.png
 INPUT ../../Build/output/Road_Networks/network_Nigeria.png
 INPUT ../../Build/output/Road_Networks/network_Nigeria.png
@@ -461,8 +463,6 @@ INPUT ../../Analysis/output/other_maps/aid_China.png
 INPUT ../../Analysis/output/other_maps/aid_China.png
 INPUT ../../Analysis/output/other_maps/aid_China.png
 INPUT ../../Analysis/output/other_maps/aid_China.png
-INPUT Spatial_Inefficiencies.bbl
-INPUT Spatial_Inefficiencies.bbl
 INPUT ../../Analysis/output/descriptives/histogram.png
 INPUT ../../Analysis/output/descriptives/histogram.png
 INPUT ../../Analysis/output/descriptives/histogram.png

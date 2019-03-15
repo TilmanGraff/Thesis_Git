@@ -2,14 +2,14 @@
 ###############
 # This file writes tables of (so far merely) descriptive statistics of zeta
 
-opt_loc <- read.csv("/Users/tilman/Documents/GitHub/Thesis_Git/Analysis/input/opt_loc.csv")
+opt_loc <- read.csv("./Analysis/input/opt_loc.csv")
 
 ###
 # Total Welfare Gains
 ###
 
-total <- sum(opt_loc$pop*opt_loc$util_opt, na.rm=T) / sum(opt_loc$pop*opt_loc$util_stat, na.rm=T)
-print(paste("total welfare gains across the entire continent are", total))
+total <- (sum(opt_loc$pop*opt_loc$util_opt, na.rm=T) / sum(opt_loc$pop*opt_loc$util_stat, na.rm=T) -1) * 100
+print(paste("total welfare gains across the entire continent are", total, "%"))
 
 
 ###

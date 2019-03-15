@@ -1,7 +1,15 @@
-\begin{thebibliography}{87}
+\begin{thebibliography}{69}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\urlprefix}{URL }
+
+\bibitem[{Ahlfeldt et~al.(2015)Ahlfeldt, Redding, Sturm, and
+  Wolf}]{Ahlfeldt_EconomicsDensityEvidence_2015}
+\textbf{Ahlfeldt, Gabriel~M., Stephen~J. Redding, Daniel~M. Sturm, and Nikolaus
+  Wolf} (\textbf{2015}).
+\newblock The {{Economics}} of {{Density}}: {{Evidence From}} the {{Berlin
+  Wall}}.
+\newblock \emph{Econometrica} 83(6), pp. 2127--2189
 
 \bibitem[{AidData(2017)}]{AidData_WorldBankGeocoded_2017}
 \textbf{AidData} (\textbf{2017}).
@@ -46,30 +54,11 @@
 \newblock The Welfare Effects of Transportation Infrastructure Improvements.
 \newblock Working {{Paper}}, {Dartmouth and Yale}
 
-\bibitem[{Alpino and Hammersmark(2017)}]{Alpino_LightingPathInfluence_2017}
-\textbf{Alpino, Matteo and Jan-Egbert Hammersmark} (\textbf{2017}).
-\newblock Lighting the {{Path}}: {{The Influence}} of {{Historical Christian
-  Missions}} on {{Modern}}-Day {{Development Aid Allocation}} in {{Africa}}.
-\newblock {{AidData Working Paper}}~47, {AidData}, Williamsburg, VA
-
-\bibitem[{Anderson and
-  Van~Wincoop(2003)}]{Anderson_Gravitygravitassolution_2003}
-\textbf{Anderson, James~E. and Eric Van~Wincoop} (\textbf{2003}).
-\newblock Gravity with Gravitas: A Solution to the Border Puzzle.
-\newblock \emph{The American Economic Review} 93(1), pp. 170--192
-
 \bibitem[{Atkin and Donaldson(2015)}]{Atkin_WhoGettingGlobalized_2015}
 \textbf{Atkin, David and Dave Donaldson} (\textbf{2015}).
 \newblock Who's {{Getting Globalized}}? {{The Size}} and {{Implications}} of
   {{Intra}}-National {{Trade Costs}}.
 \newblock Working {{Paper}}, {National Bureau of Economic Research}
-
-\bibitem[{Banerjee et~al.(2006)Banerjee, Deaton, Lustig, Rogoff, and
-  Hsu}]{Banerjee_EvaluationWorldBank_2006}
-\textbf{Banerjee, Abhijit, Angus Deaton, Nora Lustig, Ken Rogoff, and Edward
-  Hsu} (\textbf{2006}).
-\newblock An {{Evaluation}} of {{World Bank Research}}, 1998-2005.
-\newblock Technical report, {The World Bank}, Washington DC
 
 \bibitem[{{Baum-Snow} et~al.(2017){Baum-Snow}, Brandt, Henderson, Turner, and
   Zhang}]{Baum-Snow_RoadsRailroadsDecentralization_2017}
@@ -97,12 +86,6 @@
 \newblock Have Developed Countries Escaped the Curse of Distance?
 \newblock \emph{Journal of Economic Geography} 10(1), pp. 113--139
 
-\bibitem[{Briggs(2018)}]{Briggs_LeavingNoOne_2018}
-\textbf{Briggs, Ryan~C.} (\textbf{2018}).
-\newblock Leaving {{No One Behind}}? {{A New Test}} of {{Subnational Aid
-  Targeting}}.
-\newblock \emph{Journal of International Development} pp. 1--7
-
 \bibitem[{Burgess and Donaldson(2012)}]{Burgess_RailroadsDemiseFamine_2012}
 \textbf{Burgess, Robin and Dave Donaldson} (\textbf{2012}).
 \newblock Railroads and the {{Demise}} of {{Famine}} in {{Colonial India}}.
@@ -126,14 +109,6 @@
 \textbf{Cameron, A.~Colin, Jonah Gelbach, and Douglas Miller} (\textbf{2011}).
 \newblock Robust {{Inference}} with {{Multi}}-Way {{Clustering}}.
 \newblock \emph{Journal of Business \& Economic Statistics} 29(2), pp. 238--249
-
-\bibitem[{{Castell\'o-Climent} et~al.(2017){Castell\'o-Climent}, Chaudhary, and
-  Mukhopadhyay}]{Castello-Climent_HigherEducationProsperity_2017}
-\textbf{{Castell\'o-Climent}, Amparo, Latika Chaudhary, and Abhiroop
-  Mukhopadhyay} (\textbf{2017}).
-\newblock Higher {{Education}} and {{Prosperity}}: {{From Catholic
-  Missionaries}} to {{Luminosity}} in {{India}}.
-\newblock \emph{The Economic Journal} pp. 1--37
 
 \bibitem[{Clemens and Kremer(2016)}]{Clemens_NewRoleWorld_2016}
 \textbf{Clemens, Michael~A. and Michael Kremer} (\textbf{2016}).
@@ -287,18 +262,6 @@
 \newblock \emph{The Spatial Economy: Cities, Regions, and International Trade}.
 \newblock {MIT Press}, Cambridge, Mass. and London
 
-\bibitem[{Galiani et~al.(2017)Galiani, Knack, Xu, and
-  Zou}]{Galiani_effectaidgrowth_2017}
-\textbf{Galiani, Sebastian, Stephen Knack, Lixin~Colin Xu, and Ben Zou}
-  (\textbf{2017}).
-\newblock The Effect of Aid on Growth: Evidence from a {{Quasi}}-Experiment.
-\newblock \emph{Journal of Economic Growth} 22(1), pp. 1--33
-
-\bibitem[{Galichon(2016)}]{Galichon_OptimalTransportMethods_2016}
-\textbf{Galichon, Alfred} (\textbf{2016}).
-\newblock \emph{Optimal {{Transport Methods}} in {{Economics}}}.
-\newblock {Princeton University Press}
-
 \bibitem[{Gennaioli and Rainer(2007)}]{gennaioli_modern_2007}
 \textbf{Gennaioli, Nicola and Ilia Rainer} (\textbf{2007}).
 \newblock The Modern Impact of Precolonial Centralization in {{Africa}}.
@@ -310,12 +273,6 @@
 \newblock The {{Short}}-Term {{Impact}} of {{Unconditional Cash Transfers}} to
   the {{Poor}}: {{Experimental Evidence}} from {{Kenya}}.
 \newblock \emph{The Quarterly Journal of Economics} 131(4), pp. 1973--2042
-
-\bibitem[{Head and Mayer(2014)}]{Head_GravityEquationsWorkhorse_2014}
-\textbf{Head, Keith and Thierry Mayer} (\textbf{2014}).
-\newblock Gravity {{Equations}}: {{Workhorse}},{{Toolkit}}, and {{Cookbook}}.
-\newblock In: \emph{Handbook of {{International Economics}}}, volume~4, pp.
-  131--195. {Elsevier}
 
 \bibitem[{Henderson et~al.(2018)Henderson, Squires, Storeygard, and
   Weil}]{Henderson_GlobalSpatialDistribution_2018}
@@ -358,20 +315,6 @@
   Countries}}: {{Evidence}} from {{Africa}}.
 \newblock \emph{The Review of Economics and Statistics} 98(2), pp. 268--284
 
-\bibitem[{Jedwab and
-  Storeygard(2017)}]{Jedwab_AverageHeterogeneousEffects_2017}
-\textbf{Jedwab, Remi and Adam Storeygard} (\textbf{2017}).
-\newblock The {{Average}} and {{Heterogeneous Effects}} of {{Transportation
-  Investments}}: {{Evidence}} from Sub-{{Saharan Africa}} 1960-2010.
-\newblock Working {{Paper}}, {Tufts University}
-
-\bibitem[{{Kocornik-Mina} et~al.(2015){Kocornik-Mina}, McDermott, Michaels, and
-  Rauch}]{Kocornik-Mina_Floodedcities_2015}
-\textbf{{Kocornik-Mina}, Adriana, Thomas~KJ McDermott, Guy Michaels, and
-  Ferdinand Rauch} (\textbf{2015}).
-\newblock Flooded Cities.
-\newblock Working {{Paper}}, {LSE and Oxford}
-
 \bibitem[{Krugman(1991{\natexlab{a}})}]{Krugman_HistoryExpectations_1991}
 \textbf{Krugman, Paul} (\textbf{1991}{\natexlab{a}}).
 \newblock History {{Versus Expectations}}.
@@ -395,23 +338,12 @@
 \newblock \emph{Africa's {{Cities}}: {{Opening Doors}} to the {{World}}}.
 \newblock {World Bank Publications}
 
-\bibitem[{Lee(2016)}]{Lee_InternationalIsolationRegional_2016}
-\textbf{Lee, Yong~Suk} (\textbf{2016}).
-\newblock International {{Isolation}} and {{Regional Inequality}}: {{Evidence}}
-  from {{Sanctions}} on {{North Korea}}.
-\newblock Working {{Paper}}, {Stanford University}
-
 \bibitem[{Limao and
   Venables(2001)}]{Limao_InfrastructureGeographicalDisadvantage_2001}
 \textbf{Limao, Nuno and Anthony~J. Venables} (\textbf{2001}).
 \newblock Infrastructure, Geographical Disadvantage, Transport Costs, and
   Trade.
 \newblock \emph{The World Bank Economic Review} 15(3), pp. 451--479
-
-\bibitem[{Marshall(2015)}]{Marshall_PolityProjectCenter_2015}
-\textbf{Marshall, Monty~G.} (\textbf{2015}).
-\newblock Polity 4 {{Project}} - {{Center}} for {{Systemic Peace}}.
-\newblock \url{http://www.systemicpeace.org/inscrdata.html}
 
 \bibitem[{Michaels et~al.(2018)Michaels, Nigmatulina, Rauch, Regan, Baruah, and
   {Dahlstrand-Rudin}}]{Michaels_PlanningAheadBetter_2018}
@@ -446,67 +378,26 @@
 \newblock The {{Long}}-{{Run Effects}} of the {{Scramble}} for {{Africa}}.
 \newblock \emph{The American Economic Review} 106(7), pp. 1802--1848
 
-\bibitem[{Michalopoulos and
-  Papaioannou(2018)}]{Michalopoulos_SpatialPatternsDevelopment_2018}
----{}---{}--- (\textbf{2018}).
-\newblock Spatial {{Patterns}} of {{Development}}: {{A Meso Approach}}.
-\newblock \emph{The Annual Review of Economics} forthcoming
-
 \bibitem[{Murdock(1959)}]{Murdock_Africaitspeoples_1959}
 \textbf{Murdock, George~Peter} (\textbf{1959}).
 \newblock \emph{Africa: Its Peoples and Their Culture History}.
 \newblock {McGraw-Hill}, New York; London
-
-\bibitem[{Nunn(2010)}]{Nunn_ReligiousConversionColonial_2010}
-\textbf{Nunn, Nathan} (\textbf{2010}).
-\newblock Religious {{Conversion}} in {{Colonial Africa}}.
-\newblock \emph{The American Economic Review} 100(2), pp. 147--152
 
 \bibitem[{Nunn and Qian(2014)}]{Nunn_USFoodAid_2014}
 \textbf{Nunn, Nathan and Nancy Qian} (\textbf{2014}).
 \newblock {{US Food Aid}} and {{Civil Conflict}}.
 \newblock \emph{The American Economic Review} 104(6), pp. 1630--1666
 
-\bibitem[{OCHA(2017)}]{OCHA_SouthSudanAdministrative_2017}
-\textbf{OCHA, United Nations Office for the Coordination of
-  Humanitarian~Affairs} (\textbf{2017}).
-\newblock South {{Sudan}} - {{Administrative Boundaries}} - {{Humanitarian Data
-  Exchange}}.
-\newblock
-  \url{https://data.humdata.org/dataset/south-sudan-administrative-boundaries}
-
-\bibitem[{{OpenStreetMap}(2017)}]{OpenStreetMap__2017}
-\textbf{{OpenStreetMap}} (\textbf{2017}).
-\newblock \url{https://www.openstreetmap.org/}
-
-\bibitem[{Pinkovskiy and
-  {Sala-i-Martin}(2016)}]{Pinkovskiy_LightsCameraIncome_2016}
-\textbf{Pinkovskiy, Maxim and Xavier {Sala-i-Martin}} (\textbf{2016}).
-\newblock Lights, {{Camera}} \ldots{} {{Income}}! {{Illuminating}} the
-  {{National Accounts}}-{{Household Surveys Debate}}.
-\newblock \emph{The Quarterly Journal of Economics} 131(2), pp. 579--631
-
 \bibitem[{Rajan and Subramanian(2008)}]{Rajan_Aidgrowthwhat_2008}
 \textbf{Rajan, Raghuram~G and Arvind Subramanian} (\textbf{2008}).
 \newblock Aid and Growth: What Does the Cross-Country Evidence Really Show?
 \newblock \emph{The Review of Economics and Statistics} 90(4), pp. 643--665
-
-\bibitem[{Sandvik(2008)}]{Sandvik_WorldBordersDataset_2008}
-\textbf{Sandvik, Bjorn} (\textbf{2008}).
-\newblock World {{Borders Dataset}}.
-\newblock \url{http://thematicmapping.org/downloads/world\_borders.php}
 
 \bibitem[{{Socioeconomic Data {and} Applications
   Center}(2016)}]{SocioeconomicDataandApplicationsCenter_GriddedPopulationWorld_2016}
 \textbf{{Socioeconomic Data {and} Applications Center}} (\textbf{2016}).
 \newblock Gridded {{Population}} of the {{World}} ({{GPW}}), v4 | {{SEDAC}}.
 \newblock \url{http://sedac.ciesin.columbia.edu/data/collection/gpw-v4}
-
-\bibitem[{Storeygard(2016)}]{Storeygard_FartherRoadTransport_2016}
-\textbf{Storeygard, Adam} (\textbf{2016}).
-\newblock Farther on down the {{Road}}: {{Transport Costs}}, {{Trade}} and
-  {{Urban Growth}} in {{Sub}}-{{Saharan Africa}}.
-\newblock \emph{The Review of Economic Studies} 83(3), pp. 1263--1295
 
 \bibitem[{Strandow et~al.(2011)Strandow, Findley, Nielson, and
   Powell}]{Strandow_UCDPAidDataCodebook_2011}

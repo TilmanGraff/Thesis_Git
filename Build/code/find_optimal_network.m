@@ -56,7 +56,7 @@ inflows = @(P, I, delta_tau, delta_I, adj) reshape(sum(Q(P, I, adj, delta_tau, b
         J = size(productivity, 1);
         N = size(productivity, 2);
 
-        % Don't really need them now, as they are all ones. But might come
+        % Dont really need them now, as they are all ones. But might come
         % in handy later?
         weights = ones(J, 1);
 

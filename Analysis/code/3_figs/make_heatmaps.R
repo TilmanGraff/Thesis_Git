@@ -6,7 +6,7 @@
 
 # file.remove(list.files(path="/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/zeta_heatmaps/", full.names = T))
 
-opt_loc <- read.csv("/Users/tilman/Documents/GitHub/Thesis_Git/Analysis/input/opt_loc.csv")
+opt_loc <- read.csv("./Analysis/input/opt_loc.csv")
 
 country_table <- as.data.frame(table(opt_loc$country))
 country_names <- paste(country_table[country_table$Freq != 0,"Var1"])
@@ -39,12 +39,12 @@ require("rgdal")
 require("classInt")
 require("sp")
 
-world <- readOGR("/Users/tilman/Documents/GitHub/Thesis_Git/Build/input/World_Countries/TM_WORLD_BORDERS-0.3.shp") # reads in the global country shapefile
+world <- readOGR("./Build/input/World_Countries/TM_WORLD_BORDERS-0.3.shp") # reads in the global country shapefile
 
 africa <- world[world@data$REGION==2,]
 
 
-ssudan <- readOGR("/Users/tilman/Documents/GitHub/Thesis_Git/Build/input/South-Sudan/ssd_admbnda_adm0_200k_ssnbs_20160114.shp")
+ssudan <- readOGR("./Build/input/South-Sudan/ssd_admbnda_adm0_200k_ssnbs_20160114.shp")
 
 ssudan@data <- africa@data[1,]
 ssudan@data[1,] <- NA
@@ -85,7 +85,7 @@ edges[2, ] <- (edges[2, ] - mean(edges[2, ])) * scale.parameter + mean(edges[2,
 
 
 
-png(filename=paste("/Users/tilman/Documents/GitHub/Thesis_Git/Analysis/output/zeta_heatmaps/African_countries_zeta.png", sep=""), width=6, height=6, units = 'in', res=300 )
+png(filename=paste("./Analysis/output/zeta_heatmaps/African_countries_zeta.png", sep=""), width=6, height=6, units = 'in', res=300 )
 print(spplot(africa, "zeta", col="transparent", col.regions=my.palette, cuts=8, xlim=edges[1,], ylim=edges[2,], colorkey=F, par.settings = list(axis.line = list(col = "transparent")))) # cuts always has to be one less than n in the definition of my.palette
 dev.off()
 
@@ -93,10 +93,10 @@ dev.off()
 # 2) Trying to make this happen within Countries
 
 
-opt_loc <- read.csv("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/input/opt_loc.csv")
+opt_loc <- read.csv("./Analysis/input/opt_loc.csv")
 
 for(country in country_names){
-  if(file.exists(paste("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/Network_outcomes/", country, "_outcomes.csv", sep=""))){
+  if(file.exists(paste("./Build/output/Network_outcomes/", country, "_outcomes.csv", sep=""))){
 
     df <- opt_loc[!is.na(opt_loc$zeta) & opt_loc$country==country,]
     row.names(df) <- df$rownumber
@@ -136,9 +136,9 @@ for(country in country_names){
     edges[2,1] <- mean(edges[2,]) - 0.5*max_extend
     edges[2,2] <- mean(edges[2,]) + 0.5*max_extend
 
-     png(filename=paste("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/zeta_heatmaps/", country, "_zeta.png", sep=""))
+     png(filename=paste("./Analysis/output/zeta_heatmaps/", country, "_zeta.png", sep=""))
 
-    print(spplot(polygon_dataframe, "zeta", col="transparent", col.regions=my.palette, cuts=8, xlim=edges[1,], ylim=edges[2,], main = country, colorkey=list(labels=list(cex=1.4))))
+    print(spplot(polygon_dataframe, "zeta", col="transparent", col.regions=my.palette, cuts=8, xlim=edges[1,], ylim=edges[2,], main = country, colorkey=list(labels=list(cex=1.4)), par.settings = list(axis.line = list(col = "transparent"))))
     dev.off()
   }
 }
@@ -187,8 +187,8 @@ br[1] <- br[1] - offs
 br[length(br)] <- br[length(br)] + offs
 polygon_dataframe$zeta_bracket <- cut(polygon_dataframe$zeta, br)
 
- png(filename=paste("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/zeta_heatmaps/African_gridcells_zeta.png", sep=""), width=6, height=6, units = 'in', res = 300)
+ png(filename=paste("./Analysis/output/zeta_heatmaps/African_gridcells_zeta.png", sep=""), width=6, height=6, units = 'in', res = 300)
 
-print(spplot(polygon_dataframe, "zeta_bracket", col="transparent", col.regions=my.palette, cuts=8, xlim=edges[1,], ylim=edges[2,]))
+print(spplot(polygon_dataframe, "zeta_bracket", col="transparent", col.regions=my.palette, cuts=8, xlim=edges[1,], ylim=edges[2,], par.settings = list(axis.line = list(col = "transparent"))))
 
  dev.off()
