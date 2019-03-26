@@ -1,12 +1,12 @@
 # Fdb version 3
-["bibtex Spatial_Inefficiencies"] 1552652345 "Spatial_Inefficiencies.aux" "Spatial_Inefficiencies.bbl" "Spatial_Inefficiencies" 1552653443
+["bibtex Spatial_Inefficiencies"] 1553613909 "Spatial_Inefficiencies.aux" "Spatial_Inefficiencies.bbl" "Spatial_Inefficiencies" 1553613912
   "./cantoni_copy.bst" 1547132909 31804 60671cc588feaf916e452d009b3df8df ""
   "Spatial_Bib.bib" 1547132909 124312 b5bd847ac79092bf8ecc4080cbfa8e98 ""
-  "Spatial_Inefficiencies.aux" 1552653405 26367 5405543b868bc724f54b86b2c862fe63 ""
+  "Spatial_Inefficiencies.aux" 1553613912 26367 58e7eb72dbcf543407eb8830df83a5c4 ""
   (generated)
   "Spatial_Inefficiencies.blg"
   "Spatial_Inefficiencies.bbl"
-["pdflatex"] 1552653403 "Spatial_Inefficiencies.tex" "Spatial_Inefficiencies.pdf" "Spatial_Inefficiencies" 1552653443
+["pdflatex"] 1553613910 "Spatial_Inefficiencies.tex" "Spatial_Inefficiencies.pdf" "Spatial_Inefficiencies" 1553613912
   "../../Analysis/output/descriptives/country_barchart.pdf" 1551981620 5971 726224b6ad7d7a33bdca964df21ca406 ""
   "../../Analysis/output/descriptives/histogram.png" 1547132908 21236 cfed647e51676ec7c6684a84fe7f4dda ""
   "../../Analysis/output/other_maps/aid_China.png" 1547132908 410304 ff054cf9114f701b37492a03032a6e63 ""
@@ -244,7 +244,6 @@
   "/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/kvoptions.sty" 1480098836 22417 1d9df1eb66848aa31b18a593099cf45c ""
   "/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/pdflscape.sty" 1480098836 6688 c84de1eae6cda82865a6d3d09e339ec9 ""
   "/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty" 1480098836 9581 023642318cef9f4677efe364de1e2a27 ""
-  "/usr/local/texlive/2018/texmf-dist/tex/latex/parskip/parskip.sty" 1480098836 2763 02a40cc5a32805c41d919cfbdba7e99a ""
   "/usr/local/texlive/2018/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty" 1480098837 1197 8a80cdde14696a9198f1793a55dcf332 ""
   "/usr/local/texlive/2018/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty" 1480098837 410 5bf12ea7330e5f12c445332a4fe9a263 ""
   "/usr/local/texlive/2018/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty" 1480098837 21115 facf03b7dbe5ea2f5f1dce1ac84b5d05 ""
@@ -269,12 +268,12 @@
   "/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1523934492 2717033 f61a5287d9c22a39a74f1979fe3f905c ""
   "/usr/local/texlive/2018/texmf-var/web2c/pdftex/pdflatex.fmt" 1547209289 4220280 c29fb41fa918facc757bc7e76d412496 ""
   "/usr/local/texlive/2018/texmf.cnf" 1523934483 577 0b39adfd7c93507ff20c9c14c2f1a33f ""
-  "Spatial_Inefficiencies.aux" 1552653405 26367 5405543b868bc724f54b86b2c862fe63 ""
-  "Spatial_Inefficiencies.bbl" 1552652345 21771 11d0bdcc73bbeaea83d19b2bf5698bc7 "bibtex Spatial_Inefficiencies"
-  "Spatial_Inefficiencies.out" 1552653405 1283 ca043e6789469685b1e1851c3fe4098a ""
-  "Spatial_Inefficiencies.tex" 1552653403 157176 b5d5b8b9c879f45afde85ea88c8dac76 ""
+  "Spatial_Inefficiencies.aux" 1553613912 26367 58e7eb72dbcf543407eb8830df83a5c4 ""
+  "Spatial_Inefficiencies.bbl" 1553613910 21771 11d0bdcc73bbeaea83d19b2bf5698bc7 "bibtex Spatial_Inefficiencies"
+  "Spatial_Inefficiencies.out" 1553613912 1283 ca043e6789469685b1e1851c3fe4098a ""
+  "Spatial_Inefficiencies.tex" 1553613907 157862 2493516f193aaef7e781c3abd0dae95c ""
   (generated)
+  "Spatial_Inefficiencies.aux"
   "Spatial_Inefficiencies.log"
   "Spatial_Inefficiencies.pdf"
-  "Spatial_Inefficiencies.aux"
   "Spatial_Inefficiencies.out"

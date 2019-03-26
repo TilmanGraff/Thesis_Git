@@ -22,8 +22,6 @@ INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/amsmath/amsopn.sty
 INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/amsmath/amsopn.sty
 INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/tools/bm.sty
 INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/tools/bm.sty
-INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/parskip/parskip.sty
-INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/parskip/parskip.sty
 INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/graphics/graphicx.sty
 INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/graphics/graphicx.sty
 INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/graphics/keyval.sty
