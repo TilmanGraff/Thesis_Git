@@ -1,14 +1,19 @@
-library("plyr", lib.loc="/Library/Frameworks/R.framework/Versions/3.2/Resources/library")
+
+# Goes from wrong_lights to correct_lights by replacing the old geographical centroids lights data
+
+require("plyr")
 
 
-henderson <- read.csv("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/input/Henderson_et_al_2018/data1_regs_only_lights.csv")
+henderson <- read.csv("./Build/input/Henderson_et_al_2018/data1_regs_only_lights.csv")
+centroids <- read.csv("./Build/temp/centroids_wrong_lights.csv")
+
 
 henderson <- henderson[,c("x", "y", "lrad2010clip_pl_c")]
 
 henderson <- rename(henderson, c("lrad2010clip_pl_c" = "loglights"))
 henderson$lights <- exp(henderson$loglights)
 
-centroids <- read.csv("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/centroids_wrong_lights.csv")
+centroids <- read.csv("./Build/temp/centroids_wrong_lights.csv")
 
 ref_centroids <- centroids[,c("ID", "x", "y")]
 
@@ -30,7 +35,6 @@ for(id in ref_centroids$ID){
 ref_centroids[ref_centroids$mean_lights=="NaN","mean_lights"] <- NA
 ref_centroids <- ref_centroids[!is.na(ref_centroids$mean_lights),]
 
-centroids <- read.csv("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/centroids_wrong_lights.csv")
 
 centroids <- merge(centroids, ref_centroids, by="ID", all.x=T)
 centroids$loglights <- log(centroids$mean_lights)
@@ -39,4 +43,4 @@ centroids <- centroids[,c("ID", "x", "y", "country", "region", "subregion", "pop
 
 centroids <- centroids[!is.na(centroids$lights),]
 
-write.csv(format(centroids, scientific=F), "/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/centroids.csv", row.names = FALSE)
+write.csv(format(centroids, scientific=F), "./Build/temp/centroids.csv", row.names = FALSE)

@@ -97,7 +97,7 @@ alpha = 0.7 # Production function parameter
 centroids_merged$urban <- 1
 
 # Imports World Bank Data on global Urbanisation Shares
-urb_rates <- read.csv("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/input/Worldbank_Urbanisation.csv")
+urb_rates <- read.csv("./Build/input/Worldbank_Urbanisation.csv")
 urb_rates <- urb_rates[,c("Country.Name", "X2016..YR2016.")]
 colnames(urb_rates) <- c("country", "urb_rate")
 urb_rates$urb_rate <- as.numeric(paste(urb_rates$urb_rate))
@@ -160,7 +160,7 @@ for(country in country_names){
 
   }
 
-  write.csv(prod, file=paste("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/productivities/productivities_", country, ".csv", sep=""), row.names = FALSE)
+  write.csv(prod, file=paste("./Build/temp/productivities/productivities_", country, ".csv", sep=""), row.names = FALSE)
 
 }
 
@@ -169,4 +169,4 @@ for(country in country_names){
 
 
 
-write.csv(format(centroids_merged, scientific=F), "/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/centroids.csv", row.names = FALSE)
+write.csv(format(centroids_merged, scientific=F), "./Build/temp/centroids.csv", row.names = FALSE)

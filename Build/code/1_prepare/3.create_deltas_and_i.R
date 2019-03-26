@@ -1,6 +1,9 @@
+# Parameterises deltas and I matrices from the OSM raw data
+
+
 
 # Import clean global centroids file, just for clean representation of country names
-centroids <- read.csv("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/centroids.csv")
+centroids <- read.csv("./Build/temp/centroids.csv")
 
 # Restrict file sample if needed
 centroids <- centroids[centroids$region == 2,]
@@ -20,9 +23,9 @@ for (country in country_names){
     print(country)
   }
 
-  speed <- read.csv(paste("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/speed/speed_", country, ".csv", sep=""))
+  speed <- read.csv(paste("./Build/temp/speed/speed_", country, ".csv", sep=""))
 
-  dist <- read.csv(paste("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/dist/dist_", country, ".csv", sep=""))
+  dist <- read.csv(paste("./Build/temp/dist/dist_", country, ".csv", sep=""))
 
 ########
   # Existing infrastructure as a function of the speed matrix
@@ -65,10 +68,10 @@ for (country in country_names){
 
 
 
-  write.csv(delta_tau, file=paste("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/delta_tau/delta_tau_", country, ".csv", sep=""), row.names = FALSE)
+  write.csv(delta_tau, file=paste("./Build/temp/delta_tau/delta_tau_", country, ".csv", sep=""), row.names = FALSE)
 
-  write.csv(delta_I, file=paste("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/delta_I/delta_I_", country, ".csv", sep=""), row.names = FALSE)
+  write.csv(delta_I, file=paste("./Build/temp/delta_I/delta_I_", country, ".csv", sep=""), row.names = FALSE)
 
-  write.csv(I, file=paste("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/I/I_", country, ".csv", sep=""), row.names = FALSE)
+  write.csv(I, file=paste("./Build/temp/I/I_", country, ".csv", sep=""), row.names = FALSE)
 
 }

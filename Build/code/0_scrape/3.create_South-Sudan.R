@@ -2,13 +2,13 @@
 # This file denotes centroids that fall over the territory of South Sudan as belonging to this new country. Basically, it just edits the country-name tag of these entries. The rest more or less goes automatically.
 
 
-library("rgdal", lib.loc="/Library/Frameworks/R.framework/Versions/3.4/Resources/library")
-library("polyclip", lib.loc="/Library/Frameworks/R.framework/Versions/3.4/Resources/library")
+require("rgdal")
+require("polyclip")
 
 # Import borders from a UN source
-ssudan <- readOGR("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/input/South-Sudan/ssd_admbnda_adm0_200k_ssnbs_20160114.shp")
+ssudan <- readOGR("./Build/input/South-Sudan/ssd_admbnda_adm0_200k_ssnbs_20160114.shp")
 
-centroids <- read.csv("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/centroids.csv")
+centroids <- read.csv("./Build/temp/centroids.csv")
 
 levels(centroids$country) <- c(levels(centroids$country), "South-Sudan") # this creates a new level for countries, as they are not saved as strings in order to save space
 
@@ -16,4 +16,4 @@ centroids[point.in.polygon(centroids$x, centroids$y, ssudan@polygons[[1]]@Polygo
 
 centroids[centroids$country=="Sudan" & centroids$y < 8.5, "country"] <- "South-Sudan" # two centroids are just along the border of the South, but not recognised by the imprecise UN border data. When plotting the new countries, these two points dangle weirdly below everything else. They obviously belong to South Sudan but are not captured by the previous procedure. I hence manually code them as belonging to the South.
 
-write.csv(format(centroids, scientific=F), "/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/centroids.csv", row.names = FALSE) # I export back to centroids. IMPORTANT: If you were to run this script now, nothing would happen as all is rightly coded already.
+write.csv(format(centroids, scientific=F), "./Build/temp/centroids.csv", row.names = FALSE) # I export back to centroids. IMPORTANT: If you were to run this script now, nothing would happen as all is rightly coded already.

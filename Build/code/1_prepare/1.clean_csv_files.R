@@ -1,6 +1,6 @@
+# Minor file overwriting NA-speeds with 0-speeds
 
-
-files <- list.files(path="/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/speed/", full.names=T)
+files <- list.files(path="./Build/temp/speed/", full.names=T)
 
 
 for (i in 1:length(files)){

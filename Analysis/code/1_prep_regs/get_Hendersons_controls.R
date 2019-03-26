@@ -4,7 +4,6 @@ henderson <- read.csv("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_G
 opt_loc <- read.csv("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/temp/opt_loc_with_raildist.csv")
 ref_centroids <- opt_loc[,c("ID", "x", "y")]
 
-#henderson <- merge(henderson, ref_centroids, by=c("x", "y"), all.x=T)
 
 for(id in ref_centroids$ID){
 

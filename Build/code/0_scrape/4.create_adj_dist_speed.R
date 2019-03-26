@@ -1,12 +1,13 @@
 
 # This file transforms given centroid geometries into adj, dist, and infrastr matrices
+# It does so by scraping OSM for Moore neighborhood connections between centroid coordinates
 
-library("osrm", lib.loc="/Library/Frameworks/R.framework/Versions/3.2/Resources/library")
-library("Imap", lib.loc="/Library/Frameworks/R.framework/Versions/3.2/Resources/library")
-library("gepaf", lib.loc="/Library/Frameworks/R.framework/Versions/3.4/Resources/library")
+require("osrm")
+require("Imap")
+require("gepaf")
 
 # Import clean global centroids file
-centroids <- read.csv("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/centroids.csv")
+centroids <- read.csv("./Build/temp/centroids.csv")
 
 # Restrict file sample to Africa
 centroids <- centroids[centroids$region == 2,]
@@ -23,7 +24,7 @@ for(country in country_names){
 
 case_centroids <- centroids[centroids$country == country,]
 
-png(filename=paste("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/output/Road_Networks/network_", country, ".png", sep=""))
+png(filename=paste("./Build/output/Road_Networks/network_", country, ".png", sep=""))
 plot(case_centroids$x, case_centroids$y, main=country) # if you want to plot it
 
 n <- nrow(case_centroids)
@@ -84,10 +85,10 @@ for(i in 1:n){
   }
 
 
-write.csv(dist, file=paste("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/dist/dist_", country, ".csv", sep=""), row.names = FALSE)
-write.csv(speed, file=paste("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/speed/speed_", country, ".csv", sep=""), row.names = FALSE)
-write.csv(adj, file=paste("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/adj/adj_", country, ".csv", sep=""), row.names = FALSE)
-write.csv(case_centroids[,c("ID", "rownumber")], file=paste("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/rosettastones/rosetta_", country, ".csv", sep=""), row.names = FALSE)
+write.csv(dist, file=paste("./Build/temp/dist/dist_", country, ".csv", sep=""), row.names = FALSE)
+write.csv(speed, file=paste("./Build/temp/speed/speed_", country, ".csv", sep=""), row.names = FALSE)
+write.csv(adj, file=paste("./Build/temp/adj/adj_", country, ".csv", sep=""), row.names = FALSE)
+write.csv(case_centroids[,c("ID", "rownumber")], file=paste("./Build/temp/rosettastones/rosetta_", country, ".csv", sep=""), row.names = FALSE)
 dev.off()
 
 }

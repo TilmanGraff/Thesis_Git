@@ -5,7 +5,7 @@
 # Since I overwrite files, I should only need to do this once (or each time after running create_adj_dist_speed). When I ran it on Dec 14, I corrected cases in Algeria (6 times), Cameroon (1 time), Central African Republic (1 time), and Tunisia (2 times).
 
 # Import clean global centroids file, just for clean representation of country names
-centroids <- read.csv("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/centroids.csv")
+centroids <- read.csv("./Build/temp/centroids.csv")
 
 # Restrict file sample if needed
 centroids <- centroids[centroids$region == 2,]
@@ -21,11 +21,11 @@ for (country in country_names){
   case_centroids <- centroids[centroids$country == country,]
   n <- nrow(case_centroids)
 
-  speed <- read.csv(paste("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/speed/speed_", country, ".csv", sep=""))
+  speed <- read.csv(paste("./Build/temp/speed/speed_", country, ".csv", sep=""))
 
-  dist <- read.csv(paste("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/dist/dist_", country, ".csv", sep=""))
+  dist <- read.csv(paste("./Build/temp/dist/dist_", country, ".csv", sep=""))
 
-  adj <- read.csv(paste("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/adj/adj_", country, ".csv", sep=""))
+  adj <- read.csv(paste("./Build/temp/adj/adj_", country, ".csv", sep=""))
 
   #this deals with b)
   for(i in 1:n){
@@ -55,9 +55,9 @@ for (country in country_names){
   dist <- (dist + t(dist)) / 2
 
 
-  write.csv(dist, file=paste("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/dist/dist_", country, ".csv", sep=""), row.names = FALSE)
-  write.csv(speed, file=paste("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/speed/speed_", country, ".csv", sep=""), row.names = FALSE)
-  write.csv(adj, file=paste("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/adj/adj_", country, ".csv", sep=""), row.names = FALSE)
+  write.csv(dist, file=paste("./Build/temp/dist/dist_", country, ".csv", sep=""), row.names = FALSE)
+  write.csv(speed, file=paste("./Build/temp/speed/speed_", country, ".csv", sep=""), row.names = FALSE)
+  write.csv(adj, file=paste("./Build/temp/adj/adj_", country, ".csv", sep=""), row.names = FALSE)
 
 
 

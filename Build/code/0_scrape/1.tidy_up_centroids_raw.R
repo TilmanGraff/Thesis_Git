@@ -1,11 +1,11 @@
 
-# This code cleans up the untidy centroids_raw.csv file, which came straight out of the messes of manual QGIS
+# Cleans up the untidy centroids_raw.csv file, which came straight out of the messes of manual QGIS
 #########
 
-library("plyr", lib.loc="/Library/Frameworks/R.framework/Versions/3.2/Resources/library")
-library("geosphere", lib.loc="/Library/Frameworks/R.framework/Versions/3.2/Resources/library")
+require("plyr")
+require("geosphere")
 
-centroids <- read.csv("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/input/Centroids_raw.csv")
+centroids <- read.csv("./Build/input/Centroids_raw.csv")
 
 centroids <- as.data.frame(centroids)
 
@@ -38,4 +38,4 @@ centroids$country <- gsub("Libyan Arab Jamahiriya", "Libya", centroids$country)
 centroids$country <- gsub(" ", "-", centroids$country)
 centroids$country <- gsub("'", "", centroids$country)
 
-write.csv(centroids, "/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/temp/centroids_wrong_lights.csv", row.names = FALSE)
+write.csv(centroids, "./Build/temp/centroids_wrong_lights.csv", row.names = FALSE)
