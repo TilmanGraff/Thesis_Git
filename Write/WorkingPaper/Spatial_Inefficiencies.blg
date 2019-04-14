@@ -4,44 +4,44 @@ The top-level auxiliary file: Spatial_Inefficiencies.aux
 The style file: cantoni_copy.bst
 Database file #1: Spatial_Bib.bib
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
-You've used 69 entries,
+You've used 68 entries,
             3066 wiz_defined-function locations,
-            1050 strings with 19748 characters,
-and the built_in function-call counts, 46179 in all, are:
-= -- 4017
-> -- 1827
-< -- 94
-+ -- 623
-- -- 526
-* -- 3365
-:= -- 6747
-add.period$ -- 141
-call.type$ -- 69
-change.case$ -- 464
-chr.to.int$ -- 70
-cite$ -- 69
-duplicate$ -- 3599
-empty$ -- 3308
-format.name$ -- 770
-if$ -- 9692
+            1044 strings with 19506 characters,
+and the built_in function-call counts, 45322 in all, are:
+= -- 3944
+> -- 1787
+< -- 93
++ -- 608
+- -- 514
+* -- 3299
+:= -- 6628
+add.period$ -- 139
+call.type$ -- 68
+change.case$ -- 456
+chr.to.int$ -- 69
+cite$ -- 68
+duplicate$ -- 3535
+empty$ -- 3250
+format.name$ -- 755
+if$ -- 9510
 int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 628
-newline$ -- 352
-num.names$ -- 276
-pop$ -- 1149
+missing$ -- 617
+newline$ -- 347
+num.names$ -- 272
+pop$ -- 1130
 preamble$ -- 1
-purify$ -- 451
+purify$ -- 443
 quote$ -- 0
-skip$ -- 1678
+skip$ -- 1646
 stack$ -- 0
-substring$ -- 2163
-swap$ -- 2236
-text.length$ -- 49
+substring$ -- 2114
+swap$ -- 2193
+text.length$ -- 48
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 603
+type$ -- 594
 warning$ -- 0
-while$ -- 307
+while$ -- 302
 width$ -- 0
-write$ -- 902
+write$ -- 889

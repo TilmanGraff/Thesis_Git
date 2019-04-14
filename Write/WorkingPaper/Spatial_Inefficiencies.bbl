@@ -1,15 +1,7 @@
-\begin{thebibliography}{69}
+\begin{thebibliography}{68}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\urlprefix}{URL }
-
-\bibitem[{Ahlfeldt et~al.(2015)Ahlfeldt, Redding, Sturm, and
-  Wolf}]{Ahlfeldt_EconomicsDensityEvidence_2015}
-\textbf{Ahlfeldt, Gabriel~M., Stephen~J. Redding, Daniel~M. Sturm, and Nikolaus
-  Wolf} (\textbf{2015}).
-\newblock The {{Economics}} of {{Density}}: {{Evidence From}} the {{Berlin
-  Wall}}.
-\newblock \emph{Econometrica} 83(6), pp. 2127--2189
 
 \bibitem[{AidData(2017)}]{AidData_WorldBankGeocoded_2017}
 \textbf{AidData} (\textbf{2017}).
