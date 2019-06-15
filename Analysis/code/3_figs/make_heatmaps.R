@@ -53,6 +53,8 @@ ssudan@data$NAME <- "South-Sudan"
 
 africa <- rbind(africa, ssudan)
 
+writeOGR(obj=africa, dsn="./Build/output/African Borders/AfricanBorders.shp", layer="africa", driver="ESRI Shapefile") # this is in geographical projection
+
 
 africa@data$zeta <- NA
 africa@data$NAME <- gsub(" ", "-", africa@data$NAME)
