@@ -44,6 +44,7 @@ mu2 = (1 - sum(sum(ones(J) .* 4 .* delta_I))) / sum(sum(interimmatrix .* delta_I
 
 I_opt_sym = (interimmatrix * mu2) + (4 .* adj); % I add the walking speed to those that were computed to have below walking speed
 
+I_opt_sym = min((ones(J) .* 100 .* adj), I_opt_sym);
 
 end
 
