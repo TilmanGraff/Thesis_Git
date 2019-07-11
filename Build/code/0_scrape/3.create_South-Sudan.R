@@ -8,7 +8,7 @@ require("polyclip")
 # Import borders from a UN source
 ssudan <- readOGR("./Build/input/South-Sudan/ssd_admbnda_adm0_200k_ssnbs_20160114.shp")
 
-centroids <- read.csv("./Build/temp/centroids.csv")
+centroids <- read.csv("./Build/temp/centroids_noSSudan.csv")
 
 levels(centroids$country) <- c(levels(centroids$country), "South-Sudan") # this creates a new level for countries, as they are not saved as strings in order to save space
 

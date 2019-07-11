@@ -4,7 +4,6 @@
 # It also slightly amends the pop_dens variable to account for gridcells that are partially covered by water
 
 centroids <- read.csv("./Build/temp/centroids.csv")
-centroids <- centroids[centroids$region==2,]
 
 #########
 # A) Merge the rosettastone to get clear rownames
