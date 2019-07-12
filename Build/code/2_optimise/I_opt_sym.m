@@ -1,4 +1,4 @@
-function [I_opt_sym] = I_opt_sym(P, I, adj, delta_tau, delta_I, beta, gamma)
+function [I_opt_sym] = I_opt_sym(P, I, adj, abr, delta_tau, delta_I, beta, gamma)
 %UNTITLED2 Summary of this function goes here
 %   Detailed explanation goes here
 
@@ -34,17 +34,24 @@ I_raw(isnan(I_raw)) = 0;
 
 % mu1 = 1/sum(sum(I_raw .* delta_I));
 
-I_opt_sym_nofour = I_raw * 1/sum(sum(I_raw .* delta_I));
+I_opt_sym_nofour = I_raw * 1/sum(sum(I_raw .* delta_I)); % this denominator is just = 1 if I_raw were already perfect
 
 % Idea for preserving fours:
 
 interimmatrix = max(zeros(J), (I_opt_sym_nofour - 4)); % I only consider cells above walking speed
 
-mu2 = (1 - sum(sum(ones(J) .* 4 .* delta_I))) / sum(sum(interimmatrix .* delta_I)); % I rescale those cells by the available infrastructure (which is everything above walking speed)
+mu2 = (1 - sum(sum(ones(J) .* 4 .* (adj-abr) .* delta_I))) / sum(sum(interimmatrix .* delta_I .* (adj-abr))); % I rescale those cells by the available infrastructure (which is everything above walking speed)
 
-I_opt_sym = (interimmatrix * mu2) + (4 .* adj); % I add the walking speed to those that were computed to have below walking speed
+I_opt_sym_bbelow = (interimmatrix * mu2) + (4 .* adj); % I add the walking speed to those that were computed to have below walking speed
 
-I_opt_sym = min((ones(J) .* 100 .* adj), I_opt_sym);
+
+% Replace the abroad ones:
+I_opt_sym_replaceabroad = I_opt_sym_bbelow * 1/(sum(sum(I_opt_sym_bbelow .* (adj - abr) .* delta_I)));
+I_opt_sym_replaceabroad = I_opt_sym_replaceabroad .* (adj - abr) + I .* abr;
+
+
+%I_opt_sym = min((ones(J) .* 100 .* adj), I_opt_sym_replaceabroad);
+I_opt_sym = I_opt_sym_replaceabroad;
 
 end
 

@@ -7,10 +7,6 @@
 # Import clean global centroids file, just for clean representation of country names
 centroids <- read.csv("./Build/temp/centroids.csv")
 
-# Restrict file sample if needed
-centroids <- centroids[centroids$region == 2,]
-
-centroids$rownumber <- as.numeric(paste(centroids$rownumber))
 
 # Gather country names
 country_table <- as.data.frame(table(centroids$country))
@@ -18,41 +14,24 @@ country_names <- paste(country_table[country_table$Freq != 0,"Var1"])
 
 for (country in country_names){
 
+  if(file.exists(paste("./Build/temp/raw_from_OSRM/adj/adj_", country, ".csv", sep=""))){
+
+
   case_centroids <- centroids[centroids$country == country,]
   n <- nrow(case_centroids)
 
-  speed <- read.csv(paste("./Build/temp/speed/speed_", country, ".csv", sep=""))
+  speed <- read.csv(paste("./Build/temp/raw_from_OSRM/speed/speed_", country, ".csv", sep=""))
 
-  dist <- read.csv(paste("./Build/temp/dist/dist_", country, ".csv", sep=""))
+  dist <- read.csv(paste("./Build/temp/raw_from_OSRM/dist/dist_", country, ".csv", sep=""))
 
-  adj <- read.csv(paste("./Build/temp/adj/adj_", country, ".csv", sep=""))
+  adj <- read.csv(paste("./Build/temp/raw_from_OSRM/adj/adj_", country, ".csv", sep=""))
 
-  #this deals with b)
-  for(i in 1:n){
-    for(j in i:n){
-
-      if(adj[i,j] != adj[j,i]){ # this check if one direction is supplied while the other one is not
-
-        print(country)
-
-        adj[i,j] <- 1 # if one direction is connected, the other is said to be conencted as well.
-        adj[j,i] <- 1
-
-        dist[i,j] <- max(dist[i,j], dist[j,i]) # in this case, one direction would have dist = 0, so I give both directions the larger of the two
-        dist[j,i] <- dist[i,j]
-
-        speed[i,j] <- max(speed[i,j], speed[j,i]) # same with speed
-        speed[j,i] <- speed[i,j]
-
-
-      }
-    }
-  }
 
 
   # this then deals with a) -- the much more benign problem.
-  speed <- (speed + t(speed)) / 2
-  dist <- (dist + t(dist)) / 2
+  speed <- (speed + t(speed))
+  dist <- (dist + t(dist))
+  adj <- (adj + t(adj))
 
 
   write.csv(dist, file=paste("./Build/temp/dist/dist_", country, ".csv", sep=""), row.names = FALSE)
@@ -60,6 +39,6 @@ for (country in country_names){
   write.csv(adj, file=paste("./Build/temp/adj/adj_", country, ".csv", sep=""), row.names = FALSE)
 
 
-
+}
 
 }

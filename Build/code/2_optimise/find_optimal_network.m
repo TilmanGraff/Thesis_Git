@@ -32,33 +32,37 @@ inflows = @(P, I, delta_tau, delta_I, adj) reshape(sum(Q(P, I, adj, delta_tau, b
 
 %% For each country
 
- for countryID = 1:length(country_names)
-% for countryID = 38
+% for countryID = 1:length(country_names)
+ for countryID = 6
     countryname = (country_names(countryID))
      if exist(strcat("/Users/tilman/Documents/GitHub/Thesis_Git/Build/temp/productivities/productivities_", (countryname), ".csv"))  && ~exist(strcat("//Users/tilman/Documents/GitHub/Thesis_Git/Build/output/Network_outcomes/", (countryname), "_outcomes.csv"))
 
         % Split centroids by country
-        case_centroids = centroids(centroids.country == countryname,:);
+        case_centroids = readtable(strcat("/Users/tilman/Documents/GitHub/Thesis_Git/Build/temp/borderregions/", (countryname), "_borderregion.csv"));
         num_locations = size(case_centroids, 1)
      if num_locations > 2 && num_locations < 400
 
         % Read in characteristics
-        population = cellfun(@str2double, case_centroids.pop);
+        population = case_centroids.pop;
+
+        global I adj abr delta_tau delta_I beta gamma;
 
         % Read in the relevant matrices
         adj = csvread(strcat("/Users/tilman/Documents/GitHub/Thesis_Git/Build/temp/adj/adj_", (countryname), ".csv"), 1, 0);
+        abr = csvread(strcat("/Users/tilman/Documents/GitHub/Thesis_Git/Build/temp/abr/abr_", (countryname), ".csv"), 1, 0);
         delta_I = csvread(strcat("/Users/tilman/Documents/GitHub/Thesis_Git/Build/temp/delta_I/delta_I_", (countryname), ".csv"), 1, 0);
         delta_tau = csvread(strcat("/Users/tilman/Documents/GitHub/Thesis_Git/Build/temp/delta_tau/delta_tau_", (countryname), ".csv"), 1, 0);
         I = csvread(strcat("/Users/tilman/Documents/GitHub/Thesis_Git/Build/temp/I/I_", (countryname), ".csv"), 1, 0);
         productivity = csvread(strcat("/Users/tilman/Documents/GitHub/Thesis_Git/Build/temp/productivities/productivities_", (countryname), ".csv"), 1, 0);
 
+        
         % Basic characteristics of the economy
         J = size(productivity, 1);
         N = size(productivity, 2);
 
         % Dont really need them now, as they are all ones. But might come
         % in handy later?
-        weights = ones(J, 1);
+        weights = 1-case_centroids.abroad;
 
         %% Optimisation
 
@@ -71,15 +75,16 @@ inflows = @(P, I, delta_tau, delta_I, adj) reshape(sum(Q(P, I, adj, delta_tau, b
 
         % defines full problem with optimal infrastructure
         Lagrange_I_opt  = @(P) deal((sum(weights .* population .* (c(P).^(alpha)), 1) ...
-        - sum(sum(P .* (C(P, population) + outflows(P, I_opt_sym(P, I, adj, delta_tau, delta_I, beta, gamma), delta_tau, delta_I, adj) - inflows(P, I_opt_sym(P, I, adj, delta_tau, delta_I, beta, gamma), delta_tau, delta_I, adj) ...
+        - sum(sum(P .* (C(P, population) + outflows(P, I_opt_sym(P, I, adj, abr, delta_tau, delta_I, beta, gamma), delta_tau, delta_I, adj) - inflows(P, I_opt_sym(P, I, adj, abr, delta_tau, delta_I, beta, gamma), delta_tau, delta_I, adj) ...
         - productivity .* (population.^(a)))))), ...
-        -reshape(C(P, population) + outflows(P, I_opt_sym(P, I, adj, delta_tau, delta_I, beta, gamma), delta_tau, delta_I, adj) - inflows(P, I_opt_sym(P, I, adj, delta_tau, delta_I, beta, gamma), delta_tau, delta_I, adj) ...
+        -reshape(C(P, population) + outflows(P, I_opt_sym(P, I, adj, abr, delta_tau, delta_I, beta, gamma), delta_tau, delta_I, adj) - inflows(P, I_opt_sym(P, I, adj, abr, delta_tau, delta_I, beta, gamma), delta_tau, delta_I, adj) ...
         - productivity .* (population.^(a)), [J*N 1]));
 
         % Define options for different solving algorithms (On 10. Dec, I
         % prefer trustregion)
         options_interiorpoint = optimoptions('fmincon','SpecifyObjectiveGradient',true, 'MaxIterations', 5000, 'MaxFunctionEvaluations', 30000);
         options_trustregion = optimoptions('fmincon','SpecifyObjectiveGradient',true, 'Algorithm', 'trust-region-reflective');
+        options_sqp = optimoptions('fmincon','SpecifyObjectiveGradient',true, 'Algorithm', 'sqp');
 
         % Set initial conditions and solver boundaries
         P0 = rand(J, N).*100;
@@ -106,16 +111,21 @@ inflows = @(P, I, delta_tau, delta_I, adj) reshape(sum(Q(P, I, adj, delta_tau, b
         strcat("Finished P_stat on ", datestr(datetime('now'))) % just for display purposes
         % end
 
+        
+        %mycons = @(P) (constraint_function(P, I, adj, abr, delta_tau, delta_I, beta, gamma));
+
+        
+        
         % Optimise full problem
         strcat("Started P_opt on ", datestr(datetime('now'))) % just for display purposes
-        [P_opt] = fmincon(Lagrange_I_opt, P_stat,A,b,Aeq,beq,lb,ub, nonlcon, options_trustregion);
+        [P_opt] = fmincon(Lagrange_I_opt, P_stat,A,b,Aeq,beq,lb,ub, @constraint_function, options_sqp);
         csvwrite(strcat("/Users/tilman/Documents/GitHub/Thesis_Git/Build/output/Prices/P_opt/P_opt_", (countryname), ".csv"), P_opt);
 
         strcat("Finished P_opt on ", datestr(datetime('now'))) % just for display purposes
 
         %% Obtain descriptive statistics
 
-        optimal_infrastructure = I_opt_sym(P_opt, I, adj, delta_tau, delta_I, beta, gamma);
+        optimal_infrastructure = I_opt_sym(P_opt, I, adj, abr, delta_tau, delta_I, beta, gamma);
 
         raw_tradeflows_stat = sum(Q(P_stat, I, adj, delta_tau, beta, gamma), 3);
         raw_tradeflows_opt = sum(Q(P_opt, optimal_infrastructure, adj, delta_tau, beta, gamma),3);
@@ -180,10 +190,10 @@ inflows = @(P, I, delta_tau, delta_I, adj) reshape(sum(Q(P, I, adj, delta_tau, b
 
 
         % Location Characteristics
-        writetable(array2table([cellfun(@str2double, case_centroids.rownumber) price_index_stat price_index_opt consumption_stat consumption_opt ...
+        writetable(array2table([cellfun(@str2double, case_centroids.ID) price_index_stat price_index_opt consumption_stat consumption_opt ...
           sum(inflows(P_stat, I, delta_tau, delta_I, adj), 2) sum(outflows(P_stat, I, delta_tau, delta_I, adj), 2) sum(inflows(P_opt, optimal_infrastructure, delta_tau, delta_I, adj), 2) ...
           sum(outflows(P_opt, optimal_infrastructure, delta_tau, delta_I, adj), 2)], ...
-          'VariableNames', {'rownumber', 'P_stat', 'P_opt', 'util_stat', 'util_opt', 'inflows_stat', 'outflows_stat', 'inflows_opt', 'outflows_opt'}), strcat("/Users/tilman/Documents/GitHub/Thesis_Git/Build/output/Network_outcomes/", (countryname), "_outcomes.csv"));
+          'VariableNames', {'ID', 'P_stat', 'P_opt', 'util_stat', 'util_opt', 'inflows_stat', 'outflows_stat', 'inflows_opt', 'outflows_opt'}), strcat("/Users/tilman/Documents/GitHub/Thesis_Git/Build/output/Network_outcomes/", (countryname), "_outcomes.csv"));
 
        end
     end

@@ -61,12 +61,22 @@ for(country in country_names){
 
           route = NULL
           attemptcounter = 1
-          while(is.null(route) & attemptcounter <= 100){
+          while(is.null(route) & attemptcounter <= 50){ # I try until I have a non-null route, or 100 times, whichever comes faster
+
+            # This is where the action happens, I scrape the route from OSRM
             route <- osrmRoute(src=df[df$id==case_centroids$ID[i],], dst=df[df$id==a,], sp=TRUE, overview = "simplified")
+
+
             attemptcounter = attemptcounter+1
-            if(attemptcounter > 2){
+            if(attemptcounter > 2){ # now, if I've already tried twice, I begin to sleep for a second to let the server catch its breath
               Sys.sleep(1)
               print(attemptcounter)
+              if(attemptcounter == 3 | attemptcounter %% 5 == 0){ # I also check once what the reason for the error was, it it's "NoRoute", I gather this here and immediately jump to the next id. This is to circumvent super-long annoying loops in which I retry 100 times in vain because there is no route. There is still a rare problem that occurs when the server is down first, so attemptcounter goes beyond 3 and then when it comes back it turns out there is no route. Then attemptcounter is already past the moment where it should check what the problem is. Not sure how often this would happen, but worth a think. Maybe do something like if(attemptcounter %% 10 == 0) or something?
+                message = capture.output(route = osrmRoute(src=df[df$id==case_centroids$ID[i],], dst=df[df$id==a,], sp=TRUE, overview = "simplified"), type="message") #captures the server's error message
+                if(grepl("NoRoute", message[2])){ # if NoRoute, sett counter to 101 to end loop
+                  attemptcounter = 1001 # break the while loop
+                }
+              }
             }
           }
 
@@ -109,9 +119,9 @@ for(country in country_names){
     }
 
 
-    write.csv(dist, file=paste("./Build/temp/dist/dist_", country, ".csv", sep=""), row.names = FALSE)
-    write.csv(speed, file=paste("./Build/temp/speed/speed_", country, ".csv", sep=""), row.names = FALSE)
-    write.csv(adj, file=paste("./Build/temp/adj/adj_", country, ".csv", sep=""), row.names = FALSE)
+    write.csv(dist, file=paste("./Build/temp/raw_from_OSRM/dist/dist_", country, ".csv", sep=""), row.names = FALSE)
+    write.csv(speed, file=paste("./Build/temp/raw_from_OSRM/speed/speed_", country, ".csv", sep=""), row.names = FALSE)
+    write.csv(adj, file=paste("./Build/temp/raw_from_OSRM/adj/adj_", country, ".csv", sep=""), row.names = FALSE)
     write.csv(case_centroids[,c("ID", "rownumber")], file=paste("./Build/temp/rosettastones/rosetta_", country, ".csv", sep=""), row.names = FALSE)
     dev.off()
   }

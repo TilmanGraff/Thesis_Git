@@ -16,4 +16,7 @@ centroids[point.in.polygon(centroids$x, centroids$y, ssudan@polygons[[1]]@Polygo
 
 centroids[centroids$country=="Sudan" & centroids$y < 8.5, "country"] <- "South-Sudan" # two centroids are just along the border of the South, but not recognised by the imprecise UN border data. When plotting the new countries, these two points dangle weirdly below everything else. They obviously belong to South Sudan but are not captured by the previous procedure. I hence manually code them as belonging to the South.
 
+centroids[centroids$country=="South-Sudan", "un_code"] <- 728
+
+
 write.csv(format(centroids, scientific=F), "./Build/temp/centroids.csv", row.names = FALSE) # I export back to centroids. IMPORTANT: If you were to run this script now, nothing would happen as all is rightly coded already.

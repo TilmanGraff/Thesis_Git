@@ -1,2 +1,2 @@
-"","ID","x","y","country","region","subregion","pop","lights","num_landpixels","gridarea","pop_dens","pop_sd","lights_sd","rugg","altitude","landsuit","temp","precip","growingdays","malaria","harbor","alternative_lights","lights_raw","un_code"
-"1",37012,57.75,-20.25,"Mauritius",2,14,804318.0557488,15.307306601,384,2891.705,278.14662611898,592.27499254096,5690.344691,1339.051425,130.890983,0.0046654,23.33734,133.6416,333.1875,9.715826,17.87475,5509.000255,246980.2196,480
+"","ID","x","y","country","region","subregion","pop","lights","num_landpixels","gridarea","pop_dens","pop_sd","lights_sd","rugg","altitude","landsuit","temp","precip","growingdays","malaria","harbor","alternative_lights","lights_raw","un_code","abroad"
+"1",37012,57.75,-20.25,"Mauritius",2,14,804318.0557488,15.307306601,384,2891.705,278.14662611898,592.27499254096,5690.344691,1339.051425,130.890983,0.0046654,23.33734,133.6416,333.1875,9.715826,17.87475,5509.000255,246980.2196,480,0
