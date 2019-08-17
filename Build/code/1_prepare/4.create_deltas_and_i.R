@@ -50,7 +50,7 @@ for (country in country_names){
     }
   }
 
-  scaling_parameter <- 1/(sum(delta_I_unscaled * I * (adj - abr))) # this sum has to be equal to K (=1) via the network-building constraint. I only rescale this respective to the homeland!
+  scaling_parameter <- 1/(sum(delta_I_unscaled * I)) # this sum has to be equal to K (=1) via the network-building constraint. I only rescale this respective to the homeland! NO, with the new toolbox, I can rescale this to the entire thing!
 
   delta_I <- delta_I_unscaled * scaling_parameter
 
