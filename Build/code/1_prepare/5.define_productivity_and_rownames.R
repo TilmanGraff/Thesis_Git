@@ -4,6 +4,8 @@
 # It also slightly amends the pop_dens variable to account for gridcells that are partially covered by water
 
 centroids <- read.csv("./Build/temp/centroids.csv")
+ports = read.csv("./Build/temp/ports.csv")[,c("ID", "isport")]
+
 
 #########
 # A) Merge the rosettastone to get clear rownames
@@ -59,7 +61,7 @@ alpha = 0.7 # Production function parameter
 
 # Define parameters
 
-N = 6         # Number of goods
+N = 6         # Number of goods: 4 to the four biggest domestic grids, 1 rest-of-the-world good to 3 largest abroad borderregions plus all ports, 1 agricultural good.
 alpha = 0.7     # Production function parameter
 
 
@@ -69,12 +71,25 @@ for (country in country_names){
 
   centroids = read.csv(paste0("./Build/temp/borderregions/", country, "_borderregion.csv"))
   centroids$pop_dens <- centroids$pop / (centroids$gridarea * centroids$num_landpixels / 900)
+  centroids = merge(centroids, ports, by="ID", all.x=T)
+
 
   J = nrow(centroids)
   N_eff = min(N, J)
 
   if(J >= N_eff){
-    centroids[, "good_produced"] <- pmin(rank(-centroids[, "pop"]), N_eff) # assign goods 1 to (N-1) to the (N-1) biggest locations, and then assign good N to all other locations
+
+    centroids[, "good_produced"] = 6
+    centroids[centroids$abroad == 1, "good_produced"] = ifelse(rank(-centroids[centroids$abroad==1,"pop"]) <= 3, 5, 6)
+    centroids[centroids$isport == 1, "good_produced"] = 5
+
+    centroids[, "good_produced_temp"] = NA
+
+    centroids[centroids$abroad==0, "good_produced_temp"] <- rank(-centroids[centroids$abroad == 0, "pop"])
+
+    centroids[which(centroids$good_produced_temp <= 4),"good_produced"] = centroids[which(centroids$good_produced_temp <= 4),"good_produced_temp"]
+
+    #centroids[, "good_produced"] <- pmin(rank(-centroids[, "pop"]), N_eff) # assign goods 1 to (N-1) to the (N-1) biggest locations, and then assign good N to all other locations
 
     prod <- matrix(0, nrow = J, ncol = N_eff)
 
