@@ -9,6 +9,10 @@ centroids <- read.csv("./Build/input/Centroids_raw.csv")
 
 centroids <- as.data.frame(centroids)
 
+# Restrict dataset to Africa
+centroids <- centroids[centroids$REGION == 2,]
+
+
 centroids$x <- 0.5*(centroids$left + centroids$right)
 centroids$y <- 0.5*(centroids$top + centroids$bottom)
 

@@ -43,4 +43,5 @@ centroids <- centroids[,c("ID", "x", "y", "country", "region", "subregion", "pop
 
 centroids <- centroids[!is.na(centroids$lights),]
 
-write.csv(format(centroids, scientific=F), "./Build/temp/centroids.csv", row.names = FALSE)
+# I now prevent any circuliarity by calling this centroids_noSSudan
+write.csv(format(centroids, scientific=F), "./Build/temp/centroids_noSSudan.csv", row.names = FALSE)
