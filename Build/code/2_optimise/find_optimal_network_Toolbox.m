@@ -31,7 +31,7 @@ a = 0.7;
         % Split centroids by country
         case_centroids = readtable(strcat("/Users/tilman/Documents/GitHub/Thesis_Git/Build/temp/borderregions/", (countryname), "_borderregion.csv"));
         num_locations = size(case_centroids, 1)
-     if num_locations > 2 && num_locations < 500
+     if num_locations > 2 && num_locations < 10000
 
         % Read in characteristics
         population = case_centroids.pop;
