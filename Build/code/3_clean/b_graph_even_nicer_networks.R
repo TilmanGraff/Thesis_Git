@@ -8,7 +8,7 @@ require("rgeos")
 require("rgdal")
 require("scales")
 
-setwd("/Users/tilman/Documents/GitHub/Thesis_Git")
+setwd("/Users/tilmangraff/Documents/GitHub/Thesis_Git")
 
 delete_all = 0
 

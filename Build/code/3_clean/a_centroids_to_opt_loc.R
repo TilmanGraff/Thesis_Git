@@ -1,6 +1,6 @@
 # Aggregates findings from optimisation into the opt_loc dataset. Most importantly, defines lambda.
 
-setwd("/Users/tilman/Documents/GitHub/Thesis_Git")
+setwd("/Users/tilmangraff/Documents/GitHub/Thesis_Git")
 
 
 centroids <- read.csv("./Build/temp/centroids.csv")
@@ -40,7 +40,7 @@ countryfiles = countryfiles[countryfiles$abroad == 0,]
 
 opt_loc <- merge(centroids, countryfiles[,!names(countryfiles) %in% c("x","y","pop","abroad")], by=c("ID", "country"), all.x=T)
 
-opt_loc$zeta <- opt_loc$c_opt / opt_loc$c_stat
+opt_loc$zeta <- opt_loc$util_opt / opt_loc$util_stat
 
 
 
