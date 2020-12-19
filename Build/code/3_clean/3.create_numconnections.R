@@ -1,5 +1,5 @@
 # Uses adj matrices to define border variable, which is then merged in the Analysis folder
-
+# do not confuse this with the borderregion variable. This is just about how many connections a gridcell has! (whether its at a coast etc!)
 
 countries <- read.csv("./Build/temp/country_names.csv")
 

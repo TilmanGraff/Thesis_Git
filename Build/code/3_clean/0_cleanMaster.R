@@ -2,7 +2,11 @@
 
 # Order in which it should work
 
-# 1. build_initial_infra_graphs.m
-# 2. graph_nicer_networks.m
-# 3. centroids_to_opt_loc.R
-# 4. create_border_variable.R
+# combine geography and optimisation to create opt_loc
+source("./Build/code/3_clean/1.centroids_to_opt_loc.R")
+
+# make the nice graphs happen
+source("./Build/code/3_clean/2.graph_even_nicer_networks.R")
+
+# create the numconnections variable
+source("./Build/code/3_clean/3.create_numconnections.R")
