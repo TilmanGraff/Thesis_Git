@@ -32,7 +32,7 @@ rho = 0; % this is really important to not have any inequality aversion. I am no
         % Split centroids by country
         case_centroids = readtable(strcat("/Users/tilmangraff/Documents/GitHub/Thesis_Git/Build/temp/borderregions/", (countryname), "_borderregion.csv"));
         num_locations = size(case_centroids, 1)
-     if num_locations > 2 && num_locations < 200
+     if num_locations > 2 %&& num_locations < 800
 
         % Read in characteristics
         population = case_centroids.pop;

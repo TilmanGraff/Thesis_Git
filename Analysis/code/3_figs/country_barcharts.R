@@ -6,11 +6,11 @@
 # Aggregating national means for welfare_gains
 ###############
 
-library("reshape")
+library("reshape2")
 library("stargazer")
 require("RColorBrewer")
 
-opt_loc <- read.csv("/Users/tilman/Documents/GitHub/Thesis_Git/Analysis/input/opt_loc.csv")
+opt_loc <- read.csv("./Analysis/input/opt_loc.csv")
 opt_loc_nat <- data.frame()
 i = 1
 country_table <- as.data.frame(table(opt_loc$country))
@@ -19,7 +19,7 @@ country_names <- paste(country_table[country_table$Freq != 0,"Var1"])
 for(country in country_names){
   df <- opt_loc[opt_loc$country==country,]
 
-  if(!is.na(df[1, "zeta"])){
+  if(!is.na(df[1, "zeta"]) & nrow(df)>2){
 
     opt_loc_nat[i, "country"] <- country
     opt_loc_nat[i, "welfare_gains"] <- ((sum(df$pop * df$util_opt)  / sum(df$pop * df$util_stat)) - 1) * 100
@@ -43,7 +43,7 @@ opt_loc_nat[opt_loc_nat$country=="Africa","col"] = "black"
 # Plot
 ###############
 
-pdf("/Users/tilman/Documents/GitHub/Thesis_Git/Analysis/output/descriptives/country_barchart.pdf", width=8,height=8)
+pdf("./Analysis/output/descriptives/country_barchart.pdf", width=8,height=8)
 par(mar=c(5,3,1,1))
 plot(0,0, type="n", xlab="Hypothetical welfare gain", ylab="", bty="n", axes=F, xlim=c(0, max(opt_loc_nat$welfare_gains)*1.1), ylim=c(1,nrow(opt_loc_nat)))
 
