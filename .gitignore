@@ -2,5 +2,7 @@
 *World_Countries
 *GIS_Projects
 *Build/input.nosync
+*Analysis/input
 *.m~
 *.icloud
+*.RData

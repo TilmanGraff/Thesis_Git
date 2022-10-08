@@ -7,19 +7,26 @@ borders <- NA
 
 for(i in 1:length(countries$x)){
   country <- countries$x[i]
-    if(file.exists(paste("./Build/temp/adj/adj_", country, ".csv", sep = ""))){
-      adj <- read.csv(paste("./Build/temp/adj/adj_", country, ".csv", sep = ""))
+    if(file.exists(paste0("./Build/output/Network_outcomes/", country, "_outcomes.csv"))){
+      adjraw <- read.csv(paste0("./Build/temp/adj/adj_", country, ".csv"))
+      prodraw <- read.csv(paste0("./Build/temp/productivities/productivities_", country, ".csv"))
+      countryfile <- read.csv(paste0("./Build/output/Network_outcomes/", country, "_outcomes.csv"))
+
+      athome = 1 - countryfile$abroad
+
+      adj = adjraw[athome==1,athome==1]
+      prod = prodraw[athome==1,]
 
       if(is.na(borders)){
-        borders <- as.data.frame(cbind(rownumber=1:length(adj), country=as.character(country), border=rowSums(adj)))
+        borders <- as.data.frame(cbind(rownumber=1:length(adj), country=as.character(country), border=rowSums(adj), ID = countryfile[athome==1,"ID"], distinct_good = as.numeric(prod$V6 == 0)))
       } else{
-        borders <- rbind(borders, cbind(rownumber=1:length(adj), country=as.character(country), border=rowSums(adj)))
+        borders <- rbind(borders, cbind(rownumber=1:length(adj), country=as.character(country), border=rowSums(adj), ID = countryfile[athome==1,"ID"], distinct_good = as.numeric(prod$V6 == 0)))
       }
 
 
 
     }
-
+    print(country)
 
 }
 

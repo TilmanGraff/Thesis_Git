@@ -9,6 +9,7 @@
 library("reshape2")
 library("stargazer")
 require("RColorBrewer")
+require("viridis")
 
 opt_loc <- read.csv("./Analysis/input/opt_loc.csv")
 opt_loc_nat <- data.frame()
@@ -30,22 +31,24 @@ for(country in country_names){
 }
 
 # Colors for plot
-my.palette <- brewer.pal(n = 9, name = "OrRd")
-opt_loc_nat$col = my.palette[as.numeric(cut(opt_loc_nat$welfare_gains,breaks = 8))]
+#my.palette <- brewer.pal(n = 9, name = "OrRd")
+my.palette = rocket(21)
+
+opt_loc_nat$col = my.palette[as.numeric(cut(opt_loc_nat$welfare_gains,breaks = 20))]
 
 
 total = ((sum(opt_loc$pop*opt_loc$util_opt, na.rm=T) / sum(opt_loc$pop*opt_loc$util_stat, na.rm=T))-1) * 100
 opt_loc_nat[nrow(opt_loc_nat)+1,"country"] = "Africa"
 opt_loc_nat[opt_loc_nat$country=="Africa","welfare_gains"] = total
-opt_loc_nat[opt_loc_nat$country=="Africa","col"] = "black"
+opt_loc_nat[opt_loc_nat$country=="Africa","col"] = "grey"
 
 
 # Plot
 ###############
 
 pdf("./Analysis/output/descriptives/country_barchart.pdf", width=8,height=8)
-par(mar=c(5,3,1,1))
-plot(0,0, type="n", xlab="Hypothetical welfare gain", ylab="", bty="n", axes=F, xlim=c(0, max(opt_loc_nat$welfare_gains)*1.1), ylim=c(1,nrow(opt_loc_nat)))
+par(mar=c(5,1,1,1))
+plot(0,0, type="n", xlab="Hypothetical welfare gain", ylab="", bty="n", axes=F, xlim=c(0, max(opt_loc_nat$welfare_gains)*1.12), ylim=c(1,nrow(opt_loc_nat)))
 
 for(i in 1:nrow(opt_loc_nat)){
 
@@ -53,13 +56,13 @@ for(i in 1:nrow(opt_loc_nat)){
 
   if(opt_loc_nat[order(opt_loc_nat$welfare_gains), "country"][i] != "Africa"){
 
-    text(opt_loc_nat[order(opt_loc_nat$welfare_gains), "welfare_gains"][i], i, opt_loc_nat[order(opt_loc_nat$welfare_gains), "country"][i], pos=4, cex=.7)
+    text(opt_loc_nat[order(opt_loc_nat$welfare_gains), "welfare_gains"][i], i, opt_loc_nat[order(opt_loc_nat$welfare_gains), "country"][i], pos=4, cex=.8)
   } else{
-    text(opt_loc_nat[order(opt_loc_nat$welfare_gains), "welfare_gains"][i], i, labels=expression(bold("Africa")), pos=4, cex=.7)
+    text(opt_loc_nat[order(opt_loc_nat$welfare_gains), "welfare_gains"][i], i, labels=expression(bold("Africa")), pos=4, cex=.8)
   }
 }
 
 abline(v=0)
-axis(1, at=c(0:6), labels=paste0(c(0:6), "%"))
+axis(1, at=c(0:4), labels=paste0(c(0:4), "%"))
 
 dev.off()

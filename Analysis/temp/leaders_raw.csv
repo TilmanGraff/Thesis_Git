@@ -1,0 +1,97 @@
+"","Country","Leader name","Entered office","Left office","ADM1 region","ADM2 region","Ethnicity","until","from","years_in_power","x","y"
+"3","Angola","Jose Eduardo dos Santos","10.09.1979","ongoing","Luanda","Maianga","KIMBUNDU",2014,1979,35,13.2303908,-8.8267755
+"4","Benin","Mathieu Kerekou","04.04.1996","06.04.2006","Atakora","To↵o","SOMBA",2006,1996,10,1.5331527,10.7160515
+"5","Benin","Thomas Yayi Boni","06.04.2006","ongoing","Borgou","Tchaourou","YORUBA",2014,2006,8,2.54656403556362,9.2112318
+"6","Botswana","Festus Mogae","31.03.1998","01.04.2008","Central","Serowe","KALANGA",2008,1998,10,26.703289,-22.39776
+"7","Burkina-Faso","Blaise Compaore","15.10.1987","ongoing","Oubritenga","Ziniare","MOSSI",2014,1987,27,-1.23311832596441,12.582722
+"8","Burundi","Pierre Buyoya","25.07.1996","30.04.2003","Bururi","Rutovu","TUTSI",2003,1996,7,29.8473545,-3.8810529
+"9","Burundi","Pierre Nkurunziza","26.08.2006","ongoing","Bujumbura Mairie","Roherero","HUTU",2014,2006,8,29.3631843,-3.3493959
+"10","Burundi","Domitien Ndayizeye","30.04.2003","26.08.2006","Kayanza","Kayanza","HUTU",2006,2003,3,29.6195628,-3.0083103
+"11","Cote-dIvoire","Alassane Ouattara","11.04.2011","ongoing","N’zi-Comoé","Dimbokro","DIULA",2014,2011,3,NA,NA
+"12","Cote-dIvoire","Laurent Gbagbo","26.10.2000","11.04.2011","Fromager","Gagnoa","KRU",2011,2000,11,NA,NA
+"13","Cameroon","Paul Biya","06.11.1982","ongoing","Sud","Dja-et-Lobo","BETE",2014,1982,32,12.2418766286218,2.92457935
+"14","Cape-Verde","Jose Maria Neves","01.02.2001","ongoing","Santa Catarina","Portugese","",2014,2001,13,-23.7134304393696,15.08907545
+"15","Cape-Verde","Carlos Veiga","04.04.1991","29.07.2000","São Vicente","Portugese","",2000,1991,9,-24.9719342558985,16.84913505
+"16","Central-African-Republic","Ange-Felix Patasse","22.10.1993","15.03.2003","Ouham-Pendé","Paoua","SARA-KABA",2003,1993,10,16.432496,7.2407
+"17","Chad","Idriss Deby","02.12.1990","ongoing","Bet","Ennedi Ouest","ZAGHAWA",2014,1990,24,21.5082709,18.1636803
+"18","Comoros","Ikililou Dhoinine","26.02.2011","ongoing","Nzwani","Swahili","",2014,2011,3,44.4107048609822,-12.22656805
+"19","Comoros","Azali Assoumani","27.05.2002","26.05.2006","Njazı́dja","Swahili","",2006,2002,4,NA,NA
+"20","Comoros","Ahmed Abdallah Mohamed Sambi","27.05.2006","26.05.2011","Mwali","Hadrami","",2011,2006,5,43.7204313267297,-12.32045735
+"21","Comoros","Azali Assoumani","30.04.1999","21.01.2002","Njazı́dja","Swahili","",2002,1999,3,NA,NA
+"22","Democratic-Republic-of-the-Congo","Laurent-Desire Kabila","16.05.1997","16.01.2001","Katanga","Tanganika","LUBA",2001,1997,4,29.4696632197321,-6.0789144
+"23","Democratic-Republic-of-the-Congo","Joseph Kabila","17.01.2001","ongoing","Katanga","Haut-Lomami","LUBA",2014,2001,13,24.9893335,-8.7129757
+"24","Egypt","Mohammed Hussein Tantawi","11.02.2011","ongoing","Al Qahirah","Nubian","",2014,2011,3,33.8246222,27.160329
+"25","","","","","","","",NA,NA,NA,NA,NA
+"26","Egypt","Hosni Mubarak","14.10.1981","11.02.2011","Al Minufiyah","Arab","",2011,1981,30,31.4169817,30.1563059
+"27","Equatorial-Guinea","Teodoro Obiang Nguema Mbasogo","03.08.1979","ongoing","Wele-Nzás","Fang","",2014,1979,35,11.131676,1.4648719
+"28","Eritrea","Isaias Afewerki","24.05.1993","ongoing","Anseba","Asmara City","TIGRINYA",2014,1993,21,38.9326763,15.3389667
+"29","Ethiopia","Meles Zenawi","27.05.1991","ongoing","Tigray","Central Tigray","TIGRINYA",2014,1991,23,38.8900119694668,13.9117104
+"30","Gabon","Omar Bongo Ondimba","28.11.1967","08.06.2009","Haut-Ogooué","Lé coni-Djoué","TEKE",2009,1967,42,13.5895258,-1.638962
+"31","Gambia","Yahya Jammeh","22.07.1994","ongoing","Western","Brikama","JOLA",2014,1994,20,-16.4997039452513,13.25851295
+"32","Ghana","John Evans Atta-Mills","07.01.2009","ongoing","Western","Wassa West","FANTI",2014,2009,5,-2.5321498,5.7735167
+"33","Ghana","John Agyekum Kufuor","08.01.2001","07.01.2009","Ashanti","Kumasi","ASHANTI",2009,2001,8,-1.6230404,6.698081
+"34","Ghana","Jerry Rawlings","31.12.1981","07.01.2001","Greater Accra","Accra","EWE",2001,1981,20,-0.2012376,5.5571096
+"35","Guinea","Lansana Conté","03.04.1984","22.12.2008","Kindia","Coyah","SUSU",2008,1984,24,-13.388956,9.709041
+"36","Guinea","Sekouba Konate","05.12.2009","21.12.2010","Conarky","Conarky","MANDINKA",2010,2009,1,NA,NA
+"37","Guinea","Alpha Conde","21.12.2010","ongoing","Boké","Boké","MANDINKA",2014,2010,4,-13.9440724,11.3406898
+"38","Guinea","Moussa Dadis Camara","23.12.2008","05.12.2009","Nzérékoré","Nzérékoré","KPELLE",2009,2008,1,-8.8160001,7.7589949
+"39","Guinea-Bissau","Joao Bernardo Vierira","01.20.2005","02.03.2009","Bissau","Bissau","PAPEL",2009,2005,4,-15.583055,11.861324
+"40","Guinea-Bissau","Raimundo Pereira","02.03.2009","08.09.2009","Oio","Mansaba","",2009,2009,0,-15.171311,12.293782
+"41","Guinea-Bissau","Malam Bacai Sanha","08.09.2009","ongoing","Oio","Mansaba","MANDINKA",2014,2009,5,-15.171311,12.293782
+"42","Guinea-Bissau","Kumba Iala","18.02.2000","14.09.2003","Cacheu","Bula","BALANTE",2003,2000,3,-15.711007,12.108565
+"43","Guinea-Bissau","Henrique Pereira Rosa","28.09.2003","01.10.2005","Bafatá","Bafatá","BALANTE",2005,2003,2,-14.7503609856523,12.13485115
+"44","Kenya","Daniel arap Moi","22.08.1978","30.12.2002","Rift Valley","Baringo","KALENJIN",2002,1978,24,36.0201419378925,0.72444025
+"45","Kenya","Mwai Kibaki","31.12.2002","ongoing","Central","Nyeri","KIKUYU",2014,2002,12,36.9517005,-0.4192962
+"46","Lesotho","Pakalithal Mosisili","29.05.1998","ongoing","Mohale’s Hoek","Basotho","",2014,1998,16,27.4784235,-29.3130063
+"47","Liberia","Charles Taylor","02.08.1997","11.08.2003","Bomi","Klay","GOLA",2003,1997,6,-10.8130111248233,6.7055351
+"48","Liberia","Gyude Bryant","14.10.2003","16.01.2006","Montserrado","Greater Monrovia","GREBO",2006,2003,3,-10.7333499435526,6.3196613
+"49","Liberia","Ellen Johnson Sirleaf","16.01.2006","ongoing","Montserrado","Greater Monrovia","GOLA",2014,2006,8,-10.7333499435526,6.3196613
+"50","Libya","Muammar al-Gaddafi","01.09.1969","23.08.2011","Surt","Qadhadhfa","",2011,1969,42,16.5836206,31.2059625
+"53","Madagascar","Marc Ravalomanana","06.07.2002","17.03.2009","Antananarivo","Analamanga","MERINA",2009,2002,7,47.5131002161615,-18.6000004
+"54","Madagascar","Didier Ratsiraka","09.02.1997","06.07.2002","Toamasina","Atsinanana","MALAGASY",2002,1997,5,48.8742140899437,-18.9771559
+"55","Madagascar","Andry Rajoelina","17.03.2009","ongoing","Antananarivo","Analamanga","MERINA",2014,2009,5,47.5131002161615,-18.6000004
+"56","Malawi","Bakili Muluzi","21.05.1994","24.05.2004","Machinga","SC Chiwalo","YAO",2004,1994,10,35.6025815626795,-14.9027497
+"57","Malawi","Bingu wa Mutharika","24.05.2004","ongoing","Thyolo","TA Nchilamwela","LOMWE",2014,2004,10,35.1449132238241,-16.12877475
+"58","Mali","Alpha Oumar Konare","08.06.1992","08.06.2002","Kayes","Kayes","FULA",2002,1992,10,-10.2245548149391,13.8001844
+"59","Mali","Amadou Toumani Toure","08.06.2002","ongoing","Mopti","Mopti","FULA",2014,2002,12,-3.64645806048387,14.514489
+"60","Mauritania","Ely Ould Mohamed Vall","03.08.2005","19.04.2007","Nouakchott","Nouakchott","BIDAN",2007,2005,2,-15.9629045700407,18.0629222
+"61","Mauritania","Mohammed Ould Abdelaziz","05.08.2009","ongoing","Inchiri","Akjoujt","BIDAN",2014,2009,5,-14.3855238,19.7435804
+"62","Mauritania","Maaouya Ould Taya","12.12.1984","03.08.2005","Adrar","Atar","BIDAN",2005,1984,21,-13.0543928,20.5181943
+"63","Mauritania","Ba Mamadou Mbaré","15.04.2009","05.08.2009","Gorgol","Maghama","FULA",2009,2009,0,-12.8502902,15.5101724
+"64","Mauritania","Sidi Ould Cheikh Abdellahi","19.04.2007","06.08.2008","Brakna","Aleg","BIDAN",2008,2007,1,-13.9152949,17.0527177
+"65","Mauritius","Navinchandra Ramgoolam","05.07.2005","ongoing","Port Louis","Hindu","",2014,2005,9,57.5028044,-20.1624522
+"66","Mauritius","Anerood Jugnauth","18.09.2000","30.09.2003","Plaines Wilhems","Hindu","",2003,2000,3,57.4948668714526,-20.29976155
+"67","Mauritius","Navinchandra Ramgoolam","22.12.1995","17.09.2000","Port Louis","Hindu","",2000,1995,5,57.5028044,-20.1624522
+"68","Mauritius","Paul Berenger","30.09.2003","05.07.2005","Moka","French","",2005,2003,2,57.50275,-20.2218738
+"69","Morocco","Mohammed VI of Morocco","23.07.1999","ongoing","Rabat - Salé - Zemmour - Zaer","Rabat","BERBER",2014,1999,15,-6.834543,34.022405
+"70","Mozambique","Armando Emilio Guebuza","02.02.2005","ongoing","Nampula","Murrupula","MAKUA",2014,2005,9,38.682101,-15.4681939
+"71","Mozambique","Joaquim Alberto Chissano","06.11.1986","02.02.2005","Gaza","Chibuto","TSONGA",2005,1986,19,33.5490566489908,-24.2656131
+"72","Namibia","Sam Daniel Nujoma","21.03.1990","21.03.2005","Omusati","Okahao","OVAMBO",2005,1990,15,15.0690985100619,-17.88691825
+"73","Namibia","Hifikepunye Pohamba","21.03.2005","ongoing","Ohangwena","Engela","OVAMBO",2014,2005,9,15.8690768,-17.451224
+"74","Niger","Mahamadou Issoufou","07.04.2011","ongoing","Tahoua","Illéla","HAUSA",2014,2011,3,5.2455312,14.4590368
+"75","","","","","","","",NA,NA,NA,NA,NA
+"76","Niger","Salou Djibo","08.02.2010","07.04.2011","Tillabéry","Kollo","DJERMA",2011,2010,1,2.316525,13.3420771
+"77","Niger","Mamadou Tandja","22.12.1999","08.02.2010","Di↵a","Ma´’iné-Soroa","FULA",2010,1999,11,NA,NA
+"78","Nigeria","Goodluck Jonathan","09.02.2010","ongoing","Bayelsa","Ogbia","IJAW",2014,2010,4,6.3166058,4.6868354
+"79","Nigeria","Olusegun Obasanjo","29.05.1999","29.05.2007","Ogun","Abeokuta South","YORUBA",2007,1999,8,3.364475194083,7.15928935
+"80","Nigeria","Umaru Musa Yar’Adua","29.05.2007","09.02.2010","Katsina","Katsina (K)","FULA",2010,2007,3,10.666667,8.166667
+"81","Republic-of-the-Congo","Denis Sassou Nguesso","15.10.1997","ongoing","Cuvette","Owando","MBOCHI",2014,1997,17,15.896645,-0.481343
+"82","Rwanda","Paul Kagame","19.07.1994","ongoing","Gitarama","Tambwe","TUTSI",2014,1994,20,29.7526948,-2.0845197
+"83","Senegal","Abdoulaye Wade","02.04.2000","ongoing","Louga","Kébémer","WOLOF",2014,2000,14,-16.4429778,15.3688735
+"84","Sierra-Leone","Ahmad Tejan Kabbah","10.03.1998","17.09.2007","Eastern","Kailahun","MENDE",2007,1998,9,-10.573943,8.277001
+"85","Sierra-Leone","Ernest Bai Koroma","17.09.2007","ongoing","Northern","Bombali","TEMNE",2014,2007,7,-12.1148024,9.2388372
+"86","South-Africa","Jacob Zuma","09.05.2009","ongoing","KwaZulu-Natal","Nkandla","ZULU",2014,2009,5,31.090556,-28.62
+"87","South-Africa","Thabo Mbeki","16.06.1999","24.09.2008","Eastern Cape","Idutywa","XOSA",2008,1999,9,28.304297,-32.097151
+"88","Sudan","Umar Hassan Ahmad al-Bashir","30.06.1989","ongoing","Northern","River Nile","JA’ALIN",2014,1989,25,33.0183179782381,19.0105596
+"89","Swaziland","Mswati III of Swaziland","25.04.1986","ongoing","Manzini","Swazi","",2014,1986,28,31.3991317,-26.5624806
+"90","United-Republic-of-Tanzania","Jakaya Kikwete","21.12.2005","ongoing","Pwani","Bagamoyo","KWERE",2014,2005,9,38.9062189,-6.4422075
+"91","United-Republic-of-Tanzania","Benjamin Mkapa","23.11.1995","21.12.2005","Mtwara","Masasi","NGONI",2005,1995,10,38.7637592886185,-10.57843185
+"92","Togo","Faure Gnassingbe","04.05.2005","ongoing","Maritime","Lacs","KABRE",2014,2005,9,1.24433891622709,6.53703405
+"93","Togo","Gnassingbe Eyadema","14.04.1967","05.02.2005","Kara","Kozah","KABRE",2005,1967,38,1.15348759748936,9.5899785
+"94","Tunisia","Zine El Abidine Ben Ali","07.11.1987","14.01.2011","Sousse","Sousse Médina","TUNISIA ARABS",2011,1987,24,10.6324430833192,35.83618285
+"95","Tunisia","Fouad Mebazaa","15.01.2011","13.12.2011","Tunis","Bab Souika","TUNISIA ARABS",2011,2011,0,10.1689619270833,36.806945
+"96","Uganda","Yoweri Museveni","26.01.1986","ongoing","Ntungamo","Ruhaama","BANYANKOLE",2014,1986,28,30.6988139,-0.7866838
+"97","Zambia","Frederick Chiluba","02.11.1991","02.01.2002","Copperbelt","Kitwe","BEMBA",2002,1991,11,28.2068361,-12.8104186
+"98","Zambia","Levy Mwanawasa","03.01.2002","19.08.2008","Copperbelt","Mufulira","LENJE",2008,2002,6,28.2408844,-12.5512171
+"99","Zambia","Michael Sata","23.09.2011","ongoing","Northern","Mpika","BEMBA",2014,2011,3,31.4555126,-11.8431958
+"100","Zimbabwe","Robert Mugabe","04.03.1980","ongoing","Harare","Harare","SHONA",2014,1980,34,31.045686,-17.831773

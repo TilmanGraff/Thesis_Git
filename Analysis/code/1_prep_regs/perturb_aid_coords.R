@@ -3,7 +3,7 @@
 
 # WORLDBANK
 ###########
-aid_loc <- read.csv("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/input/AidData_WorldBank/data/locations.csv")
+aid_loc <- read.csv("./Analysis/input/AidData_WorldBank/data/locations.csv")
 aid_loc <- aid_loc[grepl("Africa", aid_loc$gazetteer_adm_name),]
 
 for(i in 1:nrow(aid_loc)){

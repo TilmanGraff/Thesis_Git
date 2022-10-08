@@ -1,15 +1,13 @@
-library(pdftools)
-library("rjson", lib.loc="/Library/Frameworks/R.framework/Versions/3.4/Resources/library")
-library("rgdal", lib.loc="/Library/Frameworks/R.framework/Versions/3.4/Resources/library")
-library("geosphere", lib.loc="/Library/Frameworks/R.framework/Versions/3.4/Resources/library")
-library("raster", lib.loc="/Library/Frameworks/R.framework/Versions/3.4/Resources/library")
-library("rgeos", lib.loc="/Library/Frameworks/R.framework/Versions/3.4/Resources/library")
-library("Imap", lib.loc="/Library/Frameworks/R.framework/Versions/3.2/Resources/library")
-library("gepaf", lib.loc="/Library/Frameworks/R.framework/Versions/3.4/Resources/library")
-library("vegan", lib.loc="/Library/Frameworks/R.framework/Versions/3.4/Resources/library")
-library("countrycode", lib.loc="/Library/Frameworks/R.framework/Versions/3.4/Resources/library")
+require(rgdal)
+require(geosphere)
+require(raster)
+require(rgeos)
+require(gepaf)
+require(pdftools)
 
-opt_loc <- read.csv("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/input/opt_loc.csv")
+##############
+# quick function to scrape text addressdetails
+##############
 
 nominatim_osm <- function(address = NULL)
 {
@@ -26,7 +24,11 @@ nominatim_osm <- function(address = NULL)
 }
 
 
-text <- pdf_text("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/input/Leaders.pdf")
+##############
+# import leaders pdf
+##############
+
+text <- pdf_text("./Analysis/input/Leaders.pdf")
 text2 <- strsplit(text, "\n")
 
 texts <- c(gsub("\\s{2,}", ",", text2[[1]]), gsub("\\s{2,}", ",", text2[[2]]))
@@ -39,8 +41,6 @@ leaders <- leaders[-1,]
 
 leaders <- leaders[!grepl("office", leaders$`Entered office`),]
 leaders <- leaders[!grepl("Table", leaders$Country),]
-
-
 leaders$Country <- gsub(" ", "-", leaders$Country)
 leaders$Country <- gsub("'", "", leaders$Country)
 
@@ -75,6 +75,11 @@ leaders$`ADM2 region` <- gsub("<[^>]+>", "",leaders$`ADM2 region`)
 leaders$`ADM1 region` <- gsub("<[^>]+>", "",leaders$`ADM1 region`)
 
 
+##############
+# scrape adressess
+##############
+
+
 leaders$x <- NA
 leaders$y <- NA
 
@@ -91,6 +96,12 @@ for(i in 1:nrow(leaders)){
   leaders[i,"y"] <- NA
   }
 }
+
+##############
+# export
+##############
+
+write.csv(leaders, file = "./Analysis/temp/leaders_raw.csv")
 
 # Merge onto opt_loc gridcells
 
@@ -120,55 +131,58 @@ for(i in 1:nrow(leaders)){
 #
 # }
 
-opt_loc$wbcode <- countrycode(opt_loc$country, origin = "country.name", destination="wb")
-df <- opt_loc[!is.na(opt_loc$wbcode),]
-
-df$years_in_power <- 0
-
-leaders <- leaders[!is.na(leaders$x),]
-
-for(i in 1:nrow(leaders)){
-
-  country <- countrycode(leaders$Country[i], origin = "country.name", destination = "wb")
-  if(!is.na(country)){
-
-    subset <- df[df$wbcode==country,]
-    nearest_ID <- NA
-    min_dist <- 1000000000
-if(nrow(subset)>0){
-    for(j in 1:nrow(subset)){
-      if(!is.na(subset[j,c("x")]) & !is.na(subset[j,c("y")])){
-      dist <- gdist(leaders[i,c("x")], leaders[i,c("y")], subset[j,c("x")], subset[j,c("y")])
-      if(!is.na(dist)){
-      if(dist < min_dist){
-        min_dist <- dist
-        nearest_ID <- subset[j,"ID"]
-      }
-    }
-  }
-  }
-    df[df$ID==nearest_ID,"years_in_power"] <- df[df$ID==nearest_ID,"years_in_power"] + leaders[i,"years_in_power"]
-}
-}
-}
-
-df <- merge(opt_loc, df, by="ID", all.x=T)
 
 
-#eth_years_in_power <- aggregate(leaders$in_power, by=list(leaders$Ethnicity, leaders$Country), FUN="sum")
 
-#colnames(years_in_power) <- c("ethn_NAME", "country", "years_in_power")
-
-write.csv(df[,c("ID", "years_in_power")], file="/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/temp/ID_years_in_power.csv", row.names = FALSE)
-
-
-# Draw Map
-
-world <- readOGR("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/input/World_Countries/TM_WORLD_BORDERS-0.3.shp") # reads in the global country shapefile
-africa <- world[world@data$REGION==2,]
-
-png(filename=paste("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/other_maps/birthplaces.png", sep=""), width=6, height=6, units = 'in', res=300 )
-plot(africa, lwd=.8)
-points(leaders$x, leaders$y, col="darkorange1")
-points(leaders$x, leaders$y, col="red", pch=4)
-dev.off()
+# opt_loc$wbcode <- countrycode(opt_loc$country, origin = "country.name", destination="wb")
+# df <- opt_loc[!is.na(opt_loc$wbcode),]
+#
+# df$years_in_power <- 0
+#
+# leaders <- leaders[!is.na(leaders$x),]
+#
+# for(i in 1:nrow(leaders)){
+#
+#   country <- countrycode(leaders$Country[i], origin = "country.name", destination = "wb")
+#   if(!is.na(country)){
+#
+#     subset <- df[df$wbcode==country,]
+#     nearest_ID <- NA
+#     min_dist <- 1000000000
+# if(nrow(subset)>0){
+#     for(j in 1:nrow(subset)){
+#       if(!is.na(subset[j,c("x")]) & !is.na(subset[j,c("y")])){
+#       dist <- gdist(leaders[i,c("x")], leaders[i,c("y")], subset[j,c("x")], subset[j,c("y")])
+#       if(!is.na(dist)){
+#       if(dist < min_dist){
+#         min_dist <- dist
+#         nearest_ID <- subset[j,"ID"]
+#       }
+#     }
+#   }
+#   }
+#     df[df$ID==nearest_ID,"years_in_power"] <- df[df$ID==nearest_ID,"years_in_power"] + leaders[i,"years_in_power"]
+# }
+# }
+# }
+#
+# df <- merge(opt_loc, df, by="ID", all.x=T)
+#
+#
+# #eth_years_in_power <- aggregate(leaders$in_power, by=list(leaders$Ethnicity, leaders$Country), FUN="sum")
+#
+# #colnames(years_in_power) <- c("ethn_NAME", "country", "years_in_power")
+#
+# write.csv(df[,c("ID", "years_in_power")], file="/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/temp/ID_years_in_power.csv", row.names = FALSE)
+#
+#
+# # Draw Map
+#
+# world <- readOGR("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/input/World_Countries/TM_WORLD_BORDERS-0.3.shp") # reads in the global country shapefile
+# africa <- world[world@data$REGION==2,]
+#
+# png(filename=paste("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/other_maps/birthplaces.png", sep=""), width=6, height=6, units = 'in', res=300 )
+# plot(africa, lwd=.8)
+# points(leaders$x, leaders$y, col="darkorange1")
+# points(leaders$x, leaders$y, col="red", pch=4)
+# dev.off()

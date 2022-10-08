@@ -45,7 +45,7 @@ opt_loc <- merge(centroids, countryfiles[,!names(countryfiles) %in% c("x","y","p
 
 # for the first time, create the zeta variable
 opt_loc$zeta <- opt_loc$util_opt / opt_loc$util_stat
-
+opt_loc[opt_loc$pop==0,"zeta"] = 1 # if you have zero population, zeta is zero!
 
 
 write.csv(opt_loc, file="./Analysis/input/opt_loc.csv", row.names = FALSE)

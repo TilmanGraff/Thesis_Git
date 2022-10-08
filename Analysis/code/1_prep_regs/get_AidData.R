@@ -1,12 +1,9 @@
-
-library("rgdal", lib.loc="/Library/Frameworks/R.framework/Versions/3.4/Resources/library")
-library("geosphere", lib.loc="/Library/Frameworks/R.framework/Versions/3.4/Resources/library")
-library("raster", lib.loc="/Library/Frameworks/R.framework/Versions/3.4/Resources/library")
-library("rgeos", lib.loc="/Library/Frameworks/R.framework/Versions/3.4/Resources/library")
-library("Imap", lib.loc="/Library/Frameworks/R.framework/Versions/3.2/Resources/library")
-library("gepaf", lib.loc="/Library/Frameworks/R.framework/Versions/3.4/Resources/library")
-library("vegan", lib.loc="/Library/Frameworks/R.framework/Versions/3.4/Resources/library")
-library("scales", lib.loc="/Library/Frameworks/R.framework/Versions/3.4/Resources/library")
+require(rgdal)
+require(geosphere)
+require(raster)
+require(rgeos)
+require(gepaf)
+require(sf)
 
 ##############################
 # ENTER RAW DATA
@@ -14,10 +11,10 @@ library("scales", lib.loc="/Library/Frameworks/R.framework/Versions/3.4/Resource
 
 # WORLDBANK
 ###########
-aid_loc <- read.csv("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/input/AidData_WorldBank/data/locations_perturbed.csv")
+aid_loc <- read.csv("./Analysis/input/AidData_WorldBank/data/locations_perturbed.csv")
 aid_loc <- aid_loc[grepl("Africa", aid_loc$gazetteer_adm_name),]
 
-aid_proj <- read.csv("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/input/AidData_WorldBank/data/projects.csv")
+aid_proj <- read.csv("./Analysis/input/AidData_WorldBank/data/projects.csv")
 aid_proj <- aid_proj[aid_proj$is_geocoded==1,]
 
 aid <- merge(aid_loc, aid_proj, by="project_id")
