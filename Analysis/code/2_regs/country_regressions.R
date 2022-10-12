@@ -8,7 +8,7 @@
 library("reshape")
 library("stargazer")
 
-opt_loc <- read.csv("/Users/tilman/Documents/GitHub/Thesis_Git/Analysis/input/opt_loc.csv")
+opt_loc <- read.csv("./Analysis/input/opt_loc.csv")
 opt_loc_nat <- data.frame()
 i = 1
 country_table <- as.data.frame(table(opt_loc$country))
@@ -37,7 +37,7 @@ for(country in country_names){
 
 
 
-wdi <- read.csv("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/input/WDI_Worldbank.csv")
+wdi <- read.csv("./Analysis/input/WDI_Worldbank.csv")
 colnames(wdi) <- c("country", "code", "series", "series.code", "value")
 
 wdi <- wdi[, c("country", "series", "value")]

@@ -7,8 +7,18 @@ require("gepaf")
 require("rgeos")
 require("rgdal")
 require("scales")
+require("viridis")
+require("classInt")
+
 
 setwd("/Users/tilmangraff/Documents/GitHub/Thesis_Git")
+
+
+grid = readOGR("./Analysis/input/grid_shapefile/grid.shp")
+opt_loc = read.csv("./Analysis/input/opt_loc.csv")
+
+grid@data = merge(grid@data, opt_loc, by="ID")
+
 
 delete_all = 0
 
@@ -39,6 +49,25 @@ zeta_to_col = function(zeta){
 }
 
 
+# try again with the universal palette
+
+palette = rocket
+breaks_qt <- classIntervals(df$zeta, n = 19, style = "quantile")
+br <- breaks_qt$brks
+offs <- 0.0000001
+br[1] <- br[1] - offs
+br[length(br)] <- br[length(br)] + offs
+grid$zeta_bracket <- cut(grid$zeta, br)
+mbr = vector()
+for(i in 1:19){
+  mbr[i] = mean(c(br[i], br[i+1]))
+}
+
+whichlabels = seq(1, 20, 3)
+
+
+
+
 # For every country, calculate matrices
 for(country in country_names){
 
@@ -65,11 +94,14 @@ for(country in country_names){
     outcomes$different_good = 0
     outcomes[outcomes$ID %in% rosetta[which(rowSums(prod[,-6]) != 0),"ID"],"different_good"] = 1
 
+    outcomes$zeta = outcomes$util_opt / outcomes$util_stat
+    outcomes$zetacol = cut(outcomes$zeta, br)
+
     for(graph in c("stat", "opt")){
 
     # Scale
     if(graph == "opt"){
-      outcomes[outcomes$abroad == 0,"color"] = sapply(outcomes[outcomes$abroad == 0,"c_opt"]/outcomes[outcomes$abroad == 0,"c_stat"], zeta_to_col)
+      outcomes[outcomes$abroad == 0,"color"] = rocket(20)[outcomes[outcomes$abroad == 0,"zetacol"]]
     }else{
       outcomes[outcomes$abroad == 0,"color"] = "dodgerblue4"
     }
@@ -97,6 +129,18 @@ for(country in country_names){
 
     #points(outcomes$x, outcomes$y, pch = ifelse(outcomes$abroad == 0, 19, 19), col=outcomes$color, cex = outcomes$pop_scaled)
     points(outcomes[outcomes$abroad==0,]$x, outcomes[outcomes$abroad==0,]$y, pch =21, bg=outcomes[outcomes$abroad==0,]$color, col=ifelse(outcomes[outcomes$abroad==0,]$different_good==1,"white",NA), lwd=2, cex = outcomes[outcomes$abroad==0,]$pop_scaled)
+
+    # adding a color key just for the DRC so we don't crowd the other graphs
+    if(country == "Democratic-Republic-of-the-Congo" & graph == "opt"){
+      lgd_ = rep(NA, 19)
+      lgd_[whichlabels] = rev(round(mbr[whichlabels], 3))
+      legend(x = 12.21455, y = 5.381389,
+            legend = lgd_,
+            fill = rev(rocket(20)),
+            border = NA,
+            y.intersp = 0.5,
+            cex = 1.3, text.font = 1, bty = "n")
+    }
 
     dev.off()
 

@@ -46,9 +46,6 @@ tempfile capitals
 save `capitals'
 
 import delim "Analysis/temp/leaders.csv", clear varn(1)
-drop if id == "NA"
-destring id years_in_power, replace
-
 tempfile leaders
 save `leaders'
 
@@ -98,6 +95,20 @@ foreach var in "railkm" "placebokm" "railkm_military" "railkm_mining"{
   gen `var'_50 = `var' / 50
 }
 
+
+
+foreach type in "rail" "placebo"{
+  gen aux = 0
+  foreach dist in "10" "20" "30" "40"{
+
+    gen `type'`dist' = dist2`type' < `dist' & aux == 0
+    replace aux = 1 if dist2`type' < `dist'
+
+  }
+  drop aux
+}
+
+gen ever_in_power = years_in_power > 0
 
 **********************
 * Export grid

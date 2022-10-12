@@ -15,18 +15,19 @@ leaders = leaders[!is.na(leaders$x),]
 grid = readOGR("./Analysis/input/grid_shapefile/grid.shp")
 leadersdf = grid@data
 
-leaders_sp = SpatialPoints(cbind(leaders$x, leaders$y))
+leaders_sp = SpatialPointsDataFrame(cbind(leaders$x, leaders$y), leaders)
 crs(leaders_sp) = "+proj=longlat +datum=WGS84 +no_defs"
 
 
 # Merge onto opt_loc gridcells
 
-merger = over(leaders_sp, grid)
+merger = over(leaders_sp[,"years_in_power"], grid, byid = T, returnList = T)
 leadersdf$years_in_power = 0
 
-for(i in 1:nrow(merger)){
-    if(!is.na(merger[i,"ID"])){
-      leadersdf[merger[i,"ID"], "years_in_power"] = leadersdf[merger[i,"ID"], "years_in_power"] + (leaders[i,"until"] - leaders[i,"from"])
+for(i in 1:length(merger)){
+  gridid = as.numeric(unlist(merger[i])[1])
+    if(!is.na(gridid)){
+      leadersdf[leadersdf$ID==gridid, "years_in_power"] = leadersdf[leadersdf$ID==gridid, "years_in_power"] + (leaders[i,"until"] - leaders[i,"from"])
     }
 }
 

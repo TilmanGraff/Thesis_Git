@@ -19,6 +19,7 @@ aid_proj <- aid_proj[aid_proj$is_geocoded==1,]
 
 aid <- merge(aid_loc, aid_proj, by="project_id")
 
+
 for(i in unique(aid$project_id)){ # this is to uniformly streamline total project disbursements over all locations which are part of the project. (assuming uniform allocation...)
 
   total_comm <- (aid[aid$project_id==i,"total_commitments"])[1]
@@ -32,13 +33,14 @@ for(i in unique(aid$project_id)){ # this is to uniformly streamline total projec
 aid <- aid[aid$recipients_iso3 != "Unspecified" & aid$recipients != "Namibia",]
 aid <- aid[aid$precision_code < 4,]
 #aid <- aid[aid$share_disbursements < quantile(aid$share_disbursements, .99, na.rm=T),]
+sp_aid = SpatialPointsDataFrame(aid[,c("longitude", "latitude")], aid, proj4string = crs(grid))
 
 
 
 # CHINA
 ###########
-aid_loc_China <- read.csv("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/input/AidData_China/locations_perturbed.csv", stringsAsFactors=FALSE)
-aid_proj_China <- read.csv("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/input/AidData_China/projects.csv", sep=";", stringsAsFactors=FALSE)
+aid_loc_China <- read.csv("./Analysis/input/AidData_China/locations_perturbed.csv", stringsAsFactors=FALSE)
+aid_proj_China <- read.csv("./Analysis/input/AidData_China/projects.csv", sep=";", stringsAsFactors=FALSE)
 colnames(aid_proj_China)[1] <- "ID"
 
 aid_China <- merge(aid_loc_China, aid_proj_China[,c("ID", "usd_current", "description")], by.x="project_id", by.y="ID")
@@ -67,24 +69,41 @@ aid_China$year_completion <- as.numeric(format(as.Date(as.character(aid_China$en
 # MERGE ONTO GRID CELLS
 ##############################
 
-opt_loc <- read.csv("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/temp/opt_loc_with_raildist.csv")
+grid = readOGR("./Analysis/input/grid_shapefile/grid.shp")
+the_merge = over(grid, sp_aid["project_id"], byid = T, returnList = T, FN = NULL)
+outputfile = data.frame("ID" = grid$ID)
 
-df <- opt_loc[!is.na(opt_loc$zeta),]
-row.names(df) <- 1:nrow(df)
-# back out corner locations from centroid
-df$bl_x <- df$x - 0.25
-df$tl_x <- df$x - 0.25
-df$br_x <- df$x + 0.25
-df$tr_x <- df$x + 0.25
-df$bl_y <- df$y - 0.25
-df$tl_y <- df$y + 0.25
-df$br_y <- df$y - 0.25
-df$tr_y <- df$y + 0.25
+for(i in 1:length(grid)){
+  gridid = grid[i,]$ID
+  rel_projectcodes = as.vector(unlist(the_merge[paste(i)]))
+  rel_projects = aid[aid$project_id %in% rel_projectcodes,]
 
-polygon_file = SpatialPolygons(lapply(1:nrow(df), function(x) Polygons(list(Polygon( cbind(t(df[x, c("bl_x", "tl_x", "tr_x", "br_x")]), t(df[x, c("bl_y", "tl_y", "tr_y", "br_y")])) )), paste0(x))))
-polygon_dataframe = SpatialPolygonsDataFrame(polygon_file, df)
+  outputfile[outputfile$ID == gridid, "wb_dis"] = sum(rel_projects$share_disbursements, na.rm=T) / 1000000
+  outputfile[outputfile$ID == gridid, "wb_dis_compl"] <- sum(rel_projects[rel_projects$status == "Completion","share_disbursements"], na.rm=T) / 1000000
+  outputfile[outputfile$ID == gridid, "wb_dis_old"] <- sum(rel_projects[rel_projects$transactions_end_year < 2002, "share_disbursements"], na.rm=T) / 1000000
 
-for(i in 1:length(polygon_dataframe)){
+  outputfile[outputfile$ID == gridid, "wb_commitments"] <- sum(rel_projects$share_commitments, na.rm=T) / 1000000
+
+  outputfile[outputfile$ID == gridid, "wb_dis_transp"] <- sum(rel_projects[grepl("Transport and storage", rel_projects$ad_sector_names),"share_disbursements"], na.rm=T) / 1000000
+  outputfile[outputfile$ID == gridid, "wb_dis_transp_compl"] <- sum(rel_projects[grepl("Transport and storage", rel_projects$ad_sector_names) & rel_projects$status == "Completion","share_disbursements"], na.rm=T) / 1000000
+  outputfile[outputfile$ID == gridid, "wb_dis_transp_old"] <- sum(rel_projects[grepl("Transport and storage", rel_projects$ad_sector_names) & rel_projects$transactions_end_year < 2002, "share_disbursements"], na.rm=T) / 1000000
+
+  outputfile[outputfile$ID == gridid, "wb_num"] <- nrow(rel_projects)
+  outputfile[outputfile$ID == gridid, "wb_num_compl"] <- nrow(rel_projects[rel_projects$status == "Completion",])
+  outputfile[outputfile$ID == gridid, "wb_num_old"] <- nrow(rel_projects[rel_projects$transactions_end_year < 2002,])
+
+
+  outputfile[outputfile$ID == gridid, "wb_num_transp"] <- nrow(rel_projects[grepl("Transport and storage", rel_projects$ad_sector_names),])
+  outputfile[outputfile$ID == gridid, "wb_num_transp_compl"] <- nrow(rel_projects[grepl("Transport and storage", rel_projects$ad_sector_names) & rel_projects$status == "Completion",])
+  outputfile[outputfile$ID == gridid, "wb_num_transp_old"] <- nrow(rel_projects[grepl("Transport and storage", rel_projects$ad_sector_names) & rel_projects$transactions_end_year < 2002,])
+
+}
+
+### I stopped this here last time
+xxx
+
+
+for(i in 1:length(grid)){
     merger_WB <- (point.in.polygon(aid$longitude, aid$latitude, polygon_dataframe@polygons[[i]]@Polygons[[1]]@coords[,1], polygon_dataframe@polygons[[i]]@Polygons[[1]]@coords[,2]))
 
     subset_aid_WB <- aid[merger_WB==1,]

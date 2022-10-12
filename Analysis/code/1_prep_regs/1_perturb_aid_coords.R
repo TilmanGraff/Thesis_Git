@@ -3,6 +3,7 @@
 
 # WORLDBANK
 ###########
+set.seed(12345)
 aid_loc <- read.csv("./Analysis/input/AidData_WorldBank/data/locations.csv")
 aid_loc <- aid_loc[grepl("Africa", aid_loc$gazetteer_adm_name),]
 
@@ -18,12 +19,12 @@ for(i in 1:nrow(aid_loc)){
 }
 
 
-write.csv(aid_loc, file="/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/input/AidData_WorldBank/data/locations_perturbed.csv", row.names = FALSE)
+write.csv(aid_loc, file="./Analysis/input/AidData_WorldBank/data/locations_perturbed.csv", row.names = FALSE)
 
 # CHINA
 ###########
 
-aid_loc_China <- read.csv("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/input/AidData_China/locations.csv", sep=";")
+aid_loc_China <- read.csv("./Analysis/input/AidData_China/locations.csv", sep=";")
 aid_loc_China$latitude <- as.numeric(gsub("\\,", ".", aid_loc_China$latitude))
 aid_loc_China$longitude <- as.numeric(gsub("\\,", ".", aid_loc_China$longitude))
 
@@ -39,4 +40,4 @@ for(i in 1:nrow(aid_loc_China)){
 
 }
 
-write.csv(aid_loc_China, file="/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/input/AidData_China/locations_perturbed.csv", row.names = FALSE)
+write.csv(aid_loc_China, file="./Analysis/input/AidData_China/locations_perturbed.csv", row.names = FALSE)
