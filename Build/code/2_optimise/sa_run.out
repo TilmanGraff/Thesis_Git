@@ -1,0 +1,157 @@
+
+                            < M A T L A B (R) >
+                  Copyright 1984-2022 The MathWorks, Inc.
+                  R2022b (9.13.0.2049777) 64-bit (glnxa64)
+                              August 24, 2022
+
+ 
+To get started, type doc.
+For product information, visit www.mathworks.com.
+ 
+
+foldername = 
+
+    "2023-09-24_201330_newpars_withcomp_10perc"
+
+[Warning: Directory already exists.] 
+[> In find_optimal_network_SERVER (line 24)
+In run (line 91)] 
+[Warning: Directory already exists.] 
+[> In find_optimal_network_SERVER (line 25)
+In run (line 91)] 
+[Warning: Directory already exists.] 
+[> In find_optimal_network_SERVER (line 26)
+In run (line 91)] 
+[Warning: Directory already exists.] 
+[> In find_optimal_network_SERVER (line 27)
+In run (line 91)] 
+Starting parallel pool (parpool) using the 'Processes' profile ...
+Connected to the parallel pool (number of workers: 5).
+
+ans =
+
+  1x1 <a href="matlab:helpPopup cell" style="font-weight:bold">cell</a> array
+
+    {'Senegal'}
+
+
+ans =
+
+  1x1 <a href="matlab:helpPopup cell" style="font-weight:bold">cell</a> array
+
+    {'South-Sudan'}
+
+
+ans =
+
+  1x1 <a href="matlab:helpPopup cell" style="font-weight:bold">cell</a> array
+
+    {'Rwanda'}
+
+
+ans =
+
+  1x1 <a href="matlab:helpPopup cell" style="font-weight:bold">cell</a> array
+
+    {'Algeria'}
+
+
+ans =
+
+  1x1 <a href="matlab:helpPopup cell" style="font-weight:bold">cell</a> array
+
+    {'Democratic-Republic-of-the-Congo'}
+
+
+ans = 
+
+    "Rwanda: Started P_stat on 25-Sep-2023 08:57:22"
+
+
+ans = 
+
+    "Rwanda: Started P_opt on 25-Sep-2023 08:57:31"
+
+ans = 
+
+    "Senegal: Started P_stat on 25-Sep-2023 08:57:21"
+
+
+ans = 
+
+    "Senegal: Started P_opt on 25-Sep-2023 08:58:05"
+
+
+ans =
+
+  1x1 <a href="matlab:helpPopup cell" style="font-weight:bold">cell</a> array
+
+    {'Zambia'}
+
+
+ans = 
+
+    "Zambia: Started P_stat on 25-Sep-2023 08:59:03"
+
+
+ans = 
+
+    "Zambia: Started P_opt on 25-Sep-2023 09:07:09"
+
+ans = 
+
+    "South-Sudan: Started P_stat on 25-Sep-2023 08:57:22"
+
+
+ans = 
+
+    "South-Sudan: Started P_opt on 25-Sep-2023 09:07:31"
+
+
+ans =
+
+  1x1 <a href="matlab:helpPopup cell" style="font-weight:bold">cell</a> array
+
+    {'Zimbabwe'}
+
+
+ans = 
+
+    "Zimbabwe: Started P_stat on 25-Sep-2023 09:18:23"
+
+
+ans = 
+
+    "Zimbabwe: Started P_opt on 25-Sep-2023 09:21:01"
+
+
+ans =
+
+  1x1 <a href="matlab:helpPopup cell" style="font-weight:bold">cell</a> array
+
+    {'United-Republic-of-Tanzania'}
+
+
+ans = 
+
+    "United-Republic-of-Tanzania: Started P_stat on 25-Sep-2023 08:57:41"
+
+
+ans = 
+
+    "United-Republic-of-Tanzania: Started P_opt on 25-Sep-2023 09:21:15"
+
+
+ans =
+
+  1x1 <a href="matlab:helpPopup cell" style="font-weight:bold">cell</a> array
+
+    {'Western-Sahara'}
+
+
+ans = 
+
+    "Western-Sahara: Started P_stat on 25-Sep-2023 09:51:21"
+
+
+

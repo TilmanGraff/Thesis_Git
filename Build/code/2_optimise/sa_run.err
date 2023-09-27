@@ -1,0 +1,9 @@
+{Error using optimal_network
+optimal_network.m: IPOPT returned with error code 2.
+
+Error in find_optimal_network_SERVER (line 42)
+ parfor countryID = 1:length(country_names)
+
+Error in run (line 91)
+evalin('caller', strcat(script, ';'));
+} 
