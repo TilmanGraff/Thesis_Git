@@ -3,7 +3,7 @@
 
 %% Read in global data and define parameters
 addpath /Users/tilmangraff/Documents/GitHub/Thesis_Git/Build/code/2_optimise/OptimalTransportNetworkToolbox/Code
-addpath /Users/tilmangraff/Documents/GitHub/Thesis_Git/Build/code/2_optimise/OptimalTransportNetworkToolbox/Ipopt-3
+addpath /Users/tilmangraff/Documents/GitHub/Thesis_Git/Build/code/2_optimise/OptimalTransportNetworkToolbox/Ipopt-31
 
 clear;
 
@@ -15,9 +15,9 @@ centroids.country = categorical(centroids.country);
 
 % Defines parameters
 
-alpha = 0.4;
-beta = 1.245;
-gamma = 0.5*beta;
+alpha = 0.7;
+beta = 1.139;
+gamma = 0.946;
 sigma = 4;
 a = 0.7;
 rho = 0; % this is really important to not have any inequality aversion. I am not entirely sure if thats legit because in their toolbox, FS say rho >= 1... but i see no reason why 0 should not be ok...
@@ -27,13 +27,13 @@ rho = 0; % this is really important to not have any inequality aversion. I am no
  for countryID = 1:length(country_names)
     
      countryname = (country_names(countryID))
-     if exist(strcat("/Users/tilmangraff/Documents/GitHub/Thesis_Git/Build/temp/productivities/productivities_", (countryname), ".csv"))  && ~exist(strcat("//Users/tilmangraff/Documents/GitHub/Thesis_Git/Build/output/Network_outcomes/", (countryname), "_outcomes.csv"))
+     if exist(strcat("/Users/tilmangraff/Documents/GitHub/Thesis_Git/Build/temp/productivities/productivities_", (countryname), ".csv"))  %&& ~exist(strcat("//Users/tilmangraff/Documents/GitHub/Thesis_Git/Build/output/Network_outcomes/", (countryname), "_outcomes.csv"))
 
         % Split centroids by country
         case_centroids = readtable(strcat("/Users/tilmangraff/Documents/GitHub/Thesis_Git/Build/temp/borderregions/", (countryname), "_borderregion.csv"));
         num_locations = size(case_centroids, 1)
-     if num_locations > 2 %&& num_locations < 800
-
+     if num_locations > 2 && num_locations < 100
+        %if num_locations < 20
         % Read in characteristics
         population = case_centroids.pop;
 
@@ -54,10 +54,11 @@ rho = 0; % this is really important to not have any inequality aversion. I am no
         % Only optimise over the domestic grid cells
         weights = 1-case_centroids.abroad;
         
+        K = 1.0;
         
         %% Initialise geography
         
-        param = init_parameters('Annealing', 'off', 'a', a, 'sigma', sigma, 'N', N, 'alpha', alpha, 'beta', beta, 'gamma', gamma, 'verbose', 'off', 'rho', rho);
+        param = init_parameters('Annealing', 'off', 'LaborMobility', 'on', 'a', a, 'sigma', sigma, 'N', N, 'alpha', alpha, 'beta', beta, 'gamma', gamma, 'verbose', 'off', 'rho', rho, 'K', K);
 
         [param,g]=create_graph(param,[],[],'X',case_centroids.x,'Y',case_centroids.y,'Type','custom','Adjacency',adj,'X',case_centroids.x,'Y',case_centroids.y);
         
@@ -78,8 +79,8 @@ rho = 0; % this is really important to not have any inequality aversion. I am no
         
         min_mask = abr .* I + (adj - abr) .* 4;        
         max_mask = abr .* I + (adj - abr) .* 120;
-
-
+        
+        res_alloc = solve_allocation_mobility(param,g,I)
         
         % Static
         strcat("Started P_stat on ", datestr(datetime('now')))
@@ -87,7 +88,7 @@ rho = 0; % this is really important to not have any inequality aversion. I am no
         %annrea = annealing(param,g,res.Ijk,'Il',min_mask,'Iu',max_mask);
 
         
-        % Optimal
+        % Optimalq
         strcat("Started P_opt on ", datestr(datetime('now')))
         res_opt = optimal_network(param,g,I,min_mask,max_mask);
       
@@ -95,7 +96,6 @@ rho = 0; % this is really important to not have any inequality aversion. I am no
         %% Obtain descriptive statistics
 
         optimal_infrastructure = res_opt.Ijk;
-
 %         raw_tradeflows_stat = sum(Q(P_stat, I, adj, delta_tau, beta, gamma), 3);
 %         raw_tradeflows_opt = sum(Q(P_opt, optimal_infrastructure, adj, delta_tau, beta, gamma),3);
 % 

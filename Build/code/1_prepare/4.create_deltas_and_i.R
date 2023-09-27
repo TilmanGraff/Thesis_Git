@@ -5,7 +5,7 @@ centroids <- read.csv("./Build/temp/centroids.csv")
 
 # Restrict file sample if needed
 centroids <- centroids[centroids$region == 2,]
-centroids$rownumber <- as.numeric(paste(centroids$rownumber))
+#centroids$rownumber <- as.numeric(paste(centroids$rownumber))
 
 # Gather country names
 country_table <- as.data.frame(table(centroids$country))
@@ -67,12 +67,15 @@ for (country in country_names){
   delta_tau <- delta_0_tau * log(dist)
   delta_tau[delta_tau < 0] <- 0
 
+  delta_0_tau_withcomp <- (0.0248 + 0.0254) / 2 # this is the mean of columns (2) and (5) on page 44 of their paper
+  delta_tau_withcomp <- delta_0_tau_withcomp * log(dist)
+  delta_tau_withcomp[delta_tau_withcomp < 0] <- 0
 
+  #write.csv(delta_tau, file=paste("./Build/temp/delta_tau/delta_tau_", country, ".csv", sep=""), row.names = FALSE)
+  write.csv(delta_tau_withcomp, file=paste("./Build/temp/delta_tau/delta_tau_withcomp_", country, ".csv", sep=""), row.names = FALSE)
 
-  write.csv(delta_tau, file=paste("./Build/temp/delta_tau/delta_tau_", country, ".csv", sep=""), row.names = FALSE)
+  #write.csv(delta_I, file=paste("./Build/temp/delta_I/delta_I_", country, ".csv", sep=""), row.names = FALSE)
 
-  write.csv(delta_I, file=paste("./Build/temp/delta_I/delta_I_", country, ".csv", sep=""), row.names = FALSE)
-
-  write.csv(I, file=paste("./Build/temp/I/I_", country, ".csv", sep=""), row.names = FALSE)
+  #write.csv(I, file=paste("./Build/temp/I/I_", country, ".csv", sep=""), row.names = FALSE)
 }
 }

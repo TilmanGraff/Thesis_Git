@@ -10,12 +10,17 @@ import delim "Analysis/input/opt_loc.csv", clear
 * Some basic cleaning
 **********************
 
-drop if zeta == "NA"
-destring p_stat p_opt util_stat util_opt c_stat c_opt i_change zeta, replace
+drop if zeta_base == "NA"
+destring p_stat p_opt util_stat util_opt c_stat c_opt i_change_* dma* zeta_* util_*, replace
 encode country, gen(ccode)
 
-summ zeta
-gen zzeta = (zeta-`r(mean)')/`r(sd)'
+foreach type in "base" "10perc"{
+  summ zeta_`type'
+  gen zzeta_`type' = (zeta_`type'-`r(mean)')/`r(sd)'
+  replace fma_`type' = "." if fma_`type' == "NA"
+  destring fma_`type', replace
+}
+
 
 ****** add polynomials
 forval i = 2/4{

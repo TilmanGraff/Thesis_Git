@@ -11,8 +11,23 @@ library("stargazer")
 require("RColorBrewer")
 require("viridis")
 
+
+runs = data.frame("names" = c("base", "10perc", "base_old_nocomp"), "paths" = c("2023-09-25_142935_newnewpars_withcomp", "2023-09-25_172342_newnewpars_withcomp_10perc", "2023-07-17_111951_base"))
+
+for(runidx in 1:nrow(runs)){
+
+      
+      run = runs$names[runidx]
+      path = runs$paths[runidx]
+
+      outpath = paste0("./Analysis/output/descriptives/", path, "/")
+      dir.create(outpath)
+
 opt_loc <- read.csv("./Analysis/input/opt_loc.csv")
 opt_loc_nat <- data.frame()
+
+opt_loc$zeta = opt_loc[,paste0("zeta_", run)]
+
 i = 1
 country_table <- as.data.frame(table(opt_loc$country))
 country_names <- paste(country_table[country_table$Freq != 0,"Var1"])
@@ -46,7 +61,7 @@ opt_loc_nat[opt_loc_nat$country=="Africa","col"] = "grey"
 # Plot
 ###############
 
-pdf("./Analysis/output/descriptives/country_barchart.pdf", width=8,height=8)
+pdf(paste0(outpath, "country_barchart.pdf"), width=8,height=8)
 par(mar=c(5,1,1,1))
 plot(0,0, type="n", xlab="Hypothetical welfare gain", ylab="", bty="n", axes=F, xlim=c(0, max(opt_loc_nat$welfare_gains)*1.12), ylim=c(1,nrow(opt_loc_nat)))
 
@@ -63,6 +78,15 @@ for(i in 1:nrow(opt_loc_nat)){
 }
 
 abline(v=0)
-axis(1, at=c(0:4), labels=paste0(c(0:4), "%"))
+axis(1, at=c(0:10), labels=paste0(c(0:10), "%"))
 
 dev.off()
+}
+
+
+# delete later
+plot(opt_loc$zeta_base_old_nocomp, opt_loc$zeta_base, ylim = c(0.5, 2.5), xlim = c(0.5, 2.5), col = alpha("#a148b3", .3), cex = log(opt_loc$pop/50000), xlab = "Old Welfare Improvement Measure", ylab = "New Welfare Improvement Measure")
+abline(a = 0 , b = 1, lty = 2)
+
+plot(opt_loc$I_change_base_old_nocomp, opt_loc$I_change_base, col = alpha("dodgerblue3", .3), cex = log(opt_loc$pop/50000), xlab = "Old roads change", ylab = "New roads change")
+abline(a = 0 , b = 1, lty = 2)

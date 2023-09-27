@@ -69,15 +69,23 @@ whichlabels = seq(1, 20, 3)
 
 
 # For every country, calculate matrices
+
+runs = data.frame("names" = c("base", "10perc", "base_old_nocomp"), "paths" = c("2023-09-25_142935_newnewpars_withcomp", "2023-09-25_172342_newnewpars_withcomp_10perc", "2023-07-17_111951_base"))
+
+for(path in runs$paths){
+  outfolder = paste0("./Build/output/R_maps/", path)
+  infolder = paste0("./Build/output/", path)
+  dir.create(outfolder)
+
 for(country in country_names){
 
-  if(paste0(country, "_outcomes.csv") %in% list.files("Build/output/Network_outcomes/") & !(paste0(country, "_opt.pdf") %in% list.files("./Build/output/R_maps/"))){
+  if(paste0(country, "_outcomes.csv") %in% list.files(paste0(infolder, "/Network_outcomes/")) & !(paste0(country, "_opt.pdf") %in% list.files(outfolder))){
 
     # Import
     case_poly = polys[polys$NAME == country,]
     I_stat = read.csv(paste0("./Build/temp/speed/speed_", country, ".csv"), header = T)
-    I_opt = read.csv(paste0("./Build/output/Optimised_Networks/", country, ".csv"), header = F)
-    outcomes = read.csv(paste0("./Build/output/Network_outcomes/", country, "_outcomes.csv"))
+    I_opt = read.csv(paste0(infolder, "/Optimised_Networks/", country, ".csv"), header = F)
+    outcomes = read.csv(paste0(infolder, "/Network_outcomes/", country, "_outcomes.csv"))
     rosetta = read.csv(paste0("./Build/temp/rosettastones/rosetta_", country, ".csv"))
     prod = read.csv(paste0("./Build/temp/productivities/productivities_", country, ".csv"))
 
@@ -106,7 +114,7 @@ for(country in country_names){
       outcomes[outcomes$abroad == 0,"color"] = "dodgerblue4"
     }
 
-    pdf(file=paste("./Build/output/R_maps/", country, "_", graph, ".pdf", sep=""), width = 11, height = 11)
+    pdf(file=paste(outfolder, "/", country, "_", graph, ".pdf", sep=""), width = 11, height = 11)
 
     plot(outcomes$x, outcomes$y, main=country, bty = "n", pch = ifelse(outcomes$abroad == 0, 19, 1), axes=F, ylab="", xlab="", asp=1, type = "n") # if you want to plot it
 
@@ -152,4 +160,5 @@ print(country)
 
 }
 
+}
 }

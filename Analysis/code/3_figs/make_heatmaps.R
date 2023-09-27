@@ -13,108 +13,124 @@ require("classInt")
 require("sp")
 require("viridis")
 require("grid")
-library(lattice)
+library("lattice")
+require("rgeos")
 
-grid = readOGR("./Analysis/input/grid_shapefile/grid.shp")
 opt_loc = read.csv("./Analysis/input/opt_loc.csv")
 
-grid@data = merge(grid@data, opt_loc, by="ID")
 
 country_table <- as.data.frame(table(opt_loc$country))
 country_names <- paste(country_table[country_table$Freq != 0,"Var1"])
 
-# Aggregate zetas to country level
-national_zeta <- data.frame()
-i = 1
+runs = data.frame("names" = c("base", "10perc", "base_old_nocomp"), "paths" = c("2023-09-25_142935_newnewpars_withcomp", "2023-09-25_172342_newnewpars_withcomp_10perc", "2023-07-17_111951_base"))
 
-for(country in country_names){
-  df <- opt_loc[opt_loc$country==country,]
+for(runidx in 1:nrow(runs)){
 
-  if(!is.na(df[1, "zeta"])){
+      
+      run = runs$names[runidx]
+      path = runs$paths[runidx]
 
-    national_zeta[i, "country"] <- country
-    national_zeta[i, "zeta"] <- ((sum(df$pop * df$util_opt)  / sum(df$pop * df$util_stat)))
+      outpath = paste0("./Analysis/output/zeta_heatmaps/", path, "/")
+      dir.create(outpath)
 
+      opt_loc$zeta = opt_loc[,paste0("zeta_", run)]
 
-    i = i+1
-  }
-}
-
-national_zeta <- national_zeta[order(-national_zeta$zeta),]
+      grid = readOGR("./Analysis/input/grid_shapefile/grid.shp")
+      grid@data = merge(grid@data, opt_loc, by="ID")
 
 
-####
-# 1) Map of all countries by their collective zeta
+        # Aggregate zetas to country level
+        national_zeta <- data.frame()
+        i = 1
+
+        for(country in country_names){
+          df <- opt_loc[opt_loc$country==country,]
+
+          if(!is.na(df[1, "zeta"])){
+
+            national_zeta[i, "country"] <- country
+            national_zeta[i, "zeta"] <- ((sum(df$pop * df$util_opt)  / sum(df$pop * df$util_stat)))
 
 
-# world <- readOGR("./Build/input/World_Countries/TM_WORLD_BORDERS-0.3.shp") # reads in the global country shapefile
-#
-# africa <- world[world@data$REGION==2,]
-#
-#
-# ssudan <- readOGR("./Build/input/South-Sudan/ssd_admbnda_adm0_200k_ssnbs_20160114.shp")
-#
-# ssudan@data <- africa@data[1,]
-# ssudan@data[1,] <- NA
-# ssudan@data$NAME <- "South-Sudan"
-#
-#
-# africa <- rbind(africa, ssudan)
-#
-#
-# africa@data$zeta <- NA
-# africa@data$NAME <- gsub(" ", "-", africa@data$NAME)
-# africa@data$NAME <- gsub("'", "", africa@data$NAME)
-# africa@data$NAME <- gsub("Libyan-Arab-Jamahiriya", "Libya", africa@data$NAME)
-#
-#
-#
-# writeOGR(obj=africa, dsn="./Build/output/African Borders/AfricanBorders.shp", layer="africa", driver="ESRI Shapefile") # this is in geographical projection
+            i = i+1
+          }
+        }
 
-africa = readOGR("./Build/output/African Borders/AfricanBorders.shp")
-
-for(i in 1:nrow(africa@data)){ # this is a rather murky way to merge in the zeta for each country, as the classic merge command somehow throws the file off
-
-  if(africa@data$NAME[i] %in% national_zeta$country){
-    africa@data$zeta[i] <- national_zeta[africa@data$NAME[i] == national_zeta$country, "zeta"]
-  }
-
-}
-
-# if you want to have your own color scheme
-my.palette <- brewer.pal(n = 9, name = "OrRd") # for an orange palette
-my.palette = colorRampPalette((c("royalblue2", "palevioletred1", "goldenrod1"))) #"paleturquoise2",
-# display.brewer.all() # shows you available palettes
-my.palette = colorRampPalette((c("royalblue2", "paleturquoise2", "goldenrod1", "palevioletred1")))
-my.palette = rocket
-
-edges <- africa@bbox
-scale.parameter = 1
-xshift = 0
-yshift = 7
-
-edges[1, ] <- (edges[1, ] - mean(edges[1, ])) * scale.parameter + mean(edges[1,
-    ]) + xshift
-edges[2, ] <- (edges[2, ] - mean(edges[2, ])) * scale.parameter + mean(edges[2,
-    ]) + yshift
+        national_zeta <- national_zeta[order(-national_zeta$zeta),]
 
 
-breaks_qt <- classIntervals(africa$zeta, n = 8, style = "quantile")
-br <- breaks_qt$brks
-offs <- 0.0000001
-br[1] <- br[1] - offs
-br[length(br)] <- br[length(br)] + offs
-africa$zeta_bracket <- cut(africa$zeta, br)
+        ####
+        # 1) Map of all countries by their collective zeta
 
 
-africa$col = my.palette(9)[(cut(africa$zeta, br, labels = F))]
+        # world <- readOGR("./Build/input/World_Countries/TM_WORLD_BORDERS-0.3.shp") # reads in the global country shapefile
+        #
+        # africa <- world[world@data$REGION==2,]
+        #
+        #
+        # ssudan <- readOGR("./Build/input/South-Sudan/ssd_admbnda_adm0_200k_ssnbs_20160114.shp")
+        #
+        # ssudan@data <- africa@data[1,]
+        # ssudan@data[1,] <- NA
+        # ssudan@data$NAME <- "South-Sudan"
+        #
+        #
+        # africa <- rbind(africa, ssudan)
+        #
+        #
+        # africa@data$zeta <- NA
+        # africa@data$NAME <- gsub(" ", "-", africa@data$NAME)
+        # africa@data$NAME <- gsub("'", "", africa@data$NAME)
+        # africa@data$NAME <- gsub("Libyan-Arab-Jamahiriya", "Libya", africa@data$NAME)
+        #
+        #
+        #
+        # writeOGR(obj=africa, dsn="./Build/output/African Borders/AfricanBorders.shp", layer="africa", driver="ESRI Shapefile") # this is in geographical projection
 
-# png(filename=paste("./Analysis/output/zeta_heatmaps/African_countries_zeta.png", sep=""), width=6, height=6, units = 'in', res=300 )
-pdf("./Analysis/output/zeta_heatmaps/African_countries_zeta.pdf", width = 8, height = 8)
-#print(spplot(africa, "zeta", col="transparent", col.regions="col", xlim=edges[1,], ylim=edges[2,], colorkey=T, par.settings = list(axis.line = list(col = "transparent")))) # cuts always has to be one less than n in the definition of my.palette
-plot(africa, col = africa$col, xlim=edges[1,], ylim=edges[2,])
+        africa = readOGR("./Build/output/African Borders/AfricanBorders.shp")
 
-dev.off()
+        for(i in 1:nrow(africa@data)){ # this is a rather murky way to merge in the zeta for each country, as the classic merge command somehow throws the file off
+
+          if(africa@data$NAME[i] %in% national_zeta$country){
+            africa@data$zeta[i] <- national_zeta[africa@data$NAME[i] == national_zeta$country, "zeta"]
+          }
+
+        }
+
+        # if you want to have your own color scheme
+        my.palette <- brewer.pal(n = 9, name = "OrRd") # for an orange palette
+        my.palette = colorRampPalette((c("royalblue2", "palevioletred1", "goldenrod1"))) #"paleturquoise2",
+        # display.brewer.all() # shows you available palettes
+        my.palette = colorRampPalette((c("royalblue2", "paleturquoise2", "goldenrod1", "palevioletred1")))
+        my.palette = rocket
+
+        edges <- africa@bbox
+        scale.parameter = 1
+        xshift = 0
+        yshift = 7
+
+        edges[1, ] <- (edges[1, ] - mean(edges[1, ])) * scale.parameter + mean(edges[1,
+            ]) + xshift
+        edges[2, ] <- (edges[2, ] - mean(edges[2, ])) * scale.parameter + mean(edges[2,
+            ]) + yshift
+
+
+        breaks_qt <- classIntervals(africa$zeta, n = 8, style = "quantile")
+        br <- breaks_qt$brks
+        offs <- 0.0000001
+        br[1] <- br[1] - offs
+        br[length(br)] <- br[length(br)] + offs
+        africa$zeta_bracket <- cut(africa$zeta, br)
+
+
+        africa$col = my.palette(9)[(cut(africa$zeta, br, labels = F))]
+
+        # png(filename=paste("./Analysis/output/zeta_heatmaps/African_countries_zeta.png", sep=""), width=6, height=6, units = 'in', res=300 )
+        pdf(paste0(outpath, "African_countries_zeta.pdf"), width = 8, height = 8)
+        #print(spplot(africa, "zeta", col="transparent", col.regions="col", xlim=edges[1,], ylim=edges[2,], colorkey=T, par.settings = list(axis.line = list(col = "transparent")))) # cuts always has to be one less than n in the definition of my.palette
+        plot(africa, col = africa$col, xlim=edges[1,], ylim=edges[2,])
+
+        dev.off()
 
 ####
 # barchart
@@ -125,110 +141,112 @@ dev.off()
 ###
 # 2) Trying to make this happen within Countries
 
-breaks_qt <- classIntervals(grid$zeta, n = 19, style = "quantile")
-br <- breaks_qt$brks
-offs <- 0.0000001
-br[1] <- br[1] - offs
-br[length(br)] <- br[length(br)] + offs
-grid$zeta_bracket <- cut(grid$zeta, br)
-mbr = vector()
-for(i in 1:19){
-  mbr[i] = mean(c(br[i], br[i+1]))
+        breaks_qt <- classIntervals(grid$zeta, n = 19, style = "quantile")
+        br <- breaks_qt$brks
+        offs <- 0.0000001
+        br[1] <- br[1] - offs
+        br[length(br)] <- br[length(br)] + offs
+        grid$zeta_bracket <- cut(grid$zeta, br)
+        mbr = vector()
+        for(i in 1:19){
+          mbr[i] = mean(c(br[i], br[i+1]))
+        }
+
+        whichlabels = seq(1, 20, 3)
+
+        ####
+        # first, entire continent
+        pdf(paste0(outpath, "African_gridcells_zeta.pdf"), width = 8, height = 8)
+
+        SP <- spplot(grid, zcol = "zeta_bracket", col="transparent", col.regions=my.palette(20),  par.settings = list(axis.line = list(col = "transparent")),
+        colorkey = list(
+                labels=list(
+                    at = whichlabels,
+                    labels = round(mbr[whichlabels], 3)
+                ), space = "left", height = .4
+            ))
+        args <- SP$legend$left$args$key
+
+        ## Prepare list of arguments needed by `legend=` argument (as described in ?xyplot)
+        legendArgs <- list(fun = draw.colorkey,
+                          args = list(key = args),
+                          corner = c(0.25,.25))
+
+        ## Call spplot() again, this time passing in to legend the arguments
+        ## needed to print a color key
+        print(spplot(grid, zcol = "zeta_bracket", col="transparent", col.regions=my.palette(20),  par.settings = list(axis.line = list(col = "transparent")), colorkey = FALSE,
+              legend = list(inside = legendArgs)))
+
+        dev.off()
+
+
+        #####
+        # and now for all countries
+
+        for(country in country_names){
+          if(file.exists(paste0("./Build/output/", path, "/Network_outcomes/", country, "_outcomes.csv"))){
+
+            pdf(paste0(outpath, country, "_zeta.pdf"), width = 8, height = 8)
+            print(spplot(grid[grid$country == country,], zcol = "zeta_bracket", col="transparent", col.regions=my.palette(20), par.settings = list(axis.line = list(col = "transparent")),
+            colorkey = F))
+            dev.off()
+
+
+          }
+        }
+
+
+
+        ##########
+        # on ethn level
+
+        ethn_all <- readOGR("./Analysis/input/Murdock_EA_2011_vkZ/Murdock_EA_2011_vkZ.shp")
+        africa = readOGR("./Build/output/African Borders/AfricanBorders.shp")
+        #africa@data$wbcode <- countrycode(africa@data$ISO3, origin = "iso3c", destination = "wb")
+
+        clipped <- gIntersection(ethn_all, africa, byid=T)
+
+        ethn_opt = aggregate(grid[,"zeta"], clipped, FUN=mean)
+
+
+        breaks_qt <- classIntervals(ethn_opt$zeta, n = 19, style = "quantile")
+        br <- breaks_qt$brks
+        offs <- 0.0000001
+        br[1] <- br[1] - offs
+        br[length(br)] <- br[length(br)] + offs
+        ethn_opt$zeta_bracket <- cut(ethn_opt$zeta, br)
+        mbr = vector()
+        for(i in 1:19){
+          mbr[i] = mean(c(br[i], br[i+1]))
+        }
+
+        whichlabels = seq(1, 20, 3)
+
+
+        pdf(paste0(outpath, "African_ethn_zeta.pdf"), width = 8, height = 8)
+
+        SP <- spplot(ethn_opt, zcol = "zeta_bracket", col="transparent", col.regions=my.palette(20),  par.settings = list(axis.line = list(col = "transparent")),
+        colorkey = list(
+                labels=list(
+                    at = whichlabels,
+                    labels = round(mbr[whichlabels], 3)
+                ), space = "left", height = .4
+            ))
+        args <- SP$legend$left$args$key
+
+        ## Prepare list of arguments needed by `legend=` argument (as described in ?xyplot)
+        legendArgs <- list(fun = draw.colorkey,
+                          args = list(key = args),
+                          corner = c(0.25,.25))
+
+        ## Call spplot() again, this time passing in to legend the arguments
+        ## needed to print a color key
+        print(spplot(ethn_opt, zcol = "zeta_bracket", col="transparent", col.regions=my.palette(20),  par.settings = list(axis.line = list(col = "transparent")), colorkey = FALSE,
+              legend = list(inside = legendArgs)))
+
+        dev.off()
+
 }
-
-whichlabels = seq(1, 20, 3)
-
-####
-# first, entire continent
-pdf("./Analysis/output/zeta_heatmaps/African_gridcells_zeta.pdf", width = 8, height = 8)
-
-SP <- spplot(grid, zcol = "zeta_bracket", col="transparent", col.regions=my.palette(20),  par.settings = list(axis.line = list(col = "transparent")),
-colorkey = list(
-        labels=list(
-            at = whichlabels,
-            labels = round(mbr[whichlabels], 3)
-        ), space = "left", height = .4
-    ))
-args <- SP$legend$left$args$key
-
-## Prepare list of arguments needed by `legend=` argument (as described in ?xyplot)
-legendArgs <- list(fun = draw.colorkey,
-                   args = list(key = args),
-                   corner = c(0.25,.25))
-
-## Call spplot() again, this time passing in to legend the arguments
-## needed to print a color key
-print(spplot(grid, zcol = "zeta_bracket", col="transparent", col.regions=my.palette(20),  par.settings = list(axis.line = list(col = "transparent")), colorkey = FALSE,
-       legend = list(inside = legendArgs)))
-
-dev.off()
-
-
-#####
-# and now for all countries
-
-for(country in country_names){
-  if(file.exists(paste("./Build/output/Network_outcomes/", country, "_outcomes.csv", sep=""))){
-
-    pdf(paste0("./Analysis/output/zeta_heatmaps/", country, "_zeta.pdf"), width = 8, height = 8)
-    print(spplot(grid[grid$country == country,], zcol = "zeta_bracket", col="transparent", col.regions=my.palette(20), par.settings = list(axis.line = list(col = "transparent")),
-    colorkey = F))
-    dev.off()
-
-
-  }
-}
-
-
-
-##########
-# on ethn level
-
-ethn_all <- readOGR("./Analysis/input/Murdock_EA_2011_vkZ/Murdock_EA_2011_vkZ.shp")
-africa = readOGR("./Build/output/African Borders/AfricanBorders.shp")
-#africa@data$wbcode <- countrycode(africa@data$ISO3, origin = "iso3c", destination = "wb")
-
-clipped <- gIntersection(ethn_all, africa, byid=T)
-
-ethn_opt = aggregate(grid[,"zeta"], clipped, FUN=mean)
-
-
-breaks_qt <- classIntervals(ethn_opt$zeta, n = 19, style = "quantile")
-br <- breaks_qt$brks
-offs <- 0.0000001
-br[1] <- br[1] - offs
-br[length(br)] <- br[length(br)] + offs
-ethn_opt$zeta_bracket <- cut(ethn_opt$zeta, br)
-mbr = vector()
-for(i in 1:19){
-  mbr[i] = mean(c(br[i], br[i+1]))
-}
-
-whichlabels = seq(1, 20, 3)
-
-
-pdf("./Analysis/output/zeta_heatmaps/African_ethn_zeta.pdf", width = 8, height = 8)
-
-SP <- spplot(ethn_opt, zcol = "zeta_bracket", col="transparent", col.regions=my.palette(20),  par.settings = list(axis.line = list(col = "transparent")),
-colorkey = list(
-        labels=list(
-            at = whichlabels,
-            labels = round(mbr[whichlabels], 3)
-        ), space = "left", height = .4
-    ))
-args <- SP$legend$left$args$key
-
-## Prepare list of arguments needed by `legend=` argument (as described in ?xyplot)
-legendArgs <- list(fun = draw.colorkey,
-                   args = list(key = args),
-                   corner = c(0.25,.25))
-
-## Call spplot() again, this time passing in to legend the arguments
-## needed to print a color key
-print(spplot(ethn_opt, zcol = "zeta_bracket", col="transparent", col.regions=my.palette(20),  par.settings = list(axis.line = list(col = "transparent")), colorkey = FALSE,
-       legend = list(inside = legendArgs)))
-
-dev.off()
 
 
 ###
