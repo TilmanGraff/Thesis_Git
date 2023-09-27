@@ -14,7 +14,7 @@ require("mapsapi")
 require("xml2")
 
 
-gmapskey = "AIzaSyBkvUko68TxI85HTqbFkRrFVLAI2uIDh3Q"
+gmapskey = ""
 gmapscount = 0
 
 scrape = FALSE
