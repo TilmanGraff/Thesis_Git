@@ -6,15 +6,18 @@ cd "/Users/tilmangraff/Documents/GitHub/Thesis_Git"
 
 import delim "Analysis/input/opt_loc.csv", clear
 
+
 **********************
 * Some basic cleaning
 **********************
 
+drop if region == "NA"
+
 drop if zeta_base == "NA"
-destring p_stat p_opt util_stat util_opt c_stat c_opt i_change_* dma* zeta_* util_*, replace
+destring x y region subregion lights num_landpixels gridarea pop_dens pop_sd lights_sd rugg altitude landsuit temp precip growingdays malaria harbor alternative_lights lights_raw un_code pop p_stat p_opt util_stat util_opt c_stat c_opt i_change_* dma* zet* util_*, replace
 encode country, gen(ccode)
 
-foreach type in "base" "10perc"{
+foreach type in "base" "10perc" "base_old"{
   summ zeta_`type'
   gen zzeta_`type' = (zeta_`type'-`r(mean)')/`r(sd)'
   replace fma_`type' = "." if fma_`type' == "NA"
@@ -111,6 +114,7 @@ foreach type in "rail" "placebo"{
 
   }
   drop aux
+  gen any`type' = `type'km > 0
 }
 
 gen ever_in_power = years_in_power > 0

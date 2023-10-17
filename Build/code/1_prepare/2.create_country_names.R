@@ -6,4 +6,6 @@ centroids <- centroids[centroids$region==2,]
 country_table <- as.data.frame(table(centroids$country))
 country_names <- paste(country_table[country_table$Freq != 0,"Var1"])
 
-write.csv(country_names, file="./Build/temp/country_names.csv", row.names = FALSE)
+extra_countries = c("Germany", "Japan", "China", "United-States")
+
+write.csv(c(country_names, extra_countries), file="./Build/temp/country_names.csv", row.names = FALSE)

@@ -1,10 +1,19 @@
 
+require("rgdal")
+require("geosphere")
+require("raster")
+require("rgeos")
+require("Imap")
+require("gepaf")
+require("vegan")
+require("scales")
+
 # This file merges the rownames from OSRM calculations to the general centroids file for future reference
 # It then creates productivity matrices for every country with enough locations
 # It also slightly amends the pop_dens variable to account for gridcells that are partially covered by water
 
 centroids <- read.csv("./Build/temp/centroids.csv")
-ports = read.csv("./Build/temp/ports.csv")[,c("ID", "isport")]
+ports_df = read.csv("./Build/temp/ports.csv")[,c("ID", "isport")]
 
 
 #########
@@ -34,7 +43,38 @@ ports = read.csv("./Build/temp/ports.csv")[,c("ID", "isport")]
 # B) Adjust pop_dens for area over land
 #########
 
+# Import
+ports = data.frame(readxl::read_excel("/Users/tilmangraff/Dropbox (Harvard University)/spin-inputs/input/ports/african_ports.xlsx", col_names=F))
 
+colnames(ports) = "coords.raw"
+
+# From raw text coordinates to numeric decimal coordinates
+
+split = strsplit(ports$coords.raw, ";")
+
+for(i in 1:nrow(ports)){
+
+  ports[i,"lat.raw"] = split[[i]][1]
+  ports[i,"lon.raw"] = split[[i]][2]
+
+
+}
+
+ports$lat.degrees = as.numeric(gsub("(.*)Lat ", "", (gsub("°(.*)", "", ports$lat.raw))))
+ports$lon.degrees = as.numeric(gsub("(.*)Long ", "", (gsub("°(.*)", "", ports$lon.raw))))
+
+ports$lat.minutes = as.numeric(gsub("(.*)°.", "", (gsub("\\'(.*)", "", ports$lat.raw))))
+ports$lon.minutes = as.numeric(gsub("(.*)°.", "", (gsub("\\'(.*)", "", ports$lon.raw))))
+
+ports$lat.degrees = ifelse(grepl("' N", ports$coords.raw), 1, -1) * ports$lat.degrees
+ports$lon.degrees = ifelse(grepl("' E", ports$coords.raw), 1, -1) * ports$lon.degrees
+
+ports$lat = ports$lat.degrees + ifelse(grepl("' N", ports$coords.raw), 1, -1) * ports$lat.minutes / 60
+ports$lon = ports$lon.degrees + ifelse(grepl("' E", ports$coords.raw), 1, -1) * ports$lon.minutes / 60
+
+ports = ports[91:nrow(ports),]
+
+portssdf = SpatialPointsDataFrame(ports[,c("lon", "lat")], ports)
 
 
 ###############################
@@ -52,6 +92,9 @@ file.remove(list.files(path="./Build/temp/productivities", full.names = T))
 country_table <- as.data.frame(table(centroids[centroids$region ==2, "country"]))
 country_names <- paste(country_table[country_table$Freq != 0,"Var1"])
 
+countries = read.csv("./Build/temp/country_names.csv")
+
+
 alpha = 0.7 # Production function parameter
 
 
@@ -64,14 +107,44 @@ alpha = 0.7 # Production function parameter
 N = 6         # Number of goods: 4 to the four biggest domestic grids, 1 rest-of-the-world good to 3 largest abroad borderregions plus all ports, 1 agricultural good.
 alpha = 0.7     # Production function parameter
 
+big_countries = c("China", "United States")
+extra_countries = c("Germany", "Japan", "China", "United-States")
 
-
-for (country in country_names){
+# for (country in countries$x){
+for (country in countries$x){
   if(file.exists(paste("./Build/temp/raw_from_OSRM/adj/adj_", country, ".csv", sep=""))){
 
+    if(country %in% big_countries){
+      pxls = 900*4
+      res = 1.0
+    } else{
+      pxls = 900
+      res = 0.5
+    }
+
   centroids = read.csv(paste0("./Build/temp/borderregions/", country, "_borderregion.csv"))
-  centroids$pop_dens <- centroids$pop / (centroids$gridarea * centroids$num_landpixels / 900)
-  centroids = merge(centroids, ports, by="ID", all.x=T)
+  centroids$pop_dens <- centroids$pop / (centroids$gridarea * centroids$num_landpixels / pxls)
+
+  if(!(country %in% extra_countries)){
+    centroids = merge(centroids, ports_df, by="ID", all.x=T)
+  } else{
+    centroids$isport = 0
+    df = centroids
+    df$bl_x <- df$x - res/2
+    df$tl_x <- df$x - res/2
+    df$br_x <- df$x + res/2
+    df$tr_x <- df$x + res/2
+    df$bl_y <- df$y - res/2
+    df$tl_y <- df$y + res/2
+    df$br_y <- df$y - res/2
+    df$tr_y <- df$y + res/2
+
+    polygon_file = SpatialPolygons(lapply(1:nrow(df), function(x) Polygons(list(Polygon( cbind(t(df[x, c("bl_x", "tl_x", "tr_x", "br_x")]), t(df[x, c("bl_y", "tl_y", "tr_y", "br_y")])) )), paste0(x))))
+    polygon_dataframe = SpatialPolygonsDataFrame(polygon_file, df)
+
+    centroids[which(!is.na(over(polygon_dataframe, portssdf, byid = T)[,5])), "isport"] = 1
+
+  }
 
 
   J = nrow(centroids)

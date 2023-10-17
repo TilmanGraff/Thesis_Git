@@ -6,7 +6,7 @@ require("rgdal")
 require("polyclip")
 
 # Import borders from a UN source
-ssudan <- readOGR("./Build/input/South-Sudan/ssd_admbnda_adm0_200k_ssnbs_20160114.shp")
+ssudan <- readOGR("/Users/tilmangraff/Dropbox (Harvard University)/spin-inputs/input/South-Sudan/ssd_admbnda_adm0_200k_ssnbs_20160114.shp")
 
 centroids <- read.csv("./Build/temp/centroids_noSSudan.csv")
 
@@ -19,4 +19,4 @@ centroids[centroids$country=="Sudan" & centroids$y < 8.5, "country"] <- "South-S
 centroids[centroids$country=="South-Sudan", "un_code"] <- 728
 
 
-write.csv(format(centroids, scientific=F), "./Build/temp/centroids.csv", row.names = FALSE) # I export back to centroids. IMPORTANT: If you were to run this script now, nothing would happen as all is rightly coded already.
+# write.csv(format(centroids, scientific=F), "./Build/temp/centroids.csv", row.names = FALSE) # I export back to centroids. IMPORTANT: If you were to run this script now, nothing would happen as all is rightly coded already.

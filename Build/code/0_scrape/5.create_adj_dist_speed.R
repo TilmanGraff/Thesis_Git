@@ -8,6 +8,8 @@ require("gepaf")
 require("rgeos")
 require("rgdal")
 require("scales")
+require("sf")
+require("geosphere")
 
 
 centroids <- read.csv("./Build/temp/centroids.csv")
@@ -16,14 +18,18 @@ centroids <- read.csv("./Build/temp/centroids.csv")
 country_table <- as.data.frame(table(centroids$country))
 country_names <- paste(country_table[country_table$Freq != 0,"Var1"])
 
-polys = readOGR("./Build/output/African Borders/AfricanBorders.shp")
+polys = readOGR("/Users/tilmangraff/Dropbox (Harvard University)/spin-inputs/input/World_Countries/TM_WORLD_BORDERS-0.3.shp")
+polys$NAME = gsub(" ", "-", polys$NAME)
 
 ###############
 
-# For every country, calculate matrices
-for(country in country_names){
+extra_countries = c("Germany", "Japan", "China", "United-States")
 
-  if(!(paste("dist_", country, ".csv", sep="") %in% list.files("./Build/temp/dist/"))){
+
+# For every country, calculate matrices
+for(country in c(country_names, extra_countries)){
+
+  if(!(paste("dist_", country, ".csv", sep="") %in% list.files("./Build/temp/raw_from_OSRM/dist/"))){
 
     case_centroids <- read.csv(paste0("./Build/temp/borderregions/", country, "_borderregion.csv"))
     case_poly = polys[polys$NAME == country,]
@@ -49,7 +55,14 @@ for(country in country_names){
 
 
       # identifies the nine centroids within the respective circle to find itself plus eight nearest neighbors
+      if(country %in% c("United-States", "China")){
+      neighbour_ids <- case_centroids[(case_centroids$y-case_centroids$y[i])^2+(case_centroids$x-case_centroids$x[i])^2<=2,"ID"]
+      } else{
       neighbour_ids <- case_centroids[(case_centroids$y-case_centroids$y[i])^2+(case_centroids$x-case_centroids$x[i])^2<=0.5^2+0.5^2,"ID"]
+      }
+
+
+
       df <- case_centroids[case_centroids$ID %in% neighbour_ids, c("ID", "x", "y") ]
       colnames(df) <- c("id", "lon", "lat")
 
@@ -64,7 +77,7 @@ for(country in country_names){
           while(is.null(route) & attemptcounter <= 50){ # I try until I have a non-null route, or 100 times, whichever comes faster
 
             # This is where the action happens, I scrape the route from OSRM
-            route <- osrmRoute(src=df[df$id==case_centroids$ID[i],], dst=df[df$id==a,], sp=TRUE, overview = "simplified")
+            message = try(route <- osrmRoute(src=df[df$id==case_centroids$ID[i],c("lon", "lat")], dst=df[df$id==a,c("lon", "lat")], overview = "simplified"), silent = T)
 
 
             attemptcounter = attemptcounter+1
@@ -72,8 +85,10 @@ for(country in country_names){
               Sys.sleep(1)
               print(attemptcounter)
               if(attemptcounter == 3 | attemptcounter %% 5 == 0){ # I also check once what the reason for the error was, it it's "NoRoute", I gather this here and immediately jump to the next id. This is to circumvent super-long annoying loops in which I retry 100 times in vain because there is no route. There is still a rare problem that occurs when the server is down first, so attemptcounter goes beyond 3 and then when it comes back it turns out there is no route. Then attemptcounter is already past the moment where it should check what the problem is. Not sure how often this would happen, but worth a think. Maybe do something like if(attemptcounter %% 10 == 0) or something?
-                message = capture.output(route = osrmRoute(src=df[df$id==case_centroids$ID[i],], dst=df[df$id==a,], sp=TRUE, overview = "simplified"), type="message") #captures the server's error message
-                if(grepl("NoRoute", message[2])){ # if NoRoute, sett counter to 101 to end loop
+                message = try(route <- osrmRoute(src=df[df$id==case_centroids$ID[i],c("lon", "lat")], dst=df[df$id==a,c("lon", "lat")], overview = "simplified"), silent = T) 
+                #message = capture.output(route <- osrmRoute(src=df[df$id==case_centroids$ID[i],c("lon", "lat")], dst=df[df$id==a,c("lon", "lat")], overview = "simplified"))
+                #captures the server's error message
+                if(grepl("Impossible route", message[1])){ # if NoRoute, sett counter to 101 to end loop
                   attemptcounter = 1001 # break the while loop
                 }
               }
@@ -82,13 +97,14 @@ for(country in country_names){
 
 
           if(!is.null(route)){
-            coords <- route@lines[[1]]@Lines[[1]]@coords
+            #coords <- route@lines[[1]]@Lines[[1]]@coords
+            coords = st_coordinates(route)[,c("X", "Y")]
             # creates the walked distance to the start of the route and from the end of it
-            walked[i,j] <- gdist(df[df$id==case_centroids$ID[i],"lon"], df[df$id==case_centroids$ID[i],"lat"], coords[1,"lon"], coords[1,"lat"], units = "km")  + gdist(df[df$id==a,"lon"], df[df$id==a,"lat"], coords[nrow(coords),"lon"], coords[nrow(coords),"lat"], units = "km")
+            walked[i,j] <- distm(c(df[df$id==case_centroids$ID[i],"lon"], df[df$id==case_centroids$ID[i],"lat"]), c(coords[1,"X"], coords[1,"Y"])) / 1000  + distm(c(df[df$id==a,"lon"], df[df$id==a,"lat"]), c(coords[nrow(coords),"X"], coords[nrow(coords),"Y"])) / 1000
 
             across_border = case_centroids[case_centroids$ID==df[df$id==case_centroids$ID[i],"id"],"country"] != country | case_centroids[case_centroids$ID==df[df$id==a,"id"],"country"] != country
 
-            if(route$duration + walked[i,j]*minutes_per_kilometer < minutes_per_kilometer*(gdist(df[df$id==case_centroids$ID[i],"lon"], df[df$id==case_centroids$ID[i],"lat"], df[df$id==a,"lon"], df[df$id==a,"lat"], units = "km"))){ # if walking entire way is longer than proposed route
+            if(route$duration + walked[i,j]*minutes_per_kilometer < minutes_per_kilometer*(distm(c(df[df$id==case_centroids$ID[i],"lon"], df[df$id==case_centroids$ID[i],"lat"]), c(df[df$id==a,"lon"], df[df$id==a,"lat"]))) / 1000){ # if walking entire way is longer than proposed route
 
               # creates matrices for every country
               dist[i, j] <- route$distance + walked[i,j]
@@ -98,7 +114,7 @@ for(country in country_names){
               points(c(df[df$id==case_centroids$ID[i],"lon"], coords[,1], df[df$id==a,"lon"]), c(df[df$id==case_centroids$ID[i],"lat"], coords[,2], df[df$id==a,"lat"]), type='l', col = ifelse(across_border, alpha("grey", .5), "dodgerblue3"), lwd = ifelse(across_border, 1.2, 2)) # if you want to plot it
 
             } else{ # if not, you just walk the entire direct line
-              dist[i, j] <- gdist(df[df$id==case_centroids$ID[i],"lon"], df[df$id==case_centroids$ID[i],"lat"], df[df$id==a,"lon"], df[df$id==a,"lat"], units = "km")
+              dist[i, j] <- distm(c(df[df$id==case_centroids$ID[i],"lon"], df[df$id==case_centroids$ID[i],"lat"]), c(df[df$id==a,"lon"], df[df$id==a,"lat"])) / 1000
               speed[i, j] <- 60/minutes_per_kilometer
               adj[i, j] <- 1
 

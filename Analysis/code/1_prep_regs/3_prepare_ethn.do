@@ -12,7 +12,7 @@ use "./Analysis/input/maingrid.dta", clear
 
 drop if tribeid == .
 
-foreach type in "base" "10perc"{
+foreach type in "base" "10perc" "base_old"{
     gen w_stat_`type' = util_stat_`type' * pop
     gen w_opt_`type' = util_opt_`type' * pop
 }
@@ -23,7 +23,7 @@ collapse (sum) w_stat_* w_opt_* pop lights gridarea years_in_power wb_dis wb_com
 
 replace iscapital = iscapital > 0
 
-foreach type in "base" "10perc"{
+foreach type in "base" "10perc" "base_old_nocomp" "fp_tau"{
     gen zeta_`type' = w_opt_`type' / w_stat_`type'
     drop w_opt_`type' w_stat_`type'
 

@@ -22,7 +22,7 @@ opt_loc = read.csv("./Analysis/input/opt_loc.csv")
 country_table <- as.data.frame(table(opt_loc$country))
 country_names <- paste(country_table[country_table$Freq != 0,"Var1"])
 
-runs = data.frame("names" = c("base", "10perc", "base_old_nocomp"), "paths" = c("2023-09-25_142935_newnewpars_withcomp", "2023-09-25_172342_newnewpars_withcomp_10perc", "2023-07-17_111951_base"))
+runs <- data.frame("names" = c("base", "10perc"), "paths" = c("2023-10-12_151412_newbase", "2023-10-12_160452_new10perc"))
 
 for(runidx in 1:nrow(runs)){
 
@@ -183,7 +183,7 @@ for(runidx in 1:nrow(runs)){
         #####
         # and now for all countries
 
-        for(country in country_names){
+        for(country in unique(grid$country)){
           if(file.exists(paste0("./Build/output/", path, "/Network_outcomes/", country, "_outcomes.csv"))){
 
             pdf(paste0(outpath, country, "_zeta.pdf"), width = 8, height = 8)

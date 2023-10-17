@@ -17,8 +17,8 @@ centroids = readtable("/n/holystore01/LABS/kreindler_lab/Lab/transjakarta/tilman
 centroids.country = categorical(centroids.country);
 
 % define outpath
-foldername = strcat(datestr(now,"yyyy-mm-dd_HHMMSS"), "_newnewpars_nocomp")
-%foldername = "2023-09-25_172342_newnewpars"
+foldername = strcat(datestr(now,"yyyy-mm-dd_HHMMSS"), "_new10perc")
+%foldername = "2023-10-08_105331_final_10perc"
 outpath = strcat("/n/holystore01/LABS/kreindler_lab/Lab/transjakarta/tilman/spin/output/", foldername);
 
 mkdir(outpath);
@@ -30,9 +30,9 @@ mkdir(strcat(outpath, "/Network_outcomes/"))
 % Defines parameters
 
 alpha = 0.7;
-beta = 1.139;
 gamma = 0.946;
-sigma = 4;
+beta = 1.2446 * gamma;
+sigma = 5;
 a = 0.7; % production function parameter, it doesnt matter because production is fixed anyway. Just have to make sure that its the same as in the define_productivity_and_rownames.R file
 rho = 0; % this is really important to not have any inequality aversion. I am not entirely sure if thats legit because in their toolbox, FS say rho >= 1... but i see no reason why 0 should not be ok...
 
@@ -60,8 +60,9 @@ parpool(5);
         abr = csvread(strcat("/n/holystore01/LABS/kreindler_lab/Lab/transjakarta/tilman/spin/temp/abr/abr_", (countryname), ".csv"), 1, 0);
         delta_I = csvread(strcat("/n/holystore01/LABS/kreindler_lab/Lab/transjakarta/tilman/spin/temp/delta_I/delta_I_", (countryname), ".csv"), 1, 0);
 
-        %delta_tau = csvread(strcat("/n/holystore01/LABS/kreindler_lab/Lab/transjakarta/tilman/spin/temp/delta_tau/delta_tau_withcomp_", (countryname), ".csv"), 1, 0);
-        delta_tau = csvread(strcat("/n/holystore01/LABS/kreindler_lab/Lab/transjakarta/tilman/spin/temp/delta_tau/delta_tau_", (countryname), ".csv"), 1, 0);
+        delta_tau = csvread(strcat("/n/holystore01/LABS/kreindler_lab/Lab/transjakarta/tilman/spin/temp/delta_tau/delta_tau_withcomp_", (countryname), ".csv"), 1, 0);
+        %delta_tau = csvread(strcat("/n/holystore01/LABS/kreindler_lab/Lab/transjakarta/tilman/spin/temp/delta_tau/delta_tau_", (countryname), ".csv"), 1, 0);
+        %delta_tau = csvread(strcat("/n/holystore01/LABS/kreindler_lab/Lab/transjakarta/tilman/spin/temp/delta_tau/delta_tau_fp_", (countryname), ".csv"), 1, 0);
 
         I = csvread(strcat("/n/holystore01/LABS/kreindler_lab/Lab/transjakarta/tilman/spin/temp/I/I_", (countryname), ".csv"), 1, 0);
         productivity = csvread(strcat("/n/holystore01/LABS/kreindler_lab/Lab/transjakarta/tilman/spin/temp/productivities/productivities_", (countryname), ".csv"), 1, 0);
@@ -74,7 +75,7 @@ parpool(5);
         % Only optimise over the domestic grid cells
         weights = 1-case_centroids.abroad;
 
-        K = 1.0; 
+        K = 1.1; 
         
         
         %% Initialise geography
@@ -110,7 +111,8 @@ parpool(5);
         
        
         
-        res_stat = optimal_network(param,g,I,I,I);
+        %res_stat = optimal_network(param,g,I,I,I);
+        res_stat = solve_allocation(param,g,I);
         %annrea = annealing(param,g,res.Ijk,'Il',min_mask,'Iu',max_mask);
         
 

@@ -16,24 +16,28 @@ centroids.country = categorical(centroids.country);
 % Defines parameters
 
 alpha = 0.7;
-beta = 1.139;
 gamma = 0.946;
+beta = 1.2446 * gamma;
 sigma = 4;
 a = 0.7;
 rho = 0; % this is really important to not have any inequality aversion. I am not entirely sure if thats legit because in their toolbox, FS say rho >= 1... but i see no reason why 0 should not be ok...
 
 %% For each country
+cs = strings(1);
+pops = nan(1);
+facts = nan(1);
+nums = nan(1);
 
  for countryID = 1:length(country_names)
     
      countryname = (country_names(countryID))
-     if exist(strcat("/Users/tilmangraff/Documents/GitHub/Thesis_Git/Build/temp/productivities/productivities_", (countryname), ".csv"))  %&& ~exist(strcat("//Users/tilmangraff/Documents/GitHub/Thesis_Git/Build/output/Network_outcomes/", (countryname), "_outcomes.csv"))
+     if exist(strcat("/Users/tilmangraff/Documents/GitHub/Thesis_Git/Build/temp/productivities/productivities_", (countryname), ".csv")) % && ~exist(strcat("//Users/tilmangraff/Documents/GitHub/Thesis_Git/Build/output/Network_outcomes/", (countryname), "_outcomes.csv"))
 
         % Split centroids by country
         case_centroids = readtable(strcat("/Users/tilmangraff/Documents/GitHub/Thesis_Git/Build/temp/borderregions/", (countryname), "_borderregion.csv"));
         num_locations = size(case_centroids, 1)
-     if num_locations > 2 && num_locations < 100
-        %if num_locations < 20
+     if num_locations > 2 && num_locations < 50
+        %if countryname == "United-States"
         % Read in characteristics
         population = case_centroids.pop;
 
@@ -58,7 +62,7 @@ rho = 0; % this is really important to not have any inequality aversion. I am no
         
         %% Initialise geography
         
-        param = init_parameters('Annealing', 'off', 'LaborMobility', 'on', 'a', a, 'sigma', sigma, 'N', N, 'alpha', alpha, 'beta', beta, 'gamma', gamma, 'verbose', 'off', 'rho', rho, 'K', K);
+        param = init_parameters('Annealing', 'off', 'LaborMobility', 'off', 'a', a, 'sigma', sigma, 'N', N, 'alpha', alpha, 'beta', beta, 'gamma', gamma, 'verbose', 'off', 'rho', rho, 'K', K);
 
         [param,g]=create_graph(param,[],[],'X',case_centroids.x,'Y',case_centroids.y,'Type','custom','Adjacency',adj,'X',case_centroids.x,'Y',case_centroids.y);
         
@@ -80,11 +84,11 @@ rho = 0; % this is really important to not have any inequality aversion. I am no
         min_mask = abr .* I + (adj - abr) .* 4;        
         max_mask = abr .* I + (adj - abr) .* 120;
         
-        res_alloc = solve_allocation_mobility(param,g,I)
         
         % Static
         strcat("Started P_stat on ", datestr(datetime('now')))
-        res_stat = optimal_network(param,g,I,I,I);
+        %res_stat = optimal_network(param,g,I,I,I);
+        res_stat = solve_allocation(param,g,I);
         %annrea = annealing(param,g,res.Ijk,'Il',min_mask,'Iu',max_mask);
 
         
@@ -92,6 +96,8 @@ rho = 0; % this is really important to not have any inequality aversion. I am no
         strcat("Started P_opt on ", datestr(datetime('now')))
         res_opt = optimal_network(param,g,I,min_mask,max_mask);
       
+
+        
      
         %% Obtain descriptive statistics
 
@@ -108,16 +114,16 @@ rho = 0; % this is really important to not have any inequality aversion. I am no
 
         consumption_stat = res_stat.Cj;
         consumption_opt = res_opt.Cj;
-        
+
         price_index_stat = res_stat.PCj;
         price_index_opt = res_opt.PCj;
 
 
-      
+
         %% Export data
 
         % Optimal Network
-        csvwrite(strcat("/Users/tilmangraff/Documents/GitHub/Thesis_Git/Build/output/Optimised_Networks/", (countryname), ".csv"), optimal_infrastructure);
+        %csvwrite(strcat("/Users/tilmangraff/Documents/GitHub/Thesis_Git/Build/output/Optimised_Networks/", (countryname), ".csv"), optimal_infrastructure);
 
         % Raw tradeflows and Optimal Tradeflows
         % csvwrite(strcat("/Users/tilmangraff/Documents/GitHub/Thesis_Git/Build/output/Tradeflows/Initial_Flows_", (countryname), ".csv"), raw_tradeflows_stat);
@@ -125,11 +131,10 @@ rho = 0; % this is really important to not have any inequality aversion. I am no
 
 
         % Location Characteristics
-        writetable(array2table([case_centroids.ID case_centroids.x case_centroids.y case_centroids.abroad population price_index_stat price_index_opt util_stat util_opt ...
-          consumption_stat consumption_opt], ...
-          'VariableNames', {'ID', 'x', 'y', 'abroad', 'pop', 'P_stat', 'P_opt', 'util_stat', 'util_opt', 'c_stat', 'c_opt'}), strcat("/Users/tilmangraff/Documents/GitHub/Thesis_Git/Build/output/Network_outcomes/", (countryname), "_outcomes.csv"));
+        % writetable(array2table([case_centroids.ID case_centroids.x case_centroids.y case_centroids.abroad population price_index_stat price_index_opt util_stat util_opt ...
+        %   consumption_stat consumption_opt], ...
+        %   'VariableNames', {'ID', 'x', 'y', 'abroad', 'pop', 'P_stat', 'P_opt', 'util_stat', 'util_opt', 'c_stat', 'c_opt'}), strcat("/Users/tilmangraff/Documents/GitHub/Thesis_Git/Build/output/Network_outcomes/", (countryname), "_outcomes.csv"));
 
        end
     end
  end
-

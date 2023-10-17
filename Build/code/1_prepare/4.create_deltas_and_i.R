@@ -1,17 +1,19 @@
 # Parameterises deltas and I matrices from the OSM raw data
 
 # Import clean global centroids file, just for clean representation of country names
-centroids <- read.csv("./Build/temp/centroids.csv")
+# centroids <- read.csv("./Build/temp/centroids.csv")
 
 # Restrict file sample if needed
-centroids <- centroids[centroids$region == 2,]
+# centroids <- centroids[centroids$region == 2,]
 #centroids$rownumber <- as.numeric(paste(centroids$rownumber))
 
 # Gather country names
-country_table <- as.data.frame(table(centroids$country))
-country_names <- paste(country_table[country_table$Freq != 0,"Var1"])
+# country_table <- as.data.frame(table(centroids$country))
+# country_names <- paste(country_table[country_table$Freq != 0,"Var1"])
+countries = read.csv("./Build/temp/country_names.csv")
+countries = c("Germany", "Japan", "China", "United-States")
 
-for (country in country_names){
+for (country in countries){
 
   if(file.exists(paste("./Build/temp/adj/adj_", country, ".csv", sep=""))){
 
@@ -63,19 +65,33 @@ for (country in country_names){
   # delta_tau <- delta_0_tau * dist
 
   # NEW VERSION -- built on Donaldson / Atkin 2015
-  delta_0_tau <- (0.0374 + 0.0558) / 2 # this is the mean of columns (3) and (6) on page 44 of their paper
-  delta_tau <- delta_0_tau * log(dist)
+  delta_0_tau <- (0.0374/0.43 + 0.0558/1.03) / 2 # this is the mean of columns (3) and (6) on page 44 of their paper, scaled by mean base prices for each country, so as to make these ad-valorem
+  delta_tau <-  delta_0_tau * log(dist / 1.609)
   delta_tau[delta_tau < 0] <- 0
 
-  delta_0_tau_withcomp <- (0.0248 + 0.0254) / 2 # this is the mean of columns (2) and (5) on page 44 of their paper
-  delta_tau_withcomp <- delta_0_tau_withcomp * log(dist)
+  # NEW VERSION WITH FIXEDPOINT
+  delta_0_tau_fp <- (0.0374/(0.43 * 0.0044257) + 0.0558/(1.03 * 0.0080479)) / 2 # this is the mean of columns (3) and (6) on page 44 of their paper, scaled by mean base prices for each country, so as to make these ad-valorem
+  delta_tau_fp <-  delta_0_tau_fp * log(dist / 1.609)
+  delta_tau_fp[delta_tau_fp < 0] <- 0
+
+  delta_0_tau_withcomp <- (0.0248/0.43 + 0.0254/1.03) / 2 # this is the mean of columns (2) and (5) on page 44 of their paper, scaled by mean base prices for each country, so as to make these ad-valorem
+  delta_tau_withcomp <- delta_0_tau_withcomp * log(dist / 1.609)
   delta_tau_withcomp[delta_tau_withcomp < 0] <- 0
 
-  #write.csv(delta_tau, file=paste("./Build/temp/delta_tau/delta_tau_", country, ".csv", sep=""), row.names = FALSE)
+  delta_0_tau_withcomp_fp <- (0.0248/(0.43*0.0086) + 0.0254/(1.03*0.01956)) / 2 # this is the mean of columns (2) and (5) on page 44 of their paper, scaled by mean base prices for each country, so as to make these ad-valorem
+  delta_tau_withcomp_fp <- delta_0_tau_withcomp_fp * log(dist / 1.609)
+  delta_tau_withcomp_fp[delta_tau_withcomp_fp < 0] <- 0
+
+
+  write.csv(delta_tau, file=paste("./Build/temp/delta_tau/delta_tau_", country, ".csv", sep=""), row.names = FALSE)
   write.csv(delta_tau_withcomp, file=paste("./Build/temp/delta_tau/delta_tau_withcomp_", country, ".csv", sep=""), row.names = FALSE)
+  write.csv(delta_tau_withcomp_fp, file=paste("./Build/temp/delta_tau/delta_tau_withcomp_fp_", country, ".csv", sep=""), row.names = FALSE)
+  write.csv(delta_tau_fp, file=paste("./Build/temp/delta_tau/delta_tau_fp_", country, ".csv", sep=""), row.names = FALSE)
 
-  #write.csv(delta_I, file=paste("./Build/temp/delta_I/delta_I_", country, ".csv", sep=""), row.names = FALSE)
+  
+  write.csv(delta_I, file=paste("./Build/temp/delta_I/delta_I_", country, ".csv", sep=""), row.names = FALSE)
+  write.csv(I, file=paste("./Build/temp/I/I_", country, ".csv", sep=""), row.names = FALSE)
+  
 
-  #write.csv(I, file=paste("./Build/temp/I/I_", country, ".csv", sep=""), row.names = FALSE)
 }
 }

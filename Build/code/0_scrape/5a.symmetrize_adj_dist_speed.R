@@ -12,7 +12,11 @@ centroids <- read.csv("./Build/temp/centroids.csv")
 country_table <- as.data.frame(table(centroids$country))
 country_names <- paste(country_table[country_table$Freq != 0,"Var1"])
 
-for (country in country_names){
+extra_countries = c("Germany", "Japan", "China", "United-States")
+
+
+# For every country, calculate matrices
+for(country in c(country_names, extra_countries)){
 
   if(file.exists(paste("./Build/temp/raw_from_OSRM/adj/adj_", country, ".csv", sep=""))){
 

@@ -11,7 +11,7 @@ require("scales")
 
 
 # Import
-ports = data.frame(readxl::read_excel("./Build/input.nosync/ports/african_ports.xlsx", col_names=F))
+ports = data.frame(readxl::read_excel("/Users/tilmangraff/Dropbox (Harvard University)/spin-inputs/input/ports/african_ports.xlsx", col_names=F))
 
 colnames(ports) = "coords.raw"
 
@@ -38,6 +38,8 @@ ports$lon.degrees = ifelse(grepl("' E", ports$coords.raw), 1, -1) * ports$lon.de
 
 ports$lat = ports$lat.degrees + ifelse(grepl("' N", ports$coords.raw), 1, -1) * ports$lat.minutes / 60
 ports$lon = ports$lon.degrees + ifelse(grepl("' E", ports$coords.raw), 1, -1) * ports$lon.minutes / 60
+
+ports = ports[1:90,]
 
 
 ######

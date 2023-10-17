@@ -1,5 +1,10 @@
-{Error using optimal_network
-optimal_network.m: IPOPT returned with error code 2.
+{Error using create_graph>retrieve_options
+create_graph.m: the adjacency matrix and X should have the same number of
+locations.
+
+
+Error in create_graph (line 39)
+options = retrieve_options(param,w,h,varargin);
 
 Error in find_optimal_network_SERVER (line 42)
  parfor countryID = 1:length(country_names)

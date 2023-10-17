@@ -5,9 +5,17 @@
 require("plyr")
 require("geosphere")
 
-centroids <- read.csv("./Build/input/Centroids_raw.csv")
+
+
+centroids <- read.csv("/Users/tilmangraff/Dropbox (Harvard University)/spin-inputs/input/Centroids_raw.csv")
 
 centroids <- as.data.frame(centroids)
+
+extra_countries = c("Germany", "Japan")
+big_countries = c("China", "United States")
+
+cbig = centroids[centroids$right %% 1 == 0 & centroids$bottom %% 1 == 0,]
+
 
 # Restrict dataset to Africa
 centroids <- centroids[centroids$REGION == 2,]
@@ -42,4 +50,4 @@ centroids$country <- gsub("Libyan Arab Jamahiriya", "Libya", centroids$country)
 centroids$country <- gsub(" ", "-", centroids$country)
 centroids$country <- gsub("'", "", centroids$country)
 
-write.csv(centroids, "./Build/temp/centroids_wrong_lights.csv", row.names = FALSE)
+#write.csv(centroids, "./Build/temp/centroids_wrong_lights.csv", row.names = FALSE)

@@ -6,3 +6,5 @@
 *.m~
 *.icloud
 *.RData
+*.pdf
+*.csv

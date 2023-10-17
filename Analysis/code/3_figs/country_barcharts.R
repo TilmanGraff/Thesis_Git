@@ -12,81 +12,77 @@ require("RColorBrewer")
 require("viridis")
 
 
-runs = data.frame("names" = c("base", "10perc", "base_old_nocomp"), "paths" = c("2023-09-25_142935_newnewpars_withcomp", "2023-09-25_172342_newnewpars_withcomp_10perc", "2023-07-17_111951_base"))
+runs <- data.frame("names" = c("base", "10perc"), "paths" = c("2023-10-12_151412_newbase", "2023-10-12_160452_new10perc"))
 
-for(runidx in 1:nrow(runs)){
+for (runidx in 1:nrow(runs)) {
+  run <- runs$names[runidx]
+  path <- runs$paths[runidx]
 
-      
-      run = runs$names[runidx]
-      path = runs$paths[runidx]
+  outpath <- paste0("./Analysis/output/descriptives/", path, "/")
+  dir.create(outpath)
 
-      outpath = paste0("./Analysis/output/descriptives/", path, "/")
-      dir.create(outpath)
+  opt_loc <- read.csv("./Analysis/input/opt_loc.csv")
+  opt_loc_nat <- data.frame()
 
-opt_loc <- read.csv("./Analysis/input/opt_loc.csv")
-opt_loc_nat <- data.frame()
+  opt_loc$zeta <- opt_loc[, paste0("zeta_", run)]
 
-opt_loc$zeta = opt_loc[,paste0("zeta_", run)]
+  i <- 1
+  country_table <- as.data.frame(table(opt_loc$country))
+  country_names <- paste(country_table[country_table$Freq != 0, "Var1"])
 
-i = 1
-country_table <- as.data.frame(table(opt_loc$country))
-country_names <- paste(country_table[country_table$Freq != 0,"Var1"])
+  for (country in country_names) {
+    df <- opt_loc[opt_loc$country == country, ]
 
-for(country in country_names){
-  df <- opt_loc[opt_loc$country==country,]
-
-  if(!is.na(df[1, "zeta"]) & nrow(df)>2){
-
-    opt_loc_nat[i, "country"] <- country
-    opt_loc_nat[i, "welfare_gains"] <- ((sum(df$pop * df$util_opt)  / sum(df$pop * df$util_stat)) - 1) * 100
+    if (!is.na(df[1, "zeta"]) & nrow(df) > 2) {
+      opt_loc_nat[i, "country"] <- country
+      opt_loc_nat[i, "welfare_gains"] <- ((sum(df$pop * df[,paste0("util_opt_", run)]) / sum(df$pop * df[,paste0("util_stat_", run)])) - 1) * 100
 
 
-    i = i+1
+      i <- i + 1
+    }
   }
-}
 
-# Colors for plot
-#my.palette <- brewer.pal(n = 9, name = "OrRd")
-my.palette = rocket(21)
+  # Colors for plot
+  # my.palette <- brewer.pal(n = 9, name = "OrRd")
+  my.palette <- rocket(21)
 
-opt_loc_nat$col = my.palette[as.numeric(cut(opt_loc_nat$welfare_gains,breaks = 20))]
+  opt_loc_nat$col <- my.palette[as.numeric(cut(opt_loc_nat$welfare_gains, breaks = 20))]
+
+  opt_loc_africa = opt_loc[!is.na(opt_loc$region),]
+  total <- ((sum(opt_loc_africa$pop * opt_loc_africa$util_opt, na.rm = T) / sum(opt_loc_africa$pop * opt_loc_africa$util_stat, na.rm = T)) - 1) * 100
+  opt_loc_nat[nrow(opt_loc_nat) + 1, "country"] <- "Africa"
+  opt_loc_nat[opt_loc_nat$country == "Africa", "welfare_gains"] <- total
+  opt_loc_nat[opt_loc_nat$country == "Africa", "col"] <- "grey"
+  opt_loc_nat[opt_loc_nat$country %in% c("United-States", "Japan", "China", "Germany"), "col"] <- "grey"
 
 
-total = ((sum(opt_loc$pop*opt_loc$util_opt, na.rm=T) / sum(opt_loc$pop*opt_loc$util_stat, na.rm=T))-1) * 100
-opt_loc_nat[nrow(opt_loc_nat)+1,"country"] = "Africa"
-opt_loc_nat[opt_loc_nat$country=="Africa","welfare_gains"] = total
-opt_loc_nat[opt_loc_nat$country=="Africa","col"] = "grey"
+  # Plot
+  ###############
 
+  pdf(paste0(outpath, "country_barchart.pdf"), width = 8, height = 8)
+  par(mar = c(5, 1, 1, 1))
+  plot(0, 0, type = "n", xlab = "Hypothetical welfare gain", ylab = "", bty = "n", axes = F, xlim = c(0, max(opt_loc_nat$welfare_gains) * 1.12), ylim = c(1, nrow(opt_loc_nat)))
 
-# Plot
-###############
+  for (i in 1:nrow(opt_loc_nat)) {
+    points(c(0, opt_loc_nat[order(opt_loc_nat$welfare_gains), "welfare_gains"][i]), c(i, i), type = "l", lend = "butt", lwd = 8, col = opt_loc_nat[order(opt_loc_nat$welfare_gains), "col"][i])
 
-pdf(paste0(outpath, "country_barchart.pdf"), width=8,height=8)
-par(mar=c(5,1,1,1))
-plot(0,0, type="n", xlab="Hypothetical welfare gain", ylab="", bty="n", axes=F, xlim=c(0, max(opt_loc_nat$welfare_gains)*1.12), ylim=c(1,nrow(opt_loc_nat)))
-
-for(i in 1:nrow(opt_loc_nat)){
-
-  points(c(0, opt_loc_nat[order(opt_loc_nat$welfare_gains), "welfare_gains"][i]), c(i,i), type="l", lend="butt", lwd=8, col=opt_loc_nat[order(opt_loc_nat$welfare_gains), "col"][i])
-
-  if(opt_loc_nat[order(opt_loc_nat$welfare_gains), "country"][i] != "Africa"){
-
-    text(opt_loc_nat[order(opt_loc_nat$welfare_gains), "welfare_gains"][i], i, opt_loc_nat[order(opt_loc_nat$welfare_gains), "country"][i], pos=4, cex=.8)
-  } else{
-    text(opt_loc_nat[order(opt_loc_nat$welfare_gains), "welfare_gains"][i], i, labels=expression(bold("Africa")), pos=4, cex=.8)
+    if (opt_loc_nat[order(opt_loc_nat$welfare_gains), "country"][i] != "Africa") {
+      text(opt_loc_nat[order(opt_loc_nat$welfare_gains), "welfare_gains"][i], i, opt_loc_nat[order(opt_loc_nat$welfare_gains), "country"][i], pos = 4, cex = .8)
+    } else {
+      text(opt_loc_nat[order(opt_loc_nat$welfare_gains), "welfare_gains"][i], i, labels = expression(bold("Africa")), pos = 4, cex = .8)
+    }
   }
-}
 
-abline(v=0)
-axis(1, at=c(0:10), labels=paste0(c(0:10), "%"))
+  abline(v = 0)
+  axis(1, at = c(0:10), labels = paste0(c(0:10), "%"))
 
-dev.off()
+  dev.off()
 }
 
 
 # delete later
-plot(opt_loc$zeta_base_old_nocomp, opt_loc$zeta_base, ylim = c(0.5, 2.5), xlim = c(0.5, 2.5), col = alpha("#a148b3", .3), cex = log(opt_loc$pop/50000), xlab = "Old Welfare Improvement Measure", ylab = "New Welfare Improvement Measure")
-abline(a = 0 , b = 1, lty = 2)
+# plot(opt_loc$zeta_base_old_nocomp, opt_loc$zeta_base, ylim = c(0.5, 2.5), xlim = c(0.5, 2.5), col = alpha("#a148b3", .3), cex = log(opt_loc$pop / 50000), xlab = "Old Welfare Improvement Measure", ylab = "New Welfare Improvement Measure")
+# abline(a = 0, b = 1, lty = 2)
 
-plot(opt_loc$I_change_base_old_nocomp, opt_loc$I_change_base, col = alpha("dodgerblue3", .3), cex = log(opt_loc$pop/50000), xlab = "Old roads change", ylab = "New roads change")
-abline(a = 0 , b = 1, lty = 2)
+# plot(opt_loc$I_change_base_old_nocomp, opt_loc$I_change_base, col = alpha("dodgerblue3", .3), cex = log(opt_loc$pop / 50000), xlab = "Old roads change", ylab = "New roads change")
+# abline(a = 0, b = 1, lty = 2)
