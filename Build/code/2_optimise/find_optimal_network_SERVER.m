@@ -17,7 +17,7 @@ centroids = readtable("/n/holystore01/LABS/kreindler_lab/Lab/transjakarta/tilman
 centroids.country = categorical(centroids.country);
 
 % define outpath
-foldername = strcat(datestr(now,"yyyy-mm-dd_HHMMSS"), "_new10perc")
+foldername = strcat(datestr(now,"yyyy-mm-dd_HHMMSS"), "_base_withcomp_10p")
 %foldername = "2023-10-08_105331_final_10perc"
 outpath = strcat("/n/holystore01/LABS/kreindler_lab/Lab/transjakarta/tilman/spin/output/", foldername);
 
@@ -33,12 +33,12 @@ alpha = 0.7;
 gamma = 0.946;
 beta = 1.2446 * gamma;
 sigma = 5;
-a = 0.7; % production function parameter, it doesnt matter because production is fixed anyway. Just have to make sure that its the same as in the define_productivity_and_rownames.R file
+a = 1.0; % production function parameter, it doesnt matter because production is fixed anyway. Just have to make sure that its the same as in the define_productivity_and_rownames.R file
 rho = 0; % this is really important to not have any inequality aversion. I am not entirely sure if thats legit because in their toolbox, FS say rho >= 1... but i see no reason why 0 should not be ok...
 
 %% For each country
 
-parpool(5);
+parpool(8);
  parfor countryID = 1:length(country_names)
  %for countryID = 1:length(country_names)
     
@@ -48,7 +48,7 @@ parpool(5);
         % Split centroids by country
         case_centroids = readtable(strcat("/n/holystore01/LABS/kreindler_lab/Lab/transjakarta/tilman/spin/temp/borderregions/", (countryname), "_borderregion.csv"));
         num_locations = size(case_centroids, 1)
-        if num_locations > 2 %&& num_locations < 100
+        if num_locations > 2 %&& num_locations < 120
         %if num_locations == 1071
 
         % Read in characteristics

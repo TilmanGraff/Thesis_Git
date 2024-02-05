@@ -14,7 +14,7 @@ import delim "Analysis/input/opt_loc.csv", clear
 drop if region == "NA"
 
 drop if zeta_base == "NA"
-destring x y region subregion lights num_landpixels gridarea pop_dens pop_sd lights_sd rugg altitude landsuit temp precip growingdays malaria harbor alternative_lights lights_raw un_code pop p_stat p_opt util_stat util_opt c_stat c_opt i_change_* dma* zet* util_*, replace
+destring x y region subregion lights num_landpixels gridarea pop_dens pop_sd lights_sd rugg altitude landsuit temp precip growingdays malaria harbor alternative_lights lights_raw un_code pop p_stat p_opt util_stat util_opt c_stat c_opt i_change_* dma* zet* util_* amenit* pop_opt* c_*, replace ig("NA")
 encode country, gen(ccode)
 
 foreach type in "base" "10perc" "base_old"{

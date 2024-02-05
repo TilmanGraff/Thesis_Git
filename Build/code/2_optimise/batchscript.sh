@@ -1,11 +1,11 @@
 #!/bin/bash
 #SBATCH -o /n/holystore01/LABS/kreindler_lab/Lab/transjakarta/tilman/spin/output/sa_run.out
 #SBATCH -e /n/holystore01/LABS/kreindler_lab/Lab/transjakarta/tilman/spin/output/sa_run.err
-#SBATCH -p shared
+#SBATCH -p bigmem
 #SBATCH -N 1
-#SBATCH -n 5
-#SBATCH -t 1-23:00
-#SBATCH --mem=140G
+#SBATCH -n 8
+#SBATCH -t 2-23:59
+#SBATCH --mem=1800G
 #SBATCH --mail-type=END,FAIL
 #SBATCH --mail-user=tgraff@g.harvard.edu
 

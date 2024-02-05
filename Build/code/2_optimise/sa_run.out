@@ -11,147 +11,661 @@ For product information, visit www.mathworks.com.
 
 foldername = 
 
-    "2023-09-24_201330_newpars_withcomp_10perc"
+    "2024-02-05_100829_mobnew"
 
-[Warning: Directory already exists.] 
-[> In find_optimal_network_SERVER (line 24)
-In run (line 91)] 
-[Warning: Directory already exists.] 
-[> In find_optimal_network_SERVER (line 25)
-In run (line 91)] 
-[Warning: Directory already exists.] 
-[> In find_optimal_network_SERVER (line 26)
-In run (line 91)] 
-[Warning: Directory already exists.] 
-[> In find_optimal_network_SERVER (line 27)
-In run (line 91)] 
 Starting parallel pool (parpool) using the 'Processes' profile ...
 Connected to the parallel pool (number of workers: 5).
+[Warning: The temporary variable 'omegar' will be cleared at the beginning of
+each iteration of the parfor-loop. If 'omegar' is used before it is set, a
+runtime error will occur. For more information, see Parallel for Loops in
+MATLAB, "Uninitialized Temporaries".] 
+[> In find_optimal_network_mobile_SERVER (line 46)
+In run (line 91)] 
+[Warning: The temporary variable 'res_stat' will be cleared at the beginning of
+each iteration of the parfor-loop. If 'res_stat' is used before it is set, a
+runtime error will occur. For more information, see Parallel for Loops in
+MATLAB, "Uninitialized Temporaries".] 
+[> In find_optimal_network_mobile_SERVER (line 46)
+In run (line 91)] 
 
-ans =
+ans = 
 
-  1x1 <a href="matlab:helpPopup cell" style="font-weight:bold">cell</a> array
+    "Burundi: Started P_stat with backout on 05-Feb-2024 10:09:00"
 
-    {'Senegal'}
+ans = 
 
+    "Djibouti: Started P_stat with backout on 05-Feb-2024 10:09:00"
 
-ans =
+ans = 
 
-  1x1 <a href="matlab:helpPopup cell" style="font-weight:bold">cell</a> array
+    "Benin: Started P_stat with backout on 05-Feb-2024 10:09:00"
 
-    {'South-Sudan'}
+ans = 
 
+    "Guinea-Bissau: Started P_stat with backout on 05-Feb-2024 10:09:00"
 
-ans =
+ans = 
 
-  1x1 <a href="matlab:helpPopup cell" style="font-weight:bold">cell</a> array
-
-    {'Rwanda'}
-
-
-ans =
-
-  1x1 <a href="matlab:helpPopup cell" style="font-weight:bold">cell</a> array
-
-    {'Algeria'}
-
-
-ans =
-
-  1x1 <a href="matlab:helpPopup cell" style="font-weight:bold">cell</a> array
-
-    {'Democratic-Republic-of-the-Congo'}
+    "Burkina-Faso: Started P_stat with backout on 05-Feb-2024 10:09:00"
 
 
 ans = 
 
-    "Rwanda: Started P_stat on 25-Sep-2023 08:57:22"
+    "05-Feb-2024 10:09:02: Guinea-Bissau - 1: Target deviation: 1496065.7668"
 
 
 ans = 
 
-    "Rwanda: Started P_opt on 25-Sep-2023 08:57:31"
-
-ans = 
-
-    "Senegal: Started P_stat on 25-Sep-2023 08:57:21"
+    "05-Feb-2024 10:09:02: Djibouti - 1: Target deviation: 312519.607"
 
 
 ans = 
 
-    "Senegal: Started P_opt on 25-Sep-2023 08:58:05"
-
-
-ans =
-
-  1x1 <a href="matlab:helpPopup cell" style="font-weight:bold">cell</a> array
-
-    {'Zambia'}
+    "05-Feb-2024 10:09:04: Djibouti - 2: Target deviation: 312519.1182"
 
 
 ans = 
 
-    "Zambia: Started P_stat on 25-Sep-2023 08:59:03"
+    "05-Feb-2024 10:09:05: Guinea-Bissau - 2: Target deviation: 499060.5471"
 
 
 ans = 
 
-    "Zambia: Started P_opt on 25-Sep-2023 09:07:09"
-
-ans = 
-
-    "South-Sudan: Started P_stat on 25-Sep-2023 08:57:22"
+    "05-Feb-2024 10:09:07: Burundi - 1: Target deviation: 343132.6012"
 
 
 ans = 
 
-    "South-Sudan: Started P_opt on 25-Sep-2023 09:07:31"
-
-
-ans =
-
-  1x1 <a href="matlab:helpPopup cell" style="font-weight:bold">cell</a> array
-
-    {'Zimbabwe'}
+    "05-Feb-2024 10:09:26: Burundi - 2: Target deviation: 1016962.4656"
 
 
 ans = 
 
-    "Zimbabwe: Started P_stat on 25-Sep-2023 09:18:23"
+    "05-Feb-2024 10:09:45: Benin - 1: Target deviation: 9.7305"
 
 
 ans = 
 
-    "Zimbabwe: Started P_opt on 25-Sep-2023 09:21:01"
-
-
-ans =
-
-  1x1 <a href="matlab:helpPopup cell" style="font-weight:bold">cell</a> array
-
-    {'United-Republic-of-Tanzania'}
+    "05-Feb-2024 10:09:50: Djibouti - 3: Target deviation: 2814424.2353"
 
 
 ans = 
 
-    "United-Republic-of-Tanzania: Started P_stat on 25-Sep-2023 08:57:41"
+    "05-Feb-2024 10:09:57: Djibouti - 4: Target deviation: 518909.3794"
 
 
 ans = 
 
-    "United-Republic-of-Tanzania: Started P_opt on 25-Sep-2023 09:21:15"
-
-
-ans =
-
-  1x1 <a href="matlab:helpPopup cell" style="font-weight:bold">cell</a> array
-
-    {'Western-Sahara'}
+    "05-Feb-2024 10:09:57: Benin - 2: Target deviation: 127593.9672"
 
 
 ans = 
 
-    "Western-Sahara: Started P_stat on 25-Sep-2023 09:51:21"
+    "05-Feb-2024 10:10:10: Guinea-Bissau - 3: Target deviation: 1346.1409"
+
+
+ans = 
+
+    "05-Feb-2024 10:10:39: Djibouti - 5: Target deviation: 1489478.3128"
+
+
+ans = 
+
+    "05-Feb-2024 10:10:55: Benin - 3: Target deviation: 286079.1745"
+
+
+ans = 
+
+    "05-Feb-2024 10:10:56: Guinea-Bissau - 4: Target deviation: 2170037.796"
+
+
+ans = 
+
+    "05-Feb-2024 10:10:58: Burundi - 3: Target deviation: 6902.2253"
+
+
+ans = 
+
+    "05-Feb-2024 10:11:07: Guinea-Bissau - 5: Target deviation: 475696.0273"
+
+
+ans = 
+
+  1x44 <a href="matlab:helpPopup string" style="font-weight:bold">string</a> array
+
+  Columns 1 through 3
+
+    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."
+
+  Columns 4 through 6
+
+    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."
+
+  Columns 7 through 9
+
+    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."
+
+  Columns 10 through 12
+
+    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."
+
+  Columns 13 through 15
+
+    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."
+
+  Columns 16 through 18
+
+    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."
+
+  Columns 19 through 21
+
+    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."
+
+  Columns 22 through 24
+
+    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."
+
+  Columns 25 through 27
+
+    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."
+
+  Columns 28 through 30
+
+    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."
+
+  Columns 31 through 33
+
+    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."
+
+  Columns 34 through 36
+
+    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."
+
+  Columns 37 through 39
+
+    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."
+
+  Columns 40 through 42
+
+    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."
+
+  Columns 43 through 44
+
+    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."
+
+
+ans = 
+
+  1x44 <a href="matlab:helpPopup string" style="font-weight:bold">string</a> array
+
+  Columns 1 through 3
+
+    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."
+
+  Columns 4 through 6
+
+    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."
+
+  Columns 7 through 9
+
+    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."
+
+  Columns 10 through 12
+
+    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."
+
+  Columns 13 through 15
+
+    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."
+
+  Columns 16 through 18
+
+    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."
+
+  Columns 19 through 21
+
+    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."
+
+  Columns 22 through 24
+
+    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."
+
+  Columns 25 through 27
+
+    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."
+
+  Columns 28 through 30
+
+    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."
+
+  Columns 31 through 33
+
+    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."
+
+  Columns 34 through 36
+
+    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."
+
+  Columns 37 through 39
+
+    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."
+
+  Columns 40 through 42
+
+    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."
+
+  Columns 43 through 44
+
+    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."
+
+
+ans = 
+
+  1x44 <a href="matlab:helpPopup string" style="font-weight:bold">string</a> array
+
+  Columns 1 through 3
+
+    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
+
+  Columns 4 through 6
+
+    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
+
+  Columns 7 through 9
+
+    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
+
+  Columns 10 through 12
+
+    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
+
+  Columns 13 through 15
+
+    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
+
+  Columns 16 through 18
+
+    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
+
+  Columns 19 through 21
+
+    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
+
+  Columns 22 through 24
+
+    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
+
+  Columns 25 through 27
+
+    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
+
+  Columns 28 through 30
+
+    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
+
+  Columns 31 through 33
+
+    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
+
+  Columns 34 through 36
+
+    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
+
+  Columns 37 through 39
+
+    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
+
+  Columns 40 through 42
+
+    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
+
+  Columns 43 through 44
+
+    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
+
+
+ans = 
+
+  1x44 <a href="matlab:helpPopup string" style="font-weight:bold">string</a> array
+
+  Columns 1 through 3
+
+    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
+
+  Columns 4 through 6
+
+    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
+
+  Columns 7 through 9
+
+    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
+
+  Columns 10 through 12
+
+    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
+
+  Columns 13 through 15
+
+    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
+
+  Columns 16 through 18
+
+    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
+
+  Columns 19 through 21
+
+    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
+
+  Columns 22 through 24
+
+    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
+
+  Columns 25 through 27
+
+    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
+
+  Columns 28 through 30
+
+    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
+
+  Columns 31 through 33
+
+    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
+
+  Columns 34 through 36
+
+    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
+
+  Columns 37 through 39
+
+    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
+
+  Columns 40 through 42
+
+    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
+
+  Columns 43 through 44
+
+    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
+
+
+ans = 
+
+  1x44 <a href="matlab:helpPopup string" style="font-weight:bold">string</a> array
+
+  Columns 1 through 3
+
+    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
+
+  Columns 4 through 6
+
+    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
+
+  Columns 7 through 9
+
+    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
+
+  Columns 10 through 12
+
+    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
+
+  Columns 13 through 15
+
+    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
+
+  Columns 16 through 18
+
+    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
+
+  Columns 19 through 21
+
+    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
+
+  Columns 22 through 24
+
+    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
+
+  Columns 25 through 27
+
+    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
+
+  Columns 28 through 30
+
+    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
+
+  Columns 31 through 33
+
+    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
+
+  Columns 34 through 36
+
+    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
+
+  Columns 37 through 39
+
+    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
+
+  Columns 40 through 42
+
+    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
+
+  Columns 43 through 44
+
+    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
+
+
+ans = 
+
+  1x44 <a href="matlab:helpPopup string" style="font-weight:bold">string</a> array
+
+  Columns 1 through 3
+
+    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
+
+  Columns 4 through 6
 
 
 
+ans = 
+
+    "05-Feb-2024 10:11:26: Djibouti - 6: Target deviation: 732301.7761"
+
+
+ans = 
+
+    "05-Feb-2024 10:11:35: Guinea-Bissau - 6: Target deviation: 463121.1383"
+
+
+ans = 
+
+    "05-Feb-2024 10:11:39: Djibouti - 7: Target deviation: 2148213.1638"
+
+
+ans = 
+
+    "05-Feb-2024 10:11:57: Djibouti - 8: Target deviation: 2113599.204"
+
+
+ans = 
+
+    "05-Feb-2024 10:12:05: Guinea-Bissau - 7: Target deviation: 2702701.7027"
+
+
+ans = 
+
+    "05-Feb-2024 10:12:08: Djibouti - 9: Target deviation: 156282.8102"
+
+
+ans = 
+
+    "05-Feb-2024 10:12:35: Burundi - 4: Target deviation: 535762.2002"
+
+
+ans = 
+
+    "05-Feb-2024 10:12:40: Guinea-Bissau - 8: Target deviation: 441331.217"
+
+
+ans = 
+
+    "05-Feb-2024 10:12:51: Djibouti - 10: Target deviation: 34909.9507"
+
+
+ans = 
+
+    "05-Feb-2024 10:12:56: Guinea-Bissau - 9: Target deviation: 392436.9285"
+
+
+ans = 
+
+    "05-Feb-2024 10:13:37: Djibouti - 11: Target deviation: 1031523.4809"
+
+
+ans = 
+
+    "05-Feb-2024 10:13:56: Guinea-Bissau - 10: Target deviation: 74262.347"
+
+
+ans = 
+
+    "05-Feb-2024 10:14:11: Burundi - 5: Target deviation: 1008656.3658"
+
+
+ans = 
+
+    "05-Feb-2024 10:14:15: Burundi - 6: Target deviation: 1006058.6276"
+
+
+ans = 
+
+    "05-Feb-2024 10:14:20: Djibouti - 12: Target deviation: 225307.786"
+
+
+ans = 
+
+    "05-Feb-2024 10:14:24: Guinea-Bissau - 11: Target deviation: 426150.4193"
+
+
+ans = 
+
+    "05-Feb-2024 10:14:49: Guinea-Bissau - 12: Target deviation: 246602.8372"
+
+
+ans = 
+
+    "05-Feb-2024 10:14:58: Djibouti - 13: Target deviation: 1902400.3111"
+
+
+ans = 
+
+    "05-Feb-2024 10:15:28: Guinea-Bissau - 13: Target deviation: 8.3949"
+
+
+ans = 
+
+    "05-Feb-2024 10:15:39: Djibouti - 14: Target deviation: 1625212.0875"
+
+
+ans = 
+
+    "05-Feb-2024 10:16:09: Burundi - 7: Target deviation: 15831.7385"
+
+
+ans = 
+
+    "05-Feb-2024 10:16:20: Guinea-Bissau - 14: Target deviation: 176795.8959"
+
+
+ans = 
+
+    "05-Feb-2024 10:16:23: Djibouti - 15: Target deviation: 374675.1535"
+
+
+ans = 
+
+    "05-Feb-2024 10:16:57: Guinea-Bissau - 15: Target deviation: 947.7809"
+
+
+ans = 
+
+    "05-Feb-2024 10:17:06: Djibouti - 16: Target deviation: 34927.93"
+
+
+ans = 
+
+    "05-Feb-2024 10:17:21: Burundi - 8: Target deviation: 739220.1257"
+
+
+ans = 
+
+    "05-Feb-2024 10:17:24: Benin - 4: Target deviation: 9115.4672"
+
+
+ans = 
+
+    "05-Feb-2024 10:17:53: Djibouti - 17: Target deviation: 124639.5866"
+
+
+ans = 
+
+    "05-Feb-2024 10:17:54: Guinea-Bissau - 16: Target deviation: 462837.9641"
+
+
+ans = 
+
+    "05-Feb-2024 10:18:38: Djibouti - 18: Target deviation: 212694.7618"
+
+
+ans = 
+
+    "05-Feb-2024 10:18:41: Guinea-Bissau - 17: Target deviation: 0.96984"
+
+
+ans = 
+
+    "05-Feb-2024 10:19:16: Burundi - 9: Target deviation: 295447.0677"
+
+
+ans = 
+
+    "05-Feb-2024 10:19:23: Guinea-Bissau - 18: Target deviation: 0.69549"
+
+
+ans = 
+
+    "05-Feb-2024 10:19:27: Djibouti - 19: Target deviation: 1.6526"
+
+
+ans = 
+
+    "05-Feb-2024 10:20:13: Djibouti - 20: Target deviation: 0.88394"
+
+
+ans = 
+
+    "05-Feb-2024 10:20:13: Guinea-Bissau - 19: Target deviation: 0.95787"
+
+
+ans = 
+
+    "05-Feb-2024 10:20:55: Guinea-Bissau - 20: Target deviation: 0.92316"
+
+
+ans = 
+
+    "05-Feb-2024 10:21:02: Djibouti - 21: Target deviation: 402.9397"
+
+
+ans = 
+
+    "05-Feb-2024 10:21:07: Burundi - 10: Target deviation: 582.5883"
+
+
+ans = 
+
+    "05-Feb-2024 10:21:37: Guinea-Bissau - 21: Target deviation: 53.7246"
+
+
+ans = 
+
+    "05-Feb-2024 10:21:52: Djibouti - 22: Target deviation: 0.94251"

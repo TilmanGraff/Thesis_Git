@@ -1,5 +1,5 @@
 require(igraph)
-
+require(dplyr)
 # Aggregates findings from optimisation into the opt_loc dataset. Most importantly, defines lambda.
 
 # setwd("/Users/tilmangraff/Documents/GitHub/Thesis_Git")
@@ -17,7 +17,7 @@ beta <- 1.2446 * gamma
 sigma <- 5
 # gamma = 0.5*beta
 
-runs <- data.frame("names" = c("base", "10perc", "base_old"), "paths" = c("2023-10-12_151412_newbase", "2023-10-12_160452_new10perc", "2023-07-17_111951_base"))
+runs <- data.frame("names" = c("base", "10perc", "base_old", "mob_test"), "paths" = c("2023-10-12_151412_newbase", "2023-10-12_160452_new10perc", "2023-07-17_111951_base", "2024-02-05_113740_mobility_withcomp"))
 
 for (country in countries$x) {
   if (file.exists(paste0("./Build/output/", runs[runs$names == "base", "paths"], "/Network_outcomes/", country, "_outcomes.csv"))) {
@@ -55,9 +55,20 @@ for (country in countries$x) {
         d_opt <- as.matrix(distances(g_opt))^(-sigma)
         diag(d_opt) <- 0
 
-        tcountryfile[, paste0("MA_initial_", run)] <- d_initial %*% as.vector(tcountryfile$pop)
-        tcountryfile[, paste0("MA_opt_", run)] <- d_opt %*% as.vector(tcountryfile$pop)
+      
+        if(grepl("mob", run)){
+          tcountryfile[, paste0("amenity_", run)] <- tcountryfile$amenities
+          tcountryfile[, paste0("pop_opt_", run)] <- tcountryfile$pop_opt
+          tcountryfile[, paste0("MA_initial_", run)] <- d_initial %*% as.vector(tcountryfile$pop_stat)
+          tcountryfile[, paste0("MA_opt_", run)] <- d_opt %*% as.vector(tcountryfile$pop_opt)
+        }else{
+          tcountryfile[, paste0("amenity_", run)] <- NA
+          tcountryfile[, paste0("pop_opt_", run)] <- NA
+          tcountryfile[, paste0("MA_initial_", run)] <- d_initial %*% as.vector(tcountryfile$pop)
+          tcountryfile[, paste0("MA_opt_", run)] <- d_opt %*% as.vector(tcountryfile$pop)
+        }
 
+  
         tcountryfile[, paste0("dMA_", run)] <- tcountryfile[, paste0("MA_opt_", run)] - tcountryfile[, paste0("MA_initial_", run)]
         tcountryfile[, paste0("fMA_", run)] <- tcountryfile[, paste0("MA_opt_", run)] / tcountryfile[, paste0("MA_initial_", run)]
 
@@ -68,7 +79,11 @@ for (country in countries$x) {
         tcountryfile[, paste0("util_opt_", run)] <- tcountryfile$util_opt
         tcountryfile[, paste0("util_stat_", run)] <- tcountryfile$util_stat
 
-        countryfile <- merge(countryfile, tcountryfile[, c("ID", paste0("I_change_", run), paste0("MA_initial_", run), paste0("MA_opt_", run), paste0("dMA_", run), paste0("fMA_", run), paste0("zeta_", run), paste0("util_opt_", run), paste0("util_stat_", run))], by = "ID")
+        tcountryfile[, paste0("c_opt_", run)] <- tcountryfile$c_opt
+        tcountryfile[, paste0("c_stat_", run)] <- tcountryfile$c_stat
+
+
+        countryfile <- merge(countryfile, tcountryfile[, c("ID", paste0("I_change_", run), paste0("MA_initial_", run), paste0("MA_opt_", run), paste0("dMA_", run), paste0("fMA_", run), paste0("zeta_", run), paste0("util_opt_", run), paste0("util_stat_", run), paste0("amenity_", run), paste0("pop_opt_", run), paste0("c_opt_", run), paste0("c_stat_", run))], by = "ID")
       } else{
         countryfile[, c(paste0("I_change_", run), paste0("MA_initial_", run), paste0("MA_opt_", run), paste0("dMA_", run), paste0("fMA_", run), paste0("zeta_", run), paste0("util_opt_", run), paste0("util_stat_", run))] = NA
       }
@@ -77,7 +92,8 @@ for (country in countries$x) {
     if (length(countryfiles) == 1) {
       countryfiles <- countryfile
     } else {
-      countryfiles <- rbind(countryfiles, countryfile)
+      #countryfiles <- rbind(countryfiles, countryfile, fill = T)
+      countryfiles <- bind_rows(countryfiles, countryfile)
     }
   }
 
