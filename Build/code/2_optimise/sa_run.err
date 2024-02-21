@@ -1,0 +1,14 @@
+{Error using parpool
+You requested a minimum of 5 workers, but the cluster "Processes" has the
+NumWorkers property set to allow a maximum of 1 workers. To run a communicating
+job on more workers than this (up to a maximum of 512 for the Local cluster),
+increase the value of the NumWorkers property for the cluster. The default
+value of NumWorkers for a Local cluster is the number of physical cores on the
+local machine.
+
+Error in find_optimal_network_SERVER (line 41)
+parpool(5);
+
+Error in run (line 91)
+evalin('caller', strcat(script, ';'));
+} 

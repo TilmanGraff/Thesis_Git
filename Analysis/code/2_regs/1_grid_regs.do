@@ -4,28 +4,28 @@
 
 cd "/Users/tilmangraff/Documents/GitHub/Thesis_Git"
 
-local outpath "/Users/tilmangraff/Dropbox (Harvard University)/Apps/Overleaf/Spatial Inefficiencies/tables/2023-10-07"
+local outpath "/Users/tilmangraff/Dropbox (Harvard University)/Apps/Overleaf/Spatial Inefficiencies/tables/2024-02-17"
 
 
 loc geoctrls "altitude landsuit temp precip growingdays malaria biomes1 biomes4 biomes5 biomes6 biomes8 biomes10 biomes11 biomes12 biomes13 biomes14 biomes2_3 x x_2 x_3 x_4 y y_2 y_3 y_4 harbor25 river25 lake25 i.ccode iscapital isborder"
 
-foreach type in "base" "10perc"{
+foreach type in "imm" "imm_10p" "mob_L"{
 
-if "`type'" == "10perc"{
-  loc type_addon = "_10perc"
+if "`type'" == "imm"{
+  loc type_addon = "_imm"
 }
-if "`type'" == "fp_tau"{
-  loc type_addon = "_fp"
+if "`type'" == "imm_10p"{
+  loc type_addon = "_imm_10p"
 }
-if "`type'" == "base"{
-  loc type_addon = ""
+if "`type'" == "mob_L"{
+  loc type_addon = "_mob"
 }
 
 
 foreach simcontrols in "No" "Yes"{
 
 use "./Analysis/input/maingrid.dta", clear
-dd
+
 if "`simcontrols'" == "Yes"{
   loc simctrls "pop rugg lights"
   loc sim_addon = ""

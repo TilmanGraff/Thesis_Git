@@ -17,17 +17,17 @@ beta <- 1.2446 * gamma
 sigma <- 5
 # gamma = 0.5*beta
 
-runs <- data.frame("names" = c("base", "10perc", "base_old", "mob_test"), "paths" = c("2023-10-12_151412_newbase", "2023-10-12_160452_new10perc", "2023-07-17_111951_base", "2024-02-05_113740_mobility_withcomp"))
+runs <- data.frame("names" = c("base_old", "mob", "imm"), "paths" = c("2023-07-17_111951_base", "2024-02-18_040636_mobile_fp_final", "2024-02-20_140808_imm_fp_final"))
 
 for (country in countries$x) {
-  if (file.exists(paste0("./Build/output/", runs[runs$names == "base", "paths"], "/Network_outcomes/", country, "_outcomes.csv"))) {
-    countryfile <- read.csv(paste0("./Build/output/", runs[runs$names == "base", "paths"], "/Network_outcomes/", country, "_outcomes.csv"))
+  if (file.exists(paste0("./Build/output/", runs[runs$names == "mob", "paths"], "/Network_outcomes/", country, "_outcomes.csv"))) {
+    countryfile <- read.csv(paste0("./Build/output/", runs[runs$names == "mob", "paths"], "/Network_outcomes/", country, "_outcomes.csv"))
     countryfile$country <- country
 
-    # delta_tau <- read.csv(paste("./Build/temp/delta_tau/delta_tau_", country, ".csv", sep=""))
+    delta_tau <- read.csv(paste("./Build/temp/delta_tau/delta_tau_", country, ".csv", sep=""))
 
-    # quich excursion to also capture the I_change:
-    # I_stat
+    #quich excursion to also capture the I_change:
+    #I_stat
     I_initial <- read.csv(paste("./Build/temp/I/I_", country, ".csv", sep = ""))
     adj <- read.csv(paste("./Build/temp/adj/adj_", country, ".csv", sep = ""))
 
@@ -45,45 +45,50 @@ for (country in countries$x) {
       path <- runs$paths[runidx]
 
       if (file.exists(paste0("./Build/output/", path, "/Network_outcomes/", country, "_outcomes.csv"))) {
-        tcountryfile <- read.csv(paste("./Build/output/", path, "/Network_outcomes/", country, "_outcomes.csv", sep = ""))
+        
 
-        I_opt <- read.csv(paste("./Build/output/", path, "/Optimised_Networks/", country, ".csv", sep = ""), header = FALSE)
+        for(type in c("", "_10p")){
+          if(file.exists(paste("./Build/output/", path, "/Optimised_Networks/", country, type, ".csv", sep = ""))){
+            tcountryfile <- read.csv(paste("./Build/output/", path, "/Network_outcomes/", country, "_outcomes.csv", sep = ""))
+            I_opt <- read.csv(paste("./Build/output/", path, "/Optimised_Networks/", country, type, ".csv", sep = ""), header = FALSE)
 
-        g_opt_m <- as.matrix(I_opt)^(-gamma)
-        g_opt_m[adj == 0] <- 0
-        g_opt <- graph_from_adjacency_matrix(g_opt_m, weighted = T)
-        d_opt <- as.matrix(distances(g_opt))^(-sigma)
-        diag(d_opt) <- 0
+            g_opt_m <- as.matrix(I_opt)^(-gamma)
+            g_opt_m[adj == 0] <- 0
+            g_opt <- graph_from_adjacency_matrix(g_opt_m, weighted = T)
+            d_opt <- as.matrix(distances(g_opt))^(-sigma)
+            diag(d_opt) <- 0
+
+          
+            if(grepl("mob", run)){
+              tcountryfile[, paste0("amenity_", run, type)] <- tcountryfile$amenities
+              tcountryfile[, paste0("pop_opt_", run, type)] <- tcountryfile[,paste0("pop_opt", type)]
+              tcountryfile[, paste0("MA_initial_", run, type)] <- d_initial %*% as.vector(tcountryfile$pop_stat)
+              tcountryfile[, paste0("MA_opt_", run, type)] <- d_opt %*% as.vector(tcountryfile[,paste0("pop_opt", type)])
+            }else{
+              tcountryfile[, paste0("amenity_", run, type)] <- NA
+              tcountryfile[, paste0("pop_opt_", run, type)] <- NA
+              tcountryfile[, paste0("MA_initial_", run, type)] <- d_initial %*% as.vector(tcountryfile$pop)
+              tcountryfile[, paste0("MA_opt_", run, type)] <- d_opt %*% as.vector(tcountryfile$pop)
+            }
 
       
-        if(grepl("mob", run)){
-          tcountryfile[, paste0("amenity_", run)] <- tcountryfile$amenities
-          tcountryfile[, paste0("pop_opt_", run)] <- tcountryfile$pop_opt
-          tcountryfile[, paste0("MA_initial_", run)] <- d_initial %*% as.vector(tcountryfile$pop_stat)
-          tcountryfile[, paste0("MA_opt_", run)] <- d_opt %*% as.vector(tcountryfile$pop_opt)
-        }else{
-          tcountryfile[, paste0("amenity_", run)] <- NA
-          tcountryfile[, paste0("pop_opt_", run)] <- NA
-          tcountryfile[, paste0("MA_initial_", run)] <- d_initial %*% as.vector(tcountryfile$pop)
-          tcountryfile[, paste0("MA_opt_", run)] <- d_opt %*% as.vector(tcountryfile$pop)
+            tcountryfile[, paste0("dMA_", run, type)] <- tcountryfile[, paste0("MA_opt_", run, type)] - tcountryfile[, paste0("MA_initial_", run, type)]
+            tcountryfile[, paste0("fMA_", run, type)] <- tcountryfile[, paste0("MA_opt_", run, type)] / tcountryfile[, paste0("MA_initial_", run, type)]
+
+            tcountryfile[, paste0("I_change_", run, type)] <- rowSums(I_opt - I_initial) / 2
+            # tcountryfile[, paste0("zeta_", run, type)] <- tcountryfile[,paste0("util_opt", type)] / tcountryfile$util_stat
+            # tcountryfile[tcountryfile$pop == 0, paste0("zeta_", run)] <- 1
+
+            tcountryfile[, paste0("util_opt_", run, type)] <- tcountryfile[,paste0("util_opt", type)]
+            tcountryfile[, paste0("util_stat_", run, type)] <- tcountryfile[,paste0("util_stat")]
+
+            tcountryfile[, paste0("c_opt_", run, type)] <- tcountryfile[,paste0("c_opt", type)]
+            tcountryfile[, paste0("c_stat_", run, type)] <- tcountryfile$c_stat
+
+
+            countryfile <- merge(countryfile, tcountryfile[, c("ID", paste0("I_change_", run, type), paste0("MA_initial_", run, type), paste0("MA_opt_", run, type), paste0("dMA_", run, type), paste0("fMA_", run, type), paste0("util_opt_", run, type), paste0("util_stat_", run, type), paste0("amenity_", run, type), paste0("pop_opt_", run, type), paste0("c_opt_", run, type), paste0("c_stat_", run, type))], by = "ID")
+            }
         }
-
-  
-        tcountryfile[, paste0("dMA_", run)] <- tcountryfile[, paste0("MA_opt_", run)] - tcountryfile[, paste0("MA_initial_", run)]
-        tcountryfile[, paste0("fMA_", run)] <- tcountryfile[, paste0("MA_opt_", run)] / tcountryfile[, paste0("MA_initial_", run)]
-
-        tcountryfile[, paste0("I_change_", run)] <- rowSums(I_opt - I_initial) / 2
-        tcountryfile[, paste0("zeta_", run)] <- tcountryfile$util_opt / tcountryfile$util_stat
-        tcountryfile[tcountryfile$pop == 0, paste0("zeta_", run)] <- 1
-
-        tcountryfile[, paste0("util_opt_", run)] <- tcountryfile$util_opt
-        tcountryfile[, paste0("util_stat_", run)] <- tcountryfile$util_stat
-
-        tcountryfile[, paste0("c_opt_", run)] <- tcountryfile$c_opt
-        tcountryfile[, paste0("c_stat_", run)] <- tcountryfile$c_stat
-
-
-        countryfile <- merge(countryfile, tcountryfile[, c("ID", paste0("I_change_", run), paste0("MA_initial_", run), paste0("MA_opt_", run), paste0("dMA_", run), paste0("fMA_", run), paste0("zeta_", run), paste0("util_opt_", run), paste0("util_stat_", run), paste0("amenity_", run), paste0("pop_opt_", run), paste0("c_opt_", run), paste0("c_stat_", run))], by = "ID")
       } else{
         countryfile[, c(paste0("I_change_", run), paste0("MA_initial_", run), paste0("MA_opt_", run), paste0("dMA_", run), paste0("fMA_", run), paste0("zeta_", run), paste0("util_opt_", run), paste0("util_stat_", run))] = NA
       }

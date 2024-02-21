@@ -14,22 +14,13 @@ centroids = readtable("/Users/tilmangraff/Documents/GitHub/Thesis_Git/Build/temp
 centroids.country = categorical(centroids.country);
 
 % Defines parameters
-
-alpha = 0.4;
-gamma = 0.6225;
-beta = 1.2446 * gamma;
-% gamma = 0.1;
-beta = 1.245;
-sigma = 4;
-a = 0.7;
-rho = 0; % this is really important to not have any inequality aversion. I am not entirely sure if thats legit because in their toolbox, FS say rho >= 1... but i see no reason why 0 should not be ok...
-
 alpha = 0.7;
 gamma = 0.946;
 beta = 1.2446 * gamma;
+
 sigma = 5;
-a = 0.7; % production function parameter, it doesnt matter because production is fixed anyway. Just have to make sure that its the same as in the define_productivity_and_rownames.R file
-rho = 0;
+a = 0.7; % production function parameter. Now in mobile labor it does matter, and I need to adjust productivities accordingly. Will do so below.
+rho = 0; % this is really important to not have any inequality aversion. I am not entirely sure if thats legit because in their toolbox, FS say rho >= 1... but i see no reason why 0 should not be ok...
 
 
 %% For each country
@@ -46,8 +37,8 @@ nums = nan(1);
         % Split centroids by country
         case_centroids = readtable(strcat("/Users/tilmangraff/Documents/GitHub/Thesis_Git/Build/temp/borderregions/", (countryname), "_borderregion.csv"));
         num_locations = size(case_centroids, 1)
-     %if num_locations > 100 && num_locations < 200
-        if countryname == "Burundi"
+     %if num_locations > 300 && num_locations < 350
+        if countryname == "Germany"
         % Read in characteristics
         population = case_centroids.pop;
 
@@ -56,7 +47,7 @@ nums = nan(1);
         adj = csvread(strcat("/Users/tilmangraff/Documents/GitHub/Thesis_Git/Build/temp/adj/adj_", (countryname), ".csv"), 1, 0);
         abr = csvread(strcat("/Users/tilmangraff/Documents/GitHub/Thesis_Git/Build/temp/abr/abr_", (countryname), ".csv"), 1, 0);
         delta_I = csvread(strcat("/Users/tilmangraff/Documents/GitHub/Thesis_Git/Build/temp/delta_I/delta_I_", (countryname), ".csv"), 1, 0);
-        delta_tau = csvread(strcat("/Users/tilmangraff/Documents/GitHub/Thesis_Git/Build/temp/delta_tau/delta_tau_", (countryname), ".csv"), 1, 0);
+        delta_tau = csvread(strcat("/Users/tilmangraff/Documents/GitHub/Thesis_Git/Build/temp/delta_tau/delta_tau_withcomp_fp_", (countryname), ".csv"), 1, 0);
         I = csvread(strcat("/Users/tilmangraff/Documents/GitHub/Thesis_Git/Build/temp/I/I_", (countryname), ".csv"), 1, 0);
         productivity = csvread(strcat("/Users/tilmangraff/Documents/GitHub/Thesis_Git/Build/temp/productivities/productivities_", (countryname), ".csv"), 1, 0);
 
@@ -74,15 +65,16 @@ nums = nan(1);
         
         param = init_parameters('Annealing', 'off', 'LaborMobility', 'off', 'a', a, 'sigma', sigma, 'N', N, 'alpha', alpha, 'beta', beta, 'gamma', gamma, 'verbose', 'on', 'rho', rho, 'K', K, 'CrossGoodCongestion', 'off');
         
-        [param,g]=create_graph(param,[],[],'X',case_centroids.x,'Y',case_centroids.y,'Type','custom','Adjacency',adj,'X',case_centroids.x,'Y',case_centroids.y);
+        [param,g]=create_graph(param,[],[],'X',case_centroids.x,'Y',case_centroids.y,'Type','custom','Adjacency',adj);
         
         
         param.Lj = population + (population == 0) .* 10^-7; % this is needed as ipopt crashes otherwise (need to have population > 0 always), so I add an infinitisimal person
         param.Zjn = productivity;
-        param.omegaj = weights;
+        %param.omegaj = weights;
         
         param.Hj = population .* (1-alpha); % I normalise this because the general utility function has a (h_j/(1-alpha))^(1-alpha) thing with it
-        
+        param.tol_kappa = 1.0e-5;
+
         
         g.delta_i = delta_I;
         g.delta_tau = delta_tau;
@@ -98,13 +90,13 @@ nums = nan(1);
         % Static
         strcat("Started P_stat on ", datestr(datetime('now')))
         %res_stat = optimal_network(param,g,I,I,I);
-        res_stat = solve_allocation(param,g,I, true);
+        res_stat = solve_allocation(param,g,I, false);
         %annrea = annealing(param,g,res.Ijk,'Il',min_mask,'Iu',max_mask);
 
         
         % Optimalq
         strcat("Started P_opt on ", datestr(datetime('now')))
-        res_opt = optimal_network(param,g,I,min_mask,max_mask);
+        res_opt = optimal_network(param,g,I,min_mask,max_mask,false);
       
 
         

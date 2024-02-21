@@ -10,8 +10,8 @@
 # Gather country names
 # country_table <- as.data.frame(table(centroids$country))
 # country_names <- paste(country_table[country_table$Freq != 0,"Var1"])
-countries = read.csv("./Build/temp/country_names.csv")
-countries = c("Germany", "Japan", "China", "United-States")
+countries = read.csv("./Build/temp/country_names.csv")$x
+#countries = c("Germany", "Japan", "China", "United-States")
 
 for (country in countries){
 
@@ -70,7 +70,7 @@ for (country in countries){
   delta_tau[delta_tau < 0] <- 0
 
   # NEW VERSION WITH FIXEDPOINT
-  delta_0_tau_fp <- (0.0374/(0.43 * 0.0044257) + 0.0558/(1.03 * 0.0080479)) / 2 # this is the mean of columns (3) and (6) on page 44 of their paper, scaled by mean base prices for each country, so as to make these ad-valorem
+  delta_0_tau_fp <- (0.0374/(0.43 * 0.13385) + 0.0558/(1.03 * 0.983)) / 2 # this is the mean of columns (3) and (6) on page 44 of their paper, scaled by mean base prices for each country, so as to make these ad-valorem
   delta_tau_fp <-  delta_0_tau_fp * log(dist / 1.609)
   delta_tau_fp[delta_tau_fp < 0] <- 0
 
@@ -78,7 +78,7 @@ for (country in countries){
   delta_tau_withcomp <- delta_0_tau_withcomp * log(dist / 1.609)
   delta_tau_withcomp[delta_tau_withcomp < 0] <- 0
 
-  delta_0_tau_withcomp_fp <- (0.0248/(0.43*0.0086) + 0.0254/(1.03*0.01956)) / 2 # this is the mean of columns (2) and (5) on page 44 of their paper, scaled by mean base prices for each country, so as to make these ad-valorem
+  delta_0_tau_withcomp_fp <- (0.0248/(0.43*0.25541) + 0.0254/(1.03*4.1418)) / 2 # this is the mean of columns (2) and (5) on page 44 of their paper, scaled by mean base prices for each country, so as to make these ad-valorem
   delta_tau_withcomp_fp <- delta_0_tau_withcomp_fp * log(dist / 1.609)
   delta_tau_withcomp_fp[delta_tau_withcomp_fp < 0] <- 0
 

@@ -6,22 +6,110 @@ cd "/Users/tilmangraff/Documents/GitHub/Thesis_Git"
 
 import delim "Analysis/input/opt_loc.csv", clear
 
+loc types ""base_old" "mob" "mob_10p" "imm" "imm_10p""
 
 **********************
 * Some basic cleaning
 **********************
 
-drop if region == "NA"
 
-drop if zeta_base == "NA"
-destring x y region subregion lights num_landpixels gridarea pop_dens pop_sd lights_sd rugg altitude landsuit temp precip growingdays malaria harbor alternative_lights lights_raw un_code pop p_stat p_opt util_stat util_opt c_stat c_opt i_change_* dma* zet* util_* amenit* pop_opt* c_*, replace ig("NA")
+destring x y region subregion lights num_landpixels gridarea pop_dens pop_sd lights_sd rugg altitude landsuit temp precip growingdays malaria harbor alternative_lights lights_raw un_code pop* p_stat p_opt util_stat util_opt c_stat c_opt i_change_* dma* util_* amenit* pop_opt* c_* fma_*, replace ig("NA")
 encode country, gen(ccode)
 
-foreach type in "base" "10perc" "base_old"{
-  summ zeta_`type'
-  gen zzeta_`type' = (zeta_`type'-`r(mean)')/`r(sd)'
-  replace fma_`type' = "." if fma_`type' == "NA"
-  destring fma_`type', replace
+
+tempfile grid 
+save `grid'
+
+**********************
+* Briefly compute country totals
+**********************
+
+foreach type in `types'{
+	
+	gen welfare_stat_`type' = pop_stat * util_stat_`type'
+	gen welfare_opt_`type' = pop_stat * util_opt_`type'
+	
+}
+
+replace region = 0 if region == .
+
+
+preserve
+
+
+collapse (sum) welfare_*, by(region)
+keep if region == 2
+gen country = "Africa"
+tempfile africa 
+save `africa'
+
+restore 
+
+collapse (sum) welfare_* (mean) region, by(country)
+append using `africa'
+
+*drop if welfare_stat_base_old == 0
+
+foreach type in `types'{
+	gen Lambda_`type' = welfare_opt_`type' / welfare_stat_`type'
+}
+
+foreach var of varlist Lambda_mo*{
+	gen `var'_CE = `var'^(1/0.7)
+}
+
+foreach var of varlist Lambda_*{
+	gen `var'_barchart = (`var' - 1)*100
+}
+
+keep region *_barchart country
+
+export delim "./Analysis/input/country_means.csv", replace
+
+**********************
+* Focus on Africa now
+**********************
+
+use `grid', clear
+
+
+
+drop if region == .
+keep if region == 2
+
+**********************
+* Compute Lambdas
+**********************
+
+
+**********************
+* Compute consumption equivalence
+**********************
+
+foreach type in `types'{
+	gen Lambda_`type' = util_opt_`type' / util_stat_`type' 
+}
+
+* Define mobility Lambda based on population movements
+gen Lambda_L_mob = pop_opt_mob / pop_stat
+gen Lambda_L_mob_10p = pop_opt_mob_10p / pop_stat
+
+
+**********************
+* 
+**********************
+
+foreach type in `types'{
+	foreach innertype in "" "_L"{
+	  capture confirm variable Lambda`innertype'_`type'
+	  if !_rc{
+		  summ Lambda`innertype'_`type', d 
+		  replace Lambda`innertype'_`type' = r(p99) if Lambda`innertype'_`type' > r(p99)
+		  replace Lambda`innertype'_`type' = r(p1) if Lambda`innertype'_`type' < r(p1)
+		  summ Lambda`innertype'_`type'
+		  gen zLambda`innertype'_`type' = (Lambda`innertype'_`type'-`r(mean)')/`r(sd)'
+	  }
+	}
 }
 
 
@@ -108,10 +196,8 @@ foreach var in "railkm" "placebokm" "railkm_military" "railkm_mining"{
 foreach type in "rail" "placebo"{
   gen aux = 0
   foreach dist in "10" "20" "30" "40"{
-
     gen `type'`dist' = dist2`type' < `dist' & aux == 0
     replace aux = 1 if dist2`type' < `dist'
-
   }
   drop aux
   gen any`type' = `type'km > 0

@@ -42,7 +42,7 @@ inpath = "/Users/tilmangraff/Documents/GitHub/Thesis_Git/Build/temp/";
         num_locations = size(case_centroids, 1)
         %if num_locations > 50 && num_locations < 80
         %if num_locations == 202
-        if countryname == "Burundi"
+        if countryname == "Botswana"
         % Read in characteristics
         population = case_centroids.pop;
 
@@ -400,12 +400,15 @@ x0 = [];
 
 
 
-                [res_stat,flag,x0] = solve_allocation(param,g,I, false,x0);
+                [res_stat,flag,x0] = solve_allocation(param,g,I, true,x0);
 
                 target_adjustment = pop_target ./ res_stat.Lj;
 
-                abs_diff = sum(abs(target_adjustment - 1)) ./ J;
-                abs_diff(pop_target < 0.0001) = 0.0;
+                deviations = abs(target_adjustment - 1);
+                deviations(pop_target < 0.0001) = 0.0;
+
+                abs_diff = sum(deviations) ./ J;
+                
 
                 new_amenities = param.Hj.* target_adjustment;
                 new_amenities(new_amenities == 0.0) = 10^-11;
@@ -450,7 +453,7 @@ x0 = [];
         strcat(countryname, ": Started P_opt on ", datestr(datetime('now')))
       
         
-        res_opt = optimal_network(param,g,I,min_mask,max_mask,'true');
+        res_opt = optimal_network(param,g,I,min_mask,max_mask,'true',x0);
         
      
         %% Obtain descriptive statistics

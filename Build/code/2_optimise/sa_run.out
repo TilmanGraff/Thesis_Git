@@ -11,661 +11,252 @@ For product information, visit www.mathworks.com.
 
 foldername = 
 
-    "2024-02-05_100829_mobnew"
+    "2024-02-17_175358_imm_fp"
 
+[Warning: Directory already exists.] 
+[> In find_optimal_network_SERVER (line 24)
+In run (line 91)] 
+[Warning: Directory already exists.] 
+[> In find_optimal_network_SERVER (line 25)
+In run (line 91)] 
+[Warning: Directory already exists.] 
+[> In find_optimal_network_SERVER (line 26)
+In run (line 91)] 
+[Warning: Directory already exists.] 
+[> In find_optimal_network_SERVER (line 27)
+In run (line 91)] 
 Starting parallel pool (parpool) using the 'Processes' profile ...
 Connected to the parallel pool (number of workers: 5).
-[Warning: The temporary variable 'omegar' will be cleared at the beginning of
-each iteration of the parfor-loop. If 'omegar' is used before it is set, a
-runtime error will occur. For more information, see Parallel for Loops in
-MATLAB, "Uninitialized Temporaries".] 
-[> In find_optimal_network_mobile_SERVER (line 46)
-In run (line 91)] 
-[Warning: The temporary variable 'res_stat' will be cleared at the beginning of
-each iteration of the parfor-loop. If 'res_stat' is used before it is set, a
-runtime error will occur. For more information, see Parallel for Loops in
-MATLAB, "Uninitialized Temporaries".] 
-[> In find_optimal_network_mobile_SERVER (line 46)
-In run (line 91)] 
 
-ans = 
-
-    "Burundi: Started P_stat with backout on 05-Feb-2024 10:09:00"
-
-ans = 
-
-    "Djibouti: Started P_stat with backout on 05-Feb-2024 10:09:00"
-
-ans = 
-
-    "Benin: Started P_stat with backout on 05-Feb-2024 10:09:00"
-
-ans = 
-
-    "Guinea-Bissau: Started P_stat with backout on 05-Feb-2024 10:09:00"
-
-ans = 
-
-    "Burkina-Faso: Started P_stat with backout on 05-Feb-2024 10:09:00"
-
-
-ans = 
-
-    "05-Feb-2024 10:09:02: Guinea-Bissau - 1: Target deviation: 1496065.7668"
-
-
-ans = 
-
-    "05-Feb-2024 10:09:02: Djibouti - 1: Target deviation: 312519.607"
-
-
-ans = 
-
-    "05-Feb-2024 10:09:04: Djibouti - 2: Target deviation: 312519.1182"
-
-
-ans = 
-
-    "05-Feb-2024 10:09:05: Guinea-Bissau - 2: Target deviation: 499060.5471"
-
-
-ans = 
-
-    "05-Feb-2024 10:09:07: Burundi - 1: Target deviation: 343132.6012"
-
-
-ans = 
-
-    "05-Feb-2024 10:09:26: Burundi - 2: Target deviation: 1016962.4656"
-
-
-ans = 
-
-    "05-Feb-2024 10:09:45: Benin - 1: Target deviation: 9.7305"
-
-
-ans = 
-
-    "05-Feb-2024 10:09:50: Djibouti - 3: Target deviation: 2814424.2353"
-
-
-ans = 
-
-    "05-Feb-2024 10:09:57: Djibouti - 4: Target deviation: 518909.3794"
-
-
-ans = 
-
-    "05-Feb-2024 10:09:57: Benin - 2: Target deviation: 127593.9672"
-
-
-ans = 
-
-    "05-Feb-2024 10:10:10: Guinea-Bissau - 3: Target deviation: 1346.1409"
-
-
-ans = 
-
-    "05-Feb-2024 10:10:39: Djibouti - 5: Target deviation: 1489478.3128"
-
-
-ans = 
-
-    "05-Feb-2024 10:10:55: Benin - 3: Target deviation: 286079.1745"
-
-
-ans = 
-
-    "05-Feb-2024 10:10:56: Guinea-Bissau - 4: Target deviation: 2170037.796"
-
-
-ans = 
-
-    "05-Feb-2024 10:10:58: Burundi - 3: Target deviation: 6902.2253"
-
-
-ans = 
-
-    "05-Feb-2024 10:11:07: Guinea-Bissau - 5: Target deviation: 475696.0273"
-
-
-ans = 
-
-  1x44 <a href="matlab:helpPopup string" style="font-weight:bold">string</a> array
-
-  Columns 1 through 3
-
-    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."
-
-  Columns 4 through 6
-
-    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."
-
-  Columns 7 through 9
-
-    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."
-
-  Columns 10 through 12
-
-    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."
-
-  Columns 13 through 15
-
-    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."
-
-  Columns 16 through 18
-
-    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."
-
-  Columns 19 through 21
-
-    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."
-
-  Columns 22 through 24
-
-    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."
-
-  Columns 25 through 27
-
-    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."
-
-  Columns 28 through 30
-
-    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."
-
-  Columns 31 through 33
-
-    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."
-
-  Columns 34 through 36
-
-    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."
-
-  Columns 37 through 39
-
-    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."
-
-  Columns 40 through 42
-
-    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."
-
-  Columns 43 through 44
-
-    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."
-
-
-ans = 
-
-  1x44 <a href="matlab:helpPopup string" style="font-weight:bold">string</a> array
-
-  Columns 1 through 3
-
-    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."
-
-  Columns 4 through 6
-
-    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."
-
-  Columns 7 through 9
-
-    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."
-
-  Columns 10 through 12
-
-    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."
-
-  Columns 13 through 15
-
-    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."
-
-  Columns 16 through 18
-
-    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."
-
-  Columns 19 through 21
-
-    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."
-
-  Columns 22 through 24
-
-    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."
-
-  Columns 25 through 27
-
-    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."
-
-  Columns 28 through 30
-
-    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."
-
-  Columns 31 through 33
-
-    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."
-
-  Columns 34 through 36
-
-    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."
-
-  Columns 37 through 39
-
-    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."
-
-  Columns 40 through 42
-
-    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."
-
-  Columns 43 through 44
-
-    "05-Feb-2024 10:0..."    "05-Feb-2024 10:0..."
-
-
-ans = 
-
-  1x44 <a href="matlab:helpPopup string" style="font-weight:bold">string</a> array
-
-  Columns 1 through 3
-
-    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
-
-  Columns 4 through 6
-
-    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
-
-  Columns 7 through 9
-
-    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
-
-  Columns 10 through 12
-
-    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
-
-  Columns 13 through 15
-
-    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
-
-  Columns 16 through 18
-
-    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
-
-  Columns 19 through 21
-
-    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
+ans =
 
-  Columns 22 through 24
+  1x1 <a href="matlab:helpPopup cell" style="font-weight:bold">cell</a> array
 
-    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
+    {'Algeria'}
 
-  Columns 25 through 27
 
-    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
+ans =
 
-  Columns 28 through 30
+  1x1 <a href="matlab:helpPopup cell" style="font-weight:bold">cell</a> array
 
-    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
+    {'Democratic-Republic-of-the-Congo'}
 
-  Columns 31 through 33
 
-    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
+ans =
 
-  Columns 34 through 36
+  1x1 <a href="matlab:helpPopup cell" style="font-weight:bold">cell</a> array
 
-    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
+    {'Sudan'}
 
-  Columns 37 through 39
 
-    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
+ans =
 
-  Columns 40 through 42
+  1x1 <a href="matlab:helpPopup cell" style="font-weight:bold">cell</a> array
 
-    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
+    {'United-States'}
 
-  Columns 43 through 44
+Iteration No.25 distance=4.168411e-05 duration=1138.5 secs. Welfare=1.637173e+03
 
-    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
-
-
-ans = 
-
-  1x44 <a href="matlab:helpPopup string" style="font-weight:bold">string</a> array
-
-  Columns 1 through 3
-
-    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
-
-  Columns 4 through 6
-
-    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
-
-  Columns 7 through 9
-
-    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
-
-  Columns 10 through 12
-
-    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
-
-  Columns 13 through 15
-
-    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
-
-  Columns 16 through 18
-
-    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
-
-  Columns 19 through 21
-
-    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
-
-  Columns 22 through 24
-
-    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
-
-  Columns 25 through 27
-
-    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
-
-  Columns 28 through 30
-
-    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
-
-  Columns 31 through 33
-
-    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
-
-  Columns 34 through 36
-
-    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
-
-  Columns 37 through 39
-
-    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
-
-  Columns 40 through 42
-
-    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
-
-  Columns 43 through 44
-
-    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
-
-
-ans = 
-
-  1x44 <a href="matlab:helpPopup string" style="font-weight:bold">string</a> array
-
-  Columns 1 through 3
-
-    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
-
-  Columns 4 through 6
-
-    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
-
-  Columns 7 through 9
-
-    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
-
-  Columns 10 through 12
-
-    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
-
-  Columns 13 through 15
-
-    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
-
-  Columns 16 through 18
-
-    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
-
-  Columns 19 through 21
-
-    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
-
-  Columns 22 through 24
-
-    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
-
-  Columns 25 through 27
-
-    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
-
-  Columns 28 through 30
-
-    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
-
-  Columns 31 through 33
-
-    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
-
-  Columns 34 through 36
-
-    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
-
-  Columns 37 through 39
-
-    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
-
-  Columns 40 through 42
-
-    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
-
-  Columns 43 through 44
-
-    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
-
-
-ans = 
-
-  1x44 <a href="matlab:helpPopup string" style="font-weight:bold">string</a> array
-
-  Columns 1 through 3
-
-    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."    "05-Feb-2024 10:1..."
-
-  Columns 4 through 6
-
-
-
-ans = 
-
-    "05-Feb-2024 10:11:26: Djibouti - 6: Target deviation: 732301.7761"
-
-
 ans = 
 
-    "05-Feb-2024 10:11:35: Guinea-Bissau - 6: Target deviation: 463121.1383"
+    "Sudan: Started P_stat on 19-Feb-2024 15:07:55"
 
 
 ans = 
 
-    "05-Feb-2024 10:11:39: Djibouti - 7: Target deviation: 2148213.1638"
+    "Sudan: Started P_opt on 19-Feb-2024 15:14:29"
+Iteration No.6 distance=4.102252e-05 duration=1523.2 secs. Welfare=1.866547e+04
 
-
-ans = 
-
-    "05-Feb-2024 10:11:57: Djibouti - 8: Target deviation: 2113599.204"
-
-
-ans = 
-
-    "05-Feb-2024 10:12:05: Guinea-Bissau - 7: Target deviation: 2702701.7027"
-
-
-ans = 
-
-    "05-Feb-2024 10:12:08: Djibouti - 9: Target deviation: 156282.8102"
-
-
-ans = 
-
-    "05-Feb-2024 10:12:35: Burundi - 4: Target deviation: 535762.2002"
-
-
-ans = 
-
-    "05-Feb-2024 10:12:40: Guinea-Bissau - 8: Target deviation: 441331.217"
-
-
-ans = 
-
-    "05-Feb-2024 10:12:51: Djibouti - 10: Target deviation: 34909.9507"
-
-
-ans = 
-
-    "05-Feb-2024 10:12:56: Guinea-Bissau - 9: Target deviation: 392436.9285"
-
-
-ans = 
-
-    "05-Feb-2024 10:13:37: Djibouti - 11: Target deviation: 1031523.4809"
-
-
-ans = 
-
-    "05-Feb-2024 10:13:56: Guinea-Bissau - 10: Target deviation: 74262.347"
-
-
-ans = 
-
-    "05-Feb-2024 10:14:11: Burundi - 5: Target deviation: 1008656.3658"
-
-
 ans = 
 
-    "05-Feb-2024 10:14:15: Burundi - 6: Target deviation: 1006058.6276"
+    "Democratic-Republic-of-the-Congo: Started P_stat on 19-Feb-2024 15:07:54"
 
 
 ans = 
 
-    "05-Feb-2024 10:14:20: Djibouti - 12: Target deviation: 225307.786"
+    "Democratic-Republic-of-the-Congo: Started P_opt on 19-Feb-2024 15:17:11"
 
-
-ans = 
-
-    "05-Feb-2024 10:14:24: Guinea-Bissau - 11: Target deviation: 426150.4193"
-
-
-ans = 
-
-    "05-Feb-2024 10:14:49: Guinea-Bissau - 12: Target deviation: 246602.8372"
-
-
-ans = 
-
-    "05-Feb-2024 10:14:58: Djibouti - 13: Target deviation: 1902400.3111"
-
-
-ans = 
-
-    "05-Feb-2024 10:15:28: Guinea-Bissau - 13: Target deviation: 8.3949"
-
-
-ans = 
-
-    "05-Feb-2024 10:15:39: Djibouti - 14: Target deviation: 1625212.0875"
-
-
 ans = 
 
-    "05-Feb-2024 10:16:09: Burundi - 7: Target deviation: 15831.7385"
+    "Algeria: Started P_stat on 19-Feb-2024 15:07:54"
 
 
 ans = 
 
-    "05-Feb-2024 10:16:20: Guinea-Bissau - 14: Target deviation: 176795.8959"
+    "Algeria: Started P_opt on 19-Feb-2024 15:23:01"
+Iteration No.26 distance=3.818523e-05 duration=1132.6 secs. Welfare=1.637185e+03
+Iteration No.33 distance=1.646809e-05 duration=2143.8 secs. Welfare=1.161454e+03
+Iteration No.7 distance=3.849819e-05 duration=1524.5 secs. Welfare=1.866802e+04
+Iteration No.27 distance=3.502523e-05 duration=1141.3 secs. Welfare=1.637195e+03
+Iteration No.8 distance=2.226356e-05 duration=1523.7 secs. Welfare=1.866905e+04
+Iteration No.28 distance=3.215653e-05 duration=1139.8 secs. Welfare=1.637203e+03
+Iteration No.34 distance=1.532511e-05 duration=2130.3 secs. Welfare=1.161457e+03
+Iteration No.29 distance=2.958144e-05 duration=1148.4 secs. Welfare=1.637210e+03
+Iteration No.9 distance=2.112546e-05 duration=1522.4 secs. Welfare=1.866937e+04
+Iteration No.35 distance=1.427832e-05 duration=2132.6 secs. Welfare=1.161459e+03
+Iteration No.30 distance=2.725566e-05 duration=1142.2 secs. Welfare=1.637216e+03
+Iteration No.10 distance=1.956014e-05 duration=1521.6 secs. Welfare=1.866935e+04
 
-
-ans = 
-
-    "05-Feb-2024 10:16:23: Djibouti - 15: Target deviation: 374675.1535"
-
-
 ans = 
 
-    "05-Feb-2024 10:16:57: Guinea-Bissau - 15: Target deviation: 947.7809"
+    "United-States: Started P_stat on 19-Feb-2024 15:07:54"
 
 
 ans = 
 
-    "05-Feb-2024 10:17:06: Djibouti - 16: Target deviation: 34927.93"
+    "United-States: Started P_opt on 19-Feb-2024 17:04:23"
+Iteration No.31 distance=2.514887e-05 duration=1144.4 secs. Welfare=1.637220e+03
+Iteration No.11 distance=1.774811e-05 duration=1523.8 secs. Welfare=1.866918e+04
+Iteration No.36 distance=1.331558e-05 duration=2153.8 secs. Welfare=1.161461e+03
 
 
 ans = 
 
-    "05-Feb-2024 10:17:21: Burundi - 8: Target deviation: 739220.1257"
+    "Sudan: Started 10perc exercise on 19-Feb-2024 17:25:34"
+Iteration No.32 distance=2.323343e-05 duration=1153.1 secs. Welfare=1.637225e+03
+Iteration No.33 distance=2.147625e-05 duration=1155.5 secs. Welfare=1.637228e+03
+Iteration No.12 distance=1.583148e-05 duration=1524.6 secs. Welfare=1.866898e+04
+Iteration No.37 distance=1.242947e-05 duration=2161.5 secs. Welfare=1.161462e+03
 
 
 ans = 
 
-    "05-Feb-2024 10:17:24: Benin - 4: Target deviation: 9115.4672"
+    "Democratic-Republic-of-the-Congo: Started 10perc exercise on 19-Feb-2024 17:59:49"
+Iteration No.34 distance=1.986515e-05 duration=1152.8 secs. Welfare=1.637232e+03
 
 
 ans = 
 
-    "05-Feb-2024 10:17:53: Djibouti - 17: Target deviation: 124639.5866"
+    "United-States: Started 10perc exercise on 19-Feb-2024 18:08:13"
+Iteration No.13 distance=1.392903e-05 duration=1524.4 secs. Welfare=1.866877e+04
+Iteration No.35 distance=1.838607e-05 duration=1151.4 secs. Welfare=1.637234e+03
+Iteration No.38 distance=1.160589e-05 duration=2155.6 secs. Welfare=1.161464e+03
 
 
 ans = 
-
-    "05-Feb-2024 10:17:54: Guinea-Bissau - 16: Target deviation: 462837.9641"
-
-
-ans = 
-
-    "05-Feb-2024 10:18:38: Djibouti - 18: Target deviation: 212694.7618"
 
+    "Algeria: Started 10perc exercise on 19-Feb-2024 18:35:15"
+Iteration No.14 distance=1.212834e-05 duration=1523.2 secs. Welfare=1.866858e+04
+Iteration No.36 distance=1.701883e-05 duration=1150.5 secs. Welfare=1.637237e+03
 
-ans = 
 
-    "05-Feb-2024 10:18:41: Guinea-Bissau - 17: Target deviation: 0.96984"
+ans =
 
+  1x1 <a href="matlab:helpPopup cell" style="font-weight:bold">cell</a> array
 
-ans = 
+    {'China'}
 
-    "05-Feb-2024 10:19:16: Burundi - 9: Target deviation: 295447.0677"
+Iteration No.37 distance=1.576991e-05 duration=1148.4 secs. Welfare=1.637239e+03
+Iteration No.15 distance=1.046743e-05 duration=1526.9 secs. Welfare=1.866840e+04
+Iteration No.39 distance=1.052096e-05 duration=2143.3 secs. Welfare=1.161465e+03
+Iteration No.38 distance=1.461189e-05 duration=1138.0 secs. Welfare=1.637241e+03
+Iteration No.16 distance=8.971315e-06 duration=1526.8 secs. Welfare=1.866826e+04
+Iteration No.39 distance=1.384503e-05 duration=1144.1 secs. Welfare=1.637243e+03
+Iteration No.40 distance=9.913811e-06 duration=2143.0 secs. Welfare=1.161466e+03
+Iteration No.17 distance=7.640089e-06 duration=1526.6 secs. Welfare=1.866815e+04
+Iteration No.40 distance=1.311025e-05 duration=1157.0 secs. Welfare=1.637244e+03
+Iteration No.41 distance=1.241613e-05 duration=1134.5 secs. Welfare=1.637246e+03
 
+COMPUTATION RESULTED WITH SUCCESS.
+----------------------------------
 
 ans = 
 
-    "05-Feb-2024 10:19:23: Guinea-Bissau - 18: Target deviation: 0.69549"
-
-
-ans = 
+    "Democratic-Republic-of-the-Congo: Started 10perc exercise on 19-Feb-2024 19:46:40"
 
-    "05-Feb-2024 10:19:27: Djibouti - 19: Target deviation: 1.6526"
 
+---------------------------
+STARTING MAIN LOOP...
 
-ans = 
+Iteration No.1 distance=4.006483e-04 duration=1997.4 secs. Welfare=1.131840e+03
+Iteration No.18 distance=6.472872e-06 duration=1526.6 secs. Welfare=1.866807e+04
+Iteration No.42 distance=1.173928e-05 duration=1134.0 secs. Welfare=1.637248e+03
+Iteration No.19 distance=5.456499e-06 duration=1523.5 secs. Welfare=1.866801e+04
+Iteration No.2 distance=3.371302e-04 duration=2180.5 secs. Welfare=1.142888e+03
+Iteration No.43 distance=1.108641e-05 duration=1141.8 secs. Welfare=1.637250e+03
+Iteration No.20 distance=4.585972e-06 duration=1522.0 secs. Welfare=1.866796e+04
+Iteration No.44 distance=1.046655e-05 duration=1134.2 secs. Welfare=1.637252e+03
+Iteration No.3 distance=2.626800e-04 duration=2131.4 secs. Welfare=1.147393e+03
+Iteration No.45 distance=9.882582e-06 duration=1123.4 secs. Welfare=1.637254e+03
+Iteration No.21 distance=3.846820e-06 duration=1522.3 secs. Welfare=1.866793e+04
 
-    "05-Feb-2024 10:20:13: Djibouti - 20: Target deviation: 0.88394"
+COMPUTATION RESULTED WITH SUCCESS.
+----------------------------------
 
+COMPUTATION RESULTED WITH SUCCESS.
+----------------------------------
 
 ans = 
 
-    "05-Feb-2024 10:20:13: Guinea-Bissau - 19: Target deviation: 0.95787"
+    "Sudan: Started 10perc exercise on 19-Feb-2024 21:35:19"
 
-
-ans = 
 
-    "05-Feb-2024 10:20:55: Guinea-Bissau - 20: Target deviation: 0.92316"
+---------------------------
+STARTING MAIN LOOP...
 
+Iteration No.1 distance=5.851052e-04 duration=1178.1 secs. Welfare=1.483659e+03
+Iteration No.4 distance=2.007342e-04 duration=2251.7 secs. Welfare=1.149527e+03
+Iteration No.2 distance=4.179957e-04 duration=1249.1 secs. Welfare=1.542759e+03
+Iteration No.3 distance=3.075735e-04 duration=1138.4 secs. Welfare=1.561857e+03
+Iteration No.5 distance=1.330398e-04 duration=2330.3 secs. Welfare=1.150633e+03
+Iteration No.4 distance=2.502267e-04 duration=1124.7 secs. Welfare=1.569668e+03
+Iteration No.5 distance=2.010704e-04 duration=1106.9 secs. Welfare=1.573020e+03
+Iteration No.6 distance=1.123274e-04 duration=2303.5 secs. Welfare=1.151221e+03
+Iteration No.6 distance=1.562666e-04 duration=1120.4 secs. Welfare=1.574321e+03
+Iteration No.7 distance=1.134276e-04 duration=1120.8 secs. Welfare=1.574751e+03
 
 ans = 
 
-    "05-Feb-2024 10:21:02: Djibouti - 21: Target deviation: 402.9397"
+    "China: Started P_stat on 19-Feb-2024 18:51:56"
 
 
 ans = 
 
-    "05-Feb-2024 10:21:07: Burundi - 10: Target deviation: 582.5883"
+    "China: Started P_opt on 20-Feb-2024 00:01:24"
+Iteration No.7 distance=1.100148e-04 duration=2280.6 secs. Welfare=1.151547e+03
+Iteration No.8 distance=7.209054e-05 duration=1119.7 secs. Welfare=1.574816e+03
+Iteration No.9 distance=6.286057e-05 duration=1105.4 secs. Welfare=1.574758e+03
+Iteration No.8 distance=8.562165e-05 duration=2282.0 secs. Welfare=1.151737e+03
+Iteration No.10 distance=5.295324e-05 duration=1105.8 secs. Welfare=1.574664e+03
+Iteration No.11 distance=4.777644e-05 duration=1105.9 secs. Welfare=1.574560e+03
+Iteration No.9 distance=8.703507e-05 duration=2259.7 secs. Welfare=1.151853e+03
+Iteration No.12 distance=4.337614e-05 duration=1127.9 secs. Welfare=1.574463e+03
+Iteration No.13 distance=3.942546e-05 duration=1113.7 secs. Welfare=1.574377e+03
+Iteration No.10 distance=8.401928e-05 duration=2227.8 secs. Welfare=1.151926e+03
+Iteration No.14 distance=3.635863e-05 duration=1118.5 secs. Welfare=1.574301e+03
+Iteration No.15 distance=3.551961e-05 duration=1114.4 secs. Welfare=1.574232e+03
 
 
 ans = 
 
-    "05-Feb-2024 10:21:37: Guinea-Bissau - 21: Target deviation: 53.7246"
-
-
-ans = 
+    "China: Started 10perc exercise on 20-Feb-2024 02:26:52"
+Iteration No.11 distance=4.189526e-05 duration=2319.9 secs. Welfare=1.151974e+03
+Iteration No.16 distance=3.459929e-05 duration=1119.2 secs. Welfare=1.574170e+03
+Iteration No.17 distance=3.351184e-05 duration=1110.9 secs. Welfare=1.574116e+03
+Iteration No.18 distance=3.248517e-05 duration=1112.4 secs. Welfare=1.574069e+03
+Iteration No.12 distance=3.384869e-05 duration=2636.1 secs. Welfare=1.152005e+03
+Iteration No.19 distance=3.149346e-05 duration=1113.6 secs. Welfare=1.574027e+03
+Iteration No.20 distance=3.041446e-05 duration=1115.2 secs. Welfare=1.573991e+03
+Iteration No.13 distance=3.002015e-05 duration=2249.4 secs. Welfare=1.152027e+03
+Iteration No.21 distance=2.926097e-05 duration=1111.2 secs. Welfare=1.573960e+03
+Iteration No.22 distance=2.806373e-05 duration=1117.9 secs. Welfare=1.573934e+03
+Iteration No.14 distance=2.823979e-05 duration=2231.9 secs. Welfare=1.152043e+03
+Iteration No.23 distance=2.684038e-05 duration=1105.2 secs. Welfare=1.573911e+03
+Iteration No.24 distance=2.561271e-05 duration=1111.5 secs. Welfare=1.573891e+03
+Iteration No.15 distance=2.632366e-05 duration=2239.7 secs. Welfare=1.152054e+03
+Iteration No.25 distance=2.438096e-05 duration=1102.0 secs. Welfare=1.573874e+03
+Iteration No.26 distance=2.318795e-05 duration=1114.9 secs. Welfare=1.573859e+03
+Iteration No.16 distance=2.409676e-05 duration=2243.2 secs. Welfare=1.152062e+03
+Iteration No.27 distance=2.188887e-05 duration=1111.3 secs. Welfare=1.573846e+03
+Iteration No.28 distance=1.431821e-05 duration=1107.1 secs. Welfare=1.573838e+03
+Iteration No.17 distance=2.177195e-05 duration=2244.3 secs. Welfare=1.152068e+03
+Iteration No.29 distance=1.212115e-05 duration=1113.3 secs. Welfare=1.573833e+03
+Iteration No.30 distance=1.030495e-05 duration=1111.7 secs. Welfare=1.573830e+03
+Iteration No.18 distance=1.936797e-05 duration=2220.6 secs. Welfare=1.152073e+03
+Iteration No.31 distance=8.631292e-06 duration=1100.8 secs. Welfare=1.573829e+03
 
-    "05-Feb-2024 10:21:52: Djibouti - 22: Target deviation: 0.94251"
+COMPUTATION RESULTED WITH SUCCESS.
+----------------------------------
+Iteration No.19 distance=1.712159e-05 duration=2202.7 secs. Welfare=1.152076e+03
+Iteration No.20 distance=1.666818e-05 duration=2214.8 secs. Welfare=1.152079e+03
+Iteration No.21 distance=1.606169e-05 duration=2208.5 secs. Welfare=1.152081e+03
