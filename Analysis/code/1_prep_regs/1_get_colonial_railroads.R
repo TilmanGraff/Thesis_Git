@@ -50,6 +50,7 @@ all_placebo <- rbind(placebo, south_african_placebo) # merges
 ###############
 
 polygon_dataframe = readOGR("Analysis/input/grid_shapefile/grid.shp")
+opt_loc = read.csv("Analysis/input/opt_loc.csv")
 
 raildf = polygon_dataframe@data
 
@@ -61,6 +62,47 @@ raildf$dist2rail <- NA
 raildf$dist2placebo <- NA
 
 
+runs <- data.frame("names" = c("mob", "imm"), "paths" = c("2024-02-18_040636_mobile_fp_final", "2024-02-20_140808_imm_fp_final"))
+
+
+###############
+# Rail edge connections
+###############
+
+print("Begin edge connections with Rails...")
+
+for(railtype in c("rails", "placebo")){
+  
+  y = get(paste0("all_", railtype))
+  x = gIntersects(polygon_dataframe, y, byid = T)
+  
+  cells_affected = as.numeric(which(colSums(x) > 0))
+  IDs_affected = polygon_dataframe[cells_affected,]$ID
+  countries_affected = unique(opt_loc[opt_loc$ID %in% IDs_affected,"country"])
+
+  for(c in countries_affected){
+    rosetta <- read.csv(paste0("./Build/temp/rosettastones/rosetta_", c, ".csv"))
+    I_stat = read.csv(paste0("./Build/temp/I/I_", c, ".csv"), header = T)
+    ID_c = IDs_affected[opt_loc[opt_loc$ID %in% IDs_affected,"country"] == c]
+    ID_r = rosetta[rosetta$ID %in% ID_c,]$rownumber
+    for(j in 1:length(ID_r)){
+      raildf[raildf$ID == ID_c[j], paste0(railtype, "con_I_stat")] = sum(I_stat[ID_r[j],ID_r])
+    
+      
+      for(runidx in 1:nrow(runs)){
+        run = runs[runidx, "names"]
+        path = runs[runidx, "paths"]
+        
+        for(type in c("", "_10p")){
+          I_opt = read.csv(paste0("./Build/output/", path, "/Optimised_Networks/", c, type, ".csv"), header = F)
+          raildf[raildf$ID == ID_c[j], paste0(railtype, "con_I_", run, type)] = sum(I_opt[ID_r[j],ID_r])
+        }
+        
+      }
+    }
+    print(paste0(c))
+}
+}
 ###############
 # Distance to Rail Lines
 ###############
@@ -179,9 +221,9 @@ for(i in 1:nrow(polygon_dataframe)){
 ###############
 
 
-write.csv(raildf, file="./Analysis/temp/raildf.csv", row.names = FALSE)
-writeOGR(all_rails, "./Analysis/temp/allrails.shp", driver="ESRI Shapefile", layer = "all_rails")
-writeOGR(all_placebo, "./Analysis/temp/allplacebo.shp", driver="ESRI Shapefile", layer = "all_placebo")
+write.csv(raildf, file="./Analysis/temp/raildf_new.csv", row.names = FALSE)
+#writeOGR(all_rails, "./Analysis/temp/allrails.shp", driver="ESRI Shapefile", layer = "all_rails")
+#writeOGR(all_placebo, "./Analysis/temp/allplacebo.shp", driver="ESRI Shapefile", layer = "all_placebo")
 
 
 

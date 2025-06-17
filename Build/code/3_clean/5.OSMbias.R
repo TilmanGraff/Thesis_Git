@@ -5,6 +5,8 @@ gmaps_df = data.frame("from" = NA, "to" = NA, "dist" = NA, "dur" = NA, "share_un
 
 row = 1
 
+country_names = read.csv("./Build/temp/country_names.csv")$x
+country_names = country_names[!(country_names %in% c("Germany", "Japan", "China", "United-States"))]
 
 for(country in country_names){
   
@@ -62,17 +64,17 @@ oconf_interval <- predict(olm, newdata=data.frame(lpop=newx), interval="confiden
 
 
 pdf("./Build/output/osmbias/osm_gmaps_lpop.pdf", width = 8, height = 7)
-plot(log(gmaps_df$popm), gmaps_df$speed, bty = "n", xlab = "log Population", ylab = "Speed", col = alpha("purple4", .6), pch = 19, xlim = c(7.5, 15) , ylim = c(0, 100))
+plot(log(gmaps_df$popm), gmaps_df$speed, bty = "n", xlab = "log Population", ylab = "Speed", col = alpha("grey77", .6), pch = 19, xlim = c(7.5, 15) , ylim = c(0, 100))
 
-legend("bottomright", pch= 19, legend = c("OSM", "Google Maps"), col = c("purple4", "tomato2"), bty = "n")
+legend("bottomright", pch= 19, legend = c("OSM", "Google Maps"), col = c("grey77", "tomato2"), bty = "n")
 
 points(log(gmaps_df$popm), gmaps_df$gspeed, col = alpha("tomato2", .6), pch = 19)
 
 polygon(x = c(newx, rev(newx)), y = c(gconf_interval[,2], rev(gconf_interval[,3])), col = alpha("tomato2", .2), border = NA)
-polygon(x = c(newx, rev(newx)), y = c(oconf_interval[,2], rev(oconf_interval[,3])), col = alpha("purple4", .2), border = NA)
+polygon(x = c(newx, rev(newx)), y = c(oconf_interval[,2], rev(oconf_interval[,3])), col = alpha("grey77", .2), border = NA)
 
 abline(glm, col = "tomato2", lwd = 2)
-abline(olm, col = "purple4", lwd = 2)
+abline(olm, col = "grey77", lwd = 2)
 
 dev.off()
 

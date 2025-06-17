@@ -178,11 +178,12 @@ write.csv(leaders, file = "./Analysis/temp/leaders_raw.csv")
 #
 # # Draw Map
 #
-# world <- readOGR("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Build/input/World_Countries/TM_WORLD_BORDERS-0.3.shp") # reads in the global country shapefile
-# africa <- world[world@data$REGION==2,]
-#
-# png(filename=paste("/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/other_maps/birthplaces.png", sep=""), width=6, height=6, units = 'in', res=300 )
-# plot(africa, lwd=.8)
-# points(leaders$x, leaders$y, col="darkorange1")
-# points(leaders$x, leaders$y, col="red", pch=4)
-# dev.off()
+africa <- readOGR("./Build/output/African Borders/AfricanBorders.shp")
+leaders = read.csv("./Analysis/temp/leaders_raw.csv")
+#africa <- world[world@data$REGION==2,]
+
+png(filename=paste("/Users/tilmangraff/Documents/GitHub/Thesis_Git/Build/output/other_maps/birthplaces.png", sep=""), width=6, height=6, units = 'in', res=300 )
+plot(africa, lwd=.8)
+points(leaders$x, leaders$y, col="darkorange1")
+points(leaders$x, leaders$y, col="red", pch=4)
+dev.off()

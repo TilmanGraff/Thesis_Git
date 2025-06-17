@@ -4,7 +4,7 @@
 #SBATCH -p bigmem
 #SBATCH -N 1
 #SBATCH -n 20
-#SBATCH -t 01-23:59
+#SBATCH -t 02-23:59
 #SBATCH --mem=1800G
 #SBATCH --mail-type=END,FAIL
 #SBATCH --mail-user=tgraff@g.harvard.edu

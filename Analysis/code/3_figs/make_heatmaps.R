@@ -4,7 +4,7 @@
 # This file creates spatial heatmaps of variables of interest
 
 
-# file.remove(list.files(path="/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/zeta_heatmaps/", full.names = T))
+# file.remove(list.files(path="/Users/Tilmanski/Documents/UNI/MPhil/Second Year/Thesis_Git/Analysis/output/Lambda_heatmaps/", full.names = T))
 
 
 require("RColorBrewer")
@@ -15,122 +15,129 @@ require("viridis")
 require("grid")
 library("lattice")
 require("rgeos")
+require("readstata13")
 
-opt_loc = read.csv("./Analysis/input/opt_loc.csv")
+outpath = paste0("./Analysis/output/Lambda_heatmaps/revision/")
+dir.create(outpath)
+path = "2024-02-18_040636_mobile_fp_final"
+for(version in c("L_mob", "imm_10p", "amenities", "imm", "L_mob_10p")){
 
 
-country_table <- as.data.frame(table(opt_loc$country))
-country_names <- paste(country_table[country_table$Freq != 0,"Var1"])
+      opt_loc = read.dta13("./Analysis/input/maingrid.dta")
 
-runs <- data.frame("names" = c("base", "10perc"), "paths" = c("2023-10-12_151412_newbase", "2023-10-12_160452_new10perc"))
 
-for(runidx in 1:nrow(runs)){
+      country_table <- as.data.frame(table(opt_loc$country))
+      country_names <- paste(country_table[country_table$Freq != 0,"Var1"])
 
-      
-      run = runs$names[runidx]
-      path = runs$paths[runidx]
-
-      outpath = paste0("./Analysis/output/zeta_heatmaps/", path, "/")
-      dir.create(outpath)
-
-      opt_loc$zeta = opt_loc[,paste0("zeta_", run)]
+      #opt_loc$Lambda = opt_loc[,paste0("Lambda_", run)]
 
       grid = readOGR("./Analysis/input/grid_shapefile/grid.shp")
-      grid@data = merge(grid@data, opt_loc, by="ID")
+      grid@data = merge(grid@data, opt_loc, by.x="ID", by.y = "id")
+
+if(version == "amenities"){
+grid@data[,paste0("Lambda_", version)] = grid$amenities
+}
+        # # Aggregate Lambdas to country level
+        # national_Lambda <- data.frame()
+        # i = 1
+
+        # for(country in country_names){
+        #   df <- opt_loc[opt_loc$country==country,]
+
+        #   if(!is.na(df[1, "Lambda"])){
+
+        #     national_Lambda[i, "country"] <- country
+        #     national_Lambda[i, "Lambda"] <- ((sum(df$pop * df$util_opt)  / sum(df$pop * df$util_stat)))
 
 
-        # Aggregate zetas to country level
-        national_zeta <- data.frame()
-        i = 1
+        #     i = i+1
+        #   }
+        # }
 
-        for(country in country_names){
-          df <- opt_loc[opt_loc$country==country,]
-
-          if(!is.na(df[1, "zeta"])){
-
-            national_zeta[i, "country"] <- country
-            national_zeta[i, "zeta"] <- ((sum(df$pop * df$util_opt)  / sum(df$pop * df$util_stat)))
+        # national_Lambda <- national_Lambda[order(-national_Lambda$Lambda),]
 
 
-            i = i+1
-          }
-        }
-
-        national_zeta <- national_zeta[order(-national_zeta$zeta),]
+        # ####
+        # # 1) Map of all countries by their collective Lambda
 
 
-        ####
-        # 1) Map of all countries by their collective zeta
+        # # world <- readOGR("./Build/input/World_Countries/TM_WORLD_BORDERS-0.3.shp") # reads in the global country shapefile
+        # #
+        # # africa <- world[world@data$REGION==2,]
+        # #
+        # #
+        # # ssudan <- readOGR("./Build/input/South-Sudan/ssd_admbnda_adm0_200k_ssnbs_20160114.shp")
+        # #
+        # # ssudan@data <- africa@data[1,]
+        # # ssudan@data[1,] <- NA
+        # # ssudan@data$NAME <- "South-Sudan"
+        # #
+        # #
+        # # africa <- rbind(africa, ssudan)
+        # #
+        # #
+        # # africa@data$Lambda <- NA
+        # # africa@data$NAME <- gsub(" ", "-", africa@data$NAME)
+        # # africa@data$NAME <- gsub("'", "", africa@data$NAME)
+        # # africa@data$NAME <- gsub("Libyan-Arab-Jamahiriya", "Libya", africa@data$NAME)
+        # #
+        # #
+        # #
+        # # writeOGR(obj=africa, dsn="./Build/output/African Borders/AfricanBorders.shp", layer="africa", driver="ESRI Shapefile") # this is in geographical projection
+
+        # africa = readOGR("./Build/output/African Borders/AfricanBorders.shp")
+
+        # for(i in 1:nrow(africa@data)){ # this is a rather murky way to merge in the Lambda for each country, as the classic merge command somehow throws the file off
+
+        #   if(africa@data$NAME[i] %in% national_Lambda$country){
+        #     africa@data$Lambda[i] <- national_Lambda[africa@data$NAME[i] == national_Lambda$country, "Lambda"]
+        #   }
+
+        # }
+
+        # # if you want to have your own color scheme
+        # my.palette <- brewer.pal(n = 9, name = "OrRd") # for an orange palette
+        # my.palette = colorRampPalette((c("royalblue2", "palevioletred1", "goldenrod1"))) #"paleturquoise2",
+        # # display.brewer.all() # shows you available palettes
+        # my.palette = colorRampPalette((c("royalblue2", "paleturquoise2", "goldenrod1", "palevioletred1")))
+   if(grepl("imm", version)){
+  my.palette <- rocket
+  }
+  if(grepl("mob", version)){
+    my.palette <- viridis
+  }
+    if(grepl("amenities", version)){
+    my.palette <- turbo
+  }
 
 
-        # world <- readOGR("./Build/input/World_Countries/TM_WORLD_BORDERS-0.3.shp") # reads in the global country shapefile
-        #
-        # africa <- world[world@data$REGION==2,]
-        #
-        #
-        # ssudan <- readOGR("./Build/input/South-Sudan/ssd_admbnda_adm0_200k_ssnbs_20160114.shp")
-        #
-        # ssudan@data <- africa@data[1,]
-        # ssudan@data[1,] <- NA
-        # ssudan@data$NAME <- "South-Sudan"
-        #
-        #
-        # africa <- rbind(africa, ssudan)
-        #
-        #
-        # africa@data$zeta <- NA
-        # africa@data$NAME <- gsub(" ", "-", africa@data$NAME)
-        # africa@data$NAME <- gsub("'", "", africa@data$NAME)
-        # africa@data$NAME <- gsub("Libyan-Arab-Jamahiriya", "Libya", africa@data$NAME)
-        #
-        #
-        #
-        # writeOGR(obj=africa, dsn="./Build/output/African Borders/AfricanBorders.shp", layer="africa", driver="ESRI Shapefile") # this is in geographical projection
+        # edges <- africa@bbox
+        # scale.parameter = 1
+        # xshift = 0
+        # yshift = 7
 
-        africa = readOGR("./Build/output/African Borders/AfricanBorders.shp")
-
-        for(i in 1:nrow(africa@data)){ # this is a rather murky way to merge in the zeta for each country, as the classic merge command somehow throws the file off
-
-          if(africa@data$NAME[i] %in% national_zeta$country){
-            africa@data$zeta[i] <- national_zeta[africa@data$NAME[i] == national_zeta$country, "zeta"]
-          }
-
-        }
-
-        # if you want to have your own color scheme
-        my.palette <- brewer.pal(n = 9, name = "OrRd") # for an orange palette
-        my.palette = colorRampPalette((c("royalblue2", "palevioletred1", "goldenrod1"))) #"paleturquoise2",
-        # display.brewer.all() # shows you available palettes
-        my.palette = colorRampPalette((c("royalblue2", "paleturquoise2", "goldenrod1", "palevioletred1")))
-        my.palette = rocket
-
-        edges <- africa@bbox
-        scale.parameter = 1
-        xshift = 0
-        yshift = 7
-
-        edges[1, ] <- (edges[1, ] - mean(edges[1, ])) * scale.parameter + mean(edges[1,
-            ]) + xshift
-        edges[2, ] <- (edges[2, ] - mean(edges[2, ])) * scale.parameter + mean(edges[2,
-            ]) + yshift
+        # edges[1, ] <- (edges[1, ] - mean(edges[1, ])) * scale.parameter + mean(edges[1,
+        #     ]) + xshift
+        # edges[2, ] <- (edges[2, ] - mean(edges[2, ])) * scale.parameter + mean(edges[2,
+        #     ]) + yshift
 
 
-        breaks_qt <- classIntervals(africa$zeta, n = 8, style = "quantile")
-        br <- breaks_qt$brks
-        offs <- 0.0000001
-        br[1] <- br[1] - offs
-        br[length(br)] <- br[length(br)] + offs
-        africa$zeta_bracket <- cut(africa$zeta, br)
+        # breaks_qt <- classIntervals(africa$Lambda, n = 8, style = "quantile")
+        # br <- breaks_qt$brks
+        # offs <- 0.0000001
+        # br[1] <- br[1] - offs
+        # br[length(br)] <- br[length(br)] + offs
+        # africa$Lambda_bracket <- cut(africa$Lambda, br)
 
 
-        africa$col = my.palette(9)[(cut(africa$zeta, br, labels = F))]
+        # africa$col = my.palette(9)[(cut(africa$Lambda, br, labels = F))]
 
-        # png(filename=paste("./Analysis/output/zeta_heatmaps/African_countries_zeta.png", sep=""), width=6, height=6, units = 'in', res=300 )
-        pdf(paste0(outpath, "African_countries_zeta.pdf"), width = 8, height = 8)
-        #print(spplot(africa, "zeta", col="transparent", col.regions="col", xlim=edges[1,], ylim=edges[2,], colorkey=T, par.settings = list(axis.line = list(col = "transparent")))) # cuts always has to be one less than n in the definition of my.palette
-        plot(africa, col = africa$col, xlim=edges[1,], ylim=edges[2,])
+        # # png(filename=paste("./Analysis/output/Lambda_heatmaps/African_countries_Lambda.png", sep=""), width=6, height=6, units = 'in', res=300 )
+        # pdf(paste0(outpath, "African_countries_Lambda.pdf"), width = 8, height = 8)
+        # #print(spplot(africa, "Lambda", col="transparent", col.regions="col", xlim=edges[1,], ylim=edges[2,], colorkey=T, par.settings = list(axis.line = list(col = "transparent")))) # cuts always has to be one less than n in the definition of my.palette
+        # plot(africa, col = africa$col, xlim=edges[1,], ylim=edges[2,])
 
-        dev.off()
+        # dev.off()
 
 ####
 # barchart
@@ -141,12 +148,13 @@ for(runidx in 1:nrow(runs)){
 ###
 # 2) Trying to make this happen within Countries
 
-        breaks_qt <- classIntervals(grid$zeta, n = 19, style = "quantile")
+        grid@data[grid@data$pop_stat < 10 & !is.na(grid@data$pop_stat),paste0("Lambda_", version)] = NA
+        breaks_qt <- classIntervals(grid@data[,paste0("Lambda_", version)], n = 19, style = "quantile")
         br <- breaks_qt$brks
         offs <- 0.0000001
         br[1] <- br[1] - offs
         br[length(br)] <- br[length(br)] + offs
-        grid$zeta_bracket <- cut(grid$zeta, br)
+        grid$Lambda_bracket <- cut(grid@data[,paste0("Lambda_", version)], br)
         mbr = vector()
         for(i in 1:19){
           mbr[i] = mean(c(br[i], br[i+1]))
@@ -156,9 +164,9 @@ for(runidx in 1:nrow(runs)){
 
         ####
         # first, entire continent
-        pdf(paste0(outpath, "African_gridcells_zeta.pdf"), width = 8, height = 8)
+        pdf(paste0(outpath, "African_gridcells_", version,  ".pdf"), width = 8, height = 8)
 
-        SP <- spplot(grid, zcol = "zeta_bracket", col="transparent", col.regions=my.palette(20),  par.settings = list(axis.line = list(col = "transparent")),
+        SP <- spplot(grid, zcol = "Lambda_bracket", col="transparent", col.regions=my.palette(20),  par.settings = list(axis.line = list(col = "transparent")),
         colorkey = list(
                 labels=list(
                     at = whichlabels,
@@ -174,11 +182,12 @@ for(runidx in 1:nrow(runs)){
 
         ## Call spplot() again, this time passing in to legend the arguments
         ## needed to print a color key
-        print(spplot(grid, zcol = "zeta_bracket", col="transparent", col.regions=my.palette(20),  par.settings = list(axis.line = list(col = "transparent")), colorkey = FALSE,
+        print(spplot(grid, zcol = "Lambda_bracket", col="transparent", col.regions=my.palette(20),  par.settings = list(axis.line = list(col = "transparent")), colorkey = FALSE,
               legend = list(inside = legendArgs)))
 
         dev.off()
 
+        
 
         #####
         # and now for all countries
@@ -186,8 +195,8 @@ for(runidx in 1:nrow(runs)){
         for(country in unique(grid$country)){
           if(file.exists(paste0("./Build/output/", path, "/Network_outcomes/", country, "_outcomes.csv"))){
 
-            pdf(paste0(outpath, country, "_zeta.pdf"), width = 8, height = 8)
-            print(spplot(grid[grid$country == country,], zcol = "zeta_bracket", col="transparent", col.regions=my.palette(20), par.settings = list(axis.line = list(col = "transparent")),
+            pdf(paste0(outpath, country, "_", version, ".pdf"), width = 8, height = 8)
+            print(spplot(grid[grid$country == country,], zcol = "Lambda_bracket", col="transparent", col.regions=my.palette(20), par.settings = list(axis.line = list(col = "transparent")),
             colorkey = F))
             dev.off()
 
@@ -197,54 +206,54 @@ for(runidx in 1:nrow(runs)){
 
 
 
-        ##########
-        # on ethn level
+        # ##########
+        # # on ethn level
 
-        ethn_all <- readOGR("./Analysis/input/Murdock_EA_2011_vkZ/Murdock_EA_2011_vkZ.shp")
-        africa = readOGR("./Build/output/African Borders/AfricanBorders.shp")
-        #africa@data$wbcode <- countrycode(africa@data$ISO3, origin = "iso3c", destination = "wb")
+        # ethn_all <- readOGR("./Analysis/input/Murdock_EA_2011_vkZ/Murdock_EA_2011_vkZ.shp")
+        # africa = readOGR("./Build/output/African Borders/AfricanBorders.shp")
+        # #africa@data$wbcode <- countrycode(africa@data$ISO3, origin = "iso3c", destination = "wb")
 
-        clipped <- gIntersection(ethn_all, africa, byid=T)
+        # clipped <- gIntersection(ethn_all, africa, byid=T)
 
-        ethn_opt = aggregate(grid[,"zeta"], clipped, FUN=mean)
-
-
-        breaks_qt <- classIntervals(ethn_opt$zeta, n = 19, style = "quantile")
-        br <- breaks_qt$brks
-        offs <- 0.0000001
-        br[1] <- br[1] - offs
-        br[length(br)] <- br[length(br)] + offs
-        ethn_opt$zeta_bracket <- cut(ethn_opt$zeta, br)
-        mbr = vector()
-        for(i in 1:19){
-          mbr[i] = mean(c(br[i], br[i+1]))
-        }
-
-        whichlabels = seq(1, 20, 3)
+        # ethn_opt = aggregate(grid[,"Lambda"], clipped, FUN=mean)
 
 
-        pdf(paste0(outpath, "African_ethn_zeta.pdf"), width = 8, height = 8)
+        # breaks_qt <- classIntervals(ethn_opt$Lambda, n = 19, style = "quantile")
+        # br <- breaks_qt$brks
+        # offs <- 0.0000001
+        # br[1] <- br[1] - offs
+        # br[length(br)] <- br[length(br)] + offs
+        # ethn_opt$Lambda_bracket <- cut(ethn_opt$Lambda, br)
+        # mbr = vector()
+        # for(i in 1:19){
+        #   mbr[i] = mean(c(br[i], br[i+1]))
+        # }
 
-        SP <- spplot(ethn_opt, zcol = "zeta_bracket", col="transparent", col.regions=my.palette(20),  par.settings = list(axis.line = list(col = "transparent")),
-        colorkey = list(
-                labels=list(
-                    at = whichlabels,
-                    labels = round(mbr[whichlabels], 3)
-                ), space = "left", height = .4
-            ))
-        args <- SP$legend$left$args$key
+        # whichlabels = seq(1, 20, 3)
 
-        ## Prepare list of arguments needed by `legend=` argument (as described in ?xyplot)
-        legendArgs <- list(fun = draw.colorkey,
-                          args = list(key = args),
-                          corner = c(0.25,.25))
 
-        ## Call spplot() again, this time passing in to legend the arguments
-        ## needed to print a color key
-        print(spplot(ethn_opt, zcol = "zeta_bracket", col="transparent", col.regions=my.palette(20),  par.settings = list(axis.line = list(col = "transparent")), colorkey = FALSE,
-              legend = list(inside = legendArgs)))
+        # pdf(paste0(outpath, "African_ethn_Lambda.pdf"), width = 8, height = 8)
 
-        dev.off()
+        # SP <- spplot(ethn_opt, zcol = "Lambda_bracket", col="transparent", col.regions=my.palette(20),  par.settings = list(axis.line = list(col = "transparent")),
+        # colorkey = list(
+        #         labels=list(
+        #             at = whichlabels,
+        #             labels = round(mbr[whichlabels], 3)
+        #         ), space = "left", height = .4
+        #     ))
+        # args <- SP$legend$left$args$key
+
+        # ## Prepare list of arguments needed by `legend=` argument (as described in ?xyplot)
+        # legendArgs <- list(fun = draw.colorkey,
+        #                   args = list(key = args),
+        #                   corner = c(0.25,.25))
+
+        # ## Call spplot() again, this time passing in to legend the arguments
+        # ## needed to print a color key
+        # print(spplot(ethn_opt, zcol = "Lambda_bracket", col="transparent", col.regions=my.palette(20),  par.settings = list(axis.line = list(col = "transparent")), colorkey = FALSE,
+        #       legend = list(inside = legendArgs)))
+
+        # dev.off()
 
 }
 
@@ -256,7 +265,7 @@ for(runidx in 1:nrow(runs)){
 
 
 
-# df <- opt_loc[!is.na(opt_loc$zeta),]
+# df <- opt_loc[!is.na(opt_loc$Lambda),]
 # row.names(df) <- 1:nrow(df)
 #
 #
@@ -286,17 +295,17 @@ for(runidx in 1:nrow(runs)){
 # edges[2, ] <- (edges[2, ] - mean(edges[2, ])) * scale.parameter + mean(edges[2,
 #     ]) + yshift
 #
-# breaks_qt <- classIntervals(polygon_dataframe$zeta, n = 9, style = "quantile")
+# breaks_qt <- classIntervals(polygon_dataframe$Lambda, n = 9, style = "quantile")
 # br <- breaks_qt$brks
 # offs <- 0.0000001
 # br[1] <- br[1] - offs
 # br[length(br)] <- br[length(br)] + offs
-# polygon_dataframe$zeta_bracket <- cut(polygon_dataframe$zeta, br)
+# polygon_dataframe$Lambda_bracket <- cut(polygon_dataframe$Lambda, br)
 
 #
 #
-#  png(filename=paste("./Analysis/output/zeta_heatmaps/African_gridcells_zeta.png", sep=""), width=6, height=6, units = 'in', res = 300)
+#  png(filename=paste("./Analysis/output/Lambda_heatmaps/African_gridcells_Lambda.png", sep=""), width=6, height=6, units = 'in', res = 300)
 #
-# print(spplot(polygon_dataframe, "zeta_bracket", col="transparent", col.regions=my.palette, cuts=8, xlim=edges[1,], ylim=edges[2,], par.settings = list(axis.line = list(col = "transparent"))))
+# print(spplot(polygon_dataframe, "Lambda_bracket", col="transparent", col.regions=my.palette, cuts=8, xlim=edges[1,], ylim=edges[2,], par.settings = list(axis.line = list(col = "transparent"))))
 #
 #  dev.off()

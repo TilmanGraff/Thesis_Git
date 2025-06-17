@@ -38,7 +38,7 @@ nums = nan(1);
         case_centroids = readtable(strcat("/Users/tilmangraff/Documents/GitHub/Thesis_Git/Build/temp/borderregions/", (countryname), "_borderregion.csv"));
         num_locations = size(case_centroids, 1)
      %if num_locations > 300 && num_locations < 350
-        if countryname == "Germany"
+        if countryname == "Senegal"
         % Read in characteristics
         population = case_centroids.pop;
 
@@ -73,7 +73,7 @@ nums = nan(1);
         %param.omegaj = weights;
         
         param.Hj = population .* (1-alpha); % I normalise this because the general utility function has a (h_j/(1-alpha))^(1-alpha) thing with it
-        param.tol_kappa = 1.0e-5;
+        param.tol_kappa = 1.0e-7;
 
         
         g.delta_i = delta_I;
@@ -93,13 +93,17 @@ nums = nan(1);
         res_stat = solve_allocation(param,g,I, false);
         %annrea = annealing(param,g,res.Ijk,'Il',min_mask,'Iu',max_mask);
 
+
+
+        param.K = 1.1;
+        min_mask = I;
         
         % Optimalq
         strcat("Started P_opt on ", datestr(datetime('now')))
         res_opt = optimal_network(param,g,I,min_mask,max_mask,false);
       
 
-        
+        ff
      
         %% Obtain descriptive statistics
 

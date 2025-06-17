@@ -17,7 +17,7 @@ centroids = readtable("/n/holystore01/LABS/kreindler_lab/Lab/transjakarta/tilman
 centroids.country = categorical(centroids.country);
 
 % define outpath
-foldername = strcat(datestr(now,"yyyy-mm-dd_HHMMSS"), "_imm")
+foldername = strcat(datestr(now,"yyyy-mm-dd_HHMMSS"), "_imm_nocomp")
 %foldername = "2024-02-17_175358_imm_fp"
 outpath = strcat("/n/holystore01/LABS/kreindler_lab/Lab/transjakarta/tilman/spin/output/", foldername);
 
@@ -63,7 +63,7 @@ parpool(20);
         %delta_tau = csvread(strcat("/n/holystore01/LABS/kreindler_lab/Lab/transjakarta/tilman/spin/temp/delta_tau/delta_tau_withcomp_", (countryname), ".csv"), 1, 0);
         %delta_tau = csvread(strcat("/n/holystore01/LABS/kreindler_lab/Lab/transjakarta/tilman/spin/temp/delta_tau/delta_tau_", (countryname), ".csv"), 1, 0);
         %delta_tau = csvread(strcat("/n/holystore01/LABS/kreindler_lab/Lab/transjakarta/tilman/spin/temp/delta_tau/delta_tau_fp_", (countryname), ".csv"), 1, 0);
-        delta_tau = csvread(strcat("/n/holystore01/LABS/kreindler_lab/Lab/transjakarta/tilman/spin/temp/delta_tau/delta_tau_withcomp_fp_", (countryname), ".csv"), 1, 0);
+        delta_tau = csvread(strcat("/n/holystore01/LABS/kreindler_lab/Lab/transjakarta/tilman/spin/temp/delta_tau/delta_tau_fp_", (countryname), ".csv"), 1, 0);
 
         I = csvread(strcat("/n/holystore01/LABS/kreindler_lab/Lab/transjakarta/tilman/spin/temp/I/I_", (countryname), ".csv"), 1, 0);
         productivity = csvread(strcat("/n/holystore01/LABS/kreindler_lab/Lab/transjakarta/tilman/spin/temp/productivities/productivities_", (countryname), ".csv"), 1, 0);
